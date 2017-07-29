@@ -1,2 +1,2 @@
 # PS1_SDSS_CRTS
-Extending analysis from MacLeod+2011 to larger baselines with PS1 and CRTS data 
+Extending analysis from [MacLeod+2010](http://iopscience.iop.org/article/10.1088/0004-637X/721/2/1014/meta), [MacLeod+2011](http://faculty.washington.edu/ivezic/Publications/macleod2011.pdf),  and [MacLeod+2012](http://iopscience.iop.org/article/10.1088/0004-637X/753/2/106/meta), by extending S82 light curves  to larger baselines with PS1, CRTS and PTF data. This is based on the findings of [Kozlowski+2017](https://www.aanda.org/10.1051/0004-6361/201629890) that we confirmed, namely that a longer baseline significantly reduces the bias in retrieval of quasar characteristic timescale and variability amplitude. 
