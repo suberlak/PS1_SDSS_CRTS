@@ -108,13 +108,20 @@ $^{1}$Department of Astronomy, University of Washington, Seattle, WA, United Sta
 \section{Methods}
  We first confirm the scaling relations by \cite{kozlowski2017a }by testing the retrieval of simulated light curve parameters with Celerite . In addition to reproducing his Fig.2  we also plot the fractional bias due to insufficient length of the  light curve baseline. We confirm that longer  baseline should significantly improve time scale constraints. Light curve error distribution and sampling are less important, i.e. it would improve the accuracy of fit more to have a larger baseline than denser sampling. 
 
-Then we explore the combined SDSS-PTF-CRTS-PS1  dataset for Quasars in Stripe82 footprint. Namely, we start with the SDSS DR7 QSO near-simultaneous ugriz photometry from Schneider+2007 in S82 footprint (\url{http://www.astro.washington.edu/users/ivezic/macleod/qso_dr7/Southern.html} ).  Querying CRTS DR2 database B.Sesar obtained CRTS white light lightcurves for these quasars.   Querying PTF database against SDSS-CRTS matched 7601 QSO we obtained additional r-band light curves.  Finally, C. MacLeod provided PS1 (PanSTARRS)  grizy  light curves matched to positions from DR7 Schneider et al. catalog. We make an outer join of all catalogs,  flagging from which survey came which data point, as well as photometric filter. 
+Then we explore the combined SDSS-PTF-CRTS-PS1  dataset for Quasars in Stripe82 footprint (Fig.~\ref{fig:baselines}). Namely, we start with the SDSS DR7 QSO near-simultaneous ugriz photometry from Schneider+2007 in S82 footprint (\url{http://www.astro.washington.edu/users/ivezic/macleod/qso_dr7/Southern.html} ).  Querying CRTS DR2 database B.Sesar obtained CRTS white light lightcurves for these quasars.   Querying PTF database against SDSS-CRTS matched 7601 QSO we obtained additional r-band light curves.  Finally, C. MacLeod provided PS1 (PanSTARRS)  grizy  light curves matched to positions from DR7 Schneider et al. catalog. We make an outer join of all catalogs,  flagging from which survey came which data point, as well as photometric filter. 
 
 We first check whether there is an improvement of fit for simulated DRW sampled at observed cadence - we plot $\tau_{out}$ vs $\tau_{in}$  for    SDSS sampling,    PS1+SDSS sampling,  PS1+CRTS+SDSS sampling,   PS1+CRTS+PTF+SDSS sampling.  This helps establish, based on simulated data (where we know the truth), whether we should expect much improvement in fit accuracy when using real data. 
 
 We then perform fits using observed points selecting photometry only from a subset of surveys : $\tau_{PS1}$, $\tau_{(PS1+SDSS)}$,  $\tau_{SDSS}$.  We also check whether we get a better fit  behavior using only bright quasars with   $\tau_{\langle mag\rangle<19}$.
 
 Using the best combination of survey data,  we revisit \cite{macleod2011} correlations of retrieved characteristic quasar timescale $\tau$ and variability amplitude $\sigma$ with black hole mass, luminosity, etc.  
+
+\begin{figure}
+\includegraphics[width=1.05\columnwidth]{figs/epochs_S82_QSO_compare.png}
+%\vskip -0.15in
+\caption{Count  of raw photometric measurements for Quasars in Stripe 82 from four surveys . Note that both CRTS and OTF significantly increase the original baseline of SDSS measurements.}
+\label{fig:baselines}
+\end{figure} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
