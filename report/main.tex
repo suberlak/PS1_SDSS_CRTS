@@ -1,0 +1,137 @@
+% mnras_template.tex
+%
+% LaTeX template for creating an MNRAS paper
+%
+% v3.0 released 14 May 2015
+% (version numbers match those of mnras.cls)
+%
+% Copyright (C) Royal Astronomical Society 2015
+% Authors:
+% Keith T. Smith (Royal Astronomical Society)
+
+% Change log
+%
+% v3.0 May 2015
+%    Renamed to match the new package name
+%    Version number matches mnras.cls
+%    A few minor tweaks to wording
+% v1.0 September 2013
+%    Beta testing only - never publicly released
+%    First version: a simple (ish) template for creating an MNRAS paper
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Basic setup. Most papers should leave these options alone.
+\documentclass[fleqn,usenatbib]{mnras}  % a4paper,
+
+% MNRAS is set in Times font. If you don't have this installed (most LaTeX
+% installations will be fine) or prefer the old Computer Modern fonts, comment
+% out the following line
+%\usepackage{newtxtext,newtxmath}
+%\usepackage{lmodern}
+% Depending on your LaTeX fonts installation, you might get better results with one of these:
+\usepackage{mathptmx}
+%\usepackage{txfonts}
+
+
+% Use vector fonts, so it zooms properly in on-screen viewing software
+% Don't change these lines unless you know what you are doing
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+\usepackage{diagbox}
+
+%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
+
+% Only include extra packages if you really need them. Common packages are:
+\usepackage{graphicx}	% Including figure files
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+\usepackage{savesym}  % prevent symbol conflicts
+%\generate{%
+%  \file{breqn.sty}{\nopreamble\from{breqn.dtx}{breqn.sty}}%
+%}
+%\usepackage{breqn} % automatic breaking equation 
+%\usepackage{fancyvrb}
+%\VerbatimFootnotes
+\usepackage{cprotect}  % to allow verb in caption 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
+
+% Please keep new commands to a minimum, and use \newcommand not \def to avoid
+% overwriting existing commands. Example:
+%\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
+
+% Title of the paper, and the short title which is used in the headers.
+% Keep the title short and informative.
+\title[DRW baseline]{ Improving the DRW fit parameters for S82 quasars with increased baseline combining SDSS, CRTS and PS1 data}
+
+% The list of authors, and the short list which is used in the headers.
+% If you need two or more lines of authors, add an extra line using \newauthor
+\author[K. Suberlak et al.]{
+Krzysztof Suberlak,$^{1}$\thanks{E-mail: suberlak@uw.edu}
+\v{Z}eljko Ivezi\'c $^{1}$
+\\
+% List of institutions
+$^{1}$Department of Astronomy, University of Washington, Seattle, WA, United States\\
+}
+
+% These dates will be filled out by the publisher
+\date{Accepted XXX. Received YYY; in original form ZZZ}
+
+% Enter the current year, for the copyright statements etc.
+\pubyear{2017}
+
+% Don't change these lines
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+% Abstract of the paper
+\begin{abstract}
+ Aim: Improve on DRW parameters reported in \cite{macleod2011} by an increase of the QSO light curve baseline.  We compare the tools used to fitting for $\tau$ and $SF_{\infty}$ to those of \cite{kozlowski2017a}.
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
+
+\section{Motivation}
+\cite{macleod2011} successfully  derived  many QSO parameters for the DRW model based on fits to SDSS light curves in S82. Encouraged by conclusions of \cite{kozlowski2017a},  we expand baselines of quasar light curves  utilizing data from CRTS and PS1. We show improvement in the accuracy of parameter fit (Hernitschek+2016 sought to improve on parameters, but had insufficient baseline using solely PS1). 
+
+\section{Methods}
+ We first confirm the scaling relations by \cite{kozlowski2017a }by testing the retrieval of simulated light curve parameters with Celerite . In addition to reproducing his Fig.2  we also plot the fractional bias due to insufficient length of the  light curve baseline. We confirm that longer  baseline should significantly improve time scale constraints. Light curve error distribution and sampling are less important, i.e. it would improve the accuracy of fit more to have a larger baseline than denser sampling. 
+
+Then we explore the combined SDSS-PTF-CRTS-PS1  dataset for Quasars in Stripe82 footprint. Namely, we start with the SDSS DR7 QSO near-simultaneous ugriz photometry from Schneider+2007 in S82 footprint (\url{http://www.astro.washington.edu/users/ivezic/macleod/qso_dr7/Southern.html} ).  Querying CRTS DR2 database B.Sesar obtained CRTS white light lightcurves for these quasars.   Querying PTF database against SDSS-CRTS matched 7601 QSO we obtained additional r-band light curves.  Finally, C. MacLeod provided PS1 (PanSTARRS)  grizy  light curves matched to positions from DR7 Schneider et al. catalog. We make an outer join of all catalogs,  flagging from which survey came which data point, as well as photometric filter. 
+
+We first check whether there is an improvement of fit for simulated DRW sampled at observed cadence - we plot $\tau_{out}$ vs $\tau_{in}$  for    SDSS sampling,    PS1+SDSS sampling,  PS1+CRTS+SDSS sampling,   PS1+CRTS+PTF+SDSS sampling.  This helps establish, based on simulated data (where we know the truth), whether we should expect much improvement in fit accuracy when using real data. 
+
+We then perform fits using observed points selecting photometry only from a subset of surveys : $\tau_{PS1}$, $\tau_{(PS1+SDSS)}$,  $\tau_{SDSS}$.  We also check whether we get a better fit  behavior using only bright quasars with   $\tau_{\langle mag\rangle<19}$.
+
+Using the best combination of survey data,  we revisit \cite{macleod2011} correlations of retrieved characteristic quasar timescale $\tau$ and variability amplitude $\sigma$ with black hole mass, luminosity, etc.  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
+
+% The best way to enter references is to use BibTeX:
+
+\bibliographystyle{mnras}
+\bibliography{references} % if your bibtex file is called references.bib
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Don't change these lines
+\bsp	% typesetting comment
+\label{lastpage}
+\end{document}
+
+% End of mnras_template.tex
