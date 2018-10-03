@@ -126,10 +126,22 @@ To effectively combine all photometric information from various telescopes and i
 \label{fig:quasar_colors}
 \end{figure} 
 
-% 
+
+
+We find photometric offsets as follows : 
+
+\begin{equation}
+m - s = f(x)
+\end{equation}
+
+where $m$ is the mean magnitude for a target survey (eg. PS1\{g,r,i,z,y\}, or PTF\{g,R\}),  $s$ is the synthetic SDSS magnitude in a given band, and $x$ is the median SDSS color (eg. $g-i$).   ( For instance, \ref{tonry2012} derived all offsets against $x$ = SDSS($g-r$), and $s$ = SDSS($r$)
 
 
 
+
+
+
+\subsection{Simulated light curves}
 We made a controlled experiment of long (20 tau) , well-sampled (dt=5 days) light curves,  with 400 points each . We used different priors (Jeff1, Jeff2, p1, p2, flat), and found that  sigma, tau from MAP (maximum a posteriori estimate) with Jeff1 is most consistent with Chelsea's code. We further investigated the logL evaluated on  a grid of sigma,tau, and conclude that the non-Gaussian shape of  the log-likelihood cauese the MAP to be biased, and the expectation value of marginalized posterior distribution is less biased  ( at 1\% level) . We find that the expectation value based sigma, tau are less biased, and for a very coarse grid 25x25 elements, the value of input parameters is  still recovered at the 1\% level (we expect the overall distribution to be biased on the 1\% level, so this is sufficient accuracy). 
 
 
