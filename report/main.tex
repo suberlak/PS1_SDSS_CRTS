@@ -134,8 +134,21 @@ We find photometric offsets as follows :
 m - s = f(x)
 \end{equation}
 
-where $m$ is the mean magnitude for a target survey (eg. PS1\{g,r,i,z,y\}, or PTF\{g,R\}),  $s$ is the synthetic SDSS magnitude in a given band, and $x$ is the median SDSS color (eg. $g-i$).   ( For instance, \ref{tonry2012} derived all offsets against $x$ = SDSS($g-r$), and $s$ = SDSS($r$)
+where $m$ is the mean magnitude for a target survey (eg. PS1\{g,r,i,z,y\}, or PTF\{g,R\}),  $s$ is the synthetic SDSS magnitude in a given band, and $x$ is the median SDSS color (eg. $g-i$).   ( For instance, \ref{tonry2012} derived all offsets against $x$ = SDSS($g-r$), $m = PS1 \{g,r,i,z,y\}$, and $s$ = SDSS($r$)
 
+
+
+The issue of interstellar extinction : due to dust present between us and the standard stars (or background quasars), the observed light will appear slightly redder because dust preferentially scatters blue light away. This depends on the location of the source on the  sky and is related to the dust inhomogeneities in the Milky Way. 
+
+However, in deriving bandpass to bandpass transformation all that matters is the flux received at the Top of the Atmosphere (TOA), for which all photometry is corrected at the pipeline processing level (both for SDSS,  PTF, PS1, and CRTS). In other words, all that matters is that any SED at TOA will have slightly different magnitude (hence colors) depending on whether we observe it with SDSS(r),  PS1(r), or PTF(R).  Therefore, to derive photometric offsets (which are time-independent), we use Sloan colors not corrected for extincton (and likewise, PS1, PTF, etc.) .  
+
+In that way we form a 'master bandpass', consisting of SDSS bands, and PS1, PTF, CRTS equivalents.  Since all SDSS bands are observed nearly simultaneously, we choose SDSS(r) as the 'master band', and we transform photometry from all 'nearby' bandpasses in other surveys (PTF gR,  PS1 gri, CRTS V) - PS1 u,z,y are too distant from SDSS r. To separate in color space the stellar locus we use SDSS(g-i) color because it has a larger wavelength baseline than SDSS(g-r) color.  For each 'master band' light curve we keep track which points originated from SDSS(r),  PTF(gR), PS1(gri), or CRTS(V). 
+
+
+
+%Correction for insterstellar extinction is only needed for color selection, since otherwise objects would appear to be of the later stellar type (redder) than they really are. To correct for extinction we use the most up-to-date maps of stellar extinction Bayestar17 (Green+2018). These extinction maps are 3D probabilistic, and we assume a uniform distance of 4 kpc for the dust column for all stars.  
+
+% # could be more accurate with parallax distances from GAIA DR2 if available ...
 
 
 
