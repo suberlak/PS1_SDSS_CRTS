@@ -1,6 +1,6 @@
 % mnras_template.tex
 %
-% LaTeX template for creating an MNRAS paper
+% LaTeX template for creating a MNRAS paper
 %
 % v3.0 released 14 May 2015
 % (version numbers match those of mnras.cls)
@@ -68,23 +68,25 @@
 
 % Title of the paper, and the short title which is used in the headers.
 % Keep the title short and informative.
-\title[DRW baseline]{ Improving the DRW fit parameters for S82 quasars with increased baseline combining SDSS, CRTS and PS1 data}
+\title[DRW baseline]{ Improving Damped Random Walk parameters for SDSS Stripe82 Quasars with baseline extension with PanStarrs1 data. }
 
 % The list of authors, and the short list which is used in the headers.
 % If you need two or more lines of authors, add an extra line using \newauthor
 \author[K. Suberlak et al.]{
 Krzysztof Suberlak,$^{1}$\thanks{E-mail: suberlak@uw.edu}
 \v{Z}eljko Ivezi\'c $^{1}$
+Chelsea MacLeod $^{2}$
 \\
 % List of institutions
 $^{1}$Department of Astronomy, University of Washington, Seattle, WA, United States\\
+$^{2}$Harvard Smithsonian Center for Astrophysics, 60 Garden St, Cambridge, MA 02138, United States \\
 }
 
 % These dates will be filled out by the publisher
 \date{Accepted XXX. Received YYY; in original form ZZZ}
 
 % Enter the current year, for the copyright statements etc.
-\pubyear{2017}
+\pubyear{2018}
 
 % Don't change these lines
 \begin{document}
@@ -94,13 +96,33 @@ $^{1}$Department of Astronomy, University of Washington, Seattle, WA, United Sta
 
 % Abstract of the paper
 \begin{abstract}
- Aim: Improve on DRW parameters reported in \cite{macleod2011} by an increase of the QSO light curve baseline.  We compare the tools used to fitting for $\tau$ and $SF_{\infty}$ to those of \cite{kozlowski2017a}.
+
+ %Aim: Improve on DRW parameters reported in \cite{macleod2011} by an increase of the QSO light curve baseline.  We compare the tools used to fitting for $\tau$ and $SF_{\infty}$ to those of \cite{kozlowski2017a}.
 \end{abstract}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% NEW NEW NEW BODY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+Quasars are variable.  Their light curves have been successfully described using the Damped Random Walk model (Kelly+2009, Macleod+2010,  Kozlowski+2010,Zu+2011, Kasliwal+2015,   ) . The origin of variability is debated, with thermal origin being the favorite explanation (Czerny+1999,  Kelly+2013, ), connected to the inhomogeneity of the accretion disk (Dexter,Agol 2011 ), or even magnetically elevated disks (Dexter, Begelman 2018 ). 
+
+The DRW fit parameters have been linked to the physical quasar properties. Indeed, MacLeod+2010, using the SDSS light curves for Stripe82  found correlations of the characteristic timescale and variability amplitude  with the black hole mass, and quasar luminosity. 
+
+Quasar variability, and specifically modelling it as  a DRW, is also a reliable way to distinguish quasars from stars based on merely optical photometry (MacLeod+2011).  In that case the fit biases are less important than the fact that DRW timescale and amplitude for QSO are order of  magnitude different from stars (MacLeod+2011).  It is especially useful for quasars that could not be easily identified by color-color diagrams (Sesar+2007) - those in the intermediate redshift range, whose colors mimic the M dwarfs (Yang+2017).  
+
+Accurate QSO population studies is important for measurement of QLF, and variability has been used before to increase the completeness of quasar selection  ( Richards+2008, Ross+2013, Palanque-Delabrouille+2013,2016 , AlSayyad+2016, McGreer+2013,2017 ). 
+
+
+Because DRW is a stochastic process, fitting is more involved than with simpler source variability, such as RR Lyrae, or Eclipsing Binaries that result in well-defined light curve shape.  Indeed,  even with identical input parameters,  two different DRW light curves would have a very different appearance. It has been found (eg. MacLeod+2010,  Kozlowski+2010,2017) that regardless of method,  we can most reliably recover input parameters if we use the longest light curve baseline possible. A rule of thumb is that the light curve has to be at least  ten  times longer than the recovered timescale.  We confirm this observation with simulations of DRW light curves spanning a variety of ratios of input timescale to light curve lenght.  
+
+The light curve baseline is the key in an unbiased recovery of light curve parameters. As it has been  8 years since MacLeod+2010 have published their research,   we can now benefit from additional data from other surveys that have observed the same quasars since. We show how combining the SDSS data with CRTS, PTF , PS1,  and simulated LSST data, decreases the bias in recovered parameters.  Thus with added data, extending the baseline by 50\% on average,  we revisit correlations studied by MacLeod+2010.  We confirm the general trends, and provide forecast for improvement with the advent of ZTF, LSST. Extended baseline is the advantage that is not afforded by studies only using single survey data (eg. Hernitschek+2016)
+
+
+
+\section{}
+
+%%%%%%%%%%%%%%%%% OLD OLD OLD %%%%%%%%%%%%%%%%%%
 
 \section{Motivation}
 \cite{macleod2011} successfully  derived  many QSO parameters for the DRW model based on fits to SDSS light curves in S82. Encouraged by conclusions of \cite{kozlowski2017a},  we expand baselines of quasar light curves  utilizing data from CRTS and PS1. We show improvement in the accuracy of parameter fit (Hernitschek+2016 sought to improve on parameters, but had insufficient baseline using solely PS1). 
