@@ -316,27 +316,29 @@ We supplement the SDSS with PanSTARRS (PS1) \citep{chambers2011,flewelling2018},
 \label{fig:rawBaselines}
 \end{figure} 
 
-\begin{figure}
+% EXTENT FIGURE 
+\begin{figure*}
 \plotone{figs/lightcurves_extent.png}
 \caption{The contribution to quasars light curve baseline from surveys, including the planned LSST coverage. Vertical offset is arbitrary. Note how PS1 and PTF extend the baseline of SDSS by approximately $50\%$, and how inclusion of LSST triples the SDSS baseline. }
 \label{fig:lcExtent}
-\end{figure} 
+\end{figure*} 
 
 Since quasars occupy a blue region in the color-color diagram (Fig.~\ref{fig:quasarColors}), we calculate photometric offsets specifically for this region of the spectrum.  We only show the color-magnitude diagrams  for PS1 offsets  (Fig. ~\ref{fig:offsetsPS1}) since we choose not to include CRTS and PTF data in the final sample. 
 
-\begin{figure}
+% QSO COLORS 
+\begin{figure*}
 \plotone{figs/SDSS_S82_CMD_qso_stars.png}
 \caption{Regions occupied in color-color space by S82 quasars and standard stars \citep{schneider2010}. We show only 10 000  randomly chosen stars from the  full 1 mln + standard stars catalog \citealt{ivezic2007}. }
 \label{fig:quasarColors}
-\end{figure} 
+\end{figure*} 
 
 
 % PS1 
-\begin{figure}
+\begin{figure*}
 \plotone{figs/Offsets_PS1-SDSSr_SDSSgi_ext-NO.png}
 \caption{The SDSS-PS1 offsets. We plot only bright stars that have SDSS(r) < 19, and that fulfill  mErr * sqrt(Nobs) < 0.03 . Each panel plots about 6000 stars of the 47000 CRTS S82 stars . Vertical dashed lines mark the region in SDSS color space occupied by quasars (see Fig.~\ref{fig:quasarColors}). }
 \label{fig:offsetsPS1}
-\end{figure} 
+\end{figure*} 
 
 
 With two photometric systems, eg. SDSS(ugriz), and PS1(grizy),  we can find offsets (aka 'color terms') from one to another. Consider SDSS as target system,  PS1 as the auxiliary system. Thus we are trying  to express PS1 in terms of SDSS. This amounts to creating 'synthetic' SDSS bands from PS1, using the SDSS color to spread the stellar locus. More generally, we would always use the color of the target system. 
