@@ -1,98 +1,215 @@
-% mnras_template.tex
+%%
+%% Beginning of file 'sample62.tex'
+%%
+%% Modified 2018 January
+%%
+%% This is a sample manuscript marked up using the
+%% AASTeX v6.2 LaTeX 2e macros.
+%%
+%% AASTeX is now based on Alexey Vikhlinin's emulateapj.cls 
+%% (Copyright 2000-2015).  See the classfile for details.
+
+%% AASTeX requires revtex4-1.cls (http://publish.aps.org/revtex4/) and
+%% other external packages (latexsym, graphicx, amssymb, longtable, and epsf).
+%% All of these external packages should already be present in the modern TeX 
+%% distributions.  If not they can also be obtained at www.ctan.org.
+
+%% The first piece of markup in an AASTeX v6.x document is the \documentclass
+%% command. LaTeX will ignore any data that comes before this command. The 
+%% documentclass can take an optional argument to modify the output style.
+%% The command below calls the preprint style  which will produce a tightly 
+%% typeset, one-column, single-spaced document.  It is the default and thus
+%% does not need to be explicitly stated.
+%%
+%%
+%% using aastex version 6.2
+\documentclass[twocolumn]{aastex62}
+\usepackage{natbib}
+%% The default is a single spaced, 10 point font, single spaced article.
+%% There are 5 other style options available via an optional argument. They
+%% can be envoked like this:
+%%
+%% \documentclass[argument]{aastex62}
+%% 
+%% where the layout options are:
+%%
+%%  twocolumn   : two text columns, 10 point font, single spaced article.
+%%                This is the most compact and represent the final published
+%%                derived PDF copy of the accepted manuscript from the publisher
+%%  manuscript  : one text column, 12 point font, double spaced article.
+%%  preprint    : one text column, 12 point font, single spaced article.  
+%%  preprint2   : two text columns, 12 point font, single spaced article.
+%%  modern      : a stylish, single text column, 12 point font, article with
+%% 		  wider left and right margins. This uses the Daniel
+%% 		  Foreman-Mackey and David Hogg design.
+%%  RNAAS       : Preferred style for Research Notes which are by design 
+%%                lacking an abstract and brief. DO NOT use \begin{abstract}
+%%                and \end{abstract} with this style.
+%%
+%% Note that you can submit to the AAS Journals in any of these 6 styles.
+%%
+%% There are other optional arguments one can envoke to allow other stylistic
+%% actions. The available options are:
+%%
+%%  astrosymb    : Loads Astrosymb font and define \astrocommands. 
+%%  tighten      : Makes baselineskip slightly smaller, only works with 
+%%                 the twocolumn substyle.
+%%  times        : uses times font instead of the default
+%%  linenumbers  : turn on lineno package.
+%%  trackchanges : required to see the revision mark up and print its output
+%%  longauthor   : Do not use the more compressed footnote style (default) for 
+%%                 the author/collaboration/affiliations. Instead print all
+%%                 affiliation information after each name. Creates a much
+%%                 long author list but may be desirable for short author papers
+%%
+%% these can be used in any combination, e.g.
+%%
+%% \documentclass[twocolumn,linenumbers,trackchanges]{aastex62}
+%%
+%% AASTeX v6.* now includes \hyperref support. While we have built in specific
+%% defaults into the classfile you can manually override them with the
+%% \hypersetup command. For example,
+%%
+%%\hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
+%%
+%% will change the color of the internal links to red, the links to the
+%% bibliography to green, the file links to cyan, and the external links to
+%% magenta. Additional information on \hyperref options can be found here:
+%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
+%%
+%% If you want to create your own macros, you can do so
+%% using \newcommand. Your macros should appear before
+%% the \begin{document} command.
+%%
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+
+%% Reintroduced the \received and \accepted commands from AASTeX v5.2
+\received{January 1, 2019}
+\revised{January 17, 2019}
+\accepted{February 1, 2019}%\today}
+%% Command to document which AAS Journal the manuscript was submitted to.
+%% Adds "Submitted to " the arguement.
+\submitjournal{ApJ}
+
+%% Mark up commands to limit the number of authors on the front page.
+%% Note that in AASTeX v6.2 a \collaboration call (see below) counts as
+%% an author in this case.
 %
-% LaTeX template for creating a MNRAS paper
+%\AuthorCollaborationLimit=3
 %
-% v3.0 released 14 May 2015
-% (version numbers match those of mnras.cls)
-%
-% Copyright (C) Royal Astronomical Society 2015
-% Authors:
-% Keith T. Smith (Royal Astronomical Society)
+%% Will only show Schwarz, Muench and "the AAS Journals Data Scientist 
+%% collaboration" on the front page of this example manuscript.
+%%
+%% Note that all of the author will be shown in the published article.
+%% This feature is meant to be used prior to acceptance to make the
+%% front end of a long author article more manageable. Please do not use
+%% this functionality for manuscripts with less than 20 authors. Conversely,
+%% please do use this when the number of authors exceeds 40.
+%%
+%% Use \allauthors at the manuscript end to show the full author list.
+%% This command should only be used with \AuthorCollaborationLimit is used.
 
-% Change log
-%
-% v3.0 May 2015
-%    Renamed to match the new package name
-%    Version number matches mnras.cls
-%    A few minor tweaks to wording
-% v1.0 September 2013
-%    Beta testing only - never publicly released
-%    First version: a simple (ish) template for creating an MNRAS paper
+%% The following command can be used to set the latex table counters.  It
+%% is needed in this document because it uses a mix of latex tabular and
+%% AASTeX deluxetables.  In general it should not be needed.
+%\setcounter{table}{1}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Basic setup. Most papers should leave these options alone.
-\documentclass[fleqn,usenatbib]{mnras}  % a4paper,
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The following section outlines numerous optional output that
+%% can be displayed in the front matter or as running meta-data.
+%%
+%% If you wish, you may supply running head information, although
+%% this information may be modified by the editorial offices.
+\shorttitle{Improved DRW for S82 QSO}
+\shortauthors{Suberlak et al.}
+%%
+%% You can add a light gray and diagonal water-mark to the first page 
+%% with this command:
+% \watermark{text}
+%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
+%% long you can control the water-mark size with:
+%  \setwatermarkfontsize{dimension}
+%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% MNRAS is set in Times font. If you don't have this installed (most LaTeX
-% installations will be fine) or prefer the old Computer Modern fonts, comment
-% out the following line
-%\usepackage{newtxtext,newtxmath}
-%\usepackage{lmodern}
-% Depending on your LaTeX fonts installation, you might get better results with one of these:
-\usepackage{mathptmx}
-%\usepackage{txfonts}
+%% This is the end of the preamble.  Indicate the beginning of the
+%% manuscript itself with \begin{document}.
 
-
-% Use vector fonts, so it zooms properly in on-screen viewing software
-% Don't change these lines unless you know what you are doing
-\usepackage[T1]{fontenc}
-\usepackage{ae,aecompl}
-\usepackage{diagbox}
-
-%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
-
-% Only include extra packages if you really need them. Common packages are:
-\usepackage{graphicx}	% Including figure files
-\usepackage{amsmath}	% Advanced maths commands
-\usepackage{amssymb}	% Extra maths symbols
-\usepackage{savesym}  % prevent symbol conflicts
-%\generate{%
-%  \file{breqn.sty}{\nopreamble\from{breqn.dtx}{breqn.sty}}%
-%}
-%\usepackage{breqn} % automatic breaking equation 
-%\usepackage{fancyvrb}
-%\VerbatimFootnotes
-\usepackage{cprotect}  % to allow verb in caption 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
-
-% Please keep new commands to a minimum, and use \newcommand not \def to avoid
-% overwriting existing commands. Example:
-%\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
-
-% Title of the paper, and the short title which is used in the headers.
-% Keep the title short and informative.
-\title[DRW baseline]{ Improving Damped Random Walk parameters for SDSS Stripe82 Quasars with baseline extension with PanStarrs1 data. }
-
-% The list of authors, and the short list which is used in the headers.
-% If you need two or more lines of authors, add an extra line using \newauthor
-\author[K. Suberlak et al.]{
-Krzysztof Suberlak,$^{1}$\thanks{E-mail: suberlak@uw.edu}
-\v{Z}eljko Ivezi\'c $^{1}$
-Chelsea MacLeod $^{2}$
-\\
-% List of institutions
-$^{1}$Department of Astronomy, University of Washington, Seattle, WA, United States\\
-$^{2}$Harvard Smithsonian Center for Astrophysics, 60 Garden St, Cambridge, MA 02138, United States \\
-}
-
-% These dates will be filled out by the publisher
-\date{Accepted XXX. Received YYY; in original form ZZZ}
-
-% Enter the current year, for the copyright statements etc.
-\pubyear{2018}
-
-% Don't change these lines
 \begin{document}
-\label{firstpage}
-\pagerange{\pageref{firstpage}--\pageref{lastpage}}
-\maketitle
+
+\title{Improving Damped Random Walk parameters for SDSS Stripe82 Quasars with baseline extension with PanStarrs1 data. }
+
+
+%% LaTeX will automatically break titles if they run longer than
+%% one line. However, you may use \\ to force a line break if
+%% you desire. In v6.2 you can include a footnote in the title.
+
+%% A significant change from earlier AASTEX versions is in the structure for 
+%% calling author and affilations. The change was necessary to implement 
+%% autoindexing of affilations which prior was a manual process that could 
+%% easily be tedious in large author manuscripts.
+%%
+%% The \author command is the same as before except it now takes an optional
+%% arguement which is the 16 digit ORCID. The syntax is:
+%% \author[xxxx-xxxx-xxxx-xxxx]{Author Name}
+%%
+%% This will hyperlink the author name to the author's ORCID page. Note that
+%% during compilation, LaTeX will do some limited checking of the format of
+%% the ID to make sure it is valid.
+%%
+%% Use \affiliation for affiliation information. The old \affil is now aliased
+%% to \affiliation. AASTeX v6.2 will automatically index these in the header.
+%% When a duplicate is found its index will be the same as its previous entry.
+%%
+%% Note that \altaffilmark and \altaffiltext have been removed and thus 
+%% can not be used to document secondary affiliations. If they are used latex
+%% will issue a specific error message and quit. Please use multiple 
+%% \affiliation calls for to document more than one affiliation.
+%%
+%% The new \altaffiliation can be used to indicate some secondary information
+%% such as fellowships. This command produces a non-numeric footnote that is
+%% set away from the numeric \affiliation footnotes.  NOTE that if an
+%% \altaffiliation command is used it must come BEFORE the \affiliation call,
+%% right after the \author command, in order to place the footnotes in
+%% the proper location.
+%%
+%% Use \email to set provide email addresses. Each \email will appear on its
+%% own line so you can put multiple email address in one \email call. A new
+%% \correspondingauthor command is available in V6.2 to identify the
+%% corresponding author of the manuscript. It is the author's responsibility
+%% to make sure this name is also in the author list.
+%%
+%% While authors can be grouped inside the same \author and \affiliation
+%% commands it is better to have a single author for each. This allows for
+%% one to exploit all the new benefits and should make book-keeping easier.
+%%
+%% If done correctly the peer review system will be able to
+%% automatically put the author and affiliation information from the manuscript
+%% and save the corresponding author the trouble of entering it by hand.
+
+
+
+\correspondingauthor{Krzysztof Suberlak}
+\email{suberlak@uw.edu}
+
+\author[0000-0002-9589-1306]{Krzysztof L. Suberlak}
+\affiliation{Department of Astronomy \\ University of Washington \\ Seattle, WA 98195, USA}
+
+
+\author{\v{Z}eljko Ivezi\'c}
+\affiliation{Department of Astronomy \\ University of Washington \\ Seattle, WA 98195, USA}
+
+
+
+\author{Chelsea MacLeod}
+\affiliation{Harvard Smithsonian Center for Astrophysics \\ 60 Garden St, Cambridge, MA 02138, USA}
+
+
+
 
 % Abstract of the paper
 \begin{abstract}
@@ -114,63 +231,136 @@ Quasar variability, and specifically modelling it as  a DRW, is also a reliable 
 Accurate QSO population studies is important for measurement of QLF, and variability has been used before to increase the completeness of quasar selection  ( Richards+2008, Ross+2013, Palanque-Delabrouille+2013,2016 , AlSayyad+2016, McGreer+2013,2017 ). 
 
 
-Because DRW is a stochastic process, fitting is more involved than with simpler source variability, such as RR Lyrae, or Eclipsing Binaries that result in well-defined light curve shape.  Indeed,  even with identical input parameters,  two different DRW light curves would have a very different appearance. It has been found (eg. MacLeod+2010,  Kozlowski+2010,2017) that regardless of method,  we can most reliably recover input parameters if we use the longest light curve baseline possible. A rule of thumb is that the light curve has to be at least  ten  times longer than the recovered timescale.  We confirm this observation with simulations of DRW light curves spanning a variety of ratios of input timescale to light curve lenght.  
+Because DRW is a stochastic process, fitting is more involved than with simpler source variability, such as RR Lyrae, or Eclipsing Binaries that result in well-defined light curve shape.  Indeed,  even with identical input parameters,  two different DRW light curves would have a very different appearance. It has been found (eg. \cite{macleod2011} ,  Kozlowski+2010, \cite{kozlowski2017a}) that regardless of method,  we can most reliably recover input parameters if we use the longest light curve baseline possible. A rule of thumb is that the light curve has to be at least  ten  times longer than the recovered timescale.  We confirm this observation with simulations of DRW light curves spanning a variety of ratios of input timescale to light curve lenght.  
 
 The light curve baseline is the key in an unbiased recovery of light curve parameters. As it has been  8 years since MacLeod+2010 have published their research,   we can now benefit from additional data from other surveys that have observed the same quasars since. We show how combining the SDSS data with CRTS, PTF , PS1,  and simulated LSST data, decreases the bias in recovered parameters.  Thus with added data, extending the baseline by 50\% on average,  we revisit correlations studied by MacLeod+2010.  We confirm the general trends, and provide forecast for improvement with the advent of ZTF, LSST. Extended baseline is the advantage that is not afforded by studies only using single survey data (eg. Hernitschek+2016)
 
 
 
-\section{}
-
-%%%%%%%%%%%%%%%%% OLD OLD OLD %%%%%%%%%%%%%%%%%%
-
-\section{Motivation}
-\cite{macleod2011} successfully  derived  many QSO parameters for the DRW model based on fits to SDSS light curves in S82. Encouraged by conclusions of \cite{kozlowski2017a},  we expand baselines of quasar light curves  utilizing data from CRTS and PS1. We show improvement in the accuracy of parameter fit (Hernitschek+2016 sought to improve on parameters, but had insufficient baseline using solely PS1). 
-
 \section{Methods}
- We first confirm the scaling relations by \cite{kozlowski2017a} by testing the retrieval of simulated light curve parameters with Celerite . In addition to reproducing his Fig.2  we also plot the fractional bias due to insufficient length of the  light curve baseline. We confirm that longer  baseline should significantly improve time scale constraints. Light curve error distribution and sampling are less important, i.e. it would improve the accuracy of fit more to have a larger baseline than denser sampling. 
 
-Then we explore the combined SDSS-PTF-CRTS-PS1 Quasar dataset in the Stripe82 footprint (Fig.~\ref{fig:baselines}). 
+We use a new Gaussian Process modeling tool, Celerite, for light curve fitting (Foreman-Mackey+2017).
 
-\subsection{Data}
-We start with the SDSS DR7 QSO \citep{schneider2007} near-simultaneous ugriz SDSS photometry \footnote{\url{http://www.astro.washington.edu/users/ivezic/macleod/qso_dr7/Southern.html }}. We also used the CRTS DR2 (Drak et al 2009 ) light curves obtained for these objects by  B.Sesar using a positional query. With the SDSS ra,dec, we obtained the PTF DR1 (Rau et al. 2009) r-band light curves. We use PanSTARRS DR2 (Chambers et al. 2011, Flewelling et al. 2018) grizy light curves  for DR7 QSO from C. MacLeod. We make an outer join of all catalogs,  flagging from which survey came which data point, as well as photometric filter. 
+Celerite allows the user to select a variety of kernels describing the Gaussian Process.  A kernel is a covariance function - a measure of correlated information content as a function of signal separation. For the DRW process, the kernel is  
+
+\begin{equation}
+k(\Delta t_{nm}) = a \exp{(-t_{tm} / \tau)} = \sigma^{2}\exp{(-t_{tm} / \tau)}  = \sigma^{2} ACF(\Delta t)
+\end{equation} 
 
 
-\subsection{Photometric offsets}
+The latter equality shows that kernel is also known as covariance : $S_{DRW}(\Delta t) \equiv k(\Delta t)$, with  the amplitude expressed in terms of $\sigma^{2} \equiv a $ . The last equality shows that for DRW, the correlation is related to the autocorrelation function $ACF$ by variability amplitude . 
 
-To effectively combine all photometric information from various telescopes and imaging filters we re-derived the necessary photometric offsets. We used as our sample blue SDSS S82 stars (-1<g-i<1), limited to this range in color because it closely matches the natural distribution for quasars (see Fig.~\ref{fig:quasar_colors})
+The structure function $SF$ of the DRW process, which expresses the rms of  magnitude differences $\Delta m$ as a function of 
+temporal separation $\Delta t$, is : 
 
+\begin{equation}
+SF(\Delta t) = SF_{\infty} (1-\exp{(-|\Delta t|/\tau)})^{1/2}
+\end{equation}
+
+where $SF_{\infty}$ is the asymptotic value of $SF$ for large time lags (it is known that for QSOs SF follows approximately power law, $SF \propto \Delta t^{\beta}$ (see MacLeod+2012,  etc), and it levels out for large $\Delta t$)
+
+Note that $SF_\infty \equiv \sigma^{2}$  in the above. 
+
+(cite MacLeod+2012,  Bauer+2009, Graham+2015 for SF overview )
+
+This is equivalent to kernels used by Rybicki+, Kozlowski+, Kochanek+, MacLeod+. We use a prior uniform in log space  (Jeff2) - same as MacLeod+, Kochanek+, Kozlowski+. 
+
+Given the non-Gaussian shape of the log-posterior, we find that the expectation value rather than the MAP estimate for $\sigma$, $\tau$ is less biased.   Fig.... illustrates the shape of the log Posterior.  This was also encountered by Kozlowski+2017 (see his  Fig.2). 
+
+We first confirm \cite{kozlowski2017a} results, simulating DRW light curves with fixed length (baseline) of 8 years, but spanning a grid  of timescales so that the ratio of timescales to baseline,  $\rho = \tau_{in} / t_{exp} \in   \{ 0.01 : 15\}$.  The observed light curve $y(t)$ consists of  true underlying signal  $s(t)$,  noise offset $n(t)$ (which we assume to be drawn from a Gaussian distribution $\mathcal{N}(0,\sigma(t))$ with a width $\sigma(t)$ corresponding to the  photometric uncertainty at the given epoch,  $e(t)$), and the added mean $m$ : 
+
+\begin{equation}
+y(t) = s(t) + n(t) + m
+\end{equation}
+
+The underlying DRW signal  $s(t)$  is simulated by drawing  points from a Gaussian distribution, for which mean and standard deviation are re-calculated at each timestep. Given the array of timestamps to sample the DRW $t$,  variability amplitude $SF_{\infty}$, mean magnitude  $m$, and the damping timescale $\tau$, we start at time $t_{0}$. Signal at that time is equal to the mean $s_{0} = m$. After timestep $\Delta t_{i} = t_{i+1} - t_{i}$, the signal $s_{i+1}$ is drawn from  $\mathcal{N}(loc, stdev)$, where : 
+
+\begin{equation}
+loc = s_{i} e ^ { - r  }  + m \left( 1 - e ^{ - r }\right)
+\end{equation}
+
+and 
+
+\begin{equation}
+stdev^{2} =  0.5  \, \mathrm{SF}_{\infty}^{2} \left( 1 - e ^{  - 2 r  }  \right)
+\end{equation}
+
+with  $r = \Delta t_{i} / \tau$.  This follows eqs. A4 and A5 in \cite{kelly2009}, as well as Sec. 2.2 in \cite{macleod2010}, and is equivalent to  \cite{kozlowski2017a} formulation. 
+
+
+In the first simulation setup where we probe a range of $\rho$ ratios, we fixed the baseline to $8$ years, variability amplitude  $SF_{\infty} = 0.2$ mag, and used SDSS S82-like cadence with N=60 epochs, or OGLE-III like cadence with N=445 epochs.  The errors (in units of mag) were set by the adopted mean magnitudes, $r=17$ and $I=18$ , as in \cite{kozlowski2017a} :
+
+\begin{eqnarray}
+\sigma_{SDSS}^{2} &=& 0.013^{2} + \exp{(2 (r-23.36))} \\
+\sigma_{OGLE}^{2} &=& 0.004^{2} + \exp{(1.63 (I - 22.55))}
+\end{eqnarray}
+
+
+
+with     by showing that regardless of cadence, the recovered DRW characteristic timescale becomes independent of the input timescale when it is 
+
+
+Using a fixed light curve length of $t_{exp} = 8$ years we simulate 100 different input time scales $\tau_{in}$ ,  where  .  The bias is not affected by different cadence (we tested SDSS and CRTS cadences of N=80 or N=445 points).
+Encouraged by this result we add more epochs to quasar light curves, and revisit relations studied by  \cite{macleod2011} and \cite{hernitschek2016}. We use PanSTARRS \citep{chambers2011} DR2 \citep{flewelling2018}, CRTS DR2 \citep{drake2009}, and PTF \citep{rau2009}. Starting from the SDSS  DR7 near-simultaneous ugriz photometry for Stripe 82 quasars \citep{schneider2008}, we cross-match the catalogs. We find a common photometric solution using the S82 standard stars (PTF and CRTS use white light - see \citealt{djorgovski2011a}). We validate data quality by comparing mean CRTS magnitude vs mean SDSS magnitude, and mean PS1 g-band to mean PS1 r-band. 
+
+
+\section{Datasets}
+
+We focus on data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by the SDSS between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012} Sec. 2.2 for overview, and \citealt{annis2014} for details ) . Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citep{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
+
+We supplement the SDSS with PanSTARRS (PS1) \citep{chambers2011,flewelling2018}, CRTS \citep{drake2009}, and PTF \citep{rau2009}. We find 9248 PS1 matches, 6455 PTF matches, and 7737 CRTS matches. Performing an inner join there are 6444 quasars with SDSS-PS1-PTF-CRTS data. Fig.~\ref{fig:rawBaselines}  shows the distribution of raw epochs, and Fig~\ref{fig:lcExtent} the  baseline coverage of various surveys.    Each survey uses a unique set of bandpasses and cadences : SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{SDSS}$ , and the other are  non-simultaneous : $\{g,r,i,z,y\}_{PS1}$ ,  $\{g,R\}_{PTF}$, $V_{CRTS}$.  To combine the light curves we find color terms with the offset to the 'master' band  $r_{SDSS}$.
+
+\begin{figure}%[ht!]
+\plotone{figs/illustrate_epochal_coverage.png}
+\caption{Raw photometric measurements for quasars in Stripe 82 from SDSS(r),  PS1(gri),  PTF(gR), CRTS(V).}
+\label{fig:rawBaselines}
+\end{figure} 
 
 \begin{figure}
-\includegraphics[width=1.05\columnwidth]{figs/SDSS_S82_QSO_colors.png}
-%\vskip -0.15in
-\caption{Color - color diagrams for 6444 SDSS S82 quasars with PTF, PS1 and CRTS photometry. The convention is to always define a 'color' by subtracting the redder filter from the bluer filter. That way any color has negative values for intrinsically bluer objects - emitting more in the blue part of the spectrum (eg. QSO, RR Lyr), and positive values for redder objects (eg. M stars). Thus using the SDSS base of 'u g r i z' colors,  we form u-g, g-r,  r-i, i-z  colors, as well as g-i, which skips the r filter. Another convention is to plot the bluer color on x-axis (eg. u-g) vs redder color (eg. g-r) on y axis (see \citealt{ivezic2002,sesar2007}). Thus from the upper-left panel to bottom-right panel we cycle through color pairs showing that quasars occupy a distinct locus in each color combination. To calculate photometric offsets between SDSS and PS1, PTF, CRTS, we employ standard stars with colors based on the region occupied by quasars in the u-g vs g-i color space. }
-\label{fig:quasar_colors}
+\plotone{figs/lightcurves_extent.png}
+\caption{The contribution to quasars light curve baseline from surveys, including the planned LSST coverage. Vertical offset is arbitrary. Note how PS1 and PTF extend the baseline of SDSS by approximately $50\%$, and how inclusion of LSST triples the SDSS baseline. }
+\label{fig:lcExtent}
+\end{figure} 
+
+Since quasars occupy a blue region in the color-color diagram (Fig.~\ref{fig:quasarColors}), we calculate photometric offsets specifically for this region of the spectrum.  We only show the color-magnitude diagrams  for PS1 offsets  (Fig. ~\ref{fig:offsetsPS1}) since we choose not to include CRTS and PTF data in the final sample. 
+
+\begin{figure}
+\plotone{figs/SDSS_S82_CMD_qso_stars.png}
+\caption{Regions occupied in color-color space by S82 quasars and standard stars \citep{schneider2010}. We show only 10 000  randomly chosen stars from the  full 1 mln + standard stars catalog \citealt{ivezic2007}. }
+\label{fig:quasarColors}
 \end{figure} 
 
 
+% PS1 
+\begin{figure}
+\plotone{figs/Offsets_PS1-SDSSr_SDSSgi_ext-NO.png}
+\caption{The SDSS-PS1 offsets. We plot only bright stars that have SDSS(r) < 19, and that fulfill  mErr * sqrt(Nobs) < 0.03 . Each panel plots about 6000 stars of the 47000 CRTS S82 stars . Vertical dashed lines mark the region in SDSS color space occupied by quasars (see Fig.~\ref{fig:quasarColors}). }
+\label{fig:offsetsPS1}
+\end{figure} 
 
-We find photometric offsets as follows : 
+
+With two photometric systems, eg. SDSS(ugriz), and PS1(grizy),  we can find offsets (aka 'color terms') from one to another. Consider SDSS as target system,  PS1 as the auxiliary system. Thus we are trying  to express PS1 in terms of SDSS. This amounts to creating 'synthetic' SDSS bands from PS1, using the SDSS color to spread the stellar locus. More generally, we would always use the color of the target system. 
 
 \begin{equation}
-m - s = f(x)
+r_{PS1} -  r_{SDSS} = f ( SDSS (g-i ))
 \end{equation}
 
-where $m$ is the mean magnitude for a target survey (eg. PS1\{g,r,i,z,y\}, or PTF\{g,R\}),  $s$ is the synthetic SDSS magnitude in a given band, and $x$ is the median SDSS color (eg. $g-i$).   ( For instance, \ref{tonry2012} derived all offsets against $x$ = SDSS($g-r$), $m = PS1 \{g,r,i,z,y\}$, and $s$ = SDSS($r$)
-
-
-
-The issue of interstellar extinction : due to dust present between us and the standard stars (or background quasars), the observed light will appear slightly redder because dust preferentially scatters blue light away. This depends on the location of the source on the  sky and is related to the dust inhomogeneities in the Milky Way. 
-
-However, in deriving bandpass to bandpass transformation all that matters is the flux received at the Top of the Atmosphere (TOA), for which all photometry is corrected at the pipeline processing level (both for SDSS,  PTF, PS1, and CRTS). In other words, all that matters is that any SED at TOA will have slightly different magnitude (hence colors) depending on whether we observe it with SDSS(r),  PS1(r), or PTF(R).  Therefore, to derive photometric offsets (which are time-independent), we use Sloan colors not corrected for extincton (and likewise, PS1, PTF, etc.) .  
+the function is a polynomial fitted to the stellar locus on the plot of $SDSS (g-i )$ vs $r_{PS1} -  r_{SDSS} $. We use SDSS(g-i) because is provides a larger wavelength baseline. One can make other choices: with $m - s = f(x)$  for instance, \cite{tonry2012} derived all offsets using $x$ = SDSS($g-r$), $m = PS1 \{g,r,i,z,y\}$, and $s$ = SDSS($r$)
 
 In that way we form a 'master bandpass', consisting of SDSS bands, and PS1, PTF, CRTS equivalents.  Since all SDSS bands are observed nearly simultaneously, we choose SDSS(r) as the 'master band', and we transform photometry from all 'nearby' bandpasses in other surveys (PTF gR,  PS1 gri, CRTS V) - PS1 u,z,y are too distant from SDSS r. To separate in color space the stellar locus we use SDSS(g-i) color because it has a larger wavelength baseline than SDSS(g-r) color.  For each 'master band' light curve we keep track which points originated from SDSS(r),  PTF(gR), PS1(gri), or CRTS(V). 
 
 
 
-%Correction for insterstellar extinction is only needed for color selection, since otherwise objects would appear to be of the later stellar type (redder) than they really are. To correct for extinction we use the most up-to-date maps of stellar extinction Bayestar17 (Green+2018). These extinction maps are 3D probabilistic, and we assume a uniform distance of 4 kpc for the dust column for all stars.  
+Note about EXTINCTION:  due to dust present between us and the standard stars (or background quasars), the observed light will appear slightly redder because dust preferentially scatters blue light away. This depends on the location of the source on the  sky and is related to the dust inhomogeneities in the Milky Way. 
 
-% # could be more accurate with parallax distances from GAIA DR2 if available ...
+However, in deriving bandpass to bandpass transformation all that matters is the flux received at the Top of the Atmosphere (TOA), for which all photometry is corrected at the pipeline processing level (both for SDSS,  PTF, PS1, and CRTS). In other words, all that matters is that any SED at TOA will have slightly different magnitude (hence colors) depending on whether we observe it with SDSS(r),  PS1(r), or PTF(R).  Therefore, to derive photometric offsets (which are time-independent), we use Sloan colors not corrected for extincton (and likewise, PS1, PTF, etc.) .  
+
+Correction for insterstellar extinction is only needed for color selection, since otherwise objects would appear to be of the later stellar type (redder) than they really are. To correct for extinction we use the most up-to-date maps of stellar extinction Bayestar17 (Green+2018). These extinction maps are 3D probabilistic, and we assume a uniform distance of 4 kpc for the dust column for all stars.  
+
+
+% OLD OLD OLD 
+% OLD OLD OLD 
+% OLD OLD OLD 
 
 
 
@@ -183,16 +373,11 @@ We made a controlled experiment of long (20 tau) , well-sampled (dt=5 days) ligh
 
 We first check whether there is an improvement of fit for simulated DRW sampled at observed cadence - we plot $\tau_{out}$ vs $\tau_{in}$  for    SDSS sampling,    PS1+SDSS sampling,  PS1+CRTS+SDSS sampling,   PS1+CRTS+PTF+SDSS sampling.  This helps establish, based on simulated data (where we know the truth), whether we should expect much improvement in fit accuracy when using real data. 
 
-We then perform fits using observed points selecting photometry only from a subset of surveys : $\tau_{PS1}$, $\tau_{(PS1+SDSS)}$,  $\tau_{SDSS}$.  We also check whether we get a better fit  behavior using only bright quasars with   $\tau_{\langle mag\rangle<19}$.
+%We then perform fits using observed points selecting photometry only from a subset of surveys : $\tau_{PS1}$, 
+%$\tau_{(PS1+SDSS)}$,  $\tau_{SDSS}$.  We also check whether we get a better fit  behavior using only bright quasars with   $\tau_{\langle mag\rangle<19}$.
 
 Using the best combination of survey data,  we revisit \cite{macleod2011} correlations of retrieved characteristic quasar timescale $\tau$ and variability amplitude $\sigma$ with black hole mass, luminosity, etc.  
 
-\begin{figure}
-\includegraphics[width=1.05\columnwidth]{figs/epochs_S82_QSO_compare.png}
-%\vskip -0.15in
-\caption{Count  of raw photometric measurements for Quasars in Stripe 82 from four surveys . Note that both CRTS and OTF significantly increase the original baseline of SDSS measurements.}
-\label{fig:baselines}
-\end{figure} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -201,15 +386,11 @@ Using the best combination of survey data,  we revisit \cite{macleod2011} correl
 
 % The best way to enter references is to use BibTeX:
 
-\bibliographystyle{mnras}
-\bibliography{references} % if your bibtex file is called references.bib
+\bibliographystyle{aasjournal} 
+\bibliography{references}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% Don't change these lines
-\bsp	% typesetting comment
-\label{lastpage}
 \end{document}
 
-% End of mnras_template.tex
+% End of file `sample62.tex'.
