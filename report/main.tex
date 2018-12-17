@@ -222,58 +222,55 @@
 
 \section{Introduction}
 
-Quasars are variable.  Their light curves have been successfully described using the Damped Random Walk model (Kelly+2009, Macleod+2010,  Kozlowski+2010,Zu+2011, Kasliwal+2015,   ) . The origin of variability is debated, with thermal origin being the favorite explanation (Czerny+1999,  Kelly+2013, ), connected to the inhomogeneity of the accretion disk (Dexter,Agol 2011 ), or even magnetically elevated disks (Dexter, Begelman 2018 ). 
+Quasars are variable.  Their light curves have been successfully described using the Damped Random Walk (DRW) model \citep{kelly2009, macleod2010, kozlowski2010, zu2011, kasliwal2015a}. The origin of variability is debated, with thermal origin being the favorite explanation \citep{kelly2013}, connected to the inhomogeneity of the accretion disk \citep{dexter2011}, or even magnetically elevated disks \citep{dexter2019}. 
 
-The DRW fit parameters have been linked to the physical quasar properties. Indeed, MacLeod+2010, using the SDSS light curves for Stripe82  found correlations of the characteristic timescale and variability amplitude  with the black hole mass, and quasar luminosity. 
+The DRW parameters have been linked to the physical quasar properties: \citet{macleod2010} found correlations of the characteristic timescale and variability amplitude  to the black hole mass, and quasar luminosity.
 
-Quasar variability, and specifically modelling it as  a DRW, is also a reliable way to distinguish quasars from stars based on merely optical photometry (MacLeod+2011).  In that case the fit biases are less important than the fact that DRW timescale and amplitude for QSO are order of  magnitude different from stars (MacLeod+2011).  It is especially useful for quasars that could not be easily identified by color-color diagrams (Sesar+2007) - those in the intermediate redshift range, whose colors mimic the M dwarfs (Yang+2017).  
+Inherent variability, and modelling it as  a DRW, is also a reliable way to distinguish quasars from stars based on  optical photometry \citep{macleod2011}.  In that case the fit biases are less important than the fact that DRW timescale and amplitude for QSO are order of  magnitude different from stars \citep{macleod2011}.  It is especially useful for selecting quasars in the intermediate redshift range that could not be easily identified by color-color diagrams \citep{sesar2007,yang2017}.  
 
-Accurate QSO population studies is important for measurement of QLF, and variability has been used before to increase the completeness of quasar selection  ( Richards+2008, Ross+2013, Palanque-Delabrouille+2013,2016 , AlSayyad+2016, McGreer+2013,2017 ). 
+Accurate QSO population studies are important for measurement of Quasar Luminosity Function, and variability has been used before to increase the completeness of quasar selection  \citep{ ross2013, palanque2013, alsayyad2016, mcgreer2013, mcgreer2018}. 
 
 
-Because DRW is a stochastic process, fitting is more involved than with simpler source variability, such as RR Lyrae, or Eclipsing Binaries that result in well-defined light curve shape.  Indeed,  even with identical input parameters,  two different DRW light curves would have a very different appearance. It has been found (eg. \cite{macleod2011} ,  Kozlowski+2010, \cite{kozlowski2017a}) that regardless of method,  we can most reliably recover input parameters if we use the longest light curve baseline possible. A rule of thumb is that the light curve has to be at least  ten  times longer than the recovered timescale.  We confirm this observation with simulations of DRW light curves spanning a variety of ratios of input timescale to light curve lenght.  
+Because DRW is a stochastic process, two light curves with identical DRW parameters will not look identical. However, once can still fit the available data with the DRW model and recover fit parameters. It has been found (eg. \citet{macleod2011, kozlowski2010, kozlowski2017a}) that regardless of method,  we can most reliably recover input parameters if we use the longest light curve baseline possible. A rule of thumb is that the light curve has to be at least  ten  times longer than the recovered timescale.  We confirm this observation with simulations of DRW light curves spanning a variety of ratios of input timescale to light curve lenght.  
 
-The light curve baseline is the key in an unbiased recovery of light curve parameters. As it has been  8 years since MacLeod+2010 have published their research,   we can now benefit from additional data from other surveys that have observed the same quasars since. We show how combining the SDSS data with CRTS, PTF , PS1,  and simulated LSST data, decreases the bias in recovered parameters.  Thus with added data, extending the baseline by 50\% on average,  we revisit correlations studied by MacLeod+2010.  We confirm the general trends, and provide forecast for improvement with the advent of ZTF, LSST. Extended baseline is the advantage that is not afforded by studies only using single survey data (eg. Hernitschek+2016)
+The light curve baseline is the key in an unbiased recovery of light curve parameters. As it has been  8 years since \citet{macleod2010} have published their research,   we can now benefit from additional data from other surveys that have observed the same quasars since. We show how combining the SDSS data with CRTS, PTF , PS1,  and simulated LSST data, decreases the bias in recovered parameters.  Thus with added data, extending the baseline on average by 50\%,  we revisit correlations studied by \citet{macleod2010}.  We confirm the general trends, and provide forecast for improvement with the advent of ZTF, LSST. Extended baseline is the advantage that is not afforded by studies only using single survey data (eg. \citet{hernitschek2016}
 
 
 
 \section{Methods}
+\subsection{DRW as a Gaussian Process}
+DRW (Ornstein–Uhlenbeck process) can be understood as a member of a class of Gaussian Processes (GP). Each GP is described by a kernel - a covariance function that contains a measure of correlation between two points $x_{n}$, $x_{m}$, separted by $\Delta t_{nm}$. For the  DRW process, the kernel is 
 
-We use a new Gaussian Process modeling tool, Celerite, for light curve fitting (Foreman-Mackey+2017).
+\begin{eqnarray}
+k(\Delta t_{nm}) &=& a \exp{(-t_{tm} / \tau)} \\
+                 &=& \sigma^{2}\exp{(-t_{tm} / \tau)}  \\
+                 &=& \sigma^{2} ACF(\Delta t)
+\end{eqnarray} 
 
-Celerite allows the user to select a variety of kernels describing the Gaussian Process.  A kernel is a covariance function - a measure of correlated information content as a function of signal separation. For the DRW process, the kernel is  
+Here $a$ or $\sigma^{2}$ is an amplitude of correlation decay as a function of $t_{tm}$,  while $\tau$ is the characteristic timescale over which correlation drops by $1/e$. For a DRW,  the correlation function $k(\Delta t_{nm})$ is also related to the autocorrelation function $ACF$. 
 
-\begin{equation}
-k(\Delta t_{nm}) = a \exp{(-t_{tm} / \tau)} = \sigma^{2}\exp{(-t_{tm} / \tau)}  = \sigma^{2} ACF(\Delta t)
-\end{equation} 
-
-
-The latter equality shows that kernel is also known as covariance : $S_{DRW}(\Delta t) \equiv k(\Delta t)$, with  the amplitude expressed in terms of $\sigma^{2} \equiv a $ . The last equality shows that for DRW, the correlation is related to the autocorrelation function $ACF$ by variability amplitude . 
-
-The structure function $SF$ of the DRW process, which expresses the rms of  magnitude differences $\Delta m$ as a function of 
-temporal separation $\Delta t$, is : 
+Related to $k(\Delta t_{nm})$ is the   structure function of the DRW process (see \citet{macleod2012, bauer2009, graham2015a} for an overview) , which expresses the rms of  magnitude differences $\Delta m$ as a function of temporal separation $\Delta t$, is : 
 
 \begin{equation}
 SF(\Delta t) = SF_{\infty} (1-\exp{(-|\Delta t|/\tau)})^{1/2}
 \end{equation}
 
-where $SF_{\infty}$ is the asymptotic value of $SF$ for large time lags (it is known that for QSOs SF follows approximately power law, $SF \propto \Delta t^{\beta}$ (see MacLeod+2012,  etc), and it levels out for large $\Delta t$)
+where $SF_{\infty}$ is the asymptotic value of $SF$ for large time lags. It is known that for QSOs SF follows approximately power law, $SF \propto \Delta t^{\beta}$,  and it levels out for large $\Delta t$) (see \citet{macleod2012}).  Note that $SF_\infty \equiv \sigma^{2}$  in the above. 
 
-Note that $SF_\infty \equiv \sigma^{2}$  in the above. 
 
-(cite MacLeod+2012,  Bauer+2009, Graham+2015 for SF overview )
+To estimate the  DRW  parameters and fit simulated or real data we employ Celerite - a new fast GP modelling tool\citep{foreman2017}. Combined with the DRW kernel this is similar to the method used by \citet{rybicki1992, kozlowski2010, macleod2010} - like in previous work, we use a  prior on $\sigma$ and $\tau$ uniform in log space.  The main difference is that rather than adopting the Maximum A-Posteriori (MAP) as the 'best-fit' value for sought parameters,  we find the expectation value of the marginalized log posterior. If the posterior space was a 2D Gaussian in $\sigma$, $\tau$ space, the expectation value would coincide with the maximum of the log posterior. However, due to non-Gaussian shape of the log posterior, we find that the expectation value is a better   estimate of $\sigma$ and $\tau$  rather than MAP. 
 
-This is equivalent to kernels used by Rybicki+, Kozlowski+, Kochanek+, MacLeod+. We use a prior uniform in log space  (Jeff2) - same as MacLeod+, Kochanek+, Kozlowski+. 
+\subsection{The impact of light curve baseline}
 
-Given the non-Gaussian shape of the log-posterior, we find that the expectation value rather than the MAP estimate for $\sigma$, $\tau$ is less biased.   Fig.... illustrates the shape of the log Posterior.  This was also encountered by Kozlowski+2017 (see his  Fig.2). 
+\cite{kozlowski2017a}  reports that we cannot trust any results of DRW fitting unless the light curve length is at least ten times longer than the characteristic timescale. We confirm these generic trends by repeating \cite{kozlowski2017a} simulation setup. We  model 10 000  DRW light curves with fixed length (baseline) $t_{exp}=8$ years, $SF_{\infty} = 0.2$ mag,  but with different input timescales. We parametrize the ratio of timescale to baseline by $\rho = \tau / t_{exp}$. Given that the baselines for all light curves are fixed,  by selecting different input $\tau$ we probe a logarithmic grid in $\rho \in   \{ 0.01 : 15\}$. For each of  100 distinct values of $\rho$ we perform 100 light curve realizations.  
 
-We first confirm \cite{kozlowski2017a} results, simulating DRW light curves with fixed length (baseline) of 8 years, but spanning a grid  of timescales so that the ratio of timescales to baseline,  $\rho = \tau_{in} / t_{exp} \in   \{ 0.01 : 15\}$.  The observed light curve $y(t)$ consists of  true underlying signal  $s(t)$,  noise offset $n(t)$ (which we assume to be drawn from a Gaussian distribution $\mathcal{N}(0,\sigma(t))$ with a width $\sigma(t)$ corresponding to the  photometric uncertainty at the given epoch,  $e(t)$), and the added mean $m$ : 
+To simulate observational conditions  we add to the true underlying signal  $s(t)$ a noise offset, $n(t)$.  Like \cite{kozlowski2017a},  we assume $n(t)$ to be drawn from a Gaussian distribution $\mathcal{N}(0,\sigma(t))$ with a width $\sigma(t)$ , corresponding to the  photometric uncertainty at the given epoch,  $e(t)$) : 
 
 \begin{equation}
-y(t) = s(t) + n(t) + m
+y(t) = s(t) + n(t) 
 \end{equation}
 
-The underlying DRW signal  $s(t)$  is simulated by drawing  points from a Gaussian distribution, for which mean and standard deviation are re-calculated at each timestep. Given the array of timestamps to sample the DRW $t$,  variability amplitude $SF_{\infty}$, mean magnitude  $m$, and the damping timescale $\tau$, we start at time $t_{0}$. Signal at that time is equal to the mean $s_{0} = m$. After timestep $\Delta t_{i} = t_{i+1} - t_{i}$, the signal $s_{i+1}$ is drawn from  $\mathcal{N}(loc, stdev)$, where : 
+The $s(t)$ is found by iterating over the array of time steps $t$.  At each step, we draw a point from a Gaussian distribution, for which the mean and standard deviation are re-calculated at each timestep. Starting at $t_{0}$, the signal is equal to the mean magnitude, $s_{0} = m$. After a timestep $\Delta t_{i} = t_{i+1} - t_{i}$, the signal $s_{i+1}$ is drawn from  $\mathcal{N}(loc, stdev)$, with : 
 
 \begin{equation}
 loc = s_{i} e ^ { - r  }  + m \left( 1 - e ^{ - r }\right)
@@ -285,10 +282,10 @@ and
 stdev^{2} =  0.5  \, \mathrm{SF}_{\infty}^{2} \left( 1 - e ^{  - 2 r  }  \right)
 \end{equation}
 
-with  $r = \Delta t_{i} / \tau$.  This follows eqs. A4 and A5 in \cite{kelly2009}, as well as Sec. 2.2 in \cite{macleod2010}, and is equivalent to  \cite{kozlowski2017a} formulation. 
+where  $r = \Delta t_{i} / \tau$, $\tau$ is the damping timescale,   $SF_{\infty}$ is the  variability amplitude , and $m$ the mean magnitude.  This follows the formalizm in \cite{kelly2009} (eqs. A4 and A5) as well as in \cite{macleod2010} (Sec. 2.2 ), and is equivalent to the setup of  \cite{kozlowski2017a}. 
 
 
-In the first simulation setup where we probe a range of $\rho$ ratios, we fixed the baseline to $8$ years, variability amplitude  $SF_{\infty} = 0.2$ mag, and used SDSS S82-like cadence with N=60 epochs, or OGLE-III like cadence with N=445 epochs.  The errors (in units of mag) were set by the adopted mean magnitudes, $r=17$ and $I=18$ , as in \cite{kozlowski2017a} :
+We adopt SDSS S82-like cadence with N=60 epochs, or OGLE-III like cadence with N=445 epochs.  The errors were set by the adopted mean magnitudes, $r=17$ and $I=18$ , as in \cite{kozlowski2017a} :
 
 \begin{eqnarray}
 \sigma_{SDSS}^{2} &=& 0.013^{2} + \exp{(2 (r-23.36))} \\
@@ -296,19 +293,20 @@ In the first simulation setup where we probe a range of $\rho$ ratios, we fixed 
 \end{eqnarray}
 
 
+\begin{figure*}
+\plottwo{figs/SDSS_Jeff1_expectation.png}{figs/OGLE_Jeff1_expectation.png}
+\caption{Probing the parameter space of $\rho = \tau / t_{exp}$, simulating 100 DRW light curves for each of 100 values of $\rho$ spaced uniformly in logarithmic space between $\rho \in   \{ 0.01 : 15\}$ . Thus we sample a range of 100 input timescales , because the baseline $t_{exp}$ is set to 8 years (as in \citet{kozlowski2017a}). Left panel shows the SDSS-like cadence with N=60 points, and the right panel OGLE-like cadence with N=445 points. The dotted horizontal and solid vertical lines represent $\rho = 0.1$, i.e. the baseline is ten times longer than considered timescale. The diagonal line is $y=x$, i.e. the line that would be followed if the recovered  $\rho$ ($\tau$) was exactly the same as  
+the input $\rho$ ($\tau$).} 
+\label{fig:Fig2kozlowski}
+\end{figure*}
 
-with     by showing that regardless of cadence, the recovered DRW characteristic timescale becomes independent of the input timescale when it is 
+Fig~\ref{fig:Fig2kozlowski} shows that as stipulated in \cite{kozlowski2017a},  the recovered $\rho$ becomes meaningless ('unconstrained') if the available baseline is not at least ten times longer than the underlying timescale. It also means that by extending the baseline we can move from the biased region to the unbiased regime. 
 
+Encouraged by this result, we extend the baselines of  quasar light curves, and revisit relations studied by  \cite{macleod2011} and \cite{hernitschek2016}. 
 
-Using a fixed light curve length of $t_{exp} = 8$ years we simulate 100 different input time scales $\tau_{in}$ ,  where  .  The bias is not affected by different cadence (we tested SDSS and CRTS cadences of N=80 or N=445 points).
-Encouraged by this result we add more epochs to quasar light curves, and revisit relations studied by  \cite{macleod2011} and \cite{hernitschek2016}. We use PanSTARRS \citep{chambers2011} DR2 \citep{flewelling2018}, CRTS DR2 \citep{drake2009}, and PTF \citep{rau2009}. Starting from the SDSS  DR7 near-simultaneous ugriz photometry for Stripe 82 quasars \citep{schneider2008}, we cross-match the catalogs. We find a common photometric solution using the S82 standard stars (PTF and CRTS use white light - see \citealt{djorgovski2011a}). We validate data quality by comparing mean CRTS magnitude vs mean SDSS magnitude, and mean PS1 g-band to mean PS1 r-band. 
-
-
-\section{Datasets}
-
+\section{Data}
+\subsection{Surveys}
 We focus on data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by the SDSS between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012} Sec. 2.2 for overview, and \citealt{annis2014} for details ) . Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citep{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
-
-We supplement the SDSS with PanSTARRS (PS1) \citep{chambers2011,flewelling2018}, CRTS \citep{drake2009}, and PTF \citep{rau2009}. We find 9248 PS1 matches, 6455 PTF matches, and 7737 CRTS matches. Performing an inner join there are 6444 quasars with SDSS-PS1-PTF-CRTS data. Fig.~\ref{fig:rawBaselines}  shows the distribution of raw epochs, and Fig~\ref{fig:lcExtent} the  baseline coverage of various surveys.    Each survey uses a unique set of bandpasses and cadences : SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{SDSS}$ , and the other are  non-simultaneous : $\{g,r,i,z,y\}_{PS1}$ ,  $\{g,R\}_{PTF}$, $V_{CRTS}$.  To combine the light curves we find color terms with the offset to the 'master' band  $r_{SDSS}$.
 
 \begin{figure}%[ht!]
 \plotone{figs/illustrate_epochal_coverage.png}
@@ -316,19 +314,35 @@ We supplement the SDSS with PanSTARRS (PS1) \citep{chambers2011,flewelling2018},
 \label{fig:rawBaselines}
 \end{figure} 
 
-% EXTENT FIGURE 
 \begin{figure*}
 \plotone{figs/lightcurves_extent.png}
 \caption{The contribution to quasars light curve baseline from surveys, including the planned LSST coverage. Vertical offset is arbitrary. Note how PS1 and PTF extend the baseline of SDSS by approximately $50\%$, and how inclusion of LSST triples the SDSS baseline. }
 \label{fig:lcExtent}
 \end{figure*} 
 
+
+We extend the SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018}, CRTS \citep{drake2009}, and PTF \citep{rau2009}. We find 9248 PS1 matches, 6455 PTF matches, and 7737 CRTS matches to SDSS S82 quasars. There are  6444 quasars with SDSS-PS1-PTF-CRTS data.  Fig.~\ref{fig:rawBaselines}  shows the distribution of raw epochs, and Fig~\ref{fig:lcExtent} the  baseline coverage of various surveys.    Each survey uses a unique set of bandpasses and cadences : SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{SDSS}$ , and the other are  non-simultaneous : $\{g,r,i,z,y\}_{PS1}$ ,  $\{g,R\}_{PTF}$, $V_{CRTS}$.  
+
+\subsection{Photometric offsets}
+
+To utilize all data we define a common 'target' bandpass. SDSS r band is closest to PS1 r, PTFr, CRTSV. For this reason we translate photometry from nearby filters ($\{g,R\}_{PTF}$, $\{g,r,i\}_{PS1}$, $V_{CRTS}$) to the  'master' $r_{SDSS}$  band.
+
+With two photometric systems, eg. SDSS(ugriz), and PS1(grizy),  we can find offsets (or color terms) from one to another. Consider SDSS as target system,  PS1 as the auxiliary system, so that we find offsets from PS1 to SDSS. This amounts to creating 'synthetic' SDSS bands from PS1, using the SDSS color to spread the stellar locus. More generally, we would always use the color of the target system : 
+
+\begin{equation}
+r_{PS1} -  r_{SDSS} = f ( SDSS (g-i ))
+\end{equation}
+
+the function is a polynomial fitted to the stellar locus on the plot of $SDSS (g-i )$ vs $r_{PS1} -  r_{SDSS} $. We use $SDSS(g-i)$ because is provides a larger wavelength baseline than $(g-r)$. 
+
+Note that there are other possible choices for the target band and the intermediate color to spread the stellar locus. For instance, rewriting the above as  $m - s = f(x)$, \cite{tonry2012} derived offsets from SDSS to PS1  using $x$ = SDSS($g-r$), $m = PS1 \{g,r,i,z,y\}$, and $s$ = SDSS($r$).
+
 Since quasars occupy a blue region in the color-color diagram (Fig.~\ref{fig:quasarColors}), we calculate photometric offsets specifically for this region of the spectrum.  We only show the color-magnitude diagrams  for PS1 offsets  (Fig. ~\ref{fig:offsetsPS1}) since we choose not to include CRTS and PTF data in the final sample. 
 
 % QSO COLORS 
 \begin{figure*}
 \plotone{figs/SDSS_S82_CMD_qso_stars.png}
-\caption{Regions occupied in color-color space by S82 quasars and standard stars \citep{schneider2010}. We show only 10 000  randomly chosen stars from the  full 1 mln + standard stars catalog \citealt{ivezic2007}. }
+\caption{Regions occupied in color-color space by S82 quasars (colors) and standard stars (contours) 	\citep{schneider2010}. We show only 10 000  randomly chosen stars from the  full 1 mln + standard stars catalog \citealt{ivezic2007}. }
 \label{fig:quasarColors}
 \end{figure*} 
 
@@ -336,49 +350,59 @@ Since quasars occupy a blue region in the color-color diagram (Fig.~\ref{fig:qua
 % PS1 
 \begin{figure*}
 \plotone{figs/Offsets_PS1-SDSSr_SDSSgi_ext-NO.png}
-\caption{The SDSS-PS1 offsets. We plot only bright stars that have SDSS(r) < 19, and that fulfill  mErr * sqrt(Nobs) < 0.03 . Each panel plots about 6000 stars of the 47000 CRTS S82 stars . Vertical dashed lines mark the region in SDSS color space occupied by quasars (see Fig.~\ref{fig:quasarColors}). }
+\caption{The SDSS-PS1 offsets. We plot only bright stars that have SDSS(r) < 19, and that fulfill  mErr * sqrt(Nobs) < 0.03 . Each panel plots about 6000 stars of the 47000 CRTS S82 stars . Vertical dashed lines mark the region in SDSS color space occupied by quasars (see Fig.~\ref{fig:quasarColors}), used to fit the stellar locus with a polynomial. }
 \label{fig:offsetsPS1}
 \end{figure*} 
 
 
-With two photometric systems, eg. SDSS(ugriz), and PS1(grizy),  we can find offsets (aka 'color terms') from one to another. Consider SDSS as target system,  PS1 as the auxiliary system. Thus we are trying  to express PS1 in terms of SDSS. This amounts to creating 'synthetic' SDSS bands from PS1, using the SDSS color to spread the stellar locus. More generally, we would always use the color of the target system. 
 
-\begin{equation}
-r_{PS1} -  r_{SDSS} = f ( SDSS (g-i ))
-\end{equation}
+%NOTE ABOUT EXTINCTION:  due to dust present between us and the standard stars (or background quasars), the observed light will appear slightly redder because dust preferentially scatters blue light away. This depends on the location of the source on the  sky and is related to the dust inhomogeneities in the Milky Way. 
 
-the function is a polynomial fitted to the stellar locus on the plot of $SDSS (g-i )$ vs $r_{PS1} -  r_{SDSS} $. We use SDSS(g-i) because is provides a larger wavelength baseline. One can make other choices: with $m - s = f(x)$  for instance, \cite{tonry2012} derived all offsets using $x$ = SDSS($g-r$), $m = PS1 \{g,r,i,z,y\}$, and $s$ = SDSS($r$)
+%However, in deriving bandpass to bandpass transformation all that matters is the flux received at the Top of the Atmosphere (TOA), for which all photometry is corrected at the pipeline processing level (both for SDSS,  PTF, PS1, and CRTS). In other words, all that matters is that any SED at TOA will have slightly different magnitude (hence colors) depending on whether we observe it with SDSS(r),  PS1(r), or PTF(R).  Therefore, to derive photometric offsets (which are time-independent), we use Sloan colors not corrected for extincton (and likewise, PS1, PTF, etc.) .  
 
-In that way we form a 'master bandpass', consisting of SDSS bands, and PS1, PTF, CRTS equivalents.  Since all SDSS bands are observed nearly simultaneously, we choose SDSS(r) as the 'master band', and we transform photometry from all 'nearby' bandpasses in other surveys (PTF gR,  PS1 gri, CRTS V) - PS1 u,z,y are too distant from SDSS r. To separate in color space the stellar locus we use SDSS(g-i) color because it has a larger wavelength baseline than SDSS(g-r) color.  For each 'master band' light curve we keep track which points originated from SDSS(r),  PTF(gR), PS1(gri), or CRTS(V). 
+%Correction for insterstellar extinction is only needed for color selection, since otherwise objects would appear to be of the later stellar type (redder) than they really are. To correct for extinction we use the most up-to-date maps of stellar extinction Bayestar17 (Green+2018). These extinction maps are 3D probabilistic, and we assume a uniform distance of 4 kpc for the dust column for all stars.  
 
 
+\section{Results}
 
-Note about EXTINCTION:  due to dust present between us and the standard stars (or background quasars), the observed light will appear slightly redder because dust preferentially scatters blue light away. This depends on the location of the source on the  sky and is related to the dust inhomogeneities in the Milky Way. 
+\subsection{Simulated DRW}
 
-However, in deriving bandpass to bandpass transformation all that matters is the flux received at the Top of the Atmosphere (TOA), for which all photometry is corrected at the pipeline processing level (both for SDSS,  PTF, PS1, and CRTS). In other words, all that matters is that any SED at TOA will have slightly different magnitude (hence colors) depending on whether we observe it with SDSS(r),  PS1(r), or PTF(R).  Therefore, to derive photometric offsets (which are time-independent), we use Sloan colors not corrected for extincton (and likewise, PS1, PTF, etc.) .  
+We simulated the DRW using the real cadences and errors corresponding to sections of combined light curves (SDSS,PS1,CRTS,PTF), including the portion corresponding to the forecasted LSST contribution. For all light curves we assumed  $\tau = 575 $ days, $SF_{\infty} = 0.2$ mag. Fig.~\ref{fig:simLC} shows an example simulated DRW for SDSS-PS1-LSST.
 
-Correction for insterstellar extinction is only needed for color selection, since otherwise objects would appear to be of the later stellar type (redder) than they really are. To correct for extinction we use the most up-to-date maps of stellar extinction Bayestar17 (Green+2018). These extinction maps are 3D probabilistic, and we assume a uniform distance of 4 kpc for the dust column for all stars.  
-
-
-% OLD OLD OLD 
-% OLD OLD OLD 
-% OLD OLD OLD 
-
-
+\begin{figure*}%[ht!]
+\plotone{figs/1072282_w_LSST1.png}
+\caption{Simulated DRW process sampled at real cadence of SDSS, PS1, and simulated cadence of LSST. To each sampled point we add Gaussian noise. Since errors are heteroscedastic (different for all points),  corresponding to real light curve errors, or magnitude-dependent LSST simulated errors, distributions from which the offsets are  of different width, equal to photometric uncertainty at that epoch. }
+\label{fig:simLC}
+\end{figure*} 
 
 
-
-\subsection{Simulated light curves}
-We made a controlled experiment of long (20 tau) , well-sampled (dt=5 days) light curves,  with 400 points each . We used different priors (Jeff1, Jeff2, p1, p2, flat), and found that  sigma, tau from MAP (maximum a posteriori estimate) with Jeff1 is most consistent with Chelsea's code. We further investigated the logL evaluated on  a grid of sigma,tau, and conclude that the non-Gaussian shape of  the log-likelihood cauese the MAP to be biased, and the expectation value of marginalized posterior distribution is less biased  ( at 1\% level) . We find that the expectation value based sigma, tau are less biased, and for a very coarse grid 25x25 elements, the value of input parameters is  still recovered at the 1\% level (we expect the overall distribution to be biased on the 1\% level, so this is sufficient accuracy). 
+In accordance with Fig.~\ref{fig:Fig2kozlowski}, we find that extending the baseline decreases the bias in retrieved DRW parameters  $\tau$ and $\sigma$ - see Fig.~\ref{fig:simLCresults1} and Fig.~\ref{fig:simLCresults2}
 
 
+\begin{figure*}
+\plotone{figs/Simulated_DRW_w_LSST_Jeff2EXP.png}
+\caption{Retrieved $\tau$ and $\sigma$  parameters for simulated LCs. }
+\label{fig:simLCresults1}
+\end{figure*} 
 
-We first check whether there is an improvement of fit for simulated DRW sampled at observed cadence - we plot $\tau_{out}$ vs $\tau_{in}$  for    SDSS sampling,    PS1+SDSS sampling,  PS1+CRTS+SDSS sampling,   PS1+CRTS+PTF+SDSS sampling.  This helps establish, based on simulated data (where we know the truth), whether we should expect much improvement in fit accuracy when using real data. 
+\begin{figure*}
+\plotone{figs/validate_macleod2011_Fig18_sdss-ps1-lsst_sim.png}
+\caption{Comparison of retrieved parameters in relation to input parameters, shown as Fig.18 in \citet{macleod2011} }
+\label{fig:simLCresults2}
+\end{figure*} 
 
-%We then perform fits using observed points selecting photometry only from a subset of surveys : $\tau_{PS1}$, 
-%$\tau_{(PS1+SDSS)}$,  $\tau_{SDSS}$.  We also check whether we get a better fit  behavior using only bright quasars with   $\tau_{\langle mag\rangle<19}$.
 
-Using the best combination of survey data,  we revisit \cite{macleod2011} correlations of retrieved characteristic quasar timescale $\tau$ and variability amplitude $\sigma$ with black hole mass, luminosity, etc.  
+\subsection{Real data}
+
+Since the simulations showed that we do decrease the bias by extending the  baseline, we use the combined SDSS-PS1  light curves and show the space occupied by quasars in $SF_{\infty} - \tau - \sigma$ space, which confirms the results of \citet{macleod2011} (Fig.~\ref{fig:realLCresults})
+
+
+\begin{figure*}
+\plottwo{figs/validate_macleod2011_Fig6.png}{figs/validate_macleod2011_Fig14.png}
+\caption{Both relations are shown in the observed frame. The left panel is like Fig.6, and the right like Fig.14 in \citet{macleod2011}. }
+\label{fig:realLCresults}
+\end{figure*} 
+
 
 
 
