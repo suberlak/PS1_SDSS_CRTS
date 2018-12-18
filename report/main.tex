@@ -242,9 +242,9 @@ The light curve baseline is the key in an unbiased recovery of light curve param
 DRW (Ornstein–Uhlenbeck process) can be understood as a member of a class of Gaussian Processes (GP). Each GP is described by a kernel - a covariance function that contains a measure of correlation between two points $x_{n}$, $x_{m}$, separted by $\Delta t_{nm}$. For the  DRW process, the kernel is 
 
 \begin{eqnarray}
-k(\Delta t_{nm}) &=& a \exp{(-t_{tm} / \tau)} \\
-                 &=& \sigma^{2}\exp{(-t_{tm} / \tau)}  \\
-                 &=& \sigma^{2} ACF(\Delta t)
+k(\Delta t_{nm}) &=& a \exp{(-\Delta t_{tm} / \tau)} \\
+                 &=& \sigma^{2}\exp{(-\Delta t_{tm} / \tau)}  \\
+                 &=& \sigma^{2} ACF(\Delta t_{tm})
 \end{eqnarray} 
 
 Here $a$ or $\sigma^{2}$ is an amplitude of correlation decay as a function of $t_{tm}$,  while $\tau$ is the characteristic timescale over which correlation drops by $1/e$. For a DRW,  the correlation function $k(\Delta t_{nm})$ is also related to the autocorrelation function $ACF$. 
@@ -255,12 +255,12 @@ Related to $k(\Delta t_{nm})$ is the   structure function of the DRW process (se
 SF(\Delta t) = SF_{\infty} (1-\exp{(-|\Delta t|/\tau)})^{1/2}
 \end{equation}
 
-where $SF_{\infty}$ is the asymptotic value of $SF$ for large time lags. It is known that for QSOs SF follows approximately power law, $SF \propto \Delta t^{\beta}$,  and it levels out for large $\Delta t$) (see \citet{macleod2012}).  Note that $SF_\infty \equiv \sigma^{2}$  in the above. 
+where $SF_{\infty}$ is the asymptotic value of $SF$ for large time lags. It is known that for QSOs SF follows approximately power law, $SF \propto \Delta t^{\beta}$,  and it levels out for large $\Delta t$) (see \citet{macleod2012}).  Note that $SF_\infty = \sqrt{2} \sigma$  in the above. 
 
 
 To estimate the  DRW  parameters and fit simulated or real data we employ Celerite - a new fast GP modelling tool\citep{foreman2017}. Combined with the DRW kernel this is similar to the method used by \citet{rybicki1992, kozlowski2010, macleod2010} - like in previous work, we use a  prior on $\sigma$ and $\tau$ uniform in log space.  The main difference is that rather than adopting the Maximum A-Posteriori (MAP) as the 'best-fit' value for sought parameters,  we find the expectation value of the marginalized log posterior. If the posterior space was a 2D Gaussian in $\sigma$, $\tau$ space, the expectation value would coincide with the maximum of the log posterior. However, due to non-Gaussian shape of the log posterior, we find that the expectation value is a better   estimate of $\sigma$ and $\tau$  rather than MAP. 
 
-\subsection{The impact of light curve baseline}
+\subsection{The impact of light curve baseline}\label{sec:baseline}
 
 \cite{kozlowski2017a}  reports that we cannot trust any results of DRW fitting unless the light curve length is at least ten times longer than the characteristic timescale. We confirm these generic trends by repeating \cite{kozlowski2017a} simulation setup. We  model 10 000  DRW light curves with fixed length (baseline) $t_{exp}=8$ years, $SF_{\infty} = 0.2$ mag,  but with different input timescales. We parametrize the ratio of timescale to baseline by $\rho = \tau / t_{exp}$. Given that the baselines for all light curves are fixed,  by selecting different input $\tau$ we probe a logarithmic grid in $\rho \in   \{ 0.01 : 15\}$. For each of  100 distinct values of $\rho$ we perform 100 light curve realizations.  
 
@@ -295,7 +295,7 @@ We adopt SDSS S82-like cadence with N=60 epochs, or OGLE-III like cadence with N
 
 \begin{figure*}
 \plottwo{figs/SDSS_Jeff1_expectation.png}{figs/OGLE_Jeff1_expectation.png}
-\caption{Probing the parameter space of $\rho = \tau / t_{exp}$, simulating 100 DRW light curves for each of 100 values of $\rho$ spaced uniformly in logarithmic space between $\rho \in   \{ 0.01 : 15\}$ . Thus we sample a range of 100 input timescales , because the baseline $t_{exp}$ is set to 8 years (as in \citet{kozlowski2017a}). Left panel shows the SDSS-like cadence with N=60 points, and the right panel OGLE-like cadence with N=445 points. The dotted horizontal and solid vertical lines represent $\rho = 0.1$, i.e. the baseline is ten times longer than considered timescale. The diagonal line is $y=x$, i.e. the line that would be followed if the recovered  $\rho$ ($\tau$) was exactly the same as  
+\caption{Probing the parameter space of $\rho = \tau / t_{exp}$, with a simulation of  10 000 light curves : 100 light curves per each of 100 $\rho$ values spaced uniformly in logarithmic space between $\rho \in   \{ 0.01 : 15\}$ . Thus with the baseline $t_{exp}$ set to 8 years,  we sample a range of 100 input timescales, as in \citet{kozlowski2017a}. Left panel shows the SDSS-like cadence with N=60 points, and the right panel OGLE-like cadence with N=445 points. The dotted horizontal and solid vertical lines represent $\rho = 0.1$, i.e. the baseline is ten times longer than considered timescale. The diagonal line is $y=x$, i.e. the line that would be followed if the recovered  $\rho$ ($\tau$) was exactly the same as  
 the input $\rho$ ($\tau$).} 
 \label{fig:Fig2kozlowski}
 \end{figure*}
@@ -365,13 +365,26 @@ Since quasars occupy a blue region in the color-color diagram (Fig.~\ref{fig:qua
 
 \section{Results}
 
+Having established in Sec.~\ref{sec:baseline} that extending the light curve baseline improves the recovery of input DRW parameters,  we combine SDSS light curves with PS1 data. We first consider the theoretical improvement in the fit, simulating DRW light curves for which we select SDSS-PS1 , or SDSS-only sections.  Then we fit the real data with DRW model, and divide by (1+z) to study the timescales in rest frame. 
+
+
 \subsection{Simulated DRW}
 
-We simulated the DRW using the real cadences and errors corresponding to sections of combined light curves (SDSS,PS1,CRTS,PTF), including the portion corresponding to the forecasted LSST contribution. For all light curves we assumed  $\tau = 575 $ days, $SF_{\infty} = 0.2$ mag. Fig.~\ref{fig:simLC} shows an example simulated DRW for SDSS-PS1-LSST.
+We simulated the DRW using the real cadences and errors corresponding to sections of combined light curves (SDSS,PS1,CRTS,PTF), including the portion corresponding to the forecasted LSST contribution.  For LSST segment we assumed a cadence of 50 epochs per year,  for 10 years (between 2023-2033), and  magnitude-dependent photometric uncertainty from Sec. 3.5 in \citet{lsstscibook}:
+
+\begin{eqnarray}
+\sigma_{LSST}(m)^{2} = \sigma_{sys}^{2} + \sigma_{rand}^{2} \\
+\sigma_{rand}^{2} = (0.04-\gamma)x + \gamma x^{2} \\
+x = 10^{0.4(m-m_{5})}
+\end{eqnarray}
+
+with  $\sigma_{sys} = 0.005$, $\gamma=0.039$, $m_{5} = 24.7$ (see Table 3.2  therein).
+
+For all light curves we assumed  $\tau = 575 $ days, $SF_{\infty} = 0.2$ mag (the median of S82 distribution in ~\citet{macleod2010}). Fig.~\ref{fig:simLC} shows an example simulated DRW for SDSS-PS1-LSST.
 
 \begin{figure*}%[ht!]
 \plotone{figs/1072282_w_LSST1.png}
-\caption{Simulated DRW process sampled at real cadence of SDSS, PS1, and simulated cadence of LSST. To each sampled point we add Gaussian noise. Since errors are heteroscedastic (different for all points),  corresponding to real light curve errors, or magnitude-dependent LSST simulated errors, distributions from which the offsets are  of different width, equal to photometric uncertainty at that epoch. }
+\caption{Simulated DRW process sampled at real cadence of SDSS, PS1, and simulated cadence of LSST. To each observed  point we add Gaussian noise corresponding to the reported  heteroscedastic (different for all points) errors for SDSS-PS1, and simulated magnitude-dependent errors for LSST. }
 \label{fig:simLC}
 \end{figure*} 
 
