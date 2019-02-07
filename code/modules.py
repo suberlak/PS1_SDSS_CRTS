@@ -45,21 +45,68 @@ def sim_DRW_lightcurve(t,SFinf,tau,mean_mag):
 #
 
 # define the negative log likelihood
-def neg_log_posterior(params,y,gp,prior):
+def neg_log_posterior(params,y,gp,prior, engine='celerite'):
+    '''
+    Engine used to calculate log_likelihoof:
+    either george or celerite ...
+    '''
+
     gp.set_parameter_vector(params)
-    if prior is 'None' : 
-        return -gp.log_likelihood(y, quiet=True)
 
-    if prior is 'Jeff1' : # (1/sigma) * (1/tau) 
+    if engine is 'celerite':
+        if prior is 'None' : 
+            return -gp.log_likelihood(y, quiet=True)
+            
         log_a  , log_c =  params
-        log_prior = - (log_a / 2.0) + log_c
-        return -gp.log_likelihood(y, quiet=True) - log_prior
 
-    if prior is 'Jeff2' : # (1/sigma_hat) * (1/tau) - the one used by Kozlowski , 
-        # as well as Chelsea... 
-        log_a  , log_c =  params
-        log_prior  = 0.5* (-np.log(2.0) - log_a + log_c  )
-        return -gp.log_likelihood(y, quiet=True)  - log_prior
+        if prior is 'Jeff1' : # (1/sigma) * (1/tau) 
+            log_prior = - (log_a / 2.0) + log_c
+            return -gp.log_likelihood(y, quiet=True) - log_prior
+
+        if prior is 'Jeff2' : # (1/sigma_hat) * (1/tau) - 
+            # the one used by Kozlowski , 
+            # as well as Chelsea... 
+            log_prior  = 0.5* (-np.log(2.0) - log_a + log_c  )
+            return -gp.log_likelihood(y, quiet=True)  - log_prior
+
+
+
+    if engine is 'george'   : 
+        if prior is 'None' : 
+            return -gp.log_likelihood(y, quiet=True)
+
+        k1,k2 = params 
+        if prior is 'Jeff1' : # (1/sigma) * (1/tau) 
+            
+            # k1 = log(sigma^2)  ; k2 = log(tau^2), 
+            # so  sigma = exp(k1/2),   tau = exp(k2/2)
+            
+            # log(prior) = log(1/sigma*1/tau) = 
+            # -log(sigma) - log(tau) =
+            # -log(exp(k1/2)) - log(exp(k2/2)) = 
+            # -0.5  ( k1 + k2 )
+            log_prior = -0.5 * (k1+k2)
+            return -gp.log_likelihood(y, quiet=True) - log_prior
+
+        if prior is 'Jeff2' : 
+            # (1/sigma_hat) * (1/tau) 
+            #- the one used by Kozlowski , 
+            # as well as Chelsea, but note 
+            # that they were fitting sigma_hat and tau 
+            # rather than sigma, tau 
+
+            #  sigma_hat= sigma * np.sqrt(2.0/tau)
+
+            # log(prior)  =  log(1/sigma_hat * 1/tau) =
+            # - log(sigma_hat*tau) = 
+            # -log(sigma * sqrt(2/tau) * tau) = 
+            # -log(sigma * sqrt(2) * sqrt(tau)) =
+            # -log(sqrt(2)) - log(sigma) - 0.5 log(tau) = 
+            # -0.5 log(2) - k1/2 - k2/4 = 
+            # -0.5 log(2) - 0.5 (k1 + k2/2 )
+            log_prior = -0.5 * np.log(2.0) - 0.5 * (k1 + k2/2.0)
+            return -gp.log_likelihood(y, quiet=True) - log_prior
+
 
 
 
@@ -102,7 +149,7 @@ def find_celerite_MAP(t,y,yerr, sigma0=0.1, tau0=100 ,prior='None',
 
     # wrap the neg_log_posterior for a chosen prior 
     def neg_log_like(params,y,gp):
-        return neg_log_posterior(params,y,gp,prior)
+        return neg_log_posterior(params,y,gp,prior,'celerite')
     
     # find MAP solution 
     r = minimize(neg_log_like, initial_params, 
@@ -116,45 +163,10 @@ def find_celerite_MAP(t,y,yerr, sigma0=0.1, tau0=100 ,prior='None',
         print('sigma_fit', sigma_fit,'tau_fit', tau_fit)
     return sigma_fit, tau_fit , gp
 
+#######
+#######  taking a function for Celerite and rewriting for George ..
+#######
 
-#######  taking two functions for Celerite and rewriting for George ..
-
-def neg_lopg_george(params,y,gp,prior):
-    gp.set_parameter_vector(params)
-    if prior is 'None' : 
-        return -gp.log_likelihood(y, quiet=True)
-
-    k1,k2 = params 
-    if prior is 'Jeff1' : # (1/sigma) * (1/tau) 
-        
-        # k1 = log(sigma^2)  ; k2 = log(tau^2), 
-        # so  sigma = exp(k1/2),   tau = exp(k2/2)
-        
-        # log(prior) = log(1/sigma*1/tau) = 
-        # -log(sigma) - log(tau) =
-        # -log(exp(k1/2)) - log(exp(k2/2)) = 
-        # -0.5  ( k1 + k2 )
-        log_prior = -0.5 * (k1+k2)
-        return -gp.log_likelihood(y, quiet=True) - log_prior
-
-    if prior is 'Jeff2' : 
-        # (1/sigma_hat) * (1/tau) 
-        #- the one used by Kozlowski , 
-        # as well as Chelsea, but note 
-        # that they were fitting sigma_hat and tau 
-        # rather than sigma, tau 
-
-        #  sigma_hat= sigma * np.sqrt(2.0/tau)
-
-        # log(prior)  =  log(1/sigma_hat * 1/tau) =
-        # - log(sigma_hat*tau) = 
-        # -log(sigma * sqrt(2/tau) * tau) = 
-        # -log(sigma * sqrt(2) * sqrt(tau)) =
-        # -log(sqrt(2)) - log(sigma) - 0.5 log(tau) = 
-        # -0.5 log(2) - k1/2 - k2/4 = 
-        # -0.5 log(2) - 0.5 (k1 + k2/2 )
-        log_prior = -0.5 * np.log(2.0) - 0.5 * (k1 + k2/2.0)
-        return -gp.log_likelihood(y, quiet=True)  - log_prior
 
 
 
@@ -240,11 +252,11 @@ def find_george_MAP(t,y,yerr, sigma0, tau0,prior='None',
         print('for params ', gp.get_parameter_dict().keys())
 
     # wrap the neg_log_posterior for a chosen prior 
-    def neg_log_like_g(params,y,gp):
-        return neg_lopg_george(params,y,gp,prior)
+    def neg_log_like(params,y,gp):
+        return neg_log_posterior(params,y,gp,prior,'george')
     
     # find MAP solution 
-    r = minimize(neg_log_like_g, initial_params, 
+    r = minimize(neg_log_like, initial_params, 
              method="L-BFGS-B", bounds=bounds, args=(y, gp))
     if verbose : 
         print(r)
@@ -265,7 +277,9 @@ def find_george_MAP(t,y,yerr, sigma0, tau0,prior='None',
 
 
 
-
+########
+########
+########
 
 
 # plotting the gp prediction 
@@ -298,7 +312,8 @@ def plot_gp_prediction(t,y,yerr,gp,sigma_fit, tau_fit,
 # a function to evaluate the log Posterior 
 # on a given grid of sigma ,tau  
 # given the data 
-def evaluate_logP(sigma_grid, tau_grid, y,gp, prior='None'):
+def evaluate_logP(sigma_grid, tau_grid, y,gp, prior='None',
+    engine = 'celerite'):
     
     log_a_grid = 2 * np.log(sigma_grid)
     log_c_grid = np.log(1/tau_grid)
@@ -309,7 +324,7 @@ def evaluate_logP(sigma_grid, tau_grid, y,gp, prior='None'):
     for k in range(len(log_a_grid)):
         for l in range(len(log_c_grid)):
             params = [log_a_grid[k],log_c_grid[l]]    
-            logPosterior[k,l] = -neg_log_posterior(params,y,gp, prior)
+            logPosterior[k,l] = -neg_log_posterior(params,y,gp, prior,engine)
     return logPosterior
 
 
