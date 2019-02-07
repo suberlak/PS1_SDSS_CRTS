@@ -11,7 +11,8 @@ import matplotlib.lines as mlines
 from matplotlib.ticker import FuncFormatter
 from matplotlib.ticker import LinearLocator
 
-
+import george
+from george import kernels
 
 def sim_DRW_lightcurve(t,SFinf,tau,mean_mag):
     '''Simulate a DRW lightcurve for a given time series t, with parameters
@@ -66,10 +67,11 @@ def neg_log_posterior(params,y,gp,prior):
 # with Celerite,  and finding the MAP 
 # estimate for DRW parameters 
             
-def find_celerite_MAP(t,y,yerr, sigma_in, tau_in,prior='None',
+def find_celerite_MAP(t,y,yerr, sigma0=0.1, tau0=100 ,prior='None',
                       set_bounds = True , sig_lims = [0.02, 0.7]  , 
                       tau_lims = [1,550],
                       verbose=False):
+
     kernel = terms.RealTerm(log_a = 2 * np.log(sigma_in) , 
                             log_c = np.log(1.0/tau_in))
     gp = celerite.GP(kernel, mean=np.mean(y))
@@ -113,6 +115,154 @@ def find_celerite_MAP(t,y,yerr, sigma_in, tau_in,prior='None',
     if verbose : 
         print('sigma_fit', sigma_fit,'tau_fit', tau_fit)
     return sigma_fit, tau_fit , gp
+
+
+#######  taking two functions for Celerite and rewriting for George ..
+
+def neg_lopg_george(params,y,gp,prior):
+    gp.set_parameter_vector(params)
+    if prior is 'None' : 
+        return -gp.log_likelihood(y, quiet=True)
+
+    k1,k2 = params 
+    if prior is 'Jeff1' : # (1/sigma) * (1/tau) 
+        
+        # k1 = log(sigma^2)  ; k2 = log(tau^2), 
+        # so  sigma = exp(k1/2),   tau = exp(k2/2)
+        
+        # log(prior) = log(1/sigma*1/tau) = 
+        # -log(sigma) - log(tau) =
+        # -log(exp(k1/2)) - log(exp(k2/2)) = 
+        # -1/2 ( k1 + k2 )
+        log_prior = -0.2 * (k1+k2)
+        return -gp.log_likelihood(y, quiet=True) - log_prior
+
+    if prior is 'Jeff2' : 
+        # (1/sigma_hat) * (1/tau) 
+        #- the one used by Kozlowski , 
+        # as well as Chelsea, but note 
+        # that they were fitting sigma_hat and tau 
+        # rather than sigma, tau 
+
+        #  sigma_hat= sigma * np.sqrt(2.0/tau)
+
+        # log(prior)  =  log(1/sigma_hat * 1/tau) =
+        # - log(sigma_hat*tau) = 
+        # -log(sigma * sqrt(2/tau) * tau) = 
+        # -log(sigma * sqrt(2) * sqrt(tau)) =
+        # -log(sqrt(2)) - log(sigma) - 0.5 log(tau) = 
+        # -0.5 log(2) - k1/2 - k2/4 = 
+        # -0.5 log(2) - 0.5 (k1 + k2/2 )
+        log_prior = -0.5 np.log(2.0) - 0.5 * (k1 + k2/2.0)
+        return -gp.log_likelihood(y, quiet=True)  - log_prior
+
+
+
+# define the function for fitting a light curve 
+# with Celerite,  and finding the MAP 
+# estimate for DRW parameters 
+            
+def find_george_MAP(t,y,yerr, sigma0, tau0,prior='None',
+                      set_bounds = True , sig_lims = [0.02, 0.7]  , 
+                      tau_lims = [1,550],
+                      verbose=False):
+    '''
+    A wrapper to find the MAP estimate of 
+    DRW parameters as expressed by the George ExpKernel,
+    where 
+    k(r^2) = a * exp(-sqrt(r^2)/l2)
+   
+    where l2 = metric = tau^2 
+    and a == sigma ^ 2
+    
+    thus the parameters of this kernel are 
+
+    'k1:log_constant' ,  'k2:metric:log_M_0_0'
+
+    i.e.  k1 =  np.log(a) = np.log(sigma^2) = 2 np.log(sigma)
+    and  k2 = np.log(l2) = np.log(tau^2) = 2 np.log(tau)
+
+    are the hyperparameters for which the log-posterior
+    is optimized (neg-logp  is minimized to be exact), 
+
+    and the original DRW parameters are recovered as :
+
+
+    k1 = res[0]
+    k2 = res[1]
+    
+    sigma =  exp( k1/2 )
+    tau = exp( k2/2 )
+
+
+    Parameters :
+    -------------
+    t , y , yerr :  arrays of time,  photometry, photometric uncertainty 
+    sigma0, tau0 : starting values to initialize  the DRW kernel 
+    set_bounds : True or False,  whether to set boundaries on parameters. 
+                True by default 
+    sig_lims, tau_lims : 2-element arrays, for [min,max]  values of params
+    verbose : True or False, whether to print more info about the fit . 
+              False by default
+
+
+    '''
+    a = sigma0 ** 2.0 
+    kernel = a *  kernels.ExpKernel(metric=tau0**2.0) 
+
+    gp = george.GP(kernel,  mean=np.mean(y))
+    gp.compute(t, yerr)
+
+    # set initial params 
+    initial_params = gp.get_parameter_vector()
+    if verbose:
+        print('Initial params:', initial_params)
+    
+    # set boundaries 
+    if set_bounds:
+        if verbose : 
+            print('sig_lims:', sig_lims, 'tau_lims:', tau_lims)
+        tau_bounds, sigma_bounds = tau_lims, sig_lims
+         
+        sig_min = min(sigma_bounds)
+        sig_max = max(sigma_bounds)
+        tau_min = min(tau_bounds)
+        tau_max = max(tau_bounds)
+
+        log_const_bounds =  ( np.log(sig_min**2.0), np.log(sig_max**2.0))
+        log_M00_bounds =  (np.log(tau_min**2.0), np.log(tau_max**2.0))
+        bounds =  [log_const_bounds, log_M00_bounds]
+
+    else : # - inf to + inf 
+        bounds = gp.get_parameter_bounds()
+    if verbose :
+        print('bounds for fitted params are ', bounds)
+        print('for params ', gp.get_parameter_dict().keys())
+
+    # wrap the neg_log_posterior for a chosen prior 
+    def neg_log_like_g(params,y,gp):
+        return neg_lopg_george(params,y,gp,prior)
+    
+    # find MAP solution 
+    r = minimize(neg_log_like_g, initial_params, 
+             method="L-BFGS-B", bounds=bounds, args=(y, gp))
+    if verbose : 
+        print(r)
+    gp.set_parameter_vector(r.x)
+    #res = gp.get_parameter_dict()
+
+    #a = np.exp(r.x[0])
+    #l2 =  np.exp(r.x[1])
+    #sigma_fit = np.sqrt(a)
+    #tau_fit = np.sqrt(l2)
+    sigma_fit = np.exp(r.x[0]/2.0)
+    tau_fit = np.exp(r.x[1]/2.0)
+    if verbose:  
+        print('sigma_fit=', sigma_fit,  'tau_fit=', tau_fit)
+
+    return sigma_fit, tau_fit , gp
+
+
 
 
 
