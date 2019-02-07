@@ -45,19 +45,17 @@ def sim_DRW_lightcurve(t,SFinf,tau,mean_mag):
 
 # define the negative log likelihood
 def neg_log_posterior(params,y,gp,prior):
+    gp.set_parameter_vector(params)
     if prior is 'None' : 
-        gp.set_parameter_vector(params)
         return -gp.log_likelihood(y, quiet=True)
 
     if prior is 'Jeff1' : # (1/sigma) * (1/tau) 
-        gp.set_parameter_vector(params)
         log_a  , log_c =  params
         log_prior = - (log_a / 2.0) + log_c
         return -gp.log_likelihood(y, quiet=True) - log_prior
 
     if prior is 'Jeff2' : # (1/sigma_hat) * (1/tau) - the one used by Kozlowski , 
         # as well as Chelsea... 
-        gp.set_parameter_vector(params)
         log_a  , log_c =  params
         log_prior  = 0.5* (-np.log(2.0) - log_a + log_c  )
         return -gp.log_likelihood(y, quiet=True)  - log_prior
@@ -179,8 +177,8 @@ def make_grid(scale, sig_lims, tau_lims,Ngrid):
     return sigma_grid, tau_grid
 
 
-def find_expectation_value(logPosterior, sigma_grid, tau_grid,   scale='linear', 
-    verbose=False, setMinimum = True):
+def find_expectation_value(logPosterior, sigma_grid, tau_grid, verbose=False, 
+    setMinimum = True):
     # the code here follows plot_logP,  
     # it's the same , minus the plotting part to 
     # declutter...
@@ -219,7 +217,8 @@ def find_expectation_value(logPosterior, sigma_grid, tau_grid,   scale='linear',
     p_tau = np.exp(logP).sum(0)
     if setMinimum: 
         p_tau -= min(p_tau)
-    p_tau_norm = np.trapz(y=p_tau, x=tau) # doesn't matter whether linear samples  
+    # doesn't matter whether linear samples  or log ...
+    p_tau_norm = np.trapz(y=p_tau, x=tau) 
     p_tau /= p_tau_norm
     tau_exp =  np.trapz(y=tau*p_tau,x=tau)  #find_expectation_value(tau, p_tau )
     if verbose: 
@@ -251,6 +250,11 @@ def plot_logP(logPosterior, sigma_grid, tau_grid, sigmaMAP, tauMAP,
                   aspect='auto', origin='lower')
     ax1.set_ylabel(r'$\sigma$')
     ax1.set_xlabel(r'$\tau$')
+
+    # plot the input value as a star ... 
+    #x,y = tau_true, sigma_true
+    #ax1.scatter(x,y,marker='*', s=250, c='black')
+    #ax1.scatter(x,y,marker='*', s=190, c='white')
 
     # second axis: marginalized over sigma
     ax2 = fig.add_axes((0.1, 0.4, 0.29, 0.55))
@@ -343,6 +347,6 @@ def plot_logP(logPosterior, sigma_grid, tau_grid, sigmaMAP, tauMAP,
         else:
             plt.savefig(figname, bbox_inches='tight')
         
-    return logP
+    return logP,sigma_exp, tau_exp
 
 
