@@ -133,8 +133,8 @@ def neg_lopg_george(params,y,gp,prior):
         # log(prior) = log(1/sigma*1/tau) = 
         # -log(sigma) - log(tau) =
         # -log(exp(k1/2)) - log(exp(k2/2)) = 
-        # -1/2 ( k1 + k2 )
-        log_prior = -0.2 * (k1+k2)
+        # -0.5  ( k1 + k2 )
+        log_prior = -0.5 * (k1+k2)
         return -gp.log_likelihood(y, quiet=True) - log_prior
 
     if prior is 'Jeff2' : 
@@ -153,7 +153,7 @@ def neg_lopg_george(params,y,gp,prior):
         # -log(sqrt(2)) - log(sigma) - 0.5 log(tau) = 
         # -0.5 log(2) - k1/2 - k2/4 = 
         # -0.5 log(2) - 0.5 (k1 + k2/2 )
-        log_prior = -0.5 np.log(2.0) - 0.5 * (k1 + k2/2.0)
+        log_prior = -0.5 * np.log(2.0) - 0.5 * (k1 + k2/2.0)
         return -gp.log_likelihood(y, quiet=True)  - log_prior
 
 
