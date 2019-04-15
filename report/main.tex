@@ -222,22 +222,22 @@
 
 \section{Introduction}
 
-Quasars are variable.  Their light curves have been successfully described using the Damped Random Walk (DRW) model \citep{kelly2009, macleod2010, kozlowski2010, zu2011, kasliwal2015a}. The origin of variability is debated, with thermal origin being the favorite explanation \citep{kelly2013}, connected to the inhomogeneity of the accretion disk \citep{dexter2011}, or even magnetically elevated disks \citep{dexter2019}. 
+Quasars are inherently variable sources at the rms level of 0.2 mag. They are distant active galactic nuclei, harboring a supermassive black hole surrounded by a hot accretion disk. Although it is agreed upon that majority of optical emission stems from the accretion disk, the detailed origin of variability has been debated over the past 50 years. Some favor a thermal origin of variability \citep{kelly2013}, related to the propagation of inhomogeneities ("hot spots") in the disk \citep{dexter2011}, others suggested magnetically elevated disks \citep{dexter2019}, or X-ray reprocessing  \citep{kubota2018}.   Quasar light curves have been successfully described using the Damped Random Walk (DRW) model \citep{kelly2009, macleod2010, kozlowski2010, zu2011, kasliwal2015a}, and the DRW parameters have been linked to the physical quasar properties. \citet{macleod2010} (M10) found correlations of the characteristic timescale and variability amplitude  to the black hole mass, and quasar luminosity.
 
-The DRW parameters have been linked to the physical quasar properties: \citet{macleod2010} found correlations of the characteristic timescale and variability amplitude  to the black hole mass, and quasar luminosity.
+Variability is also a classification tool, allowing to distinguish quasars from other variable sources that do not exhibit such stochastic variability pattern \citep{macleod2011}. Using the DRW parametrization, \citep{macleod2011} found that DRW timescale and amplitude for QSO are order of  magnitude different from stars. This is especially useful for selecting quasars in the intermediate redshift range (which overlaps the stellar locus in color-color diagrams - see \citealt{sesar2007, yang2017}). Variability has also been used to increase the completeness in measurements of Quasar Luminosity Function (see \citealt{ ross2013, palanque2013, alsayyad2016, mcgreer2013, mcgreer2018}). 
 
-Inherent variability, and modelling it as  a DRW, is also a reliable way to distinguish quasars from stars based on  optical photometry \citep{macleod2011}.  In that case the fit biases are less important than the fact that DRW timescale and amplitude for QSO are order of  magnitude different from stars \citep{macleod2011}.  It is especially useful for selecting quasars in the intermediate redshift range that could not be easily identified by color-color diagrams \citep{sesar2007,yang2017}.  
-
-Accurate QSO population studies are important for measurement of Quasar Luminosity Function, and variability has been used before to increase the completeness of quasar selection  \citep{ ross2013, palanque2013, alsayyad2016, mcgreer2013, mcgreer2018}. 
-
-
-Because DRW is a stochastic process, two light curves with identical DRW parameters will not look identical. However, once can still fit the available data with the DRW model and recover fit parameters. It has been found (eg. \citet{macleod2011, kozlowski2010, kozlowski2017a}) that regardless of method,  we can most reliably recover input parameters if we use the longest light curve baseline possible. A rule of thumb is that the light curve has to be at least  ten  times longer than the recovered timescale.  We confirm this observation with simulations of DRW light curves spanning a variety of ratios of input timescale to light curve lenght.  
-
-The light curve baseline is the key in an unbiased recovery of light curve parameters. As it has been  8 years since \citet{macleod2010} have published their research,   we can now benefit from additional data from other surveys that have observed the same quasars since. We show how combining the SDSS data with CRTS, PTF , PS1,  and simulated LSST data, decreases the bias in recovered parameters.  Thus with added data, extending the baseline on average by 50\%,  we revisit correlations studied by \citet{macleod2010}.  We confirm the general trends, and provide forecast for improvement with the advent of ZTF, LSST. Extended baseline is the advantage that is not afforded by studies only using single survey data (eg. \citet{hernitschek2016}
+Due to its stochastic nature, the DRW process requires the light curve to be many times longer than the characteristic timescale for an unbiased parameter retrieval. The rule of thumb is that the light curve must be at least ten times longer than its characteristic timescale \citep{kozlowski2010, kozlowski2017a}. For this reason some studies have restricted the probed redshift range, limiting the quasar sample to where one would expect only shorter timescales based on previous studies \citep{sun2018, guo2017}. Others have suffered from short-baseline biases by employing single-survey data \citep{hernitschek2016}.
+Thus by extending available quasar light curves we are able to better recover a wider range of DRW timescales, and probe a wider range of redshifts and black hole masses. 
 
 
+Almost a decade ago \citet{macleod2010} (hereafter M10) published their research using the SDSS Stripe 82 data, and new datasets (PS1,PTF,CRTS) have become available since that can extend the quasar light curves by almost 50\% .  Indeed, \citep{li2018} combined SDSS and Dark Energy Camera Legacy Survey (DECaLS) data, to provide a 15 year baseline, but by focusing on a large area to encompass as many quasars as possible (119,305 up to z=4.89)  suffered from having to employ an ensemble approach (SF) rather than the direct light curve modelling due to poor sampling.   On the other hand, \citep{sanchez2018} who employed optical data from QUEST-La Silla AGN variability survey, also used the Structure Function parametrization (amplitude of variability and the excess variance), because the light curve length (less than 5 years for 2435 quasars)  excluded the possibility of unbiased retrieval of characteristic timescale. 
 
-\section{Methods}
+
+ This paper improves on the DRW parameters (Section ~\ref{sec:methods} ) describing amplitude and characteristic timescale of Stripe82 quasars by extending the SDSS light curves for well-sampled Stripe82 with PanStarrs1 (PS1) data (Section ~\ref{sec:data,sec:simulation}). We revisit trends between  the DRW parameters and physical quasar properties, such as black hole mass, or bolometric luminosity (Section ~\ref{sec:results}). We make predictions for fidelity of DRW parameter retrieval once ZTF and LSST data become available. 
+
+
+
+\section{Methods}\label{sec:methods}
 \subsection{DRW as a Gaussian Process}
 DRW (Ornstein–Uhlenbeck process) can be understood as a member of a class of Gaussian Processes (GP). Each GP is described by a kernel - a covariance function that contains a measure of correlation between two points $x_{n}$, $x_{m}$, separted by $\Delta t_{nm}$. For the  DRW process, the kernel is 
 
@@ -258,11 +258,17 @@ SF(\Delta t) = SF_{\infty} (1-\exp{(-|\Delta t|/\tau)})^{1/2}
 where $SF_{\infty}$ is the asymptotic value of $SF$ for large time lags. It is known that for QSOs SF follows approximately power law, $SF \propto \Delta t^{\beta}$,  and it levels out for large $\Delta t$) (see \citet{macleod2012}).  Note that $SF_\infty = \sqrt{2} \sigma$  in the above. 
 
 
-To estimate the  DRW  parameters and fit simulated or real data we employ Celerite - a new fast GP modelling tool\citep{foreman2017}. Combined with the DRW kernel this is similar to the method used by \citet{rybicki1992, kozlowski2010, macleod2010} - like in previous work, we use a  prior on $\sigma$ and $\tau$ uniform in log space.  The main difference is that rather than adopting the Maximum A-Posteriori (MAP) as the 'best-fit' value for sought parameters,  we find the expectation value of the marginalized log posterior. If the posterior space was a 2D Gaussian in $\sigma$, $\tau$ space, the expectation value would coincide with the maximum of the log posterior. However, due to non-Gaussian shape of the log posterior, we find that the expectation value is a better   estimate of $\sigma$ and $\tau$  rather than MAP. 
+To estimate the  DRW  parameters and fit simulated or real data we employ Celerite - a new fast GP modelling tool\citep{foreman2017}. Combined with the DRW kernel this is similar to the method used by \citet{rybicki1992, kozlowski2010}, M10 - like in previous work, we use a  prior on $\sigma$ and $\tau$ uniform in log space.  The main difference is that rather than adopting the Maximum A-Posteriori (MAP) as the 'best-fit' value for sought parameters,  we find the expectation value of the marginalized log posterior. If the posterior space was a 2D Gaussian in $\sigma$, $\tau$ space, the expectation value would coincide with the maximum of the log posterior. However, due to non-Gaussian shape of the log posterior, we find that the expectation value is a better   estimate of $\sigma$ and $\tau$  rather than MAP. 
 
 \subsection{The impact of light curve baseline}\label{sec:baseline}
 
-\cite{kozlowski2017a}  reports that we cannot trust any results of DRW fitting unless the light curve length is at least ten times longer than the characteristic timescale. We confirm these generic trends by repeating \cite{kozlowski2017a} simulation setup. We  model 10 000  DRW light curves with fixed length (baseline) $t_{exp}=8$ years, $SF_{\infty} = 0.2$ mag,  but with different input timescales. We parametrize the ratio of timescale to baseline by $\rho = \tau / t_{exp}$. Given that the baselines for all light curves are fixed,  by selecting different input $\tau$ we probe a logarithmic grid in $\rho \in   \{ 0.01 : 15\}$. For each of  100 distinct values of $\rho$ we perform 100 light curve realizations.  
+\cite{kozlowski2017a}  reports that one cannot trust any results of DRW fitting unless the light curve length is at least ten times longer than the characteristic timescale. We confirm these generic trends by repeating his simulation setup. We  model 10 000  DRW light curves with fixed length (baseline) $t_{exp}=8$ years, $SF_{\infty} = 0.2$ mag,  sampling over a range of input timescales. With a fixed baseline, we are thus exploring a range of $\rho$: the ratio of timescale to baseline ($\rho = \tau / t_{exp}$, $\rho \in   \{ 0.01 : 15\}$). Fig.~\ref each of  100 distinct values of $\rho$ we perform 100 light curve realizations, thus  
+
+\begin{figure*}
+\plottwo{figs/SDSS_Jeff1_expectation.png}{figs/OGLE_Jeff1_expectation.png}
+\caption{Probing the parameter space of $\rho = \tau / t_{exp}$, with a simulation of  10 000 light curves : 100 light curves per each of 100 $\rho$ values spaced uniformly in logarithmic space between $\rho \in   \{ 0.01 : 15\}$ . Thus with the baseline $t_{exp}$ set to 8 years,  we sample a range of 100 input timescales, as in \citet{kozlowski2017a}. Left panel shows the SDSS-like cadence with N=60 points, and the right panel OGLE-like cadence with N=445 points. The dotted horizontal and solid vertical lines represent $\rho = 0.1$, i.e. the baseline is ten times longer than considered timescale. The diagonal line is $y=x$, i.e. the line that would be followed if the recovered  $\rho$ ($\tau$) was exactly the same as the input $\rho$ ($\tau$).} 
+\label{fig:rho_space}
+\end{figure*}
 
 To simulate observational conditions  we add to the true underlying signal  $s(t)$ a noise offset, $n(t)$.  Like \cite{kozlowski2017a},  we assume $n(t)$ to be drawn from a Gaussian distribution $\mathcal{N}(0,\sigma(t))$ with a width $\sigma(t)$ , corresponding to the  photometric uncertainty at the given epoch,  $e(t)$) : 
 
@@ -293,18 +299,10 @@ We adopt SDSS S82-like cadence with N=60 epochs, or OGLE-III like cadence with N
 \end{eqnarray}
 
 
-\begin{figure*}
-\plottwo{figs/SDSS_Jeff1_expectation.png}{figs/OGLE_Jeff1_expectation.png}
-\caption{Probing the parameter space of $\rho = \tau / t_{exp}$, with a simulation of  10 000 light curves : 100 light curves per each of 100 $\rho$ values spaced uniformly in logarithmic space between $\rho \in   \{ 0.01 : 15\}$ . Thus with the baseline $t_{exp}$ set to 8 years,  we sample a range of 100 input timescales, as in \citet{kozlowski2017a}. Left panel shows the SDSS-like cadence with N=60 points, and the right panel OGLE-like cadence with N=445 points. The dotted horizontal and solid vertical lines represent $\rho = 0.1$, i.e. the baseline is ten times longer than considered timescale. The diagonal line is $y=x$, i.e. the line that would be followed if the recovered  $\rho$ ($\tau$) was exactly the same as  
-the input $\rho$ ($\tau$).} 
-\label{fig:Fig2kozlowski}
-\end{figure*}
 
-Fig~\ref{fig:Fig2kozlowski} shows that as stipulated in \cite{kozlowski2017a},  the recovered $\rho$ becomes meaningless ('unconstrained') if the available baseline is not at least ten times longer than the underlying timescale. It also means that by extending the baseline we can move from the biased region to the unbiased regime. 
+Fig~\ref{fig:rho_space} shows that as stipulated in \cite{kozlowski2017a},  the recovered $\rho$ becomes meaningless ('unconstrained') if the available baseline is not at least ten times longer than the underlying timescale. It also means that by extending the baseline we can move from the biased region to the unbiased regime.  Encouraged by this result, we extend the baselines of  quasar light curves, and revisit relations studied by  M10 and \cite{hernitschek2016}. 
 
-Encouraged by this result, we extend the baselines of  quasar light curves, and revisit relations studied by  \cite{macleod2011} and \cite{hernitschek2016}. 
-
-\section{Data}
+\section{Data}\label{sec:data}
 \subsection{Surveys}
 We focus on data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by the SDSS between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012} Sec. 2.2 for overview, and \citealt{annis2014} for details ) . Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citep{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
 
@@ -386,7 +384,7 @@ PS1 i &  0.0247   & -0.2765 \\
 %Correction for insterstellar extinction is only needed for color selection, since otherwise objects would appear to be of the later stellar type (redder) than they really are. To correct for extinction we use the most up-to-date maps of stellar extinction Bayestar17 (Green+2018). These extinction maps are 3D probabilistic, and we assume a uniform distance of 4 kpc for the dust column for all stars.  
 
 
-\section{Simulation : lessons learned}
+\section{Simulation : lessons learned}\label{sec:simulation}
 
 Having established in Sec.~\ref{sec:baseline} that extending the light curve baseline improves the recovery of input DRW parameters,  we combine SDSS light curves with PS1 data. We first consider the theoretical improvement in the fit, simulating DRW light curves for which we select SDSS-PS1 , or SDSS-only sections.  Then we fit the real data with DRW model, and divide by (1+z) to study the timescales in rest frame. 
 
@@ -430,7 +428,7 @@ To the simulated true DRW signal we add Gaussian noise corresponding to epochal 
 \end{figure} 
 
 
-In accordance with Fig.~\ref{fig:Fig2kozlowski}, we find that extending the baseline decreases the bias in retrieved DRW parameters. Indeed, Fig.~\ref{fig:simLCresults1} shows that for an ensemble of 6444 simulated light curves the  recovered DRW parameters become less biased when supplementing the SDSS data with PS1. , and th and ~\ref{fig:simLCresults2} 
+In accordance with Fig.~\ref{fig:rho_space}, we find that extending the baseline decreases the bias in retrieved DRW parameters. Indeed, Fig.~\ref{fig:simLCresults1} shows that for an ensemble of 6444 simulated light curves the  recovered DRW parameters become less biased when supplementing the SDSS data with PS1. , and th and ~\ref{fig:simLCresults2} 
 
 \begin{figure*}
 \plotone{figs/Simulated_Jeff1-EXP-190326.png}
@@ -445,13 +443,15 @@ In accordance with Fig.~\ref{fig:Fig2kozlowski}, we find that extending the base
 \end{figure*} 
 
 
-\section{Results: fitting SDSS-PS1 with Celerite}
+\section{Results: fitting SDSS-PS1 with Celerite}\label{sec:results}
 
-Given the results of simulations, we use combined SDSS-r and PS1 g,r,i data, bringing PS1  into common photometric filter of SDSS r. 
+We have extended the baseline of Stripe82 quasars by adding to SDSS r-band data the  PS1 g,r,i data, transformed into common SDSS r-band. Encouraged by the simulation results we first show that the fitting routine is consistent when using only SDSS r-band portion with the results obtained by M10. Since the variability is assumed to be intrinsic to quasars, we shift timescales to rest frame : $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$.  First, fits for DRW parameters using only the SDSS segment of quasar light curves ($\tau_{\mathrm{SDSS}}$, $SF_{\infty, \mathrm{SDSS}}$) are consistent with M10 : Fig.~\ref{fig:tauRF_SFinf}  shows that the distributions  $\tau_{RF}$ and $SF_{\infty}$ overlap. Furthermore, Fig.~\ref{fig:celeriteCompare} compares DRW parameters using only the SDSS segment for M10 and this work, plotting the ratio of M10 results to $\sigma_{\mathrm{SDSS}}$, $\tau_{\mathrm{SDSS}}$. Both histograms are peaked close to 0 which would indicate perfect agreement. 
 
-Using just the SDSS r-band data our results of fitting the DRW with Celerite are consistent with \citet{macleod2011}. On Fig.~\ref{fig:celeriteCompare} we plot $\sigma$ and $\tau$ for SDSS r-band fitted with Celerite, and the SDSS r-band only as fitted by 
-\citet{macleod2011}. The distributions are centered around 0, making Celerite results consistent with those of \citet{macleod2011}.  We also plot the distributions of $\tau$ to $SF_{\infty}$ on Fig.~\ref{fig:tauRF_SFinf}
-
+\begin{figure*}
+\plotone{figs/MacLeod2010_Fig3_restframe.png}
+\caption{Comparing the rest-frame timescales $\tau$, and asymptotic variability amplitudes $SF_{\infty}$, for \citet{macleod2011} SDSS r-band,  and combined SDSS and PS1 data.  }
+\label{fig:tauRF_SFinf}
+\end{figure*} 
 
 
 
@@ -468,11 +468,7 @@ Using just the SDSS r-band data our results of fitting the DRW with Celerite are
 %\label{fig:}
 %\end{figure*} 
 
-\begin{figure*}
-\plotone{figs/MacLeod2010_Fig3_restframe.png}
-\caption{Comparing the rest-frame timescales $\tau$, and asymptotic variability amplitudes $SF_{\infty}$, for \citet{macleod2011} SDSS r-band,  and combined SDSS and PS1 data.  }
-\label{fig:tauRF_SFinf}
-\end{figure*} 
+
 
 \subsection{Trends with Rest-frame Wavelength}
 
@@ -483,12 +479,9 @@ f \propto \left( \frac{\lambda_{RF}}{4000 \AA} \right)^{B}
 \end{equation}
 
 Fig.~\ref{fig:wavelength_dependence}  shows that both using SDSS and SDSS-PS1 the timescales and asymptotic amplitudes follow approximate power law coefficients found by \citet{macleod2011}. 
-
-
-
-
+\
 \begin{figure*}
-\plotone{figs/macleod2010_Fig13_kdeplot_Chelsea_cut2.png}
+\plotone{figs/macleod2010_Fig13_kdeplot_Chelsea_cut_NEW.png}
 \caption{Rest-frame timescale $\tau$ (top panel), and long-term structure function $SF_{\infty}$ (bottom panel), as a function of rest-frame wavelength $\lambda_{RF}$. The background contours show \citet{macleod2011} SDSS ugriz data, and the foreground contours  denote the SDSS (red) and SDSS-PS1 (orange) new results with Celerite. In all datasets the quasars were selected according to criteria of \citet{macleod2011}. The red line indicates the best-fit power law to \citet{macleod2011} data, with $B=0.17$ an $-0.479$ for $\tau_{RF}$, and $SF_{\infty}$, respectively.}
 \label{fig:wavelength_dependence}
 \end{figure*} 
@@ -501,20 +494,33 @@ Here we examine the main scientific results : the correlations between variabili
 First, we consider the selection effects that are inherent to the quasar distribution. Fig.~\ref{fig:quasar_properties} shows the distribution of quasars as a function of redshift $z$, i magnitude $M_{i}$, and black hole mass $M_{BH}$. For instance, the trend of increasing redshift with $M_{i}$ on the upper left panel is due to the fact that quasars have to be brighter to be included in the survey at increasing distances. 
 
 
+
+As explained in \citep{shen2008,shen2011}, the most common approach to estimate quasar black hole mass is to assume that the broad-line region (BLR) is virialized, so that the continuum luminosity can be used as a proxy for the BLR radius, and the width of the broad emission lines (or line dispersion) is used to compute the virial velocity. The most commonly used, calibrated emission lines, that are available across different redshifts, are broad H$\alpha$, H$\beta$, Mg\,{\sc ii}, and C\,{\sc iv} \citep{vestergaard2002}. 
+There are various available catalogs of quasar properties : redshift, absolute i-band luminosity, black hole mass.  Usually the first quasar catalog releases basic properties such as redshift and photometry (eg. \citealt{schneider2007, schneider2010}, and then more involved studies derive black hole masses and bolometric luminosities (eg. \citealt{shen2008, shen2011}). This is also the case for more recent work:  once \citep{paris2017} released SDSS DR12 Quasar Catalog (DR12Q),  \citep{kozlowski2017a} followed by estimating from photometry the monochromatic luminosities,  and  deriving black hole masses, and \citep{chen2018} added a detailed analysis of continuum luminosities in the  H$\alpha$, H$\beta$ regions for low-redshift quasars. Using the spectra from Chinese LAMOST survey \citep{dong2018} also sought to estimate virial black hole masses, and the results while consistent with \citep{shen2011}, suffered from necessity to peg the non-calibrated spectra to SDSS photometry which was taken at a different epoch.  For sources variable at \~0.2 mag level, such as quasars, the ideal is to use single-epoch calibrated spectra to estimate continuum luminosity, and find virial black hole masses using relationships based on the monochromatic fluxes and broad line widths. Even though \cite{paris2018} DR14Q is the most recent catalog, like \citep{paris2017} it lacks black hole masses and bolometric luminosities, and \citep{kozlowski2017a}  bases his analysis on a SDSS photometry as a proxy for monochromatic luminosities rather than directly from the spectra. Of all available catalogs,  \citep{shen2011} provides the best to date measurements of quasar black hole masses and monochromatic luminosities, based directly on the single-epoch spectra, and is therefore our choice. 
+
+
+
+
+The absolute i-band magnitude $M_{i}$ is a good proxy for the bolometric luminosity (see \citealt{shen2008}, Fig.2). $M_{i}$ is derived from the observed i-band magnitude, by correcting for Galactic extinction, and K-correcting for the fact that at different redshifts different portions of the spectral energy distribution are observed by the telescope filter bandpass. Historically termed K-correction \citep{oke1968}, $K(z)$ is defined as $m_{intrinsic} = m_{observed} - K(z)$. In the early 2000s the standard was to K-correct to redshift 0, but as \citep{richards2006a} pointed out, since the distribution of quasars peaks at redshift 2, for most quasars K(z=0) required shifting the observed spectrum into the far infrared. The procedure was to correct separately for the continuum and emission line contributions, assuming a particular spectral shape (eg. power law  $f_{\nu} \propto \nu^{\alpha}$, with $\alpha=-0.5$ - see \citealt{schneider2010, vandenberk2001, richards2006a}). This introduced large error if the assumed spectral shape $\alpha=-0.5$ was far from the real spectral index. In early 2010s the standard started to shift towards K-correcting to redshift 2 (following  \citealt{richards2006a, wisotzki2000, blanton2003}), and including custom qusasar spectral shapes, as we see eg. in the catalog of \citep{shen2011}. Thus in this study we use  the absolute i-band magnitude K-corrected to z=2: $M_{i}(z=2)$ from \citep{shen2011}. 
+
+
+
+
+
 \begin{figure*}
 \plotone{figs/macleod2010_Fig12_Shen2011.png}
-\caption{Distribution of quasars as a function of  redshift, i magnitude, absolute i magnitude, and black hole mass. }
+\caption{Distribution of quasars as a function of  redshift, observed i-band magnitude, absolute i-band magnitude (K-corrected to z=2), and virial black hole mass. All quantities from \citep{shen2011}. }
 \label{fig:quasar_properties}
 \end{figure*} 
 
 
-On Fig.~\ref{fig:sf_tau_bh_mass_luminosity} $\tau$ and $SF_{\infty}$ are shown as a function of absolute magnitude $M_{i}$, redshift z, and black hole mass $M_{BH}$. 
+We show on  Fig.~\ref{fig:sf_tau_bh_mass_luminosity} $\tau$ and $SF_{\infty}$ as a function of absolute magnitude $M_{i}$, redshift z, and black hole mass $M_{BH}$. 
 
 
 
 \begin{figure*}
 \plotone{figs/macleod2010_Fig14_Shen2011_sdss-ps1.png}
-\caption{Long-term variability ($SF_{\infty}$), and characteristic timescale ($\tau$). }
+\caption{Long-term variability ($SF_{\infty}$), and characteristic timescale ($\tau$), as a function of absolute i-band magnitude (K-corrected to redshift 2, proxy for bolometric luminosity), virial black hole mass, and redshift. }
 \label{fig:sf_tau_bh_mass_luminosity}
 \end{figure*} 
 
@@ -545,14 +551,25 @@ Since  \citet{macleod2011} used independently fitted each of five SDSS bands, th
 
 
 
-Since we use SDSS-PS1 combined r-band data, we compare the new DRW parameters to results of fitting \citet{macleod2011}  r-band only data (green line from Fig.~\ref{fig:MacLeodShen2011}). The comparison of new results against old ones is shown on Fig.~\ref{fig:MacLeodCeleriteShen2011}
+Since we used SDSS-PS1 combined r-band data, we compare the new DRW parameters to results of fitting \citet{macleod2011}  r-band data (green line from Fig.~\ref{fig:MacLeodShen2011}). 
+
+
+The comparison of new results against old ones is shown on Fig.~\ref{fig:MacLeodCeleriteShen2011sf} and ~\ref{fig:MacLeodCeleriteShen2011tau} 
 
 
 
 \begin{figure*}
-\plotone{figs/posterior_IDL_Chelsea_Celerite_CD_MI_Z2.png}
+\plotone{figs/posterior_IDL_Chelsea_Celerite_CD_MI_Z2_tau.png}
 \caption{Comparison of Celerite fits of SDSS, SDSS-PS1 portions of combined quasar light curves against \citet{macleod2011} results of SDSS r-band only. The results from SDSS-only portion are consistent with previous results, and inclusion of the PS1 portion that increases the baseline decreases the timescale dependence on black hole mass, but increases the luminosity dependence. This can be understood as a rotation of the plane in ($\tau$, $M_{i}$, $M_{BH}$) coordinates.  }
-\label{fig:MacLeodCeleriteShen2011}
+\label{fig:MacLeodCeleriteShen2011tau}
+\end{figure*} 
+
+
+
+\begin{figure*}
+\plotone{figs/posterior_IDL_Chelsea_Celerite_CD_MI_Z2_SF.png}
+\caption{Same as Fig.~\ref{fig:MacLeodCeleriteShen2011tau}, but showing the asymptotic amplitude $SF_{\infty}$.New data from PS1 supports a weaker dependence of variability amplitude with luminosity and black hole mass (using Shen2011 data).  }
+\label{fig:MacLeodCeleriteShen2011sf}
 \end{figure*} 
 
 
@@ -561,11 +578,11 @@ Since the simulations showed that we do decrease the bias by extending the  base
 
 
 
-\begin{figure*}
-\plottwo{figs/validate_macleod2011_Fig6.png}{figs/validate_macleod2011_Fig14.png}
-\caption{Both relations are shown in the observed frame. The left panel is like Fig.6, and the right like Fig.14 in \citet{macleod2011}. }
-\label{fig:realLCresults}
-\end{figure*} 
+% \begin{figure*}
+% \plottwo{figs/validate_macleod2011_Fig6.png}{figs/validate_macleod2011_Fig14.png}
+% \caption{Both relations are shown in the observed frame. The left panel is like Fig.6, and the right like Fig.14 in \citet{macleod2011}. }
+% \label{fig:realLCresults}
+% \end{figure*} 
 
 
 
