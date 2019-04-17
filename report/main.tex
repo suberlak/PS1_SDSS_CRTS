@@ -226,7 +226,7 @@ We use the Panoramic Survey Telescope and Rapid Response System 1 Survey (Pan-ST
 
 \section{Introduction}
 
-Quasars are inherently variable sources at the rms level of 0.2 mag. They are distant active galactic nuclei, harboring a supermassive black hole surrounded by a hot accretion disk. Although it is agreed upon that majority of optical emission stems from the accretion disk, the detailed origin of variability has been debated over the past 50 years. Some favor a thermal origin of variability \citep{kelly2013}, related to the propagation of inhomogeneities ("hot spots") in the disk \citep{dexter2011}, others suggested magnetically elevated disks \citep{dexter2019}, or X-ray reprocessing  \citep{kubota2018}.   Quasar light curves have been successfully described using the Damped Random Walk (DRW) model \citep{kelly2009, macleod2010, kozlowski2010, zu2011, kasliwal2015a}, and the DRW parameters have been linked to the physical quasar properties. \citet{macleod2010} (M10) found correlations of the characteristic timescale and variability amplitude  to the black hole mass, and quasar luminosity.
+Quasars are inherently variable sources at the rms level of 0.2 mag. They are distant active galactic nuclei, harboring a supermassive black hole surrounded by a hot accretion disk. Although it is agreed upon that majority of optical emission stems from the accretion disk, the detailed origin of variability has been debated over the past 50 years. Some favor a thermal origin of variability \citep{kelly2013}, related to the propagation of inhomogeneities ("hot spots") in the disk \citep{dexter2011, cai2016}, others suggested magnetically elevated disks \citep{dexter2019}, or X-ray reprocessing  \citep{kubota2018}.   Quasar light curves have been successfully described using the Damped Random Walk (DRW) model \citep{kelly2009, macleod2010, kozlowski2010, zu2011, kasliwal2015a}, and the DRW parameters have been linked to the physical quasar properties. \citet{macleod2010} (M10) found correlations of the characteristic timescale and variability amplitude  to the black hole mass, and quasar luminosity.
 
 Variability is also a classification tool, allowing to distinguish quasars from other variable sources that do not exhibit such stochastic variability pattern \citep{macleod2011}. Using the DRW parametrization, \citep{macleod2011} found that DRW timescale and amplitude for QSO are order of  magnitude different from stars. This is especially useful for selecting quasars in the intermediate redshift range (which overlaps the stellar locus in color-color diagrams - see \citealt{sesar2007, yang2017}). Variability has also been used to increase the completeness in measurements of Quasar Luminosity Function (see \citealt{ ross2013, palanque2013, alsayyad2016, mcgreer2013, mcgreer2018}). 
 
@@ -309,6 +309,21 @@ We adopt SDSS S82-like cadence with N=60 epochs, or OGLE-III like cadence with N
 
 
 Fig.~\ref{fig:rho_space} confirms the findings of K17:  recovered $\rho$ becomes meaningless ('unconstrained') if the available DRW light curve baseline is not at least ten times longer than the input timescale. It also means that by extending the baseline we can move from the biased region to the unbiased regime.  Encouraged by this result, we extend the baselines of  quasar light curves, and revisit relations studied by  M10. 
+
+
+\subsection{Departure from DRW?}
+
+The power spectral density (PSD) of the DRW process is:
+
+\begin{equation}
+P(f) = \frac{4\sigma^{2}\tau}{1+(2 \pi \tau f)^{2}}
+\end{equation}
+(with $\sigma = \mathrm{SF}_{\infty} / \sqrt{2}$, $\tau$ is the characteristic timescale, $f$ is the frequency), so that $P(f) \propto f^{-2}$  at high frequencies $f > (2\pi \tau)^{-1}$, and levels to a constant value at lower frequencies\citep{kelly2014}. This can be parametrized as $P(f) \propto f^{\alpha_h}$ at high frequencies (short timescales), and  $P(f) \propto f^{\alpha_l}$  at low frequencies (long timescales), so that for a pure DRW process $\alpha_{h}=-2$ and $\alpha_{l} = 0$.  Various opinions exist about the exact value of  $\alpha_{l}$ and $\alpha{h}$ for accurate description of quasar variability,  or more broadly speaking -  AGN variability. For instance, \cite{guo2017} using a low-redshift subset of S82 quasars  finds that the low-frequency slope  $\alpha_{l}$ should not be steeper than $-1.3$.  Also, since short timescales are exquisitely probed by Kepler, \citep{aranzana2018} conducted the most extensive study of K2 AGN light curves to date, including 252 well-sampled quasars with a baseline of 80 days, and cadence of 30 mins. That study shows that while there is a range of PSD slopes from $-1$ to $-3.2$, the median of $-2.2$ is consistent with the DRW model. 
+Furthermore, \citep{sun2018} found that the data quality of SDSS-like light curves is insufficient to distinguish between CAR(1) and more complex models. Likewise, \citep{zu2013}  using 223 $I$-band  OGLE quasar  light curves (baseline of  $\approx7$ years, $\approx570$ epochs) considered whether different covariance functions (powered-exponential, Mat\`ern, Kepler-exponential, Pareto exponential - see Eqs.5,6,8,9 in \citealt{zu2013}) may present a better fit, and found that while there may be small deviations, they are not significant enough to depart from a robust DRW description. 
+
+However, \citep{kozlowski2017a} claims that based on \cite{kozlowski2016b} and \citep{caplar2017}, AGNs have PSD slopes $\alpha_{h} \leqslant -2$, which means that models assuming a DRW $\alpha_{h}=2$ would result in decorrelation timescales biased low. It is currently not possible to distinguish between close-to-DRW and DRW processes for the S82 quasars because good sampling at both low frequencies (long timescales, white noise part), and high frequencies (short timescales, red / pink noise part)\cite{kozlowski2017a}.
+
+In the end, we follow the direction laid out in M10, Sec.4.4, which shows that while within S82 sampling assuming $\alpha_{h}= 2 $ it is impossible to reliably distinguish between a $\alpha_{l}=0$ and $-1$. A future study with appropriate cadence would be necessary to model each quasar individually with different $\alpha_{l}$ and $\alpha_{h}$. We elect to use the DRW description ($\alpha_{l}=0$, $\alpha_{h}=-2$) to allow a better comparison of our results with M10. 
 
 %
 %
@@ -568,11 +583,47 @@ Because we use the combined r-band data, we compare our results to M10 SDSS r-ba
 
 
 
-\cite{shen2018} when describing the SDSS Reverberation Mapping sample outlines the black hole mass - luminosity relation (Fig.8 therein) : $\log_{10}(M_{BH}) \sim \log_{10}{(L_{bol})}$
 
 
 \cite{sun2018} using 1000 low-z S82 QSO finds that variability amplitude is correlated with the inverse of bolometric luminosity, and suggests that since $\hat{\sigma}$ is so well related to $L
 _{bol}$, perhaps we could use the $\hat{\sigma} - L_{bol}$ relation to derive $L_{bol}$ without assuming any cosmological models. 
+
+
+
+
+
+
+
+
+Variability amplitude - Eddington ratio relation has been studied by 
+
+
+
+
+
+Broad-band AGN photometry can be translated into monochromatic fluxes in the vicinity of the reverberating lines (H$\beta$ 5100 $\AA$, Mg\,{\sc ii} at 3000 $\AA$, and C\,{\sc iv} at 1350 $\AA$, \citealt{kozlowski2015}), which in turn can be used to estimate the virial black hole mass :
+
+\begin{equation}
+M_{BH} = \frac{f R \Delta V^{2}}{G}
+\end{equation}
+
+where $f$ is a constant of order unity, $R$ is the size of the Broad Line Region (estimated from  emission-line lag $\Delta t$ as $R = c \Delta t$), $\Delta V$ is the emission line width, $G$ gravitational constant. From reverberation mapping studies we know that continuum luminosity $L$ is related to the size of the BLR region as $R \propto L^{\gamma}$ \citep{vestergaard2006}, with $\gamma$ very close to $1/2$ (eg. \citealt{bentz2009} finds from RM studies $\gamma = 0.519 \pm 0.06$). Thus we obtain  that $R \Delta V^{2} \propto L^{\gamma} \Delta V^{2} \equiv \mu$ , and the black hole mass is a simple function of line width measurement  and continuum luminosity : 
+
+\begin{equation}
+\label{eq:RMBHmass}
+\log{M_{BH}} = \log{\mu} + a 
+\end{equation}
+
+This is also seen eg. in more recent study by \citep{shen2018} of the SDSS Reverberation Mapping sample. 
+
+Ideally one would obtain a quasar spectrum to directly measure $\Delta V$ and $L$, and use Eq.\ref{eq:RMBHmass} to estimate the black hole mass. In the era of LSST, with an order of magnitude increase in the number of known quasars, spectroscopic follow-up of all is not feasible, but as long as the broad-band photometry is available, \citep{kozlowski2015} method (also applied to SDSS Quasar Data Release 12, see \citealt{kozlowski2017b}) presents an attractive alternative to the variability-based black hole mass estimates. 
+
+
+
+
+
+
+
 
 
 
