@@ -240,7 +240,11 @@ Almost a decade ago \citet{macleod2010} (hereafter M10) published their research
  This paper improves on the DRW parameters (Section~\ref{sec:methods} ) describing amplitude and characteristic timescale of Stripe82 quasars by extending the SDSS light curves for well-sampled Stripe82 with PanStarrs1 (PS1) data (Sections~\ref{sec:data} and~\ref{sec:simulation}). We revisit trends between  the DRW parameters and physical quasar properties, such as black hole mass, or bolometric luminosity (Section~\ref{sec:results}). We make predictions for fidelity of DRW parameter retrieval once ZTF and LSST data become available. 
 
 
-
+%
+%
+%
+%
+%
 \section{Methods}\label{sec:methods}
 \subsection{DRW as a Gaussian Process}
 Damped Random Walk (Ornstein–Uhlenbeck process) can be modeled as a member of a class of Gaussian Processes (GP). Each GP is described by a mean and a kernel - a covariance function that contains a measure of correlation between two points $x_{n}$, $x_{m}$, separted by $\Delta t_{nm}$ (autocorrelation). For the  DRW process, the covariance  between observations of a source separated by $\Delta t_{nm}$ is : 
@@ -306,16 +310,21 @@ We adopt SDSS S82-like cadence with N=60 epochs, or OGLE-III like cadence with N
 
 Fig.~\ref{fig:rho_space} confirms the findings of K17:  recovered $\rho$ becomes meaningless ('unconstrained') if the available DRW light curve baseline is not at least ten times longer than the input timescale. It also means that by extending the baseline we can move from the biased region to the unbiased regime.  Encouraged by this result, we extend the baselines of  quasar light curves, and revisit relations studied by  M10. 
 
+%
+%
+%
+%
+%
 
 \section{Data}\label{sec:data}
 \subsection{Surveys}
-We focus on data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by the SDSS between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012} Sec. 2.2 for overview, and \citealt{annis2014} for details ) . Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citep{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
+We focus on THE data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by SDSS between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012} Sec. 2.2 for overview, and \citealt{annis2014} for details ) . Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves  spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citep{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
 
-\begin{figure}%[ht!]
-\plotone{figs/illustrate_epochal_coverage.png}
-\caption{Raw photometric measurements for quasars in Stripe 82 from SDSS(r),  PS1(gri),  PTF(gR), CRTS(V).}
-\label{fig:rawBaselines}
-\end{figure} 
+% \begin{figure}%[ht!]
+% \plotone{figs/illustrate_epochal_coverage.png}
+% \caption{Raw photometric measurements for quasars in Stripe 82 from SDSS(r),  PS1(gri),  PTF(gR), CRTS(V).}
+% \label{fig:rawBaselines}
+% \end{figure} 
 
 \begin{figure*}
 \plotone{figs/lightcurves_extent.png}
@@ -324,25 +333,39 @@ We focus on data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedl
 \end{figure*} 
 
 
-We extend the SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018}, CRTS \citep{drake2009}, and PTF \citep{rau2009}. We find 9248 PS1 matches, 6455 PTF matches, and 7737 CRTS matches to SDSS S82 quasars. There are  6444 quasars with SDSS-PS1-PTF-CRTS data.  Fig.~\ref{fig:rawBaselines}  shows the distribution of raw epochs, and Fig~\ref{fig:lcExtent} the  baseline coverage of various surveys.    Each survey uses a unique set of bandpasses and cadences : SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{SDSS}$ , and the other are  non-simultaneous : $\{g,r,i,z,y\}_{PS1}$ ,  $\{g,R\}_{PTF}$, $V_{CRTS}$.  
+We extend the SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018}, CRTS \citep{drake2009}, and PTF \citep{rau2009} data. We find 9248 PS1 matches, 6455 PTF matches, and 7737 CRTS matches to SDSS S82 quasars. There are  6444 quasars with SDSS-PS1-PTF-CRTS data.  Fig~\ref{fig:lcExtent}  depicts the  baseline coverage of various surveys.  Each survey uses a unique set of bandpasses and cadences : SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{SDSS}$ , and the others are  non-simultaneous : $\{g,r,i,z,y\}_{PS1}$ ,  $\{g,R\}_{PTF}$, $V_{CRTS}$.  
 
 \subsection{Photometric offsets}
 
-To utilize all data we define a common 'target' bandpass. SDSS r band is closest to PS1 r, PTFr, CRTSV. For this reason we translate photometry from nearby filters ($\{g,R\}_{PTF}$, $\{g,r,i\}_{PS1}$, $V_{CRTS}$) to the  'master' $r_{SDSS}$  band.
+We combine the photometry into a single 'master' bandpass. We choose SDSS r as the target since it has the best photometry, and we calculate color terms that afford transformation from other photometric systems to SDSS. We elect only to translate to SDSS $r$ photometry from nearby filters : ($\{g,R\}_{PTF}$, $\{g,r,i\}_{PS1}$, $V_{CRTS}$). 
 
-With two photometric systems, eg. SDSS(ugriz), and PS1(grizy),  we can find offsets (or color terms) from one to another. Consider SDSS as target system,  PS1 as the auxiliary system, so that we find offsets from PS1 to SDSS. This amounts to creating 'synthetic' SDSS bands from PS1, using the SDSS color to spread the stellar locus. More generally, we would always use the color of the target system : 
+Color terms are derived using SDSS standard stars catalog~\citep{ivezic2007}.  We focused on 10\% subset of randomly chosen stars from the catalog, and found CRTS (B.Sesar, priv.comm.), PS1 (from MAST \url{http://panstarrs.stsci.edu}) and PTF (IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}) matches. 
+
+We consider the difference  between the target (SDSS) and source (eg.PS1) photometry as a function of mean SDSS $(g-i)$ color : 
+
 
 \begin{equation}
-r_{PS1} -  r_{SDSS} = f ( SDSS (g-i ))
+m_{PS1} - m_{SDSS} = f(g-i)
 \end{equation}
 
-the function is a polynomial fitted to the stellar locus on the plot of $SDSS (g-i )$ vs $r_{PS1} -  r_{SDSS} $. We use $SDSS(g-i)$ because is provides a larger wavelength baseline than $(g-r)$. 
+While \cite{tonry2012} chose to spread the stellar locus with $(g-r)$ color, we prefer to use the $(g-i)$ color since it provides a larger wavelength baseline. Some authors (eg. \citet{li2018}) allow $f(g-i)$ to be a higher-order polynomial, but since we limit the transformation to the  region of $(g-i)$ space occupied by quasars (Fig.~\ref{fig:quasarColors}), we find that the linear fit is sufficient (see Fig. ~\ref{fig:offsetsPS1}).   Table ~\ref{tab:offsets} shows the offsets used to transform PS1, CRTS and PTF to SDSS $r$-band. 
 
-Note that there are other possible choices for the target band and the intermediate color to spread the stellar locus. For instance, rewriting the above as  $m - s = f(x)$, \cite{tonry2012} derived offsets from SDSS to PS1  using $x$ = SDSS($g-r$), $m = PS1 \{g,r,i,z,y\}$, and $s$ = SDSS($r$).
 
-Since quasars occupy a blue region in the color-color diagram (Fig.~\ref{fig:quasarColors}), we calculate photometric offsets specifically for this region of the spectrum.  We only show the color-magnitude diagrams  for PS1 offsets  (Fig. ~\ref{fig:offsetsPS1}) since we choose not to include CRTS and PTF data in the final sample.
+% QSO COLORS 
+\begin{figure*}
+\plotone{figs/SDSS_S82_CMD_qso_stars_2.png}
+\caption{Regions occupied in color-color space by S82 quasars (colors) and standard stars (contours) 	\citep{schneider2010}. We show only 10 000  randomly chosen stars from the  full 1 mln + standard stars catalog \citealt{ivezic2007}. We limit the offset to  SDSS $-0.5<(g-i)<1.$. Quasars also overlap other variable sources (eg. RRLyrae), not shown on this illustration \citealt{sesar2007}. }
+\label{fig:quasarColors}
+\end{figure*} 
 
-The offsets used to make combined r-band light curves are shown in Table ~\ref{tab:offsets}
+
+% PS1 
+\begin{figure*}
+\plotone{figs/Offsets_PS1-SDSSr_SDSSgi_ext-NO.png}
+\caption{The SDSS-PS1 offsets. We plot only bright stars where SDSS $r < 19$, and that fulfill  mErr * sqrt(Nobs) < 0.03 . Each panel includes about 6000 standard stars. Vertical dashed lines mark the region in the SDSS color space occupied by quasars (see Fig.~\ref{fig:quasarColors}), used to fit the stellar locus with a polynomial.}
+\label{fig:offsetsPS1}
+\end{figure*} 
+
 
 
 \begin{deluxetable}{c|cc}
@@ -365,22 +388,6 @@ PS1 i &  0.0247   & -0.2765 \\
 
 
 
-% QSO COLORS 
-\begin{figure*}
-\plotone{figs/SDSS_S82_CMD_qso_stars.png}
-\caption{Regions occupied in color-color space by S82 quasars (colors) and standard stars (contours) 	\citep{schneider2010}. We show only 10 000  randomly chosen stars from the  full 1 mln + standard stars catalog \citealt{ivezic2007}. }
-\label{fig:quasarColors}
-\end{figure*} 
-
-
-% PS1 
-\begin{figure*}
-\plotone{figs/Offsets_PS1-SDSSr_SDSSgi_ext-NO.png}
-\caption{The SDSS-PS1 offsets. We plot only bright stars that have SDSS(r) < 19, and that fulfill  mErr * sqrt(Nobs) < 0.03 . Each panel plots about 6000 stars of the 47000 CRTS S82 stars . Vertical dashed lines mark the region in SDSS color space occupied by quasars (see Fig.~\ref{fig:quasarColors}), used to fit the stellar locus with a polynomial. }
-\label{fig:offsetsPS1}
-\end{figure*} 
-
-
 
 %NOTE ABOUT EXTINCTION:  due to dust present between us and the standard stars (or background quasars), the observed light will appear slightly redder because dust preferentially scatters blue light away. This depends on the location of the source on the  sky and is related to the dust inhomogeneities in the Milky Way. 
 
@@ -388,13 +395,15 @@ PS1 i &  0.0247   & -0.2765 \\
 
 %Correction for insterstellar extinction is only needed for color selection, since otherwise objects would appear to be of the later stellar type (redder) than they really are. To correct for extinction we use the most up-to-date maps of stellar extinction Bayestar17 (Green+2018). These extinction maps are 3D probabilistic, and we assume a uniform distance of 4 kpc for the dust column for all stars.  
 
+%
+%
+%
+%
+%
 
-\section{Simulation : lessons learned}\label{sec:simulation}
+\section{Simulations : lessons learned}\label{sec:simulation}
 
-Having established in Sec.~\ref{sec:baseline} that extending the light curve baseline improves the recovery of input DRW parameters,  we combine SDSS light curves with PS1 data. We first consider the theoretical improvement in the fit, simulating DRW light curves for which we select SDSS-PS1 , or SDSS-only sections.  Then we fit the real data with DRW model, and divide by (1+z) to study the timescales in rest frame. 
-
-
-We simulate the DRW using the real cadences and errors corresponding to sections of combined light curves (SDSS,PS1,CRTS,PTF), including the portion corresponding to the predicted LSST and ZTF contribution.  For LSST segment we assumed a cadence of 50 epochs per year,  for 10 years (between 2023-2033), and  magnitude-dependent photometric uncertainty from Sec. 3.5 in \citet{lsstscibook}:
+We simulate the theoretical improvement in the retrieved DRW parameters in combined light curves by generating long and well-sampled light curves, all with input $\tau = 575 $ days, $SF_{\infty} = 0.2$ mag (the median of S82 distribution in M10). We then select SDSS, or SDSS-PS1 segments, sampling at the cadence corresponding to real light curves. We also predict the contribution of ZTF and LSST data (Fig.~\ref{fig:simLC}). For the ZTF 1-year segment (Spring 2019 ZTF Data Release will include data from 2018) we assumed 120 observations in ZTFg and ZTFr (every three nights), deriving the error model from the ZTF data for standard stars (Fig.~\ref{fig:ztf_errors}). For the LSST 10-year segment (final LSST DR10 in 2031) we assumed 50 epochs per year, randomly distributed throughout the year, with the following error model:
 
 \begin{eqnarray}
 \sigma_{LSST}(m)^{2} = \sigma_{sys}^{2} + \sigma_{rand}^{2} \,\, \mathrm{(mag)}^{2}\\
@@ -402,38 +411,30 @@ We simulate the DRW using the real cadences and errors corresponding to sections
 x = 10^{0.4(m-m_{5})}
 \end{eqnarray}
 
-with  $\sigma_{sys} = 0.005$, $\gamma=0.039$, $m_{5} = 24.7$ (see Table 3.2  therein).
-
-
-For the ZTF segment (the 2018 data that covers Stripe82, to be released May 9 2019), we have assumed 120 observations in ZTFg and ZTFr, every three days, with error structure derived from ZTF light curves. We fitted the functional form described above to estimate the ZTF photometric uncertainty (see Fig.~\ref{fig:ztf_errors})
-
-
-
-\begin{figure*}%[ht!]
-\plotone{figs/ZTF_error_curve.png}
-\caption{The rms spread as a function of magnitude for ZTF objects with over 100 observations. We overplot the functional describing the adopted error model. Properties of ZTF photometric uncertainty are largely similar to the PTF uncertainties.}
-\label{fig:ztf_errors}
-\end{figure*} 
-
-
-For all light curves we assumed  $\tau = 575 $ days, $SF_{\infty} = 0.2$ mag (the median of S82 distribution in ~\citet{macleod2010}). Fig.~\ref{fig:simLC} shows an example simulated DRW for SDSS-PS1-LSST.
+with  $\sigma_{sys} = 0.005$, $\gamma=0.039$, $m_{5} = 24.7$ (see Sec. 3.2 in \citet{ivezic2019}).
 
 \begin{figure*}%[ht!]
 \plotone{figs/1072282_w_LSST1.png}
-\caption{Simulated DRW process sampled at real cadence of SDSS, PS1, and simulated cadence of LSST. To each observed  point we add Gaussian noise corresponding to the reported  heteroscedastic (different for all points) errors for SDSS-PS1, and simulated magnitude-dependent errors for LSST. }
+\caption{Simulated DRW process sampled at the real cadence of SDSS, PS1 segments for quasar SDSSdbID=1072282,  adding the simulated LSST segment. The well-sampled true DRW signal was first sampled at SDSS-PS1-LSST cadences, and then Gaussian offset was added to each point to simulate observational noise. }
 \label{fig:simLC}
 \end{figure*} 
 
-To the simulated true DRW signal we add Gaussian noise corresponding to epochal heteroscedastic errors (eg. for SDSS epochs we use SDSS errors, for PS1 epochs we use PS1 errors, etc). This noise causes the underlying signal to become less constrained for larger errors (eg. CRTS  and PTF portion).  We further found that inclusion of ZTF data for 2018 would not significantly change our results. Inclusion of PS1 data with its excellent photometric uncertainty (as compared to ZTF or PTF) is the best improvement over existing SDSS results.  We predict that in the future (after more data has been assembled and re-calibrated) ZTF will help, but not as dramatically as LSST (see Fig.~\ref{fig:simLCresults1}).  For this reason we found that using only SDSS-PS1 portion is the best tradeoff between adding more baseline vs introducing more uncertainty by noisy simulation  - see Fig.~\ref{fig:combinedLCerrors} for error distribution, and Fig.~\ref{fig:simLC} for illustration of  the simulated light curve. 
-
 \begin{figure}%[ht!]
-\plotone{figs/real_combined-r_band_sdss_ps1_stats.png}
-\caption{Distribution of median errors in combined r-band real light curves. We calculate the median per segment. This shows that the CRTS and PTF portions have much larger errors than SDSS, PS1, and are therefore less useful in improving the DRW parameters. This is the reason for using only SDSS-PS1 portion.  }
-\label{fig:combinedLCerrors}
+\plotone{figs/ZTF_error_curve.png}
+\caption{The rms spread as a function of magnitude for ZTF non-variable stars with over 100 observations. We overplot the functional describing the adopted error model (after \citealt{ivezic2019}). Properties of ZTF photometric uncertainties are largely similar to the PTF uncertainties.}
+\label{fig:ztf_errors}
 \end{figure} 
 
 
-In accordance with Fig.~\ref{fig:rho_space}, we find that extending the baseline decreases the bias in retrieved DRW parameters. Indeed, Fig.~\ref{fig:simLCresults1} shows that for an ensemble of 6444 simulated light curves the  recovered DRW parameters become less biased when supplementing the SDSS data with PS1. , and th and ~\ref{fig:simLCresults2} 
+To mirror observational conditions we add to the true underlying DRW signal a Gaussian noise, with variance defined by photometric uncertainties for corresponding surveys. Given the noise properties of each survey (Fig.~\ref{fig:combinedLCerrors}), we found that relatively large uncertainties of CRTS and PTF segments introduced less improvement in recovery of DRW parameters, given that similar baseline is already covered by the PS1 data.  We further found that inclusion of ZTF data for 2018 would not significantly change our results. Inclusion of PS1 data with its excellent photometry (as compared to ZTF or PTF) is the best improvement over existing SDSS results.  In the future (after more data has been assembled and re-calibrated) ZTF will help, but not as dramatically as LSST (see Fig.~\ref{fig:simLCresults1}).  For this reason we found that using only SDSS-PS1 portion is the best tradeoff between adding more baseline vs introducing more uncertainty with noisy data. Fig.~\ref{fig:simLC} illustrates  of  the simulated light curve. 
+
+\begin{figure}%[ht!]
+\plotone{figs/sim_subsampled2_stats_error_lin.png}
+\caption{Distribution of median photometric uncertainties (colloquially called 'errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1. This is the reason for using only SDSS-PS1 part of the combined light curve.}
+\label{fig:combinedLCerrors}
+\end{figure} 
+
+As we found earlier, extending the light curve baseline decreases the bias in the retrieved DRW parameters (Fig.~\ref{fig:rho_space}). For light curves that simulate the extension of SDSS with PS1, ZTF, LSST segments, Figs.~\ref{fig:simLCresults1} and~\ref{fig:simLCresults2} show that this is indeed the case: as make light curves longer, the retrieved $\tau$ and $SF_{\infty}$ become more centered on the input value. 
 
 \begin{figure*}
 \plotone{figs/Simulated_Jeff1-EXP-190326.png}
@@ -448,62 +449,64 @@ In accordance with Fig.~\ref{fig:rho_space}, we find that extending the baseline
 \end{figure*} 
 
 
+%
+%
+%
+%
+%
+%
+%
+%
+
 \section{Results: fitting SDSS-PS1 with Celerite}\label{sec:results}
 
-We have extended the baseline of Stripe82 quasars by adding to SDSS r-band data the  PS1 g,r,i data, transformed into common SDSS r-band. Encouraged by the simulation results we first show that the fitting routine is consistent when using only SDSS r-band portion with the results obtained by M10. Since the variability is assumed to be intrinsic to quasars, we shift timescales to rest frame : $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$.  First, fits for DRW parameters using only the SDSS segment of quasar light curves ($\tau_{\mathrm{SDSS}}$, $SF_{\infty, \mathrm{SDSS}}$) are consistent with M10 : Fig.~\ref{fig:tauRF_SFinf}  shows that the distributions  $\tau_{RF}$ and $SF_{\infty}$ overlap. Furthermore, Fig.~\ref{fig:celeriteCompare} compares DRW parameters using only the SDSS segment for M10 and this work, plotting the ratio of M10 results to $\sigma_{\mathrm{SDSS}}$, $\tau_{\mathrm{SDSS}}$. Both histograms are peaked close to 0 which would indicate perfect agreement. 
+We have extended the baseline of Stripe82 quasars by adding to SDSS r-band data the  PS1 g,r,i data, transformed into common SDSS r-band. As the variability originates in the accretion disk, we shift all timescales to quasar rest frame : $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$. 
+
 
 \begin{figure*}
 \plotone{figs/MacLeod2010_Fig3_restframe.png}
-\caption{Comparing the rest-frame timescales $\tau$, and asymptotic variability amplitudes $SF_{\infty}$, for \citet{macleod2011} SDSS r-band,  and combined SDSS and PS1 data.  }
+\caption{Comparing the rest-frame timescales $\tau$, and asymptotic variability amplitudes $SF_{\infty}$, for M10 SDSS r-band,  and combined SDSS and PS1 data.  }
 \label{fig:tauRF_SFinf}
 \end{figure*} 
 
 
+We first show that our results are consistent with M10 when using only the SDSS r-band : on Fig.~\ref{fig:tauRF_SFinf}) the distributions of $\tau$, $SF_{\infty}$ from M10 (red) and our results (blue) coincide. Furthermore, when comparing object-by-object M10 to our SDSS-only results we find a very good agreement - histograms on Fig.~\ref{fig:celeriteCompare} are peaked around 0. 
+
 
 \begin{figure*}
 \plotone{figs/Compare_Chelsea_r-band_Celerite_SDSS_EXP.png}
-\caption{Plot comparing results for SDSS r-band fitting of \citet{macleod2011} ($\sigma_{m}, \tau_{m}$), and current results for SDSS r-band using Celerite ($\sigma_{fit}, \tau_{fit}$). }
+\caption{Plot comparing results for SDSS r-band fitting of  M10 ($\sigma_{m}, \tau_{m}$), and current results for SDSS r-band using Celerite ($\sigma_{fit}, \tau_{fit}$). }
 \label{fig:celeriteCompare}
 \end{figure*} 
 
 
-%\begin{figure*}
-%\plotone{figs/}
-%\caption{}
-%\label{fig:}
-%\end{figure*} 
+\subsection{Rest-frame Wavelength Correction}
 
-
-
-\subsection{Trends with Rest-frame Wavelength}
-
-Following  \citet{macleod2011} , we shift all timescales to rest-frame, and prior to looking for correlations with physical quantities (black hole mass, luminosities, redshifts), we correct all quantities to rest frame wavelength of $4000 \AA $. This is because originally the SDSS data employed by  \citet{macleod2011}  were taken in near-simultaneous ugriz filters, each centered on different observers wavelength. Because quasars are not all at the same distance, this means that the same band would probe a different rest-frame wavelength for each quasar.   \citet{macleod2011}  found that $\tau_{RF}$ and $SF_{\infty}$  ($f$) can be connected to rest-frame wavelength $\lambda_{RF}$ via power law  :  
-
+Prior to looking for correlations with physical quantities (black hole mass, luminosities, redshifts), we correct $\tau$ and $SF_{\infty}$ for wavelength dependence using formulae from M10. Since quasars are at different redshifts, the same observed band would probe a different rest-frame wavelength $\lambda_{RF}$ for each quasar. We find that the power law employed by M10:
 \begin{equation}
 f \propto \left( \frac{\lambda_{RF}}{4000 \AA} \right)^{B}
 \end{equation}
+together with the fit coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively, are adequate for our combined SDSS r-band results, as shown on Fig.~\ref{fig:wavelength_dependence} . 
 
-Fig.~\ref{fig:wavelength_dependence}  shows that both using SDSS and SDSS-PS1 the timescales and asymptotic amplitudes follow approximate power law coefficients found by \citet{macleod2011}. 
-\
+  
 \begin{figure*}
 \plotone{figs/macleod2010_Fig13_kdeplot_Chelsea_cut_NEW.png}
-\caption{Rest-frame timescale $\tau$ (top panel), and long-term structure function $SF_{\infty}$ (bottom panel), as a function of rest-frame wavelength $\lambda_{RF}$. The background contours show \citet{macleod2011} SDSS ugriz data, and the foreground contours  denote the SDSS (red) and SDSS-PS1 (orange) new results with Celerite. In all datasets the quasars were selected according to criteria of \citet{macleod2011}. The red line indicates the best-fit power law to \citet{macleod2011} data, with $B=0.17$ an $-0.479$ for $\tau_{RF}$, and $SF_{\infty}$, respectively.}
+\caption{Rest-frame timescale $\tau$ (top panel), and asymptotic structure function $SF_{\infty}$ (bottom panel), as a function of rest-frame wavelength $\lambda_{RF}$. The background contours show M10 SDSS $ugriz$ data, and the foreground contours  denote our results using  SDSS (red) and SDSS-PS1 (orange) segments. The red line indicates the best-fit power law to M10 data, with $B=0.17$ an $-0.479$ for $\tau_{RF}$, and $SF_{\infty}$, respectively.}
 \label{fig:wavelength_dependence}
 \end{figure*} 
 
 
 \subsection{Trends with Luminosity, Black Hole Mass, and Redshift}
 
-Here we examine the main scientific results : the correlations between variability parameters  ($\tau, SF{\infty}$), and the physical properties of quasars (rest-frame wavelength $\lambda_{RF}$, redshift $z$, absolute i-band magnitude $M_{i}$, and black hole mass $M_{BH}$). 
+Here we examine the main scientific results: correlations between variability parameters  ($\tau, SF{\infty}$), and the physical properties of quasars: absolute i-band magnitude $M_{i}$, and black hole mass $M_{BH}$. 
 
 First, we consider the selection effects that are inherent to the quasar distribution. Fig.~\ref{fig:quasar_properties} shows the distribution of quasars as a function of redshift $z$, i magnitude $M_{i}$, and black hole mass $M_{BH}$. For instance, the trend of increasing redshift with $M_{i}$ on the upper left panel is due to the fact that quasars have to be brighter to be included in the survey at increasing distances. 
 
 
 
 As explained in \citep{shen2008,shen2011}, the most common approach to estimate quasar black hole mass is to assume that the broad-line region (BLR) is virialized, so that the continuum luminosity can be used as a proxy for the BLR radius, and the width of the broad emission lines (or line dispersion) is used to compute the virial velocity. The most commonly used, calibrated emission lines, that are available across different redshifts, are broad H$\alpha$, H$\beta$, Mg\,{\sc ii}, and C\,{\sc iv} \citep{vestergaard2002}. 
+
 There are various available catalogs of quasar properties : redshift, absolute i-band luminosity, black hole mass.  Usually the first quasar catalog releases basic properties such as redshift and photometry (eg. \citealt{schneider2007, schneider2010}, and then more involved studies derive black hole masses and bolometric luminosities (eg. \citealt{shen2008, shen2011}). This is also the case for more recent work:  once \citep{paris2017} released SDSS DR12 Quasar Catalog (DR12Q),  \citep{kozlowski2017a} followed by estimating from photometry the monochromatic luminosities,  and  deriving black hole masses, and \citep{chen2018} added a detailed analysis of continuum luminosities in the  H$\alpha$, H$\beta$ regions for low-redshift quasars. Using the spectra from Chinese LAMOST survey \citep{dong2018} also sought to estimate virial black hole masses, and the results while consistent with \citep{shen2011}, suffered from necessity to peg the non-calibrated spectra to SDSS photometry which was taken at a different epoch.  For sources variable at \~0.2 mag level, such as quasars, the ideal is to use single-epoch calibrated spectra to estimate continuum luminosity, and find virial black hole masses using relationships based on the monochromatic fluxes and broad line widths. Even though \cite{paris2018} DR14Q is the most recent catalog, like \citep{paris2017} it lacks black hole masses and bolometric luminosities, and \citep{kozlowski2017a} (henceforth K17)  bases his analysis on a SDSS photometry as a proxy for monochromatic luminosities rather than directly from the spectra. Of all available catalogs,  \citep{shen2011} provides the best to date measurements of quasar black hole masses and monochromatic luminosities, based directly on the single-epoch spectra, and is therefore our choice. 
-
-
 
 
 The absolute i-band magnitude $M_{i}$ is a good proxy for the bolometric luminosity (see \citealt{shen2008}, Fig.2). $M_{i}$ is derived from the observed i-band magnitude, by correcting for Galactic extinction, and K-correcting for the fact that at different redshifts different portions of the spectral energy distribution are observed by the telescope filter bandpass. Historically termed K-correction \citep{oke1968}, $K(z)$ is defined as $m_{intrinsic} = m_{observed} - K(z)$. In the early 2000s the standard was to K-correct to redshift 0, but as \citep{richards2006a} pointed out, since the distribution of quasars peaks at redshift 2, for most quasars K(z=0) required shifting the observed spectrum into the far infrared. The procedure was to correct separately for the continuum and emission line contributions, assuming a particular spectral shape (eg. power law  $f_{\nu} \propto \nu^{\alpha}$, with $\alpha=-0.5$ - see \citealt{schneider2010, vandenberk2001, richards2006a}). This introduced large error if the assumed spectral shape $\alpha=-0.5$ was far from the real spectral index. In early 2010s the standard started to shift towards K-correcting to redshift 2 (following  \citealt{richards2006a, wisotzki2000, blanton2003}), and including custom qusasar spectral shapes, as we see eg. in the catalog of \citep{shen2011}. Thus in this study we use  the absolute i-band magnitude K-corrected to z=2: $M_{i}(z=2)$ from \citep{shen2011}. 
@@ -519,8 +522,14 @@ The absolute i-band magnitude $M_{i}$ is a good proxy for the bolometric luminos
 \end{figure*} 
 
 
-We show on  Fig.~\ref{fig:sf_tau_bh_mass_luminosity} $\tau$ and $SF_{\infty}$ as a function of absolute magnitude $M_{i}$, redshift z, and black hole mass $M_{BH}$. 
+We show on  Fig.~\ref{fig:sf_tau_bh_mass_luminosity} $\tau$ and $SF_{\infty}$ as a function of absolute magnitude $M_{i}$, redshift z, and black hole mass $M_{BH}$. We investigate these correlations in more detail fitting to  $f$ is $\tau_{RF}$ or $SF_{\infty}$ a power law : 
 
+
+\begin{eqnarray}
+\label{eq:powlawmodel}
+\log_{10}{f} = &A& + B \log_{10}\left( \lambda_{RF} / 4000 \AA \right) + C (M_{i} + 23) \nonumber \\
+&+& D \log_{10}{\left( M_{BH} / 10^{9} M_{\odot}  \right)} 
+\end{eqnarray} 
 
 
 \begin{figure*}
@@ -529,43 +538,23 @@ We show on  Fig.~\ref{fig:sf_tau_bh_mass_luminosity} $\tau$ and $SF_{\infty}$ as
 \label{fig:sf_tau_bh_mass_luminosity}
 \end{figure*} 
 
-
-We investigate these correlations by fitting a power law, after \citet{macleod2011} :
-
-
-\begin{eqnarray}
-\log_{10}{f} = &A& + B \log_{10}\left( \lambda_{RF} / 4000 \AA \right) + C (M_{i} + 23) \nonumber \\
-&+& D \log_{10}{\left( M_{BH} / 10^{9} M_{\odot}  \right)} 
-\end{eqnarray} 
-
-where $f$ is $\tau_{RF}$ or $SF_{\infty}$. 
-
-
- \citet{macleod2011}  used the Shen2008 catalog, and k-corrected the absolute i-band magnitude to a redshift of 0. Since then, given that the redshift distribution of quasars peaks at z=2, it has become a more standard practice to k-correct absolute quasar magnitudes to z=2, as it is in Shen2011 catalog. We opt to use Shen2011 catalog as a source of physical quasar parameters. 
-
-
-Since  \citet{macleod2011} used independently fitted each of five SDSS bands, the coefficients A,C,D,E were band-averaged. The result of that, using the new data of Shen2011, is shown on Fig.~\ref{fig:MacLeodShen2011}
-
+M10 fitted  this power law independently to each of the five SDSS bands, reporting the band-averaged coefficients. Fig.~\ref{fig:MacLeodShen2011} shows the example of posterior samples for $f=SF_{\infty}$ correlating the  M10 SDSS ugriz data against an updated quasar catalog of \citep{shen2011}. 
 
 
 \begin{figure*}
 \plotone{figs/Chelsea_ugriz_Shen2011.png}
-\caption{Samples from posterior MCMC draws for fit coefficients A,C,D (setting E=0), using Shen2011 values for redshift, absolute i-band magnitide, black hole mass. The vertical dashed line marks the band-averaged values for fit coefficients.  }
+\caption{Table 1 in M10 reported the band-averaged values for fit coefficients A,C,D for Eq.~\ref{eq:powlawmodel}.  Shown here are samples from posterior MCMC draws using M10 results for  $f=SF_{\infty}$, against \citealt{shen2011} $M_{i}$ and $M_{BH}$. Because the SDSS r-band results are different from band-averaged values,  we compare our SDSS-PS1 combined r-band results against M10 SDSS r-band only.}
 \label{fig:MacLeodShen2011}
 \end{figure*} 
 
 
 
-Since we used SDSS-PS1 combined r-band data, we compare the new DRW parameters to results of fitting \citet{macleod2011}  r-band data (green line from Fig.~\ref{fig:MacLeodShen2011}). 
-
-
-The comparison of new results against old ones is shown on Fig.~\ref{fig:MacLeodCeleriteShen2011sf} and ~\ref{fig:MacLeodCeleriteShen2011tau} 
-
+Because we use the combined r-band data, we compare our results to M10 SDSS r-band only. We have already shown consistency of object-by-object results when using only SDSS segment in Figs.~\ref{fig:tauRF_SFinf} and~\ref{fig:celeriteCompare}. Now we show that the trends recovered using SDSS-only portions are also consistent with M10. Fig.~\ref{fig:MacLeodCeleriteShen2011sf} shows the results for $f=SF_{\infty}$ - we find that there is a larger dependence of variability amplitude on quasar luminosity, but smaller dependence on black hole mass. Fig.~\ref{fig:MacLeodCeleriteShen2011tau} concerns the $\tau$, which appears to be less correlated with both quasar luminosity and black hole mass. 
 
 
 \begin{figure*}
 \plotone{figs/posterior_IDL_Chelsea_Celerite_CD_MI_Z2_tau.png}
-\caption{Comparison of Celerite fits of SDSS, SDSS-PS1 portions of combined quasar light curves against \citet{macleod2011} results of SDSS r-band only. The results from SDSS-only portion are consistent with previous results, and inclusion of the PS1 portion that increases the baseline decreases the timescale dependence on black hole mass, but increases the luminosity dependence. This can be understood as a rotation of the plane in ($\tau$, $M_{i}$, $M_{BH}$) coordinates.  }
+\caption{Comparison of our fits to Eq.~\ref{eq:powlawmodel}, for $f=\tau$ with SDSS only, or SDSS-PS1 combined quasar light curves, against M10 SDSS r-band.  The results from SDSS-only portion are consistent with M10 for the single band. Inclusion of the PS1 portion decreases the timescale dependence on black hole mass, but increases the luminosity dependence. This can be understood as a rotation of the plane in ($\tau$, $M_{i}$, $M_{BH}$) coordinates.  }
 \label{fig:MacLeodCeleriteShen2011tau}
 \end{figure*} 
 
@@ -573,23 +562,28 @@ The comparison of new results against old ones is shown on Fig.~\ref{fig:MacLeod
 
 \begin{figure*}
 \plotone{figs/posterior_IDL_Chelsea_Celerite_CD_MI_Z2_SF.png}
-\caption{Same as Fig.~\ref{fig:MacLeodCeleriteShen2011tau}, but showing the asymptotic amplitude $SF_{\infty}$.New data from PS1 supports a weaker dependence of variability amplitude with luminosity and black hole mass (using Shen2011 data).  }
+\caption{Same as Fig.~\ref{fig:MacLeodCeleriteShen2011tau},  but fitting quasar absolute magnitude, and black hole mass  in Eq.~\ref{eq:powlawmodel} as a function of the asymptotic amplitude $f = SF_{\infty}$. New data from PS1 supports a weaker dependence of variability amplitude with luminosity and black hole mass. }
 \label{fig:MacLeodCeleriteShen2011sf}
 \end{figure*} 
 
 
-Since the simulations showed that we do decrease the bias by extending the  baseline, we use the combined SDSS-PS1  light curves and show the space occupied by quasars in $SF_{\infty} - \tau - \sigma$ space, which confirms the results of \citet{macleod2011} (Fig.~\ref{fig:realLCresults})
+
+\cite{shen2018} when describing the SDSS Reverberation Mapping sample outlines the black hole mass - luminosity relation (Fig.8 therein) : $\log_{10}(M_{BH}) \sim \log_{10}{(L_{bol})}$
+
+
+\cite{sun2018} using 1000 low-z S82 QSO finds that variability amplitude is correlated with the inverse of bolometric luminosity, and suggests that since $\hat{\sigma}$ is so well related to $L
+_{bol}$, perhaps we could use the $\hat{\sigma} - L_{bol}$ relation to derive $L_{bol}$ without assuming any cosmological models. 
 
 
 
+%
+%
+%
+%
+%
+%
 
-% \begin{figure*}
-% \plottwo{figs/validate_macleod2011_Fig6.png}{figs/validate_macleod2011_Fig14.png}
-% \caption{Both relations are shown in the observed frame. The left panel is like Fig.6, and the right like Fig.14 in \citet{macleod2011}. }
-% \label{fig:realLCresults}
-% \end{figure*} 
-
-
+\section{Conclusions}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
