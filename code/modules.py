@@ -119,8 +119,8 @@ def find_celerite_MAP(t,y,yerr, sigma0=0.1, tau0=100 ,prior='None',
                       tau_lims = [1,550],
                       verbose=False):
 
-    kernel = terms.RealTerm(log_a = 2 * np.log(sigma_in) , 
-                            log_c = np.log(1.0/tau_in))
+    kernel = terms.RealTerm(log_a = 2 * np.log(sigma0) , 
+                            log_c = np.log(1.0/tau0))
     gp = celerite.GP(kernel, mean=np.mean(y))
     gp.compute(t, yerr)
 
@@ -309,25 +309,34 @@ def plot_gp_prediction(t,y,yerr,gp,sigma_fit, tau_fit,
         plt.savefig(figname, bbox_inches='tight')
 
 
-# a function to evaluate the log Posterior 
-# on a given grid of sigma ,tau  
-# given the data 
+
 def evaluate_logP(sigma_grid, tau_grid, y,gp, prior='None',
     engine = 'celerite'):
-    
-    log_a_grid = 2 * np.log(sigma_grid)
-    log_c_grid = np.log(1/tau_grid)
-
+    '''
+    A function to evaluate the log Posterior 
+     on a given grid of sigma ,tau   given the data 
+    '''
     # loop over the likelihood space .... 
     logPosterior = np.zeros([len(sigma_grid),len(tau_grid)], 
                             dtype=float)
-    for k in range(len(log_a_grid)):
-        for l in range(len(log_c_grid)):
-            params = [log_a_grid[k],log_c_grid[l]]    
+
+    if engine is 'celerite': 
+        # span the grid of log(a), log(c)
+        k1_grid = 2 * np.log(sigma_grid)
+        k2_grid = np.log(1/tau_grid)
+   
+    if engine is 'george':
+        # span the grid of k1, k2 : log(a), log(tau^2)
+        k1_grid = 2.0* np.log(sigma_grid)
+        k2_grid = 2.0 * np.log(tau_grid)
+
+    for k in range(len(k1_grid)):
+        for l in range(len(k2_grid)):
+            params = [k1_grid[k],k2_grid[l]]    
             logPosterior[k,l] = -neg_log_posterior(params,y,gp, prior,engine)
     return logPosterior
 
-
+  
 
 def make_grid(scale, sig_lims, tau_lims,Ngrid):
     
