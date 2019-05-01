@@ -226,7 +226,7 @@ We use the Panoramic Survey Telescope and Rapid Response System 1 Survey (Pan-ST
 
 \section{Introduction}
 
-Quasars are inherently variable sources at the rms level of 0.2 mag. They are distant active galactic nuclei, harboring a supermassive black hole surrounded by a hot accretion disk. Although it is agreed upon that majority of optical emission stems from the accretion disk, the detailed origin of variability has been debated over the past 50 years. Some favor a thermal origin of variability \citep{kelly2013}, related to the propagation of inhomogeneities ("hot spots") in the disk \citep{dexter2011, cai2016}, others suggested magnetically elevated disks \citep{dexter2019}, or X-ray reprocessing  \citep{kubota2018}.   Quasar light curves have been successfully described using the Damped Random Walk (DRW) model \citep{kelly2009, macleod2010, kozlowski2010, zu2011, kasliwal2015a}, and the DRW parameters have been linked to the physical quasar properties. \citet{macleod2010} (M10) found correlations of the characteristic timescale and variability amplitude  to the black hole mass, and quasar luminosity.
+Quasars are inherently variable sources at the rms level of 0.2 mag. They are distant active galactic nuclei, harboring a supermassive black hole surrounded by a hot accretion disk. Although it is agreed upon that majority of optical emission stems from the accretion disk, the detailed origin of variability has been debated over the past 50 years (\citealt{sun2018} and references therein). Some favor a thermal origin of variability \citep{kelly2013}, related to the propagation of inhomogeneities ("hot spots") in the disk \citep{dexter2011, cai2016}, others suggested magnetically elevated disks \citep{dexter2019}, or X-ray reprocessing  \citep{kubota2018}.   Quasar light curves have been successfully described using the Damped Random Walk (DRW) model \citep{kelly2009, macleod2010, kozlowski2010, zu2011, kasliwal2015a}, and the DRW parameters have been linked to the physical quasar properties. \citet{macleod2010} (M10) found correlations of the characteristic timescale and variability amplitude  to the black hole mass, and quasar luminosity.
 
 Variability is also a classification tool, allowing to distinguish quasars from other variable sources that do not exhibit such stochastic variability pattern \citep{macleod2011}. Using the DRW parametrization, \citep{macleod2011} found that DRW timescale and amplitude for QSO are order of  magnitude different from stars. This is especially useful for selecting quasars in the intermediate redshift range (which overlaps the stellar locus in color-color diagrams - see \citealt{sesar2007, yang2017}). Variability has also been used to increase the completeness in measurements of Quasar Luminosity Function (see \citealt{ ross2013, palanque2013, alsayyad2016, mcgreer2013, mcgreer2018}). 
 
@@ -237,7 +237,7 @@ Thus by extending available quasar light curves we are able to better recover a 
 Almost a decade ago \citet{macleod2010} (hereafter M10) published their research using the SDSS Stripe 82 data, and new datasets (PS1,PTF,CRTS) have become available since that can extend the quasar light curves by almost 50\% .  Indeed, \citep{li2018} combined SDSS and Dark Energy Camera Legacy Survey (DECaLS) data, to provide a 15 year baseline, but by focusing on a large area to encompass as many quasars as possible (119,305 up to z=4.89) suffered from poor sampling which lends itself better to an ensemble structure function approach rather than direct light curve modeling. On the other hand, \citep{sanchez2018} who employed optical data from QUEST-La Silla AGN variability survey, also used the Structure Function parametrization (amplitude of variability and the excess variance), because the light curve length (less than 5 years for 2435 quasars)  excluded the possibility of unbiased retrieval of characteristic timescale. 
 
 
- This paper improves on the DRW parameters (Section~\ref{sec:methods} ) describing amplitude and characteristic timescale of Stripe82 quasars by extending the SDSS light curves for well-sampled Stripe82 with PanStarrs1 (PS1) data (Sections~\ref{sec:data} and~\ref{sec:simulation}). We revisit trends between  the DRW parameters and physical quasar properties, such as black hole mass, or bolometric luminosity (Section~\ref{sec:results}). We make predictions for fidelity of DRW parameter retrieval once ZTF and LSST data become available. 
+ This paper improves on the DRW parameters (Section~\ref{sec:methods} ) describing amplitude and characteristic timescale of Stripe82 quasars by extending the SDSS light curves for well-sampled Stripe82 with PanStarrs1 (PS1) data (Sections~\ref{sec:data} and~\ref{sec:simulation}). We revisit trends between  the DRW parameters and physical quasar properties, such as black hole mass, or bolometric luminosity (Section~\ref{sec:results}). We make predictions for fidelity of DRW parameter retrieval once ZTF and LSST data become available. In this work we adopt a $\Lambda $CDM cosmology with $h_{0} = 0.7$ and $\Omega_{m} = 0.3 $. 
 
 
 %
@@ -582,7 +582,7 @@ Because we use the combined r-band data, we compare our results to M10 SDSS r-ba
 \end{figure*} 
 
 
-
+\subsection{Comparison with other studies}
 
 
 \cite{sun2018} using 1000 low-z S82 QSO finds that variability amplitude is correlated with the inverse of bolometric luminosity, and suggests that since $\hat{\sigma}$ is so well related to $L
@@ -590,18 +590,21 @@ _{bol}$, perhaps we could use the $\hat{\sigma} - L_{bol}$ relation to derive $L
 
 
 
+In principle any tight correlation between the variability parameters and physical properties of quasars could be used to infer eg.  black hole mass or bolometric luminosity  given only the optical time-series. In the era of large synoptic surveys (PS1, ZTF,LSST), this could provide additional information about quasars for which it will be impractical to obtain a spectrum \citep{sanchez2018}.
 
 
-
-
+X-ray reprocessing is also consistent with  the dependence of $\hat{\sigma}$ on the Fe{\sc ii} strength, $R_{\mathrm{Fe II}}$ (the ratio of the equivalent width of   Fe{\sc ii}  between $4435-4685$ $\AA$ and H$\beta$) studied by \citep{sun2018}. They chose $R_{\mathrm{Fe  II}}$, a proxy for Eddington ratio, because it was found by \citep{shen2014}, \citep{sun2015} to be anticorrelated with $M_{BH}$
+% Zhu2016 : The corona is generally assumed to work as a light bulb above the disk and modulates radiation from the disk, encoding information about sizes and distances in the form of time lags between light curves in different photometric bands. This is the famous X-ray reprocessing model (Krolik et al. 1991), and it has been tested in great detail with nearby Seyferts (Sergeev et al. 2005; McHardy et al. 2014; Edelson et al. 2015; Fausnaugh et al. 2016; Troyer et al. 2016). Correlation analysis of inter-band (X-ray/UV/optical) light curves typically results in lags of less than a few days (for a short review, see Lawrence 2012), likely corresponding to light travel time. However, it should be kept in mind that X-ray only contributes to a small fraction of AGNs' total bolometric luminosity, especially for brighter ones (Strateva et al. 2005; Grupe et al. 2010; Lusso et al. 2010), and thus could be insufficient to produce the observed UV/optical variation (Gaskell 2008).
 
 Variability amplitude - Eddington ratio relation has been studied by 
 
 
 
+\subsection{Alternative method to estimate black hole masses}
+% Kozlowski2015 method to determine black hole masses as an alternative 
+% to methods based on variability parameters. 
 
-
-Broad-band AGN photometry can be translated into monochromatic fluxes in the vicinity of the reverberating lines (H$\beta$ 5100 $\AA$, Mg\,{\sc ii} at 3000 $\AA$, and C\,{\sc iv} at 1350 $\AA$, \citealt{kozlowski2015}), which in turn can be used to estimate the virial black hole mass :
+In an absence of time-series for a quasar, an attractive alternative method to estimate black hole masses is presented by \citep{kozlowski2015}. Broad-band AGN photometry can be translated into monochromatic fluxes in the vicinity of the reverberating lines (H$\beta$ 5100 $\AA$, Mg\,{\sc ii} at 3000 $\AA$, and C\,{\sc iv} at 1350 $\AA$, \citealt{kozlowski2015}), which in turn can be used to estimate the virial black hole mass :
 
 \begin{equation}
 M_{BH} = \frac{f R \Delta V^{2}}{G}
