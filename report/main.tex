@@ -329,7 +329,10 @@ A second approach of excellent cadence but short baselines  is afforded by a spa
 
 % may also mention here  Caplar2017 and his PTF studies ? 
 
-The exact PSD of the quasar light curve would affect other areas of study,  such as reverberation mapping, providing some of the most accurate black hole mass estimates.  Two most widely used approaches to measuring interband lags in AGN reverberation mapping are interpolated cross-correlation function (ICCF, \citealt{gaskell1987, peterson2004})  and  light curve modeling via Markov chain Monte Carlo approach (JAVELIN, \citealt{zu2011}).  The latter assumes that higher energies drive lower energies (whether dues to x-ray reprocessing or other mechanism), and that the driving light curve is well-modeled by a DRW (with PSD equal to  $-2$ or flatter), with other light curves (at longer wavelength) are related to it via transfer function \cite{edelson2019}. This means that departure of quasar PSD from DRW, if convincingly detected, would have an impact on RM studies that use JAVELIN or other light curve modeling tools.  
+
+% perhaps skip, about the impact of PSD shape on the RM studies  .... 
+The exact shape of quasar PSD would affect other areas of study. One example is reverberation mapping (RM), which was used to provide  accurate black hole mass estimates. RM is based on measuring the lags between light curves observed at different wavelengths. The two most widely used approaches to measuring interband lags are interpolated cross-correlation function (ICCF, \citealt{gaskell1987, peterson2004})  and  light curve modeling via Markov chain Monte Carlo approach (JAVELIN, \citealt{zu2011}). The PSD of the DRW comes explicitly in the latter,  which assumes that the higher energies drive lower energies (whether due to x-ray reprocessing or other mechanism), and that the driving light curve is well-modeled by a DRW (with PSD equal to  $-2$ or flatter).  In this scenario other light curves (at longer wavelength) are related to it via transfer function \cite{edelson2019}. Using a wrong PSD means at best that errors are underestimated. Therefore a convincing detection of a departure of quasar PSD from that of the DRW  would have  a direct impact on RM studies that use  JAVELIN or other light curve modeling tools. 
+
 
 In the end, we follow the direction laid out in M10, Sec.4.4, which shows that while within S82 sampling assuming $\alpha_{h}= 2 $ it is impossible to reliably distinguish between a $\alpha_{l}=0$ and $-1$. A future study with appropriate cadence would be necessary to model each quasar individually with different $\alpha_{l}$ and $\alpha_{h}$. We elect to use the DRW description ($\alpha_{l}=0$, $\alpha_{h}=-2$) to allow a better comparison of our results with M10. 
 
@@ -341,7 +344,7 @@ In the end, we follow the direction laid out in M10, Sec.4.4, which shows that w
 
 \section{Data}\label{sec:data}
 \subsection{Surveys}
-We focus on THE data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by SDSS between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012} Sec. 2.2 for overview, and \citealt{annis2014} for details ) . Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves  spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citep{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
+We focus on THE data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by SDSS between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012} Sec. 2.2 for overview, and \citealt{annis2014} for details ) . Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citep{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
 
 % \begin{figure}%[ht!]
 % \plotone{figs/illustrate_epochal_coverage.png}
@@ -650,6 +653,86 @@ Ideally one would obtain a quasar spectrum to directly measure $\Delta V$ and $L
 
 
 
+Anticorrelation of  variability amplitude and the Eddington ratio  has a variety of possible explanations. 
+
+In thin disk theory \cite{shakura1973, frank2002, netzer2013}, radius of the emission region at given wavelength increases with the Eddington ratio, and is inversely proportional to temperature\cite{rakshit2017}. Thus a hotter disk means that the emission observed in a given bandpass is emitted from a larger radius. From causality, a smaller region can be more variable than a larger one. Therefore, a  hotter disk would be less variable at a given wavelength than a colder one, and  the variability amplitude as studied in a particular bandpass (here, SDSS r-band) would be anticorrelated with Eddington ratio. 
+
+
+
+
+\cite{rakshit2017}  notes that as the Eddington ratio increases,  the radius of emission at a given wavelength increases (higher $L/L_{Edd}$ - hotter disk), leading to a decreased variability amplitude. 
+
+ If Eddington ratio is related 
+
+
+In the era of changing-look active galaxies ( including initially distinct classes of Changing-Look Quasars \citep{lamassa2015, macleod2019}, Changing-Look AGNs \citep{marchese2012, bianchi2009,risaliti2009}, Changing-Look LINERS \citep{frederick2019} to name a few) there is a revived interest in possibly linking the behavior of stellar-sized accreting systems (eg. Black Hole Binaries),  to that of galactic scale (eg. AGN, QSO, LINERS)\citep{noda2018}. 
+
+It appears that there are several timescales at play, and possibly several interlinked mechanisms that drive the variability. 
+
+
+
+One possibility
+
+There is a hierarchy of relevant timescales in the standard optically thick, geometrically thin, $\alpha$-disk model : dynamical, thermal, front, viscous, with   $t_{dyn} < t_{th} < t_{front}  < t_{visc} $ \citep{netzer2013, frank2002}. 
+
+The dynamical, or gas orbital, timescale is simply  an inverse of the Keplerian orbital angular frequency $ \Omega$  at radius R  : 
+
+\begin{equation}
+t_{dyn} \sim  1 / \Omega = \left( \frac{GM}{R^{3}}\right)^{-1/2}
+\end{equation}
+
+
+
+
+The main parameter  describing the accretion disk is $\alpha$ - the ratio of the (vertically averaged) total stress to thermal (vertically averaged) pressure \citep{lasota2016} : 
+
+\begin{equation}
+\alpha= \frac{\langle \tau_{r\varphi}  \rangle_{z} }{\langle P \rangle _{z}} 
+\end{equation}
+
+
+After \cite{lasota2016},  the hydrodynamical stress tensor is:
+
+\begin{equation}
+\tau_{r\varphi } = \rho \nu \frac{\partial v_{\varphi}}{\partial R} = \rho \nu \frac{d \Omega}{d \ln{R}} = \frac{3 \rho \nu \Omega}{2}  
+\end{equation}
+
+so  with  $c_{s}$ -  local sound speed at radius $R$ (isothermal sound speed is $c_{s} = \sqrt{P/\rho}$),
+
+\begin{equation}
+\alpha  =   \frac{3 \rho \nu \Omega}{2 P} =  \frac{3 \Omega \nu}{2 c_{s}^{2}}
+\end{equation}
+
+
+
+This means that less viscous disks have smaller $\alpha$. 
+
+
+
+The thermal timescale - for re-adjustment to thermal equilibrium (derived in detail in \cite{frank2002}), is the ratio of heat content per unit disk area to dissipation rate per unit disk area : $(dE / A) / (dE/dt /  A) = dt $.  The heat content per unit volume is $\sim \rho k T / \mu m_{p} \sim \rho c_{s}^{2}$, and heat content per unit area is that divided by the scale height $\sim \rho c_{s}^{2} / h \sim \Sigma c_{s}^{2}$. Meanwhile, the dissipation rate per unit area, $D(R)$, is 
+
+\begin{equation}
+D(R) = \frac{9}{8} \nu \Sigma R^{-3} G M
+\end{equation}
+
+(eq. 4.30 in \citealt{frank2002}), so :
+
+\begin{equation}
+t_{th} \sim \frac{c_{s}^{2}R^{3}}{G M \nu  = \frac{c_{s}^{2}}{\nu \Omega} = \frac{t_{dyn}}{\alpha}
+\end{equation}
+
+The cooling and heating fronts propagate through the disk at  $\alpha c_{s} $ \citep{hameury2009}  - in that description  with no viscosity there is no communication between neighboring disk annuli, and thus no front propagation \citep{balbus1998, balbus2003}. Following \cite{stern2018}, if we define as $h/R$  the the disk aspect ratio, with the disk height $h = c_{s} / \Omega$, and , the characteristic time for front propagation is:
+
+\begin{equation}
+t_{front} \sim (h/R) ^ {-1} t_{th}
+\end{equation}
+
+
+The viscous timescale is the characteristic time it would take for a parcel of material to undergo a radial transport due to the viscous torques from the radius $R$ to the black hole \citep{czerny2006}. Note that while the viscosity has probably magnetic origin\citep{eardley1975, grzedzielski2017}, we use a hydrodynamical description of accretion flow.  With $\nu = \eta / \rho$ (kinematic viscosity being the ratio of dynamical viscosity to density), \cite{frank2002} shows (Chap.5.2) that 
+
+\begin{equation}
+t_{visc} \sim R^{2} / \nu \sim  R / v_{R} = (h/R)^{-2} t_{th}
+\end{equation}
 
 
 
