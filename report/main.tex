@@ -377,7 +377,7 @@ We consider the difference  between the target (SDSS) and source (eg.PS1) photom
 m_{\mathrm{PS1}} - m_{\mathrm{SDSS}} = f(g-i)
 \end{equation}
 
-While \cite{tonry2012} chose to spread the stellar locus with $(g-r)$ color, we prefer to use the $(g-i)$ color since it provides a larger wavelength baseline. Some authors (eg. \citet{li2018}) allow $f(g-i)$ to be a higher-order polynomial, but since we limit the transformation to the  region of $(g-i)$ space occupied by quasars (Fig.~\ref{fig:quasarColors}), we find that the linear fit is sufficient (see Fig. ~\ref{fig:offsetsPS1}).   Table~\ref{tab:offsets} shows the offsets used to transform PS1, CRTS and PTF to SDSS $r$-band. 
+While \cite{tonry2012} chose to spread the stellar locus with $(g-r)$ color, we prefer to use the $(g-i)$ color since it provides a larger wavelength baseline. Some authors (eg. \citet{li2018}) allow $f(g-i)$ to be a higher-order polynomial, but since we limit the transformation to the  region of $(g-i)$ space occupied by quasars (Fig.~\ref{fig:quasarColors}), we find that the linear fit is sufficient (see Fig. ~\ref{fig:offsetsPS1}). Table~\ref{tab:offsets} shows the offsets used to transform PS1, CRTS and PTF to SDSS $r$-band. 
 
 
 % QSO COLORS 
@@ -432,7 +432,7 @@ PS1 i &  0.0247   & -0.2765 \\
 
 \section{Simulations : lessons learned}\label{sec:simulation}
 
-We simulate the theoretical improvement in the retrieved DRW parameters in combined light curves by generating long and well-sampled light curves, all with input $\tau = 575 $ days, $SF_{\infty} = 0.2$ mag (the median of S82 distribution in M10). We then select SDSS, or SDSS-PS1 segments, sampling at the cadence corresponding to real light curves. We also predict the contribution of ZTF and LSST data (Fig.~\ref{fig:simLC}). For the ZTF 1-year segment (Spring 2019 ZTF Data Release will include data from 2018) we assumed 120 observations in ZTFg and ZTFr (every three nights), deriving the error model from the ZTF data for standard stars (Fig.~\ref{fig:ztf_errors}). For the LSST 10-year segment (final LSST DR10 in 2031) we assumed 50 epochs per year, randomly distributed throughout the year, with the following error model:
+We simulate the theoretical improvement of the DRW parameter retrieval in extended light curves. We generate long and well-sampled light curves, all with input $\tau = 575 $ days, $SF_{\infty} = 0.2$ mag (the median of S82 distribution in M10). Then we sub-sample at SDSS, or SDSS-PS1 cadences. We also sub-sample at predicted ZTF and LSST epochs (see Fig.~\ref{fig:simLC}). For the ZTF 1-year segment (Spring 2019 ZTF Data Release will include data from 2018) we assumed 120 observations in ZTFg and ZTFr (every three nights), deriving the error model from the ZTF data for standard stars (Fig.~\ref{fig:ztf_errors}). For the LSST 10-year segment (final LSST DR10 in 2031) we assumed 50 epochs per year, randomly distributed throughout the year, with the following error model:
 
 \begin{eqnarray}
 \sigma_{LSST}(m)^{2} = \sigma_{sys}^{2} + \sigma_{rand}^{2} \,\, \mathrm{(mag)}^{2}\\
@@ -440,7 +440,7 @@ We simulate the theoretical improvement in the retrieved DRW parameters in combi
 x = 10^{0.4(m-m_{5})}
 \end{eqnarray}
 
-with  $\sigma_{sys} = 0.005$, $\gamma=0.039$, $m_{5} = 24.7$ (see Sec. 3.2 in \citet{ivezic2019}).
+with  $\sigma_{sys} = 0.005$, $\gamma=0.039$, $m_{5} = 24.7$ (see \citet{ivezic2019}, Sec.3.2).
 
 \begin{figure*}%[ht!]
 \plotone{figs/1072282_w_LSST1.png}
@@ -455,7 +455,7 @@ with  $\sigma_{sys} = 0.005$, $\gamma=0.039$, $m_{5} = 24.7$ (see Sec. 3.2 in \c
 \end{figure} 
 
 
-To mirror observational conditions we add to the true underlying DRW signal a Gaussian noise, with variance defined by photometric uncertainties for corresponding surveys. Given the noise properties of each survey (Fig.~\ref{fig:combinedLCerrors}), we found that relatively large uncertainties of CRTS and PTF segments introduced less improvement in recovery of DRW parameters, given that similar baseline is already covered by the PS1 data.  We further found that inclusion of ZTF data for 2018 would not significantly change our results. Inclusion of PS1 data with its excellent photometry (as compared to ZTF or PTF) is the best improvement over existing SDSS results.  In the future (after more data has been assembled and re-calibrated) ZTF will help, but not as dramatically as LSST (see Fig.~\ref{fig:simLCresults1}).  For this reason we found that using only SDSS-PS1 portion is the best tradeoff between adding more baseline vs introducing more uncertainty with noisy data. Fig.~\ref{fig:simLC} illustrates  of  the simulated light curve. 
+To mirror observational conditions we add to the true underlying DRW signal a Gaussian noise, with variance defined by photometric uncertainties for corresponding surveys. Given the noise properties of each survey (Fig.~\ref{fig:combinedLCerrors}), we found that relatively large uncertainties of CRTS and PTF segments introduced less improvement in recovery of DRW parameters, given that similar baseline is already covered by the PS1 data.  We further found that inclusion of ZTF data for 2018 would not significantly change our results. Inclusion of PS1 data with its excellent photometry (as compared to ZTF or PTF) is the best improvement over existing SDSS results.  In the future (after more data has been assembled and re-calibrated) ZTF will help, but not as dramatically as LSST (see Fig.~\ref{fig:simLCresults1}).  For this reason we found that using only SDSS-PS1 portion is the best tradeoff between adding more baseline vs introducing more uncertainty with noisy data.
 
 \begin{figure}%[ht!]
 \plotone{figs/sim_subsampled2_stats_error_lin.png}
