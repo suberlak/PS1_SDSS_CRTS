@@ -271,24 +271,19 @@ The likelihood for the particular value of DRW parameters given the data is eval
 
 \subsection{The impact of light curve baseline}\label{sec:baseline}
 
-K17 reports that one cannot trust any results of DRW fitting unless the light curve length is at least ten times longer than the characteristic timescale. We confirm these generic trends by repeating his simulation setup. We  model 10 000  DRW light curves with fixed length (baseline) $t_{exp}=8$ years, $\mathrm{SF}_{\infty} = 0.2$ mag, SDSS or OGLE-like cadence, sampling over a range of input timescales. Given fixed baseline, this means exploring the parameter space of $\rho = \tau / t_{exp}$, $\rho \in   \{ 0.01 : 15\}$. We simulate 100 light curves at each $\rho$. 
+K17 reports that one cannot trust any results of DRW fitting unless the light curve length is at least ten times longer than the characteristic timescale. We confirm these generic trends, although we find that the stringent requirements of K17 can be somewhat relaxed. Following K17 setup,  we  model 10 000  DRW light curves with fixed length (baseline) $t_{exp}=8$ years, asymptotic variability amplitude of  $\mathrm{SF}_{\infty} = 0.2$ mag, SDSS or OGLE-like cadence, sampling over a range of input timescales. With fixed baseline, this spans the parameter space of $\rho = \tau / t_{exp}$, $\rho \in   \{ 0.01 : 15\}$. We simulate 100 light curves at each $\rho$. 
 
 \begin{figure*}
-\plottwo{figs/SDSS_Jeff1_expectation.png}{figs/OGLE_Jeff1_expectation.png}
-\caption{Probing the parameter space of $\rho = \tau / t_{exp}$, with a simulation of  10 000 light curves : 100 light curves per each of 100 $\rho$ values spaced uniformly in logarithmic space between $\rho \in   \{ 0.01 : 15\}$ . Thus with the baseline $t_{exp}$ set to 8 years,  we sample a range of 100 input timescales, as in K17. Left panel shows the SDSS-like cadence with N=60 points, and the right panel OGLE-like cadence with N=445 points. The dotted horizontal and solid vertical lines represent $\rho = 0.1$, i.e. the baseline is ten times longer than considered timescale. The diagonal line is $y=x$, i.e. the line that would be followed if the recovered  $\rho$ ($\tau$) was exactly the same as the input $\rho$ ($\tau$).} 
+\plottwo{figs/celerite_SDSS_Jeff1_expectation-190208_results_celerite_R.png}{figs/celerite_OGLE_Jeff1_expectation-190208_results_celerite_R.png}
+\caption{Probing the parameter space of $\rho = \tau / t_{exp}$, with a simulation of  10 000 light curves : 100 light curves per each of 100 $\rho$ values spaced uniformly in logarithmic space between $\rho \in   \{ 0.01 : 15\}$ . With a baseline $t_{exp}$ set to 8 years,  we sample a range of 100 input timescales. Left panel shows the SDSS-like cadence with N=60 epochs, and the right panel the OGLE-like cadence with N=445 epochs. The dotted horizontal and solid vertical lines represent $\rho = 0.1$, i.e. the baseline is ten times longer than considered timescale. The diagonal line is $y=x$, i.e. the line that would be followed if the recovered  $\rho$ ($\tau$) was exactly the same as the input $\rho$ ($\tau$). Given a quasar light curve, which has one true underlying DRW timescale,  as we extend the baseline, we move from the bottom-left (unconstrained) to the top-right (well-constrained) part of the parameter space. } 
 \label{fig:rho_space}
 \end{figure*}
 
-To simulate observational conditions  we add to the true underlying signal  $s(t)$ a noise offset, $n(t)$.  Like K17,  we assume $n(t)$ to be drawn from a Gaussian distribution $\mathcal{N}(0,\sigma(t))$ with a width $\sigma(t)$ , corresponding to the  photometric uncertainty at the given epoch,  $e(t)$) : 
+
+The true underlying DRW signal $s(t)$ is found by iterating over the array of time steps $t$.  At each step, we draw a point from a Gaussian distribution, for which the mean and standard deviation are re-calculated at each timestep (see \citealt{kelly2009} (eqs. A4 and A5) as well as in \cite{macleod2010} (Sec. 2.2 ), and K17). Starting at $t_{0}$, the signal is equal to the mean magnitude, $s_{0} = \langle m \rangle$. After a timestep $\Delta t_{i} = t_{i+1} - t_{i}$, the signal $s_{i+1}$ is drawn from  $\mathcal{N}(loc, stdev)$, with : 
 
 \begin{equation}
-y(t) = s(t) + n(t) 
-\end{equation}
-
-The $s(t)$ is found by iterating over the array of time steps $t$.  At each step, we draw a point from a Gaussian distribution, for which the mean and standard deviation are re-calculated at each timestep. Starting at $t_{0}$, the signal is equal to the mean magnitude, $s_{0} = m$. After a timestep $\Delta t_{i} = t_{i+1} - t_{i}$, the signal $s_{i+1}$ is drawn from  $\mathcal{N}(loc, stdev)$, with : 
-
-\begin{equation}
-loc = s_{i} e ^ { - r  }  + m \left( 1 - e ^{ - r }\right)
+loc = s_{i} e ^ { - r  }  + \langle m \rangle \left( 1 - e ^{ - r }\right)
 \end{equation}
 
 and 
@@ -297,7 +292,15 @@ and
 stdev^{2} =  0.5  \, \mathrm{SF}_{\infty}^{2} \left( 1 - e ^{  - 2 r  }  \right)
 \end{equation}
 
-where  $r = \Delta t_{i} / \tau$, $\tau$ is the damping timescale,   $SF_{\infty}$ is the  variability amplitude , and $m$ the mean magnitude.  This follows the formalizm in \cite{kelly2009} (eqs. A4 and A5) as well as in \cite{macleod2010} (Sec. 2.2 ), and is equivalent to the setup of  K17. 
+where  $r = \Delta t_{i} / \tau$, and $\tau$ is the damping timescale.
+
+
+To simulate observational conditions  we add to the true underlying signal  $s(t)$ a noise offset, $n(t)$.  Like K17,  we assume $n(t)$ to be drawn from a Gaussian distribution $\mathcal{N}(0,\sigma(t))$ with a width $\sigma(t)$, corresponding to the  photometric uncertainty at the given epoch: 
+
+\begin{equation}
+y(t) = s(t) + n(t) 
+\end{equation}
+
 
 
 We adopt SDSS S82-like cadence with N=60 epochs, or OGLE-III like cadence with N=445 epochs.  The errors are set by the adopted mean magnitudes, $r=17$ and $I=18$ :
@@ -309,8 +312,7 @@ We adopt SDSS S82-like cadence with N=60 epochs, or OGLE-III like cadence with N
 
 
 
-Fig.~\ref{fig:rho_space} confirms the findings of K17:  recovered $\rho$ becomes meaningless ('unconstrained') if the available DRW light curve baseline is not at least ten times longer than the input timescale. It also means that by extending the baseline we can move from the biased region to the unbiased regime.  Encouraged by this result, we extend the baselines of  quasar light curves, and revisit relations studied by  M10. 
-
+Fig.~\ref{fig:rho_space} shows the recovered $\rho_{out}$ as a function of input $\rho_{in}$. This confirms the findings of K17: the recovered $\rho$ becomes meaningless ('unconstrained') if the available DRW light curve baseline is not at least several times longer than the input timescale ($\log_{10}{(\rho)} \lessapprox -0.5$, i.e. $\rho \lessapprox 3 $). Consequently, by extending the baseline we can move from the biased region (bottom left) to the unbiased regime (top right). This is the basis for this study,  in which we extend the baselines of quasar light curves from SDSS-only (10 years) to combined SDSS-PS1 (15 years). 
 
 \subsection{Departure from DRW?}
 
