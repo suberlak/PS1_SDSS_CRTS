@@ -347,7 +347,7 @@ In the end, we follow the direction laid out in M10, Sec.4.4, which shows that w
 
 \section{Data}\label{sec:data}
 \subsection{Surveys}
-We focus on THE data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by SDSS between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012} Sec. 2.2 for overview, and \citealt{annis2014} for details ) . Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citep{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
+We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by the SDSS between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012}, Sec. 2.2 for overview, and \citealt{annis2014} for details). Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citet{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
 
 % \begin{figure}%[ht!]
 % \plotone{figs/illustrate_epochal_coverage.png}
@@ -362,11 +362,11 @@ We focus on THE data pertaining to a 290 deg$^{2}$ region of southern sky, repea
 \end{figure*} 
 
 
-We extend the SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018}, CRTS \citep{drake2009}, and PTF \citep{rau2009} data. We find 9248 PS1 matches, 6455 PTF matches, and 7737 CRTS matches to SDSS S82 quasars. There are  6444 quasars with SDSS-PS1-PTF-CRTS data.  Fig~\ref{fig:lcExtent}  depicts the  baseline coverage of various surveys.  Each survey uses a unique set of bandpasses and cadences : SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{SDSS}$ , and the others are  non-simultaneous : $\{g,r,i,z,y\}_{PS1}$ ,  $\{g,R\}_{PTF}$, $V_{CRTS}$.  
+We extend the SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018}, CRTS \citep{drake2009}, and PTF \citep{rau2009} data. We find 9248 PS1 matches, 6455 PTF matches, and 7737 CRTS matches to SDSS S82 quasars. There are  6444 quasars with SDSS-PS1-PTF-CRTS data.  Fig~\ref{fig:lcExtent}  depicts the  baseline coverage of various surveys.  Each survey uses a unique set of bandpasses and cadences : SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{SDSS}$, and the others are  non-simultaneous : $\{g,r,i,z,y\}_{PS1}$,  $\{g,R\}_{PTF}$, $V_{CRTS}$.  
 
 \subsection{Photometric offsets}
 
-We combine the photometry into a single 'master' bandpass. We choose SDSS r as the target since it has the best photometry, and we calculate color terms that afford transformation from other photometric systems to SDSS. We elect only to translate to SDSS $r$ photometry from nearby filters : ($\{g,R\}_{PTF}$, $\{g,r,i\}_{PS1}$, $V_{CRTS}$). 
+We combine the photometry into a single 'master' bandpass. We choose SDSS r as the target bandpass since it has the best photometry, and we calculate color terms that afford transformation from other photometric systems to SDSS. We elect only to translate to SDSS $r$ photometry from nearby filters : ($\{g,R\}_{PTF}$, $\{g,r,i\}_{PS1}$, $V_{CRTS}$). 
 
 Color terms are derived using SDSS standard stars catalog~\citep{ivezic2007}.  We focused on 10\% subset of randomly chosen stars from the catalog, and found CRTS (B.Sesar, priv.comm.), PS1 (from MAST \url{http://panstarrs.stsci.edu}) and PTF (IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}) matches. 
 
