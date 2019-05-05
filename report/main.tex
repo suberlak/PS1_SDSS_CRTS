@@ -25,6 +25,12 @@
 %% using aastex version 6.2
 \documentclass[twocolumn]{aastex62}
 \usepackage{natbib}
+\usepackage[T1]{fontenc}
+
+\let\oldAA\AA
+\renewcommand{\AA}{\text{\normalfont\oldAA}}
+
+
 %% The default is a single spaced, 10 point font, single spaced article.
 %% There are 5 other style options available via an optional argument. They
 %% can be envoked like this:
@@ -456,11 +462,11 @@ To mirror observational conditions we add to the true underlying DRW signal a Ga
 
 \begin{figure}%[ht!]
 \plotone{figs/sim_subsampled2_stats_error_lin.png}
-\caption{Distribution of median photometric uncertainties (colloquially called 'errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1. This is the reason for using only SDSS-PS1 part of the combined light curve.}
+\caption{Distribution of median photometric uncertainties ('errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1. This is the reason for using only SDSS-PS1 part of the combined light curve.}
 \label{fig:combinedLCerrors}
 \end{figure} 
 
-As we found earlier, extending the light curve baseline decreases the bias in the retrieved DRW parameters (Fig.~\ref{fig:rho_space}). For light curves that simulate the extension of SDSS with PS1, ZTF, LSST segments, Figs.~\ref{fig:simLCresults1} and~\ref{fig:simLCresults2} show that this is indeed the case: as make light curves longer, the retrieved $\tau$ and $SF_{\infty}$ become more centered on the input value. 
+As we found earlier, extending the light curve baseline decreases the bias in the retrieved DRW parameters (Fig.~\ref{fig:rho_space}). For light curves that simulate the extension of SDSS with PS1, ZTF, LSST segments, Figs.~\ref{fig:simLCresults1} and~\ref{fig:simLCresults2} show that this is indeed the case: the longer the light curves, that more the retrieved $\tau$ and $SF_{\infty}$ are centered on the input values. 
 
 \begin{figure*}
 \plotone{figs/Simulated_Jeff1-EXP-190326.png}
@@ -496,7 +502,7 @@ We have extended the baseline of Stripe82 quasars by adding to SDSS r-band data 
 \end{figure*} 
 
 
-We first show that our results are consistent with M10 when using only the SDSS r-band : on Fig.~\ref{fig:tauRF_SFinf}) the distributions of $\tau$, $SF_{\infty}$ from M10 (red) and our results (blue) coincide. Furthermore, when comparing object-by-object M10 to our SDSS-only results we find a very good agreement - histograms on Fig.~\ref{fig:celeriteCompare} are peaked around 0. 
+We first show that our results are consistent with M10 when using only the SDSS r-band : on Fig.~\ref{fig:tauRF_SFinf}) the distributions of $\tau$, $SF_{\infty}$ from M10 (red) and our results (blue) coincide. Furthermore, when comparing object-by-object M10 to our SDSS-only results we find a very good agreement (see Fig.~\ref{fig:celeriteCompare}).
 
 
 \begin{figure*}
@@ -508,11 +514,11 @@ We first show that our results are consistent with M10 when using only the SDSS 
 
 \subsection{Rest-frame Wavelength Correction}
 
-Prior to looking for correlations with physical quantities (black hole mass, luminosities, redshifts), we correct $\tau$ and $SF_{\infty}$ for wavelength dependence using formulae from M10. Since quasars are at different redshifts, the same observed band would probe a different rest-frame wavelength $\lambda_{RF}$ for each quasar. We find that the power law employed by M10:
+Prior to looking for correlations with physical quantities (black hole mass, luminosities, redshifts), we correct $\tau$ and $SF_{\infty}$ for wavelength dependence using formulae from M10. Since quasars are all at different redshifts, the same observed band would probe a different rest-frame wavelength $\lambda_{RF}$ for each quasar. We find that the power law employed by M10:
 \begin{equation}
-f \propto \left( \frac{\lambda_{RF}}{4000 \AA} \right)^{B}
+f \propto \left( \frac{\lambda_{RF}}{4000 \mbox{\AA}} \right)^{B}
 \end{equation}
-together with the fit coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively, are adequate for our combined SDSS r-band results, as shown on Fig.~\ref{fig:wavelength_dependence} . 
+together with the fit coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively, are adequate for combined SDSS-PS1 results, as shown on Fig.~\ref{fig:wavelength_dependence} . 
 
   
 \begin{figure*}
@@ -526,20 +532,6 @@ together with the fit coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $
 
 Here we examine the main scientific results: correlations between variability parameters  ($\tau, SF{\infty}$), and the physical properties of quasars: absolute i-band magnitude $M_{i}$, and black hole mass $M_{BH}$. 
 
-First, we consider the selection effects that are inherent to the quasar distribution. Fig.~\ref{fig:quasar_properties} shows the distribution of quasars as a function of redshift $z$, i magnitude $M_{i}$, and black hole mass $M_{BH}$. For instance, the trend of increasing redshift with $M_{i}$ on the upper left panel is due to the fact that quasars have to be brighter to be included in the survey at increasing distances. 
-
-
-
-As explained in \citep{shen2008,shen2011}, the most common approach to estimate quasar black hole mass is to assume that the broad-line region (BLR) is virialized, so that the continuum luminosity can be used as a proxy for the BLR radius, and the width of the broad emission lines (or line dispersion) is used to compute the virial velocity. The most commonly used, calibrated emission lines, that are available across different redshifts, are broad H$\alpha$, H$\beta$, Mg\,{\sc ii}, and C\,{\sc iv} \citep{vestergaard2002}. 
-
-There are various available catalogs of quasar properties : redshift, absolute i-band luminosity, black hole mass.  Usually the first quasar catalog releases basic properties such as redshift and photometry (eg. \citealt{schneider2007, schneider2010}, and then more involved studies derive black hole masses and bolometric luminosities (eg. \citealt{shen2008, shen2011}). This is also the case for more recent work:  once \citep{paris2017} released SDSS DR12 Quasar Catalog (DR12Q),  \citep{kozlowski2017a} followed by estimating from photometry the monochromatic luminosities,  and  deriving black hole masses, and \citep{chen2018} added a detailed analysis of continuum luminosities in the  H$\alpha$, H$\beta$ regions for low-redshift quasars. Using the spectra from Chinese LAMOST survey \citep{dong2018} also sought to estimate virial black hole masses, and the results while consistent with \citep{shen2011}, suffered from necessity to peg the non-calibrated spectra to SDSS photometry which was taken at a different epoch.  For sources variable at \~0.2 mag level, such as quasars, the ideal is to use single-epoch calibrated spectra to estimate continuum luminosity, and find virial black hole masses using relationships based on the monochromatic fluxes and broad line widths. Even though \cite{paris2018} DR14Q is the most recent catalog, like \citep{paris2017} it lacks black hole masses and bolometric luminosities, and \citep{kozlowski2017a} (henceforth K17)  bases his analysis on a SDSS photometry as a proxy for monochromatic luminosities rather than directly from the spectra. Of all available catalogs,  \citep{shen2011} provides the best to date measurements of quasar black hole masses and monochromatic luminosities, based directly on the single-epoch spectra, and is therefore our choice. 
-
-
-The absolute i-band magnitude $M_{i}$ is a good proxy for the bolometric luminosity (see \citealt{shen2008}, Fig.2). $M_{i}$ is derived from the observed i-band magnitude, by correcting for Galactic extinction, and K-correcting for the fact that at different redshifts different portions of the spectral energy distribution are observed by the telescope filter bandpass. Historically termed K-correction \citep{oke1968}, $K(z)$ is defined as $m_{intrinsic} = m_{observed} - K(z)$. In the early 2000s the standard was to K-correct to redshift 0, but as \citep{richards2006a} pointed out, since the distribution of quasars peaks at redshift 2, for most quasars K(z=0) required shifting the observed spectrum into the far infrared. The procedure was to correct separately for the continuum and emission line contributions, assuming a particular spectral shape (eg. power law  $f_{\nu} \propto \nu^{\alpha}$, with $\alpha=-0.5$ - see \citealt{schneider2010, vandenberk2001, richards2006a}). This introduced large error if the assumed spectral shape $\alpha=-0.5$ was far from the real spectral index. In early 2010s the standard started to shift towards K-correcting to redshift 2 (following  \citealt{richards2006a, wisotzki2000, blanton2003}), and including custom qusasar spectral shapes, as we see eg. in the catalog of \citep{shen2011}. Thus in this study we use  the absolute i-band magnitude K-corrected to z=2: $M_{i}(z=2)$ from \citep{shen2011}. 
-
-
-
-
 
 \begin{figure*}
 \plotone{figs/macleod2010_Fig12_Shen2011.png}
@@ -548,14 +540,20 @@ The absolute i-band magnitude $M_{i}$ is a good proxy for the bolometric luminos
 \end{figure*} 
 
 
-We show on  Fig.~\ref{fig:sf_tau_bh_mass_luminosity} $\tau$ and $SF_{\infty}$ as a function of absolute magnitude $M_{i}$, redshift z, and black hole mass $M_{BH}$. We investigate these correlations in more detail fitting to  $f$ is $\tau_{RF}$ or $SF_{\infty}$ a power law : 
+
+First, we consider the selection effects that are inherent to the quasar distribution. Fig.~\ref{fig:quasar_properties} shows the distribution of quasars as a function of redshift $z$, i magnitude $M_{i}$, and black hole mass $M_{BH}$. For instance, the trend of increasing redshift with $M_{i}$ on the upper left panel is due to the fact that quasars have to be brighter to be included in the survey at increasing distances. 
+
+It is difficult to estimate a black hole mass based on spectral information.  Considering  available catalogs of quasar properties,  we find that the most complete for S82 quasars is \cite{shen2011}, which we elect to use in the following sections. As explained in \citep{shen2008,shen2011}, the most common approach to estimate quasar black hole mass is to assume that the broad-line region (BLR) is virialized, so that the continuum luminosity can be used as a proxy for the BLR radius, and the width of the broad emission lines (or line dispersion) is used to compute the virial velocity. As quasar spectrum gets redshifted, there are different favorite calibrated  emission lines of choice: broad H$\alpha$, H$\beta$, Mg\,{\sc ii}, and C\,{\sc iv} \citep{vestergaard2002}.% some authors, eg. \cite{sanchez2017} chose to study separately trends with M_BH(CIV) and M_BH(MgII)...  we don't think it's necessary ... 
+
+For sources variable at \~0.2 mag level, such as quasars, the ideal is to use single-epoch calibrated spectra to estimate continuum luminosity, and find virial black hole masses using relationships based on the monochromatic fluxes and broad line widths. A glance at the available quasar catalogs reveals that, given any SDSS data release, there is indeed first a catalog of basic quasar properties (redshift and photometry - eg. \citealt{schneider2007, schneider2010}), and more detailed catalogs contaiining black hole masses and bolometric luminosities  follow (eg. \citealt{shen2008, shen2011}). More recently, once SDSS DR12 Quasar Catalog \citep{paris2017} was released,  \citep{kozlowski2017a} followed using SDSS photometry as a proxy for monochromatic luminosities.\citep{chen2018} added a detailed analysis of continuum luminosities in the  H$\alpha$, H$\beta$ regions for low-redshift quasars. Using the spectra from Chinese LAMOST survey \citep{dong2018} also sought to estimate virial black hole masses, and the results, while consistent with \citep{shen2011}, suffered from the necessity to peg the non-calibrated spectra to the SDSS photometry which was taken  a different epoch. Thus even though the SDSS DR12 Quasar Catalog \cite{paris2018}  is the most recent, like \citep{paris2017} it lacks black hole masses and bolometric luminosities, and there is no recent work that re-analyzed the spectral data. \citep{shen2011} remains the best to date measurements of quasar black hole masses and monochromatic luminosities, based directly on the single-epoch spectra. 
 
 
-\begin{eqnarray}
-\label{eq:powlawmodel}
-\log_{10}{f} = &A& + B \log_{10}\left( \lambda_{RF} / 4000 \AA \right) + C (M_{i} + 23) \nonumber \\
-&+& D \log_{10}{\left( M_{BH} / 10^{9} M_{\odot}  \right)} 
-\end{eqnarray} 
+
+Bolometric luminosity is most often estimated from the absolute i-band magnitude, $M_{i}$ (see \citealt{shen2008}, Fig.2). $M_{i}$ is derived from the observed i-band magnitude, by correcting for Galactic extinction, and correcting for the fact that at different redshifts different portions of the spectral energy distribution are observed by the telescope filter bandpass. The latter, known as K-correction $K(z)$ \citep{oke1968},  is defined as $m_{intrinsic} = m_{observed} - K(z)$. In the early 2000`s the common approach was to K-correct to redshift 0, but as \citep{richards2006a} pointed out, since the distribution of quasars peaks at redshift 2, for most quasars correcting to the redshift of 0 required shifting the observed spectrum into the far infrared. Moreover, the procedure was to correct separately for the continuum and emission line contributions, assuming a particular spectral shape (eg. power law  $f_{\nu} \propto \nu^{\alpha}$, with $\alpha=-0.5$ - see \citealt{schneider2010, vandenberk2001, richards2006a}).  This introduces a larger error for K(z=0) than for K(z=2) if the assumed spectral shape $\alpha=-0.5$ is far from the real spectral index. In early 2010`s, after  \citealt{richards2006a, wisotzki2000, blanton2003},  the practice started shifting towards K-correcting to redshift 2,  and including custom qusasar spectral shapes, as reflected by the content of \cite{shen2011} quasar catalog. Thus in this study we use  the absolute i-band magnitude K-corrected to z=2: $M_{i}(z=2)$ from \citep{shen2011}. 
+
+
+
+
 
 
 \begin{figure*}
@@ -564,23 +562,43 @@ We show on  Fig.~\ref{fig:sf_tau_bh_mass_luminosity} $\tau$ and $SF_{\infty}$ as
 \label{fig:sf_tau_bh_mass_luminosity}
 \end{figure*} 
 
-M10 fitted  this power law independently to each of the five SDSS bands, reporting the band-averaged coefficients. Fig.~\ref{fig:MacLeodShen2011} shows the example of posterior samples for $f=SF_{\infty}$ correlating the  M10 SDSS ugriz data against an updated quasar catalog of \citep{shen2011}. 
 
 
 \begin{figure*}
-\plotone{figs/Chelsea_ugriz_Shen2011.png}
-\caption{Table 1 in M10 reported the band-averaged values for fit coefficients A,C,D for Eq.~\ref{eq:powlawmodel}.  Shown here are samples from posterior MCMC draws using M10 results for  $f=SF_{\infty}$, against \citealt{shen2011} $M_{i}$ and $M_{BH}$. Because the SDSS r-band results are different from band-averaged values,  we compare our SDSS-PS1 combined r-band results against M10 SDSS r-band only.}
-\label{fig:MacLeodShen2011}
+\plotone{figs/Eddington_ratio_Shen2011_SDSS-PS1.png}
+\caption{Left : the Eddigton ratio $L/L_{Edd}$ (from \citealt{shen2011}) plotted as a function of $M_{BH}$  vs $M_{i}$. Right:  the asymptotic variability amplitude $SF_{\infty}$,  corrected for the wavelength dependence to $4000 \AA$, as a function of the Eddington ratio.  The slope of -0.9 (solid line) is much steeper than -0.23 found by M10 with the SDSS only data. }
+\label{fig:eddington_ratio}
 \end{figure*} 
 
 
 
-Because we use the combined r-band data, we compare our results to M10 SDSS r-band only. We have already shown consistency of object-by-object results when using only SDSS segment in Figs.~\ref{fig:tauRF_SFinf} and~\ref{fig:celeriteCompare}. Now we show that the trends recovered using SDSS-only portions are also consistent with M10. Fig.~\ref{fig:MacLeodCeleriteShen2011sf} shows the results for $f=SF_{\infty}$ - we find that there is a larger dependence of variability amplitude on quasar luminosity, but smaller dependence on black hole mass. Fig.~\ref{fig:MacLeodCeleriteShen2011tau} concerns the $\tau$, which appears to be less correlated with both quasar luminosity and black hole mass. 
+We show on  Fig.~\ref{fig:sf_tau_bh_mass_luminosity} $\tau$ and $SF_{\infty}$ as a function of absolute magnitude $M_{i}$, redshift z, and black hole mass $M_{BH}$. We investigate these correlations in more detail fitting to  $f$ is $\tau_{RF}$ or $SF_{\infty}$ a power law , using a Bayesian linear regression method that incorporates measurement uncertainties in all latent variables \citep{kelly2007b} : 
+
+
+\begin{eqnarray}
+\label{eq:powlawmodel}
+\log_{10}{f} = &A& + B \log_{10}\left( \lambda_{RF} / 4000 \mbox{\AA} \right) + C (M_{i} + 23) \nonumber \\
+&+& D \log_{10}{\left( M_{BH} / 10^{9} M_{\odot}  \right)} 
+\end{eqnarray} 
+
+
+
+M10 fitted  this model independently to each of the five SDSS bands, reporting the band-averaged coefficients - Fig.~\ref{fig:MacLeodShen2011} shows the example of posterior samples for $f=SF_{\infty}$ correlating the  M10 SDSS ugriz data against an updated quasar catalog of \citep{shen2011}. Since we use combined SDSS r-band and PS1 data, we only compare our results to M10 SDSS r-band.  
+
+
+\begin{figure*}
+\plotone{figs/Chelsea_ugriz_Shen2011_SF.png}
+\caption{Table 1 in M10 reported the band-averaged values for fit coefficients A,C,D for Eq.~\ref{eq:powlawmodel}.  Shown here are samples from posterior MCMC draws using M10 results for  $f=SF_{\infty}$, against \citealt{shen2011} $M_{i}$ and $M_{BH}$. Because the mean of posterior for SDSS r-band results only  (bold, solid lines) are different from the mean of band-averaged values (dashed lines),  we compare our SDSS-PS1 combined r-band results against M10 SDSS r-band only.}
+\label{fig:MacLeodShen2011}
+\end{figure*} 
+
+
+We have shown on Figs.~\ref{fig:tauRF_SFinf} and~\ref{fig:celeriteCompare} that the fitted DRW parameters  $\tau$ and $SF_{\infty}$  using only SDSS segment are consistent with those of M10. Using SDSS segment we also recover similar trends with $M_{BH}$ and $M_{i}$. Fig.~\ref{fig:tauRF_SFinf} demonstrates that adding PS1 data the $\tau - SF_{\infty}$ distribution changes.  For $f=SF_{\infty}$ in Eq.~\ref{eq:powlawmodel}, Fig.~\ref{fig:MacLeodCeleriteShen2011sf} shows that with the addition of PS1 data there is a stronger dependence of variability amplitude on quasar luminosity, but a smaller dependence on the black hole mass. For $f=\tau$  in Eq.~\ref{eq:powlawmodel}, Fig.~\ref{fig:MacLeodCeleriteShen2011tau} there is a weaker trend with both luminosity and black hole mass. 
 
 
 \begin{figure*}
 \plotone{figs/posterior_IDL_Chelsea_Celerite_CD_MI_Z2_tau.png}
-\caption{Comparison of our fits to Eq.~\ref{eq:powlawmodel}, for $f=\tau$ with SDSS only, or SDSS-PS1 combined quasar light curves, against M10 SDSS r-band.  The results from SDSS-only portion are consistent with M10 for the single band. Inclusion of the PS1 portion decreases the timescale dependence on black hole mass, but increases the luminosity dependence. This can be understood as a rotation of the plane in ($\tau$, $M_{i}$, $M_{BH}$) coordinates.  }
+\caption{Distribution of posterior draws from MCMC  Eq.~\ref{eq:powlawmodel}, for $f=\tau$ with SDSS only (dashed green line), or SDSS-PS1 (dot-dashed yellow line) combined quasar light curves, against M10 SDSS r-band.  The results from SDSS-only portion are consistent with M10 for the single band. Inclusion of the PS1 portion decreases the timescale dependence on black hole mass, but increases the luminosity dependence. This can be understood as a rotation of the plane in ($\tau$, $M_{i}$, $M_{BH}$) coordinates.  }
 \label{fig:MacLeodCeleriteShen2011tau}
 \end{figure*} 
 
@@ -592,8 +610,9 @@ Because we use the combined r-band data, we compare our results to M10 SDSS r-ba
 \label{fig:MacLeodCeleriteShen2011sf}
 \end{figure*} 
 
+% EXPLAIN why we make Fig.fig:eddington_ratio    . .   . . ?   
 
-\subsection{Comparison with other studies}
+\subsection{Comparison to other studies}
 
 
 \cite{sun2018} using 1000 low-z S82 QSO finds that variability amplitude is correlated with the inverse of bolometric luminosity, and suggests that since $\hat{\sigma}$ is so well related to $L
@@ -604,7 +623,7 @@ _{bol}$, perhaps we could use the $\hat{\sigma} - L_{bol}$ relation to derive $L
 In principle any tight correlation between the variability parameters and physical properties of quasars could be used to infer eg.  black hole mass or bolometric luminosity  given only the optical time-series. In the era of large synoptic surveys (PS1, ZTF,LSST), this could provide additional information about quasars for which it will be impractical to obtain a spectrum \citep{sanchez2018}.
 
 
-The dominant trend in quasar properties is the Eigenvector-1 : the anti-correlation between the broad line Fe {\sc ii} emission, and the strength of the narrow O{\sc iii} ($5007 \AA$) line\cite{wang1996}. \citep{shen2014} argued from quasar clustering analysis that the entire diversity of quasars in  the quasar main sequence can be explained by variation in accretion (expressed in $R_{\mathrm{Fe  II}}$ - the ratio of the equivalent width of   Fe{\sc ii}  between $4435-4685$ $\AA$ and H$\beta$), or orientation effects (affecting the full-width at half-maximum of the H$\beta$ broad line). In particular, \citep{shen2014} suggests that $R_{\mathrm{Fe  II}}$ increases with  the Eddington ratio, i.e. is anticorrelated with $M_{BH}$. This finding was confirmed by \cite{sun2015} with measurements of black hole mass from the quasar host galaxy stellar dispersion $\sigma_{*}$ (using the $M_{BH} - \sigma_{*}$ relation - \citealt{ferrarese2000, kormendy2013}). For this reason,  \citep{sun2018} chose to explore the evolution of quasar variability in narrow redshift range, as a function of  $R_{\mathrm{Fe  II}}$ and $L_{bol}$. 
+The dominant trend in quasar properties is the Eigenvector-1 : the anti-correlation between the broad line Fe {\sc ii} emission, and the strength of the narrow O{\sc iii} ($5007 \mbox{\AA}$) line\cite{wang1996}. \citep{shen2014} argued from quasar clustering analysis that the entire diversity of quasars in  the quasar main sequence can be explained by variation in accretion (expressed in $R_{\mathrm{Fe  II}}$ - the ratio of the equivalent width of   Fe{\sc ii}  between $4435-4685$ $\mbox{\AA}$ and H$\beta$), or orientation effects (affecting the full-width at half-maximum of the H$\beta$ broad line). In particular, \citep{shen2014} suggests that $R_{\mathrm{Fe  II}}$ increases with  the Eddington ratio, i.e. is anticorrelated with $M_{BH}$. This finding was confirmed by \cite{sun2015} with measurements of black hole mass from the quasar host galaxy stellar dispersion $\sigma_{*}$ (using the $M_{BH} - \sigma_{*}$ relation - \citealt{ferrarese2000, kormendy2013}). For this reason,  \citep{sun2018} chose to explore the evolution of quasar variability in narrow redshift range, as a function of  $R_{\mathrm{Fe  II}}$ and $L_{bol}$. 
 
 
 
@@ -627,27 +646,6 @@ The variability on several years timescale can be explained by the reprocessing 
 
 Since multiple studies have found t
 
-
-\subsection{Alternative method to estimate black hole masses}
-% Kozlowski2015 method to determine black hole masses as an alternative 
-% to methods based on variability parameters. 
-
-In an absence of time-series for a quasar, an attractive alternative method to estimate black hole masses is presented by \citep{kozlowski2015}. Broad-band AGN photometry can be translated into monochromatic fluxes in the vicinity of the reverberating lines (H$\beta$ 5100 $\AA$, Mg\,{\sc ii} at 3000 $\AA$, and C\,{\sc iv} at 1350 $\AA$, \citealt{kozlowski2015}), which in turn can be used to estimate the virial black hole mass :
-
-\begin{equation}
-M_{BH} = \frac{f R \Delta V^{2}}{G}
-\end{equation}
-
-where $f$ is a constant of order unity, $R$ is the size of the Broad Line Region (estimated from  emission-line lag $\Delta t$ as $R = c \Delta t$), $\Delta V$ is the emission line width, $G$ gravitational constant. From reverberation mapping studies we know that continuum luminosity $L$ is related to the size of the BLR region as $R \propto L^{\gamma}$ \citep{vestergaard2006}, with $\gamma$ very close to $1/2$ (eg. \citealt{bentz2009} finds from RM studies $\gamma = 0.519 \pm 0.06$). Thus we obtain  that $R \Delta V^{2} \propto L^{\gamma} \Delta V^{2} \equiv \mu$ , and the black hole mass is a simple function of line width measurement  and continuum luminosity : 
-
-\begin{equation}
-\label{eq:RMBHmass}
-\log{M_{BH}} = \log{\mu} + a 
-\end{equation}
-
-This is also seen eg. in more recent study by \citep{shen2018} of the SDSS Reverberation Mapping sample. 
-
-Ideally one would obtain a quasar spectrum to directly measure $\Delta V$ and $L$, and use Eq.\ref{eq:RMBHmass} to estimate the black hole mass. In the era of LSST, with an order of magnitude increase in the number of known quasars, spectroscopic follow-up of all is not feasible, but as long as the broad-band photometry is available, \citep{kozlowski2015} method (also applied to SDSS Quasar Data Release 12, see \citealt{kozlowski2017b}) presents an attractive alternative to the variability-based black hole mass estimates. 
 
 
 
@@ -673,7 +671,7 @@ It appears that there are several timescales at play, and possibly several inter
 
 One possibility
 
-There is a hierarchy of relevant timescales in the standard optically thick, geometrically thin, $\alpha$-disk model : dynamical, thermal, front, viscous, with   $t_{dyn} < t_{th} < t_{front}  < t_{visc} $ \citep{netzer2013, frank2002}. 
+There is a hierarchy of relevant timescales in the standard optically thick, geometrically thin, $\alpha$-disk model : dynamical, thermal, front, viscous, with   $t_{dyn} < t_{th} < t_{front}  < t_{visc} $ \citep{netzer2013, frank2002}.
 
 The dynamical, or gas orbital, timescale is simply  an inverse of the Keplerian orbital angular frequency $ \Omega$  at radius R  : 
 
@@ -691,7 +689,7 @@ The main parameter  describing the accretion disk is $\alpha$ - the ratio of the
 \end{equation}
 
 
-After \cite{lasota2016},  the hydrodynamical stress tensor is:
+After \cite{lasota2016},  the hydrodynamical stress tensor (corresponding to  kinematic viscocity $\nu$) is:
 
 \begin{equation}
 \tau_{r\varphi } = \rho \nu \frac{\partial v_{\varphi}}{\partial R} = \rho \nu \frac{d \Omega}{d \ln{R}} = \frac{3 \rho \nu \Omega}{2}  
@@ -705,11 +703,11 @@ so  with  $c_{s}$ -  local sound speed at radius $R$ (isothermal sound speed is 
 
 
 
-This means that less viscous disks have smaller $\alpha$. 
+This means that smaller $\alpha$ corresponds to less viscous disks. 
 
 
 
-The thermal timescale - for re-adjustment to thermal equilibrium (derived in detail in \cite{frank2002}), is the ratio of heat content per unit disk area to dissipation rate per unit disk area : $(dE / A) / (dE/dt /  A) = dt $.  The heat content per unit volume is $\sim \rho k T / \mu m_{p} \sim \rho c_{s}^{2}$, and heat content per unit area is that divided by the scale height $\sim \rho c_{s}^{2} / h \sim \Sigma c_{s}^{2}$. Meanwhile, the dissipation rate per unit area, $D(R)$, is 
+The thermal timescale, related to the time needed for re-adjustment to the thermal equilibrium (derived in detail in \cite{frank2002}), is the ratio of heat content per unit disk area to dissipation rate per unit disk area : $(dE / A) / (dE/dt /  A) = dt $.  The heat content per unit volume is $\sim \rho k T / \mu m_{p} \sim \rho c_{s}^{2}$, and heat content per unit area is  $\sim \rho c_{s}^{2} / h \sim \Sigma c_{s}^{2}$. Meanwhile, the dissipation rate per unit area, $D(R)$, is 
 
 \begin{equation}
 D(R) = \frac{9}{8} \nu \Sigma R^{-3} G M
@@ -718,8 +716,10 @@ D(R) = \frac{9}{8} \nu \Sigma R^{-3} G M
 (eq. 4.30 in \citealt{frank2002}), so :
 
 \begin{equation}
-t_{th} \sim \frac{c_{s}^{2}R^{3}}{G M \nu  = \frac{c_{s}^{2}}{\nu \Omega} = \frac{t_{dyn}}{\alpha}
+t_{th} \sim \frac{c_{s}^{2}R^{3}}{G M \nu } = \frac{c_{s}^{2}}{\nu \Omega} = \frac{t_{dyn}}{\alpha}
 \end{equation}
+
+Thus if the disk were inviscid ($\nu \rightarrow 0$), then $t_{th} \rightarrow \infty$,i.e. there is no contact with adjacent disk elements. 
 
 The cooling and heating fronts propagate through the disk at  $\alpha c_{s} $ \citep{hameury2009}  - in that description  with no viscosity there is no communication between neighboring disk annuli, and thus no front propagation \citep{balbus1998, balbus2003}. Following \cite{stern2018}, if we define as $h/R$  the the disk aspect ratio, with the disk height $h = c_{s} / \Omega$, and , the characteristic time for front propagation is:
 
@@ -728,11 +728,60 @@ t_{front} \sim (h/R) ^ {-1} t_{th}
 \end{equation}
 
 
-The viscous timescale is the characteristic time it would take for a parcel of material to undergo a radial transport due to the viscous torques from the radius $R$ to the black hole \citep{czerny2006}. Note that while the viscosity has probably magnetic origin\citep{eardley1975, grzedzielski2017}, we use a hydrodynamical description of accretion flow.  With $\nu = \eta / \rho$ (kinematic viscosity being the ratio of dynamical viscosity to density), \cite{frank2002} shows (Chap.5.2) that 
+The viscous timescale is the characteristic time it would take for a parcel of material to undergo a radial transport due to the viscous torques from the radius $R$ to the black hole \citep{czerny2006}. Note that while the viscosity has probably magnetic origin\citep{eardley1975, grzedzielski2017}, in this simplistic order of magnitude estimate we use a hydrodynamical description of accretion flow.  With $\nu = \eta / \rho$ (kinematic viscosity being the ratio of dynamical viscosity to density), \cite{frank2002} shows (Chap.5.2) that 
 
 \begin{equation}
 t_{visc} \sim R^{2} / \nu \sim  R / v_{R} = (h/R)^{-2} t_{th}
 \end{equation}
+
+ We can parametrize each timescales for a black hole mass $M_{BH}$, at $R \sim 150 r_{g}$, with the gravitational radius $r_{g} = GM_{BH} / c^{2} \sim 4 \mathrm{au}$, using Eqs.5-8 in \cite{stern2018} : 
+
+
+ \begin{equation}
+ t_{dyn} \sim 10  \mathrm{days} \left(\frac{M_{\mathrm{BH}}}{10^{8} M_{\odot}} \right) 
+ \left( \frac{R}{150 r_{g}}\right) ^{3/2} 
+ \end{equation}
+
+ \begin{equation}
+ t_{th}   \sim 1 \,\mathrm{year} \left( \frac{\alpha}{0.03}\right)^{-1}  
+ \left( \frac{M_{\mathrm{BH}}}{10^{8} M_{\odot}}\right) \left( \frac{R}{150 r_{g}}\right)^{3/2} 
+ \end{equation}
+
+  \begin{eqnarray}
+  t_{front} \sim 20 \,\mathrm{years} \left( \frac{h/R}{0.05}\right)^{-1}   \left( \frac{\alpha}{0.03}\right)^{-1}  \nonumber  \\ 
+  \left( \frac{M_{\mathrm{BH}}}{10^{8} M_{\odot}}\right)     \left( \frac{R}{150 r_{g}}\right) ^{3/2} 
+ \end{eqnarray}
+
+  \begin{eqnarray}
+  t_{visc}  \sim 400 \, \mathrm{years} \left( \frac{h/R}{0.05}\right)^{-2}   \left( \frac{\alpha}{0.03}\right)^{-1} \nonumber  \\  
+  \left(\frac{M_{\mathrm{BH}}}{10^{8} M_{\odot}} \right)     \left( \frac{R}{150 r_{g}}\right) ^{3/2}  
+ \end{eqnarray}
+
+
+
+
+
+
+\subsection{Alternative method to estimate black hole masses}
+% Kozlowski2015 method to determine black hole masses as an alternative 
+% to methods based on variability parameters. 
+
+In an absence of time-series for a quasar, an attractive alternative method to estimate black hole masses is presented by \citep{kozlowski2015}. Broad-band AGN photometry can be translated into monochromatic fluxes in the vicinity of the reverberating lines (H$\beta$ 5100 $\mbox{\AA}$, Mg\,{\sc ii} at 3000 $\mbox{\AA}$, and C\,{\sc iv} at 1350 $\mbox{\AA}$, \citealt{kozlowski2015}), which in turn can be used to estimate the virial black hole mass :
+
+\begin{equation}
+M_{BH} = \frac{f R \Delta V^{2}}{G}
+\end{equation}
+
+where $f$ is a constant of order unity, $R$ is the size of the Broad Line Region (estimated from  emission-line lag $\Delta t$ as $R = c \Delta t$), $\Delta V$ is the emission line width, $G$ gravitational constant. From reverberation mapping studies we know that continuum luminosity $L$ is related to the size of the BLR region as $R \propto L^{\gamma}$ \citep{vestergaard2006}, with $\gamma$ very close to $1/2$ (eg. \citealt{bentz2009} finds from RM studies $\gamma = 0.519 \pm 0.06$). Thus we obtain  that $R \Delta V^{2} \propto L^{\gamma} \Delta V^{2} \equiv \mu$ , and the black hole mass is a simple function of line width measurement  and continuum luminosity : 
+
+\begin{equation}
+\label{eq:RMBHmass}
+\log{M_{BH}} = \log{\mu} + a 
+\end{equation}
+
+This is also seen eg. in more recent study by \citep{shen2018} of the SDSS Reverberation Mapping sample. 
+
+Ideally one would obtain a quasar spectrum to directly measure $\Delta V$ and $L$, and use Eq.\ref{eq:RMBHmass} to estimate the black hole mass. In the era of LSST, with an order of magnitude increase in the number of known quasars, spectroscopic follow-up of all is not feasible, but as long as the broad-band photometry is available, \citep{kozlowski2015} method (also applied to SDSS Quasar Data Release 12, see \citealt{kozlowski2017b}) presents an attractive alternative to the variability-based black hole mass estimates. 
 
 
 
