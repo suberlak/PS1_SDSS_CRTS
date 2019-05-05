@@ -362,22 +362,22 @@ We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repea
 \end{figure*} 
 
 
-We extend the SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018}, CRTS \citep{drake2009}, and PTF \citep{rau2009} data. We find 9248 PS1 matches, 6455 PTF matches, and 7737 CRTS matches to SDSS S82 quasars. There are  6444 quasars with SDSS-PS1-PTF-CRTS data.  Fig~\ref{fig:lcExtent}  depicts the  baseline coverage of various surveys.  Each survey uses a unique set of bandpasses and cadences : SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{SDSS}$, and the others are  non-simultaneous : $\{g,r,i,z,y\}_{PS1}$,  $\{g,R\}_{PTF}$, $V_{CRTS}$.  
+We extend the SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018}, CRTS \citep{drake2009}, and PTF \citep{rau2009} data. We find 9248 PS1 matches, 6455 PTF matches, and 7737 CRTS matches to SDSS S82 quasars. There are  6444 quasars with SDSS-PS1-PTF-CRTS data.  Fig~\ref{fig:lcExtent}  depicts the  baseline coverage of various surveys.  Each survey uses a unique set of bandpasses and cadences: SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{\mathrm{SDSS}}$, and the others are  non-simultaneous: $\{g,r,i,z,y\}_{\mathrm{PS1}}$,  $\{g,R\}_{\mathrm{PTF}}$, $V_{\mathrm{CRTS}}$.  
 
 \subsection{Photometric offsets}
 
-We combine the photometry into a single 'master' bandpass. We choose SDSS r as the target bandpass since it has the best photometry, and we calculate color terms that afford transformation from other photometric systems to SDSS. We elect only to translate to SDSS $r$ photometry from nearby filters : ($\{g,R\}_{PTF}$, $\{g,r,i\}_{PS1}$, $V_{CRTS}$). 
+We combine the photometry into a single 'master' bandpass. We choose  $r_{\mathrm{SDSS}}$ as the target bandpass since it has the best photometry, and we calculate color terms that afford transformation from other photometric systems to SDSS. We elect only to translate to SDSS $r$ photometry from nearby filters: ($\{g,R\}_{\mathrm{PTF}}$, $\{g,r,i\}_{\mathrm{PS1}}$, $V_{\mathrm{CRTS}}$). 
 
-Color terms are derived using SDSS standard stars catalog~\citep{ivezic2007}.  We focused on 10\% subset of randomly chosen stars from the catalog, and found CRTS (B.Sesar, priv.comm.), PS1 (from MAST \url{http://panstarrs.stsci.edu}) and PTF (IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}) matches. 
+Color terms are derived using SDSS standard stars catalog~\citep{ivezic2007}.  We focused on a 10\% subset of randomly chosen stars from the catalog, and found CRTS (B.Sesar, priv.comm.), PS1 (from MAST \url{http://panstarrs.stsci.edu}) and PTF (IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}) matches. 
 
-We consider the difference  between the target (SDSS) and source (eg.PS1) photometry as a function of mean SDSS $(g-i)$ color : 
+We consider the difference  between the target (SDSS) and source (eg.PS1) photometry as a function of the mean SDSS $(g-i)$ color : 
 
 
 \begin{equation}
-m_{PS1} - m_{SDSS} = f(g-i)
+m_{\mathrm{PS1}} - m_{\mathrm{SDSS}} = f(g-i)
 \end{equation}
 
-While \cite{tonry2012} chose to spread the stellar locus with $(g-r)$ color, we prefer to use the $(g-i)$ color since it provides a larger wavelength baseline. Some authors (eg. \citet{li2018}) allow $f(g-i)$ to be a higher-order polynomial, but since we limit the transformation to the  region of $(g-i)$ space occupied by quasars (Fig.~\ref{fig:quasarColors}), we find that the linear fit is sufficient (see Fig. ~\ref{fig:offsetsPS1}).   Table ~\ref{tab:offsets} shows the offsets used to transform PS1, CRTS and PTF to SDSS $r$-band. 
+While \cite{tonry2012} chose to spread the stellar locus with $(g-r)$ color, we prefer to use the $(g-i)$ color since it provides a larger wavelength baseline. Some authors (eg. \citet{li2018}) allow $f(g-i)$ to be a higher-order polynomial, but since we limit the transformation to the  region of $(g-i)$ space occupied by quasars (Fig.~\ref{fig:quasarColors}), we find that the linear fit is sufficient (see Fig. ~\ref{fig:offsetsPS1}).   Table~\ref{tab:offsets} shows the offsets used to transform PS1, CRTS and PTF to SDSS $r$-band. 
 
 
 % QSO COLORS 
@@ -412,7 +412,7 @@ PS1 r &  0.0057   & -0.0014 \\
 PS1 i &  0.0247   & -0.2765 \\
 \enddata
 
-\tablecomments{To derive the offsets we used SDSS S82 1 mln standard stars catalog \citep{ivezic2007}. We randomly selected 10\% of that catalog, for which 48250 have CRTS light curves with at least 10 observations (B.Sesar). For these stars we  obtained PS1 photometry from MAST \url{http://panstarrs.stsci.edu} and PTF from IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}. We further imposed quality cuts requiring that the stars are bright: $r < 19$.}
+\tablecomments{To derive the color terms we used SDSS S82 standard stars catalog \citep{ivezic2007}. We randomly selected 10\% of that catalog, for which 48250 have CRTS light curves. We  obtained PS1 photometry from MAST, and PTF from IRSA PTF Object Catalog. We imposed quality cuts requiring that the stars are bright: $r < 19$.}
 \end{deluxetable}
 
 
