@@ -529,6 +529,7 @@ together with the fit coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $
 
 Here we examine the main scientific results: correlations between variability parameters  ($\tau, SF{\infty}$), and the physical properties of quasars: absolute i-band magnitude $M_{i}$, and black hole mass $M_{BH}$. 
 
+In principle any tight correlation between the variability parameters and physical properties of quasars could be used to infer eg.  black hole mass or bolometric luminosity  given only the optical time-series. In the era of large synoptic surveys (PS1, ZTF,LSST), this could provide additional information about quasars for which it will be impractical to obtain a spectrum \citep{sanchez2018}.
 
 \begin{figure*}
 \plotone{figs/macleod2010_Fig12_Shen2011.png}
@@ -611,40 +612,24 @@ We show on Figs.~\ref{fig:tauRF_SFinf} and~\ref{fig:celeriteCompare} that the fi
 
 \subsection{Comparison to other studies}
 
+ Our work suggests that with added PS1 data, $\tau$ is more strongly dependent on luminosity than with only SDSS data.  This is consistent with findings of \cite{sun2018}, who concluded with Structure Function analysis of their luminosity-matched quasar sample, that $\tau$ depends mostly on the bolometric luminosity. 
 
-\cite{sun2018} using 1000 low-z S82 QSO finds that variability amplitude is correlated with the inverse of bolometric luminosity, and suggests that since $\hat{\sigma}$ is so well related to $L
-_{bol}$, perhaps we could use the $\hat{\sigma} - L_{bol}$ relation to derive $L_{bol}$ without assuming any cosmological models. Our work suggests that with added PS1 data, $\tau$ is more strongly dependent on luminosity than with only SDSS data.  This is consistent with findings of \cite{sun2018}, who concluded with Structure Function analysis of their luminosity-matched quasar sample, that $\tau$ depends mostly on the bolometric luminosity. 
-
-
-
-In principle any tight correlation between the variability parameters and physical properties of quasars could be used to infer eg.  black hole mass or bolometric luminosity  given only the optical time-series. In the era of large synoptic surveys (PS1, ZTF,LSST), this could provide additional information about quasars for which it will be impractical to obtain a spectrum \citep{sanchez2018}.
+%\cite{sun2018} using 1000 low-z S82 QSO finds that variability amplitude is correlated with the inverse of bolometric luminosity, and suggests that since $\hat{\sigma}$ is so well related to $L_{bol}$, perhaps we could use the $\hat{\sigma} - L_{bol}$ relation to derive $L_{bol}$ without assuming any cosmological models.
 
 
-The dominant trend in quasar properties is the Eigenvector-1 : the anti-correlation between the broad line Fe {\sc ii} emission, and the strength of the narrow O{\sc iii} ($5007 \mbox{\AA}$) line\cite{wang1996}. \citep{shen2014} argued from quasar clustering analysis that the entire diversity of quasars in  the quasar main sequence can be explained by variation in accretion (expressed in $R_{\mathrm{Fe  II}}$ - the ratio of the equivalent width of   Fe{\sc ii}  between $4435-4685$ $\mbox{\AA}$ and H$\beta$), or orientation effects (affecting the full-width at half-maximum of the H$\beta$ broad line). In particular, \citep{shen2014} suggests that $R_{\mathrm{Fe  II}}$ increases with  the Eddington ratio, i.e. is anticorrelated with $M_{BH}$. This finding was confirmed by \cite{sun2015} with measurements of black hole mass from the quasar host galaxy stellar dispersion $\sigma_{*}$ (using the $M_{BH} - \sigma_{*}$ relation - \citealt{ferrarese2000, kormendy2013}). For this reason,  \citep{sun2018} chose to explore the evolution of quasar variability in narrow redshift range, as a function of  $R_{\mathrm{Fe  II}}$ and $L_{bol}$. 
+The dominant trend in quasar properties is the Eigenvector-1 : the anti-correlation between the broad line Fe {\sc ii} emission, and the strength of the narrow O{\sc iii} ($5007 \mbox{\AA}$) line \citep{wang1996}. \citet{shen2014} argued from quasar clustering analysis that the entire diversity of quasars in  the quasar main sequence can be explained by the variation in accretion (expressed in $R_{\mathrm{Fe  II}}$ - the ratio of the equivalent width of   Fe{\sc ii}  between $4435-4685$ $\mbox{\AA}$ and H$\beta$), or orientation effects (affecting the full-width at half-maximum of the H$\beta$ broad line). In particular, \citet{shen2014} suggest that $R_{\mathrm{Fe  II}}$ increases with  the Eddington ratio, i.e. is anticorrelated with $M_{BH}$. That finding was confirmed by \cite{sun2015} with measurements of black hole mass from the quasar host galaxy stellar dispersion $\sigma_{*}$ (using the $M_{BH} - \sigma_{*}$ relation - \citealt{ferrarese2000, kormendy2013}). For this reason,  \citet{sun2018} chose to explore the evolution of quasar variability in narrow redshift range, as a function of  $R_{\mathrm{Fe  II}}$ and $L_{bol}$. 
 
+The variability on several years timescale can be explained by the reprocessing model \cite{kokubo2015}, assuming that the AGN UV-optical variability is a results of reprocessing of X-ray or far-UV emission \citep{krolik1991}.  X-ray reprocessing is also consistent with  the dependence of $\hat{\sigma}$ on the Fe{\sc ii} strength, studied by \citep{sun2018}. 
 
-
-X-ray reprocessing is also consistent with  the dependence of $\hat{\sigma}$ on the Fe{\sc ii} strength, studied by \citep{sun2018}. 
-
-
-Part of the unaccounted for scatter could be due to variations in metallicity.  As \cite{jiang2016} points out based on three-dimensional radiation magnetohydrodynamic simulations, the iron opacity bump may have a strong influence on the stability of an accretion disk, and thus link metallicity to AGN variability. This would also be consistent with findings of \cite{sun2018} if quasars with high  Fe{\sc ii} strength have higher metallicity, and have more stable disks. 
 
 % Zhu2016 : The corona is generally assumed to work as a light bulb above the disk and modulates radiation from the disk, encoding information about sizes and distances in the form of time lags between light curves in different photometric bands. This is the famous X-ray reprocessing model (Krolik et al. 1991), and it has been tested in great detail with nearby Seyferts (Sergeev et al. 2005; McHardy et al. 2014; Edelson et al. 2015; Fausnaugh et al. 2016; Troyer et al. 2016). Correlation analysis of inter-band (X-ray/UV/optical) light curves typically results in lags of less than a few days (for a short review, see Lawrence 2012), likely corresponding to light travel time. However, it should be kept in mind that X-ray only contributes to a small fraction of AGNs' total bolometric luminosity, especially for brighter ones (Strateva et al. 2005; Grupe et al. 2010; Lusso et al. 2010), and thus could be insufficient to produce the observed UV/optical variation (Gaskell 2008).
 
 
 
-\citep{guo2017} uses a low-redshift (z<1.2), low black hole mass ($\log_{10}{(M_{BH}<9)}$)  subsample of the SDSS S82 r-band quasar light curves. Using Javelin \cite{zu2011} code they fitted DRW model for $\tau$, $SF_{\infty}$ 
+%\citep{guo2017} uses a low-redshift (z<1.2), low black hole mass ($\log_{10}{(M_{BH}<9)}$)  subsample of the SDSS S82 r-band quasar light curves. Using Javelin \cite{zu2011} code they fitted DRW model for $\tau$, $SF_{\infty}$ 
 
-
-The variability on several years timescale can be explained by the reprocessing model \cite{kokubo2015}, assuming that the AGN UV-optical variability is a results of reprocessing of X-ray or far-UV emission \citep{krolik1991}
 
 \citep{sanchez2018} combined the SDSS spectra with 5 year light curves of 2345 quasars obtained with Quasar Equatorial Survey Team (QUEST)-La Silla AGN Variability Survey. Using the Bayesian parametrization of Structure Function \citep{schmidt2010},  SF$(\tau) = A(\tau/1 \mathrm{yr})^{\gamma} $, they found that the amplitude of variability $A$ is anti-correlated with rest-frame emission wavelength,  and Eddington ratio (similar as M10).  Due to limited light curve length they did not consider any correlations with $\tau$. The decreasing of  $A$ with increasing  $\lambda_{rest}$ would naturally follow from the inner regions of the disk being more variable (higher amplitude and  shorter wavelength) - see \citep{fausnaugh2016} and \citep{edelson2015}. The anticorrelation of $A$ and Eddington ratio is consistent with other works (M10, \citealt{simm2016}, \citealt{rakshit2017})
-
-
-Since multiple studies have found t
-
-
-
 
 
 
@@ -652,21 +637,9 @@ Anticorrelation of  variability amplitude and the Eddington ratio  has a variety
 
 In thin disk theory \cite{shakura1973, frank2002, netzer2013}, radius of the emission region at given wavelength increases with the Eddington ratio, and is inversely proportional to temperature\cite{rakshit2017}. Thus a hotter disk means that the emission observed in a given bandpass is emitted from a larger radius. From causality, a smaller region can be more variable than a larger one. Therefore, a  hotter disk would be less variable at a given wavelength than a colder one, and  the variability amplitude as studied in a particular bandpass (here, SDSS r-band) would be anticorrelated with Eddington ratio. 
 
-
-
-
-\cite{rakshit2017}  notes that as the Eddington ratio increases,  the radius of emission at a given wavelength increases (higher $L/L_{Edd}$ - hotter disk), leading to a decreased variability amplitude. 
-
- If Eddington ratio is related 
-
-
 In the era of changing-look active galaxies ( including initially distinct classes of Changing-Look Quasars \citep{lamassa2015, macleod2019}, Changing-Look AGNs \citep{marchese2012, bianchi2009,risaliti2009}, Changing-Look LINERS \citep{frederick2019} to name a few) there is a revived interest in possibly linking the behavior of stellar-sized accreting systems (eg. Black Hole Binaries),  to that of galactic scale (eg. AGN, QSO, LINERS)\citep{noda2018}. 
 
 It appears that there are several timescales at play, and possibly several interlinked mechanisms that drive the variability. 
-
-
-
-One possibility
 
 There is a hierarchy of relevant timescales in the standard optically thick, geometrically thin, $\alpha$-disk model : dynamical, thermal, front, viscous, with   $t_{dyn} < t_{th} < t_{front}  < t_{visc} $ \citep{netzer2013, frank2002}.
 
@@ -675,8 +648,6 @@ The dynamical, or gas orbital, timescale is simply  an inverse of the Keplerian 
 \begin{equation}
 t_{dyn} \sim  1 / \Omega = \left( \frac{GM}{R^{3}}\right)^{-1/2}
 \end{equation}
-
-
 
 
 The main parameter  describing the accretion disk is $\alpha$ - the ratio of the (vertically averaged) total stress to thermal (vertically averaged) pressure \citep{lasota2016} : 
@@ -703,8 +674,7 @@ so  with  $c_{s}$ -  local sound speed at radius $R$ (isothermal sound speed is 
 This means that smaller $\alpha$ corresponds to less viscous disks. 
 
 
-
-The thermal timescale, related to the time needed for re-adjustment to the thermal equilibrium (derived in detail in \cite{frank2002}), is the ratio of heat content per unit disk area to dissipation rate per unit disk area : $(dE / A) / (dE/dt /  A) = dt $.  The heat content per unit volume is $\sim \rho k T / \mu m_{p} \sim \rho c_{s}^{2}$, and heat content per unit area is  $\sim \rho c_{s}^{2} / h \sim \Sigma c_{s}^{2}$. Meanwhile, the dissipation rate per unit area, $D(R)$, is 
+The thermal timescale, related to the time needed for re-adjustment to the thermal equilibrium (derived in detail in \cite{frank2002}), is the ratio of heat content per unit disk area to dissipation rate per unit disk area: $(dE / A) / (dE/dt /  A) = dt $.  The heat content per unit volume is $\sim \rho k T / \mu m_{p} \sim \rho c_{s}^{2}$, and heat content per unit area is  $\sim \rho c_{s}^{2} / h \sim \Sigma c_{s}^{2}$. Meanwhile, the dissipation rate per unit area, $D(R)$, is 
 
 \begin{equation}
 D(R) = \frac{9}{8} \nu \Sigma R^{-3} G M
@@ -716,22 +686,22 @@ D(R) = \frac{9}{8} \nu \Sigma R^{-3} G M
 t_{th} \sim \frac{c_{s}^{2}R^{3}}{G M \nu } = \frac{c_{s}^{2}}{\nu \Omega} = \frac{t_{dyn}}{\alpha}
 \end{equation}
 
-Thus if the disk were inviscid ($\nu \rightarrow 0$), then $t_{th} \rightarrow \infty$,i.e. there is no contact with adjacent disk elements. 
+Thus if the disk were inviscid ($\nu \rightarrow 0$), then $t_{th}\rightarrow\infty$ i.e. there is no contact with adjacent disk elements. 
 
-The cooling and heating fronts propagate through the disk at  $\alpha c_{s} $ \citep{hameury2009}  - in that description  with no viscosity there is no communication between neighboring disk annuli, and thus no front propagation \citep{balbus1998, balbus2003}. Following \cite{stern2018}, if we define as $h/R$  the the disk aspect ratio, with the disk height $h = c_{s} / \Omega$, and , the characteristic time for front propagation is:
+The cooling and heating fronts propagate through the disk at  $\alpha c_{s} $ \citep{hameury2009}  - in that description  with no viscosity there is no communication between neighboring disk annuli, and thus no front propagation \citep{balbus1998, balbus2003}. Following \cite{stern2018}, if we define as $h/R$  the the disk aspect ratio, with the disk height $h = c_{s} / \Omega$, the characteristic time for front propagation is:
 
 \begin{equation}
 t_{front} \sim (h/R) ^ {-1} t_{th}
 \end{equation}
 
 
-The viscous timescale is the characteristic time it would take for a parcel of material to undergo a radial transport due to the viscous torques from the radius $R$ to the black hole \citep{czerny2006}. Note that while the viscosity has probably magnetic origin\citep{eardley1975, grzedzielski2017}, in this simplistic order of magnitude estimate we use a hydrodynamical description of accretion flow.  With $\nu = \eta / \rho$ (kinematic viscosity being the ratio of dynamical viscosity to density), \cite{frank2002} shows (Chap.5.2) that 
+The viscous timescale is the characteristic time it would take for a parcel of material to undergo a radial transport due to the viscous torques from the radius $R$ to the black hole \citep{czerny2006}. Note that while viscosity has probably magnetic origin \citep{eardley1975, grzedzielski2017}, in this simplistic order of magnitude estimate we use a hydrodynamical description of accretion flow.  With $\nu = \eta / \rho$ (kinematic viscosity being the ratio of dynamical viscosity to density), \cite{frank2002} shows (Chap.5.2) that 
 
 \begin{equation}
 t_{visc} \sim R^{2} / \nu \sim  R / v_{R} = (h/R)^{-2} t_{th}
 \end{equation}
 
- We can parametrize each timescales for a black hole mass $M_{BH}$, at $R \sim 150 r_{g}$, with the gravitational radius $r_{g} = GM_{BH} / c^{2} \sim 4 \mathrm{au}$, using Eqs.5-8 in \cite{stern2018} : 
+ We can parametrize each timescale for a black hole mass $M_{BH} = 10^{8} M_{\odot}$, at $R \sim 150 r_{g}$, with the gravitational radius $r_{g} = GM_{BH} / c^{2} \sim 4 \mathrm{au}$, using Eqs.5-8 in \cite{stern2018} : 
 
 
  \begin{equation}
@@ -758,18 +728,20 @@ t_{visc} \sim R^{2} / \nu \sim  R / v_{R} = (h/R)^{-2} t_{th}
 
 
 
+Part of the unaccounted for scatter could be due to variations in metallicity.  As \cite{jiang2016} points out based on three-dimensional radiation magnetohydrodynamic simulations, the iron opacity bump may have a strong influence on the stability of an accretion disk, and thus link metallicity to AGN variability. This would also be consistent with findings of \cite{sun2018} if quasars with high  Fe{\sc ii} strength have higher metallicity, and have more stable disks. 
+
 
 \subsection{Alternative method to estimate black hole masses}
 % Kozlowski2015 method to determine black hole masses as an alternative 
 % to methods based on variability parameters. 
 
-In an absence of time-series for a quasar, an attractive alternative method to estimate black hole masses is presented by \citep{kozlowski2015}. Broad-band AGN photometry can be translated into monochromatic fluxes in the vicinity of the reverberating lines (H$\beta$ 5100 $\mbox{\AA}$, Mg\,{\sc ii} at 3000 $\mbox{\AA}$, and C\,{\sc iv} at 1350 $\mbox{\AA}$, \citealt{kozlowski2015}), which in turn can be used to estimate the virial black hole mass :
+In an absence of time-series for a quasar, an attractive alternative method to estimate black hole masses is presented by \citep{kozlowski2015}. Broad-band AGN photometry can be translated into monochromatic fluxes in the vicinity of the reverberating lines (H$\beta$ 5100 $\mbox{\AA}$, Mg\,{\sc ii} at 3000 $\mbox{\AA}$, and C\,{\sc iv} at 1350 $\mbox{\AA}$, \citealt{kozlowski2015}), which in turn can be used to estimate the virial black hole mass:
 
 \begin{equation}
 M_{BH} = \frac{f R \Delta V^{2}}{G}
 \end{equation}
 
-where $f$ is a constant of order unity, $R$ is the size of the Broad Line Region (estimated from  emission-line lag $\Delta t$ as $R = c \Delta t$), $\Delta V$ is the emission line width, $G$ gravitational constant. From reverberation mapping studies we know that continuum luminosity $L$ is related to the size of the BLR region as $R \propto L^{\gamma}$ \citep{vestergaard2006}, with $\gamma$ very close to $1/2$ (eg. \citealt{bentz2009} finds from RM studies $\gamma = 0.519 \pm 0.06$). Thus we obtain  that $R \Delta V^{2} \propto L^{\gamma} \Delta V^{2} \equiv \mu$ , and the black hole mass is a simple function of line width measurement  and continuum luminosity : 
+where $f$ is a constant of order unity, $R$ is the size of the Broad Line Region (estimated from  emission-line lag $\Delta t$ as $R = c \Delta t$), $\Delta V$ is the emission line width, $G$ gravitational constant. From reverberation mapping studies we know that continuum luminosity $L$ is related to the size of the BLR region as $R \propto L^{\gamma}$ \citep{vestergaard2006}, with $\gamma$ very close to $1/2$ (eg. \citealt{bentz2009} finds from RM studies $\gamma = 0.519 \pm 0.06$). Thus we obtain  that $R \Delta V^{2} \propto L^{\gamma} \Delta V^{2} \equiv \mu$ , and the black hole mass is a simple function of line width measurement  and continuum luminosity: 
 
 \begin{equation}
 \label{eq:RMBHmass}
