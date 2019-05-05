@@ -248,7 +248,7 @@ In this study by extending available quasar light curves we are able to better r
 %
 \section{Methods}\label{sec:methods}
 \subsection{DRW as a Gaussian Process}
-Damped Random Walk (Ornstein-Uhlenbeck process) can be modeled as a member of a class of Gaussian Processes (GP). Each GP is described by a mean and a kernel - a covariance function that contains a measure of correlation between two points $x_{n}$, $x_{m}$, separted by $\Delta t_{nm}$ (autocorrelation). For the  DRW process, the covariance  between observations of a source separated by $\Delta t_{nm}$ is : 
+Damped Random Walk (Ornstein-Uhlenbeck process) can be modeled as a member of a class of Gaussian Processes (GP). Each GP is described by a mean and a kernel - a covariance function that contains a measure of correlation between two points: $x_{n}$ and $x_{m}$, separated by $\Delta t_{nm}$ (autocorrelation). For the  DRW process, the covariance  between two observations spaced by  $\Delta t_{nm}$ is: 
 
 \begin{eqnarray}
 k(\Delta t_{nm}) &=& a \exp{(-\Delta t_{tm} / \tau)} \\
@@ -256,18 +256,18 @@ k(\Delta t_{nm}) &=& a \exp{(-\Delta t_{tm} / \tau)} \\
                  &=& \sigma^{2} ACF(\Delta t_{tm})
 \end{eqnarray} 
 
-Here $a$ or $\sigma^{2}$ is an amplitude of correlation decay as a function of $t_{tm}$,  while $\tau$ is the characteristic timescale over which correlation drops by $1/e$. For a DRW,  the correlation function $k(\Delta t_{nm})$ is also related to the autocorrelation function $ACF$. 
+Here $a$ or $\sigma^{2}$ is an amplitude of correlation decay as a function of $\Delta t_{tm}$,  while $\tau$ is the characteristic timescale over which correlation drops by $1/e$. For a DRW,  the correlation function $k(\Delta t_{nm})$ is also related to the autocorrelation function $ACF$. 
 
-Not explicitly used in this paper, but of direct relevance to DRW modeling, is the structure function (SF). SF can be found from the data $\{m_{i},t_{i}\}$ as the root-mean-squared of  magnitude differences $\Delta m$  calculated as a function of temporal separation $\Delta t$. SF is directly related to a DRW kernel $k(\Delta t_{nm})$:
+Not explicitly used in this paper, but of direct relevance to the DRW modeling, is the structure function (SF). SF can be found from the data as the root-mean-squared of  magnitude differences $\Delta m$  calculated as a function of temporal separation $\Delta t$ (we drop subscripts $n$,$m$ for brevity). SF is directly related to a DRW kernel $k(\Delta t)$:
 
 \begin{equation}
 SF(\Delta t) = SF_{\infty} (1-\exp{(-|\Delta t|/\tau)})^{1/2}
 \end{equation}
 
-For quasars the SF follows approximately a power law: $SF \propto \Delta t^{\beta}$,  and it levels out for large time lags $\Delta t$ to a constant value of $SF_{\infty}$.   Note that $SF_\infty = \sqrt{2} \sigma$  in the above (also see \citet{macleod2012, bauer2009, graham2015a} for an overview).
+For quasars SF follows approximately a power law: $SF \propto \Delta t^{\beta}$,  and it levels out for large time lags $\Delta t$ to a constant value of $SF_{\infty}$.   Note that $SF_\infty = \sqrt{2} \sigma$  in the above (also see \citet{macleod2012, bauer2009, graham2015a} for an overview).
 
 
-The likelihood is evaluated with   \project{celerite}\citep{foreman2017} - a fast GP solver that scales linearly with the number of data points $\mathcal{O}(N)$ thanks to an optimization that exploits the structure of covariance matrix for kernels that are a mixture of exponentials, such as a DRW kernel\citep{foreman2018,ambikasaran2015}. The method employed is similar to that used by \cite{rybicki1992, kozlowski2010},  M10 - like in previous work, we use a  uniform prior on $\sigma$ and $\tau$.  The main difference is that rather than adopting the Maximum A-Posteriori (MAP) as the 'best-fit' value for the DRW parameters,  we find the expectation value of the marginalized log posterior. If the posterior space was a 2D Gaussian in $\sigma$, $\tau$ space, the expectation value would coincide with the maximum of the log posterior. However, due to non-Gaussian shape of the log posterior, the expectation value is a better   estimate of $\sigma$ and $\tau$  rather than MAP. 
+The likelihood for the particular value of DRW parameters given the data is evaluated with   \project{celerite} \citep{foreman2017} - a fast GP solver that scales linearly with the number of data points $\mathcal{O}(N)$ thanks to an optimization that exploits the structure of covariance matrix for kernels that are a mixture of exponentials, such as a DRW kernel \citep{foreman2018,ambikasaran2015}. The method employed is similar to that used by \cite{rybicki1992, kozlowski2010},  M10 - like in previous work, we use a  uniform prior in log space on DRW fit parameters. The main difference in our approach is that rather than adopting the Maximum A-Posteriori (MAP) as the 'best-fit' value for the DRW parameters (as done in \citealt{kozlowski2010}, K17, \citealt{kozlowski2016b}, M10, \citealt{macleod2011}),  we find the expectation value of the marginalized log posterior. This is advantageous because of a non-Gaussian shape of the log posterior - it if were described by a 2D Gaussian,  then the expectation value would coincide with the maximum of the log posterior.
 
 \subsection{The impact of light curve baseline}\label{sec:baseline}
 
