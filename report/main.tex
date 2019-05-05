@@ -489,7 +489,7 @@ As we found earlier, extending the light curve baseline decreases the bias in th
 
 \section{Results: fitting SDSS-PS1 with Celerite}\label{sec:results}
 
-We have extended the baseline of Stripe82 quasars by adding to SDSS r-band data the  PS1 g,r,i data, transformed into common SDSS r-band. As the variability originates in the accretion disk, we shift all timescales to quasar rest frame : $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$. 
+We have extended the baseline of Stripe82 quasars by adding to SDSS r-band data the  PS1 g,r,i data, transformed into common SDSS r-band. As the variability is assumed to originate in the accretion disk, we shift all timescales to quasar rest frame : $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$ (in this section,  $\tau$ refers to $\tau_{RF}$). 
 
 
 \begin{figure*}
@@ -499,7 +499,7 @@ We have extended the baseline of Stripe82 quasars by adding to SDSS r-band data 
 \end{figure*} 
 
 
-We first show that our results are consistent with M10 when using only the SDSS r-band : on Fig.~\ref{fig:tauRF_SFinf}) the distributions of $\tau$, $SF_{\infty}$ from M10 (red) and our results (blue) coincide. Furthermore, when comparing object-by-object M10 to our SDSS-only results we find a very good agreement (see Fig.~\ref{fig:celeriteCompare}).
+We first show that our results are consistent with M10 when using only the SDSS r-band : on Fig.~\ref{fig:tauRF_SFinf} the distributions of $\tau$, $SF_{\infty}$ from M10 (red) and our results (blue) coincide. Furthermore, when comparing object-by-object M10 to our SDSS-only results we find a very good agreement (see Fig.~\ref{fig:celeriteCompare}).
 
 
 \begin{figure*}
@@ -515,7 +515,7 @@ Prior to looking for correlations with physical quantities (black hole mass, lum
 \begin{equation}
 f \propto \left( \frac{\lambda_{RF}}{4000 \mbox{\AA}} \right)^{B}
 \end{equation}
-together with the fit coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively, are adequate for combined SDSS-PS1 results, as shown on Fig.~\ref{fig:wavelength_dependence} . 
+together with the fit coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively, are adequate for combined SDSS-PS1 results, as shown on Fig.~\ref{fig:wavelength_dependence}. 
 
   
 \begin{figure*}
@@ -542,7 +542,7 @@ First, we consider the selection effects that are inherent to the quasar distrib
 
 It is difficult to estimate a black hole mass based on spectral information.  Considering  available catalogs of quasar properties,  we find that the most complete for S82 quasars is \cite{shen2011}, which we elect to use in the following sections. As explained in \citep{shen2008,shen2011}, the most common approach to estimate quasar black hole mass is to assume that the broad-line region (BLR) is virialized, so that the continuum luminosity can be used as a proxy for the BLR radius, and the width of the broad emission lines (or line dispersion) is used to compute the virial velocity. As quasar spectrum gets redshifted, there are different favorite calibrated  emission lines of choice: broad H$\alpha$, H$\beta$, Mg\,{\sc ii}, and C\,{\sc iv} \citep{vestergaard2002}.% some authors, eg. \cite{sanchez2017} chose to study separately trends with M_BH(CIV) and M_BH(MgII)...  we don't think it's necessary ... 
 
-For sources variable at \~0.2 mag level, such as quasars, the ideal is to use single-epoch calibrated spectra to estimate continuum luminosity, and find virial black hole masses using relationships based on the monochromatic fluxes and broad line widths. A glance at the available quasar catalogs reveals that, given any SDSS data release, there is indeed first a catalog of basic quasar properties (redshift and photometry - eg. \citealt{schneider2007, schneider2010}), and more detailed catalogs contaiining black hole masses and bolometric luminosities  follow (eg. \citealt{shen2008, shen2011}). More recently, once SDSS DR12 Quasar Catalog \citep{paris2017} was released,  \citep{kozlowski2017a} followed using SDSS photometry as a proxy for monochromatic luminosities.\citep{chen2018} added a detailed analysis of continuum luminosities in the  H$\alpha$, H$\beta$ regions for low-redshift quasars. Using the spectra from Chinese LAMOST survey \citep{dong2018} also sought to estimate virial black hole masses, and the results, while consistent with \citep{shen2011}, suffered from the necessity to peg the non-calibrated spectra to the SDSS photometry which was taken  a different epoch. Thus even though the SDSS DR12 Quasar Catalog \cite{paris2018}  is the most recent, like \citep{paris2017} it lacks black hole masses and bolometric luminosities, and there is no recent work that re-analyzed the spectral data. \citep{shen2011} remains the best to date measurements of quasar black hole masses and monochromatic luminosities, based directly on the single-epoch spectra. 
+For sources variable at $\sim0.2$ mag level, such as quasars, the ideal is to use single-epoch calibrated spectra to estimate continuum luminosity, and find virial black hole masses using relationships based on the monochromatic fluxes and broad line widths. A glance at the available quasar catalogs reveals that, given any SDSS data release, there is indeed first a catalog of basic quasar properties (redshift and photometry - eg. \citealt{schneider2007, schneider2010}), and more detailed catalogs containing black hole masses and bolometric luminosities  follow (eg. \citealt{shen2008, shen2011}). More recently, once SDSS DR12 Quasar Catalog \citep{paris2017} was released,  \citealt{kozlowski2017a} followed using SDSS photometry as a proxy for monochromatic luminosities. \citet{chen2018} added a detailed analysis of continuum luminosities in the  H$\alpha$, H$\beta$ regions for low-redshift quasars. Using the spectra from Chinese LAMOST survey \citet{dong2018} also sought to estimate virial black hole masses, and the results, while consistent with \citet{shen2011}, suffered from the necessity to peg the non-calibrated spectra to the SDSS photometry which was taken  a different epoch. Thus even though the SDSS DR12 Quasar Catalog of \cite{paris2018}  is the most recent, like \citet{paris2017} it lacks black hole masses and bolometric luminosities, and there is no recent work that re-analyzed the spectral data. \citet{shen2011} remains the best to date measurements of quasar black hole masses and monochromatic luminosities, based directly on the single-epoch spectra. 
 
 
 
@@ -569,7 +569,7 @@ Bolometric luminosity is most often estimated from the absolute i-band magnitude
 
 
 
-We show on  Fig.~\ref{fig:sf_tau_bh_mass_luminosity} $\tau$ and $SF_{\infty}$ as a function of absolute magnitude $M_{i}$, redshift z, and black hole mass $M_{BH}$. We investigate these correlations in more detail fitting to  $f$ is $\tau_{RF}$ or $SF_{\infty}$ a power law , using a Bayesian linear regression method that incorporates measurement uncertainties in all latent variables \citep{kelly2007b} : 
+Some trends between $\tau$ and $SF_{\infty}$  (for combined SDSS-PS1 light curves) and  $M_{BH}$, $M_{i}$ or redshift $z$  are apparent (see Fig.~\ref{fig:sf_tau_bh_mass_luminosity}). We investigate these correlations in more detail by fitting to $\tau$ or $SF_{\infty}$ (called $f$ below) a power law , using a Bayesian linear regression method that incorporates measurement uncertainties in all latent variables \citep{kelly2007b} : 
 
 
 \begin{eqnarray}
@@ -580,7 +580,7 @@ We show on  Fig.~\ref{fig:sf_tau_bh_mass_luminosity} $\tau$ and $SF_{\infty}$ as
 
 
 
-M10 fitted  this model independently to each of the five SDSS bands, reporting the band-averaged coefficients - Fig.~\ref{fig:MacLeodShen2011} shows the example of posterior samples for $f=SF_{\infty}$ correlating the  M10 SDSS ugriz data against an updated quasar catalog of \citep{shen2011}. Since we use combined SDSS r-band and PS1 data, we only compare our results to M10 SDSS r-band.  
+M10 fitted  this model independently to each of the five SDSS bands, reporting the band-averaged coefficients - Fig.~\ref{fig:MacLeodShen2011} shows the example of posterior samples for $f=SF_{\infty}$ correlating the  M10 SDSS ugriz data against an updated quasar catalog of \citet{shen2011}. Since we use combined SDSS r-band and PS1 data, we only compare our results to M10 SDSS r-band.  
 
 
 \begin{figure*}
@@ -590,7 +590,7 @@ M10 fitted  this model independently to each of the five SDSS bands, reporting t
 \end{figure*} 
 
 
-We have shown on Figs.~\ref{fig:tauRF_SFinf} and~\ref{fig:celeriteCompare} that the fitted DRW parameters  $\tau$ and $SF_{\infty}$  using only SDSS segment are consistent with those of M10. Using SDSS segment we also recover similar trends with $M_{BH}$ and $M_{i}$. Fig.~\ref{fig:tauRF_SFinf} demonstrates that adding PS1 data the $\tau - SF_{\infty}$ distribution changes.  For $f=SF_{\infty}$ in Eq.~\ref{eq:powlawmodel}, Fig.~\ref{fig:MacLeodCeleriteShen2011sf} shows that with the addition of PS1 data there is a stronger dependence of variability amplitude on quasar luminosity, but a smaller dependence on the black hole mass. For $f=\tau$  in Eq.~\ref{eq:powlawmodel}, Fig.~\ref{fig:MacLeodCeleriteShen2011tau} there is a weaker trend with both luminosity and black hole mass. 
+We show on Figs.~\ref{fig:tauRF_SFinf} and~\ref{fig:celeriteCompare} that the fitted DRW parameters  $\tau$ and $SF_{\infty}$  using only SDSS segment are consistent with those of M10. Using SDSS segment we also recover similar trends with $M_{BH}$ and $M_{i}$. Fig.~\ref{fig:tauRF_SFinf} demonstrates that adding PS1 data the $\tau - SF_{\infty}$ distribution changes.  For $f=SF_{\infty}$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011sf} shows that with the addition of PS1 data there is a stronger dependence of variability amplitude on quasar luminosity, but a smaller dependence on the black hole mass. For $f=\tau$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011tau} there is a weaker trend with both luminosity and black hole mass. 
 
 
 \begin{figure*}
