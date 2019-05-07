@@ -442,11 +442,11 @@ x = 10^{0.4(m-m_{5})}
 
 with  $\sigma_{sys} = 0.005$, $\gamma=0.039$, $m_{5} = 24.7$ (see \citet{ivezic2019}, Sec.3.2).
 
-\begin{figure*}%[ht!]
+\begin{figure}%[ht!]
 \plotone{figs/1072282_w_LSST1.png}
-\caption{Simulated DRW process sampled at the real cadence of SDSS, PS1 segments for quasar SDSSdbID=1072282,  adding the simulated LSST segment. The well-sampled true DRW signal was first sampled at SDSS-PS1-LSST cadences, and then Gaussian offset was added to each point to simulate observational noise. }
+\caption{Simulated DRW process ($\tau=575$d, $SF_{\infty} = 0.2$ mag, 1 day cadence) subsampled at the real cadence of SDSS, PS1 segments, and simulated LSST epochs, using time stamps from the combined SDSS-PS1 light curve for quasar dbID=1072282. The 'error snake' is an envelope marking the standard deviation of the fit to the data using a Gaussian process  with DRW kernel (Sec.~\ref{sec:simulation}).}
 \label{fig:simLC}
-\end{figure*} 
+\end{figure} 
 
 \begin{figure}%[ht!]
 \plotone{figs/ZTF_error_curve.png}
