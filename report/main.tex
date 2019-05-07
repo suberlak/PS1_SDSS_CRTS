@@ -492,7 +492,7 @@ As we found earlier, extending the light curve baseline decreases the bias in th
 We have extended the baseline of Stripe82 quasars by adding to SDSS r-band data the  PS1 g,r,i data, transformed into common SDSS r-band. As the variability is assumed to originate in the accretion disk, we shift all timescales to quasar rest frame : $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$ (in this section,  $\tau$ refers to $\tau_{RF}$). 
 
 
-\begin{figure}
+\begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb 
 \plotone{figs/MacLeod2010_Fig3_restframe_NEW_.png}
 \caption{Comparison of distributions of the rest-frame variability timescale $\tau_{RF}$ against the  asymptotic variability amplitude $SF_{\infty}$, for M10 SDSS r-band,  and \project{celerite} fits using  SDSS or SDSS-PS1 segments of combined S82 quasar light curves. The M10 (red,solid lines) and this work, using only SDSS (dashed, blue), overlap, as we recover the same underlying distributions. }
 \label{fig:tauRF_SFinf}
@@ -502,7 +502,7 @@ We have extended the baseline of Stripe82 quasars by adding to SDSS r-band data 
 We first show that our results are consistent with M10 when using only the SDSS r-band : on Fig.~\ref{fig:tauRF_SFinf} the distributions of $\tau$, $SF_{\infty}$ from M10 (red) and our results (blue) coincide. Furthermore, when comparing object-by-object M10 to our SDSS-only results we find a very good agreement (see Fig.~\ref{fig:celeriteCompare}).
 
 
-\begin{figure}
+\begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb  
 \plotone{figs/Compare_Chelsea_r-band_Celerite_SDSS_EXP_NEW_single.png}
 \caption{Comparison of \project{celerite} fits using only the  SDSS r-band segments of S82 quasars ($\sigma_{fit}, \tau_{fit}$), against results of M10 for SDSS r-band ($\sigma_{M10}, \tau_{M10}$), object-by-object. The small offset can be attributed to software differences. See Fig.~\ref{fig:tauRF_SFinf} for a comparison of rest-frame $\tau$ and $SF_{\infty}$ distributions.}
 \label{fig:celeriteCompare}
@@ -518,11 +518,11 @@ f \propto \left( \frac{\lambda_{RF}}{4000 \mbox{\AA}} \right)^{B}
 together with the fit coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively, are adequate for combined SDSS-PS1 results, as shown on Fig.~\ref{fig:wavelength_dependence}. 
 
   
-\begin{figure*}
+\begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb 
 \plotone{figs/macleod2010_Fig13_kdeplot_Chelsea_cut_NEW.png}
 \caption{Rest-frame timescale $\tau$ (top panel), and asymptotic structure function $SF_{\infty}$ (bottom panel), as a function of rest-frame wavelength $\lambda_{RF}$. The background contours show M10 SDSS $ugriz$ data, and the foreground contours  denote our results using  SDSS (red) and SDSS-PS1 (orange) segments. The red line indicates the best-fit power law to M10 data, with $B=0.17$ an $-0.479$ for $\tau_{RF}$, and $SF_{\infty}$, respectively.}
 \label{fig:wavelength_dependence}
-\end{figure*} 
+\end{figure} 
 
 
 \subsection{Trends with Luminosity, Black Hole Mass, and Redshift}
