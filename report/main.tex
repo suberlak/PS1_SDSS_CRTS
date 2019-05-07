@@ -273,7 +273,7 @@ The likelihood for the particular value of DRW parameters given the data is eval
 
 K17 reports that one cannot trust any results of DRW fitting unless the light curve length is at least ten times longer than the characteristic timescale. We confirm these generic trends, although we find that the stringent requirements of K17 can be somewhat relaxed. Following K17 setup,  we  model 10 000  DRW light curves with fixed length (baseline) $t_{exp}=8$ years, asymptotic variability amplitude of  $\mathrm{SF}_{\infty} = 0.2$ mag, SDSS or OGLE-like cadence, sampling over a range of input timescales. With fixed baseline, this spans the parameter space of $\rho = \tau / t_{exp}$, $\rho \in   \{ 0.01 : 15\}$. We simulate 100 light curves at each $\rho$. 
 
-\begin{figure*}
+\begin{figure*}  % code/PLOT_Fig2_George_Celerite.ipynb
 \plottwo{figs/celerite_SDSS_Jeff1_expectation-190208_results_celerite_R.png}{figs/celerite_OGLE_Jeff1_expectation-190208_results_celerite_R.png}
 \caption{Probing the parameter space of $\rho = \tau / t_{exp}$, with a simulation of  10 000 light curves : 100 light curves per each of 100 $\rho$ values spaced uniformly in logarithmic space between $\rho \in   \{ 0.01 : 15\}$ . With a baseline $t_{exp}$ set to 8 years,  we sample a range of 100 input timescales. Left panel shows the SDSS-like cadence with N=60 epochs, and the right panel the OGLE-like cadence with N=445 epochs. The dotted horizontal and solid vertical lines represent $\rho = 0.1$, i.e. the baseline is ten times longer than considered timescale. The diagonal line is $y=x$, i.e. the line that would be followed if the recovered  $\rho$ ($\tau$) was exactly the same as the input $\rho$ ($\tau$). Given a quasar light curve, which has one true underlying DRW timescale,  as we extend the baseline, we move from the bottom-left (unconstrained) to the top-right (well-constrained) part of the parameter space. } 
 \label{fig:rho_space}
@@ -355,7 +355,7 @@ We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repea
 % \label{fig:rawBaselines}
 % \end{figure} 
 
-\begin{figure*}
+\begin{figure*} % code2/Stats_simulation.ipynb 
 \plotone{figs/lightcurves_extent.png}
 \caption{An illustration of survey baseline, sky area covered, and depth. The width of each rectangle corresponds to the extent of light curves available (or simulated) for Stripe 82 quasars for each survey. For SDSS this means DR7; for CRTS DR2, PS1 DR2, PTF DR2, ZTF year 2018, and LSST the full 10-year survey. The lower edge of each rectangle corresponds to the $5\sigma$ limiting magnitude (SDSS r, PS1 r, PTF R, ZTF r, LSST r, CRTS V). The vertical extent corresponds to the total survey area (for SDSS, up to and including DR15).  Note how PS1 and PTF extend the baseline of SDSS by approximately $50\%$, and how inclusion of LSST triples the SDSS baseline. For reference, the area covered by LSST is $25 000$ sq.deg., which corresponds to  $60\%$ of the sky. The whole sky has an area of $4\pi$ steradians (41253 sq.deg.).}
 \label{fig:lcExtent}
@@ -381,7 +381,7 @@ While \cite{tonry2012} chose to spread the stellar locus with $(g-r)$ color, we 
 
 
 % QSO COLORS 
-\begin{figure*}
+\begin{figure*} % code/AA_quasar_colors.ipynb 
 \plotone{figs/SDSS_S82_CMD_qso_stars_2.png}
 \caption{Regions of color-color (upper left, upper right, bottom left), and color-magnitude (bottom right)  space occupied by SDSS S82 quasars (color) and stars (contours). We use quasar median photometry from \citet{schneider2010}, and standard stars catalog of \citet{ivezic2007}, showing a random subset of 10 000 stars. We find the SDSS-PS1 color terms using the region of SDSS color space that best represents quasars, that are generally bluer than the stellar locus:  $-0.5<(g-i)<1$. Quasars also overlap other variable sources (eg. RR Lyrae), not shown here \citep{sesar2007}. }
 \label{fig:quasarColors}
@@ -389,7 +389,7 @@ While \cite{tonry2012} chose to spread the stellar locus with $(g-r)$ color, we 
 
 
 % PS1 
-\begin{figure*}
+\begin{figure*}% code/AC_SDSS_PS1_offsets.ipynb 
 \plotone{figs/Offsets_PS1-SDSSr_SDSSgi_ext-NO.png}
 \caption{The SDSS-PS1 offsets, derived from the SDSS standard stars catalog \citep{ivezic2007}. From randomly chosen subset of 50 000 stars, we selected only 23 000 that are sufficiently bright ($r_{\mathrm{SDSS}} < 19$) to minimize scatter due to photometric uncertainty. On each panel we plot 20 000 SDSS stars that have PS1 match within 0.1 arcsec. Vertical dashed lines mark the region in the SDSS color space occupied by quasars (see Fig.~\ref{fig:quasarColors}), used to fit the stellar locus with a first order polynomial, marked by the solid red line.}
 \label{fig:offsetsPS1}
@@ -442,13 +442,13 @@ x = 10^{0.4(m-m_{5})}
 
 with  $\sigma_{sys} = 0.005$, $\gamma=0.039$, $m_{5} = 24.7$ (see \citet{ivezic2019}, Sec.3.2).
 
-\begin{figure}%[ht!]
+\begin{figure}%[ht!] % code2/Subsample_master_LC.ipynb
 \plotone{figs/1072282_w_LSST1.png}
 \caption{Simulated DRW process ($\tau=575$d, $SF_{\infty} = 0.2$ mag, 1 day cadence) subsampled at the real cadence of SDSS, PS1 segments, and simulated LSST epochs, using time stamps from the combined SDSS-PS1 light curve for quasar dbID=1072282. The 'error snake' is an envelope marking the standard deviation of the fit to the data using a Gaussian process  with DRW kernel (Sec.~\ref{sec:simulation}).}
 \label{fig:simLC}
 \end{figure} 
 
-\begin{figure}%[ht!]
+\begin{figure}%[ht!]  % code2/Simulate_ZTF_cadence_error.ipynb
 \plotone{figs/ZTF_error_curve.png}
 \caption{The rms spread as a function of magnitude for ZTF non-variable stars with over 100 observations. We overplot the functional describing the adopted error model (after \citealt{ivezic2019}). Properties of ZTF photometric uncertainties are largely similar to the PTF uncertainties.}
 \label{fig:ztf_errors}
@@ -457,7 +457,7 @@ with  $\sigma_{sys} = 0.005$, $\gamma=0.039$, $m_{5} = 24.7$ (see \citet{ivezic2
 
 To mirror observational conditions we add to the true underlying DRW signal a Gaussian noise, with variance defined by photometric uncertainties for corresponding surveys. Given the noise properties of each survey (Fig.~\ref{fig:combinedLCerrors}), we found that relatively large uncertainties of CRTS and PTF segments introduced less improvement in recovery of DRW parameters, given that similar baseline is already covered by the PS1 data.  We further found that inclusion of ZTF data for 2018 would not significantly change our results. Inclusion of PS1 data with its excellent photometry (as compared to ZTF or PTF) is the best improvement over existing SDSS results.  In the future (after more data has been assembled and re-calibrated) ZTF will help, but not as dramatically as LSST (see Fig.~\ref{fig:simLCresults1}).  For this reason we found that using only SDSS-PS1 portion is the best tradeoff between adding more baseline vs introducing more uncertainty with noisy data.
 
-\begin{figure}%[ht!]
+\begin{figure}%[ht!]  %code2/Subsample_master_LC.ipynb 
 \plotone{figs/sim_subsampled2_stats_error_lin.png}
 \caption{Distribution of median photometric uncertainties ('errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1. This is the reason for using only SDSS-PS1 part of the combined light curve.}
 \label{fig:combinedLCerrors}
@@ -465,9 +465,9 @@ To mirror observational conditions we add to the true underlying DRW signal a Ga
 
 As we found earlier, extending the light curve baseline decreases the bias in the retrieved DRW parameters (Fig.~\ref{fig:rho_space}). For light curves that simulate the extension of SDSS with PS1, ZTF, LSST segments, Figs.~\ref{fig:simLCresults1} and~\ref{fig:simLCresults2} show that this is indeed the case: the longer the light curves, that more the retrieved $\tau$ and $SF_{\infty}$ are centered on the input values. 
 
-\begin{figure*}
-\plotone{figs/Simulated_Jeff1-EXP-190326.png}
-\caption{Retrieved $\tau$ and $\sigma$  parameters for simulated LCs. }
+\begin{figure*}  % code2/Explore_simulation_results.ipynb 
+\plotone{figs/Simulated_Jeff1-EXP-190401.png}
+\caption{The ratio of DRW parameters fitted with \project{celerite}: $\tau$ and $\sigma$, to the input $\tau_{in} = 575 $d, $\sigma_{in} = 0.2 / \sqrt{2} \approx 0.14$  ($SF_{\infty}=0.2$ mag).  Each line corresponds to different segment of the combined SDSS-PS1-ZTF-LSST light curve. Extending the baseline by adding more data to each simulated quasar light curve allows to recover better the input parameters. The improvement with first year of ZTF data is not as large as with LSST, due to significant baseline increase compared to SDSS-PS1 (see Fig.~\ref{fig:lcExtent}). For each of the 9258 simulated light curves we employ real SDSS-PS1 cadence and photometric uncertainties (adding a Gaussian offset to the ideal underlying DRW signal), and simulated ZTF and LSST cadence and uncertainties based on the appropriate error model (see Sec.~\ref{sec:simulation})}
 \label{fig:simLCresults1}
 \end{figure*} 
 
