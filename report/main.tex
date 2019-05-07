@@ -492,21 +492,21 @@ As we found earlier, extending the light curve baseline decreases the bias in th
 We have extended the baseline of Stripe82 quasars by adding to SDSS r-band data the  PS1 g,r,i data, transformed into common SDSS r-band. As the variability is assumed to originate in the accretion disk, we shift all timescales to quasar rest frame : $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$ (in this section,  $\tau$ refers to $\tau_{RF}$). 
 
 
-\begin{figure*}
-\plotone{figs/MacLeod2010_Fig3_restframe.png}
-\caption{Comparing the rest-frame timescales $\tau$, and asymptotic variability amplitudes $SF_{\infty}$, for M10 SDSS r-band,  and combined SDSS and PS1 data.  }
+\begin{figure}
+\plotone{figs/MacLeod2010_Fig3_restframe_NEW_.png}
+\caption{Comparison of distributions of the rest-frame variability timescale $\tau_{RF}$ against the  asymptotic variability amplitude $SF_{\infty}$, for M10 SDSS r-band,  and \project{celerite} fits using  SDSS or SDSS-PS1 segments of combined S82 quasar light curves. The M10 (red,solid lines) and this work, using only SDSS (dashed, blue), overlap, as we recover the same underlying distributions. }
 \label{fig:tauRF_SFinf}
-\end{figure*} 
+\end{figure} 
 
 
 We first show that our results are consistent with M10 when using only the SDSS r-band : on Fig.~\ref{fig:tauRF_SFinf} the distributions of $\tau$, $SF_{\infty}$ from M10 (red) and our results (blue) coincide. Furthermore, when comparing object-by-object M10 to our SDSS-only results we find a very good agreement (see Fig.~\ref{fig:celeriteCompare}).
 
 
-\begin{figure*}
-\plotone{figs/Compare_Chelsea_r-band_Celerite_SDSS_EXP.png}
-\caption{Plot comparing results for SDSS r-band fitting of  M10 ($\sigma_{m}, \tau_{m}$), and current results for SDSS r-band using Celerite ($\sigma_{fit}, \tau_{fit}$). }
+\begin{figure}
+\plotone{figs/Compare_Chelsea_r-band_Celerite_SDSS_EXP_NEW_single.png}
+\caption{Comparison of \project{celerite} fits using only the  SDSS r-band segments of S82 quasars ($\sigma_{fit}, \tau_{fit}$), against results of M10 for SDSS r-band ($\sigma_{M10}, \tau_{M10}$), object-by-object. The small offset can be attributed to software differences. See Fig.~\ref{fig:tauRF_SFinf} for a comparison of rest-frame $\tau$ and $SF_{\infty}$ distributions.}
 \label{fig:celeriteCompare}
-\end{figure*} 
+\end{figure} 
 
 
 \subsection{Rest-frame Wavelength Correction}
