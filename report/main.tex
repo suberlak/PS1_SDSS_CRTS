@@ -31,6 +31,7 @@
 \renewcommand{\AA}{\text{\normalfont\oldAA}}
 
 
+
 %% The default is a single spaced, 10 point font, single spaced article.
 %% There are 5 other style options available via an optional argument. They
 %% can be envoked like this:
@@ -550,7 +551,20 @@ For sources variable at $\sim0.2$ mag level, such as quasars, the ideal is to us
 Bolometric luminosity is most often estimated from the absolute i-band magnitude, $M_{i}$ (see \citealt{shen2008}, Fig.2). $M_{i}$ is derived from the observed i-band magnitude, by correcting for Galactic extinction, and correcting for the fact that at different redshifts different portions of the spectral energy distribution are observed by the telescope filter bandpass. The latter, known as K-correction $K(z)$ \citep{oke1968},  is defined as $m_{intrinsic} = m_{observed} - K(z)$. In the early 2000`s the common approach was to K-correct to redshift 0, but as \citep{richards2006a} pointed out, since the distribution of quasars peaks at redshift 2, for most quasars correcting to the redshift of 0 required shifting the observed spectrum into the far infrared. Moreover, the procedure was to correct separately for the continuum and emission line contributions, assuming a particular spectral shape (eg. power law  $f_{\nu} \propto \nu^{\alpha}$, with $\alpha=-0.5$ - see \citealt{schneider2010, vandenberk2001, richards2006a}).  This introduces a larger error for K(z=0) than for K(z=2) if the assumed spectral shape $\alpha=-0.5$ is far from the real spectral index. In early 2010`s, after  \citealt{richards2006a, wisotzki2000, blanton2003},  the practice started shifting towards K-correcting to redshift 2,  and including custom qusasar spectral shapes, as reflected by the content of \cite{shen2011} quasar catalog. Thus in this study we use  the absolute i-band magnitude K-corrected to z=2: $M_{i}(z=2)$ from \citep{shen2011}. 
 
 
-
+% https://github.com/AASJournals/AASTeX60/issues/61 
+\begin{deluxetable*}{cc|CCCC}
+%\tablewidth{\pagewidth}
+\tablecaption{Comparison of best-fit coefficients for Eq.~\ref{eq:powlawmodel} using M10 results, and this work (S18).\label{tab:offsets}}
+\tablehead{\colhead{$f$} & \colhead{Source} & \colhead{$A$(offset)} & \colhead{$B(\lambda_{RF})$} & \colhead{$C (M_{i})$} & \colhead{$D (M_{\mathrm{BH}})$} }
+\startdata
+$\tau$ & M10, SDSS & $-0.467\pm0.009$ & $0.17\pm0.02$ & $0.105\pm0.003$ & $0.111\pm0.009$ \\
+ & S19, SDSS & $2.432\pm0.026$ & $0.17\pm0.02$ & $0.011\pm0.009$ & $0.163\pm0.026$ \\
+ & S19, SDSS-PS1 & $2.603\pm0.021$ & $0.17\pm0.02$ & $0.022\pm0.007$ & $0.164\pm0.021$ \\
+SF$_{\infty}$ & M10, SDSS & $2.232\pm0.029$ & $-0.479\pm0.005$ & $0.064\pm0.01$ & $0.094\pm0.029$ \\
+ & S19, SDSS & $-0.489\pm0.011$ & $-0.479\pm0.005$ & $0.117\pm0.004$ & $0.12\pm0.011$ \\
+ & S19, SDSS-PS1 & $-0.517\pm0.01$ & $-0.479\pm0.005$ & $0.117\pm0.003$ & $0.12\pm0.01$ \\
+ \enddata
+\end{deluxetable*}
 
 
 
