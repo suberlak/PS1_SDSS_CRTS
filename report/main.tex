@@ -486,7 +486,7 @@ To mirror observational conditions we add to the true underlying DRW signal a Ga
 
 \section{Results: fitting SDSS-PS1 with Celerite}\label{sec:results}
 
-We have extended the baseline of Stripe82 quasars by adding to SDSS r-band data the  PS1 g,r,i data, transformed into common SDSS r-band. As the variability is assumed to originate in the accretion disk, we shift all timescales to quasar rest frame : $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$ (in this section,  $\tau$ refers to $\tau_{RF}$). 
+We have extended the baseline of Stripe82 quasars by extending the $r_{\mathrm{SDSS}}$ light curves with  the PS1 data in $g_{\mathrm{PS1}}$, $r_{\mathrm{PS1}}$, $i_{\mathrm{PS1}}$.  As the variability is assumed to originate in the accretion disk, we shift all timescales to quasar rest frame : $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$ (in this section,  $\tau$ refers to $\tau_{RF}$). 
 
 
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb 
@@ -496,23 +496,26 @@ We have extended the baseline of Stripe82 quasars by adding to SDSS r-band data 
 \end{figure} 
 
 
-We first show that our results are consistent with M10 when using only the SDSS r-band : on Fig.~\ref{fig:tauRF_SFinf} the distributions of $\tau$, $SF_{\infty}$ from M10 (red) and our results (blue) coincide. Furthermore, when comparing object-by-object M10 to our SDSS-only results we find a very good agreement (see Fig.~\ref{fig:celeriteCompare}).
+In this section we first correct  the retrieved $\tau$,$SF_{\infty}$ for the wavelength dependence, show the consistency with M10 results,  and consider the trends between DRW parameters and physical quasar properties: black hole mass $M_{\mathrm{BH}}$, absolute i-band  magnitude $M_{i}$, or redshift $z$.  
+
+
+\subsection{Comparison with M10}
+Since this work is based on extending the SDSS light curves (studied by M10) with PS1 data, we first directly compare the results when using only SDSS data to M10. The DRW parameters recovered with \project{celerite} are  broadly consistent with M10. On Fig.~\ref{fig:tauRF_SFinf} we compare the distributions of rest-frame $\tau$, and $SF_{\infty}$ for our results when using SDSS  r-band (blue dashed line),  SDSS-PS1 r-band (green dot-dashed line), against  M10 SDSS r-band (red solid line). When using identical data (SDSS r-band), our results agree with M10 - the distributions overlap. We also compare the recovered timescales and variability amplitudes object-by-object on Fig.~\ref{fig:celeriteCompare}.  Plotting the log-ratios of $\tau$ and $SF_{\infty}$ between this work ('fit, SDSS') and M10, we see a slight offset, which can be attributed to software differences. 
 
 
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb  
 \plotone{figs/Compare_Chelsea_r-band_Celerite_SDSS_EXP_NEW_single_.png}
-\caption{Comparison of \project{celerite} fits using only the  SDSS r-band segments of S82 quasars ($\sigma_{fit}, \tau_{fit}$), against results of M10 for SDSS r-band ($\sigma_{M10}, \tau_{M10}$), object-by-object. The small offset can be attributed to software differences. See Fig.~\ref{fig:tauRF_SFinf} for a comparison of rest-frame $\tau$ and $SF_{\infty}$ distributions.}
+\caption{Comparison of \project{celerite} fits using only the  SDSS r-band segments of S82 quasars ($\sigma_{fit}, \tau_{fit}$), against results of M10 for SDSS r-band ($\sigma_{M10}, \tau_{M10}$), object-by-object. The small offset can be attributed to software differences. See Fig.~\ref{fig:tauRF_SFinf} for a comparison of rest-frame $\tau$ and $SF_{\infty}$ distributions. This is similar to Fig.3 in M10, except we plot only the r-band SDSS results.}
 \label{fig:celeriteCompare}
 \end{figure} 
 
 
 \subsection{Rest-frame Wavelength Correction}
-
-Prior to looking for correlations with physical quantities (black hole mass, luminosities, redshifts), we correct $\tau$ and $SF_{\infty}$ for wavelength dependence using formulae from M10. Since quasars are all at different redshifts, the same observed band would probe a different rest-frame wavelength $\lambda_{RF}$ for each quasar. We find that the power law employed by M10:
+Since quasars are at non-negligible redshifts, the observed wavelengths (eg. SDSS bandpass) probes a region of shorter wavelengths in emitted spectrum, depending on the redshift:  $\lambda_{obs} = \lambda_{RF}  (1+z)$. Thus to compare variability of the same parts of the rest-frame spectrum, we need to estimate the rest-frame emission wavelength, and correct for the dependence of $\tau, SF_{\infty}$ or $\lambda_{RF}$. Assuming for $\lambda_{obs}$ the center wavelength of each SDSS bandpass ($3520$, $4800$, $6250$, $7690$, $9110$ $\mbox{\AA}$ for $ugriz$, respectively), $\lambda_{RF} = \lambda_{obs} / (1+z)$ (quasar redshift from \citealt{schneider2010}). Fig.~\ref{fig:wavelength_dependence} shows $\tau, SF_{\infty}$  as a function of  $\lambda_{RF}$. A power law dependency (solid red line on each panel)
 \begin{equation}
 f \propto \left( \frac{\lambda_{RF}}{4000 \mbox{\AA}} \right)^{B}
 \end{equation}
-together with the fit coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively, are adequate for combined SDSS-PS1 results, as shown on Fig.~\ref{fig:wavelength_dependence}. 
+describes the relationship well. Since in this study we only use SDSS-PS1 combined r-band light curves,  we use M10 coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively, to shift to $4000 \mbox{\AA}$. 
 
   
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb 
