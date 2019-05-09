@@ -499,7 +499,7 @@ We extend Stripe82 quasar light curves by combining the SDSS r-band data with  t
 In this section we first correct  the retrieved $\tau$,$SF_{\infty}$ for wavelength dependence, show the consistency with M10 results,  and consider the trends between DRW parameters and physical quasar properties: black hole mass $M_{\mathrm{BH}}$, absolute i-band  magnitude $M_{i}$, or redshift $z$.  
 
 
-\subsection{Comparison with M10}
+\subsection{Comparison to M10}
 As this work is based on extending the SDSS light curves (studied by M10) with PS1 data, we first directly compare the results when using only SDSS data to M10. The DRW parameters recovered with \project{celerite} are  broadly consistent with M10. On Fig.~\ref{fig:tauRF_SFinf} we compare the distributions of rest-frame $\tau$, and $SF_{\infty}$ for our results when using SDSS  r-band (blue dashed line),  SDSS-PS1 r-band (green dot-dashed line), against  M10 SDSS r-band (red solid line). When using identical data (SDSS r-band), our results agree with M10 - the distributions overlap. We also compare the recovered timescales and variability amplitudes object-by-object on Fig.~\ref{fig:celeriteCompare}.  Plotting the log-ratios of $\tau$ and $SF_{\infty}$ between this work ('fit, SDSS') and M10, we see a slight offset, which can be attributed to software differences. 
 
 
@@ -511,11 +511,11 @@ As this work is based on extending the SDSS light curves (studied by M10) with P
 
 
 \subsection{Rest-frame Wavelength Correction}
-Since quasars are at non-negligible redshifts, the observed wavelengths (eg. SDSS bandpass) probes a region of shorter wavelengths in emitted spectrum, depending on the redshift:  $\lambda_{obs} = \lambda_{RF}  (1+z)$. Thus to compare variability of the same parts of the rest-frame spectrum, we need to estimate the rest-frame emission wavelength, and correct for the dependence of $\tau, SF_{\infty}$ or $\lambda_{RF}$. Assuming for $\lambda_{obs}$ the center wavelength of each SDSS bandpass ($3520$, $4800$, $6250$, $7690$, $9110$ $\mbox{\AA}$ for $ugriz$, respectively), $\lambda_{RF} = \lambda_{obs} / (1+z)$ (quasar redshift from \citealt{schneider2010}). Fig.~\ref{fig:wavelength_dependence} shows $\tau, SF_{\infty}$  as a function of  $\lambda_{RF}$. A power law dependency (solid red line on each panel)
+Since quasars are located at non-negligible redshifts, the observed wavelengths (eg. through the SDSS bandpass) probe a region of shorter wavelengths in emitted spectrum, depending on the redshift:  $\lambda_{obs} = \lambda_{RF}  (1+z)$. Thus to compare variability of the same parts of the rest-frame spectrum, we need to estimate the rest-frame emission wavelength $\lambda_{RF}$, and correct for the dependence of $\tau, SF_{\infty}$ on $\lambda_{RF}$. Assuming for $\lambda_{obs}$ the center wavelength of each SDSS bandpass ($3520$, $4800$, $6250$, $7690$, $9110$ $\mbox{\AA}$ for $ugriz$, respectively), $\lambda_{RF} = \lambda_{obs} / (1+z)$ (using quasar redshift from \citealt{schneider2010}). Fig.~\ref{fig:wavelength_dependence} shows $\tau, SF_{\infty}$  as a function of  $\lambda_{RF}$. A power law dependency (solid red line on each panel)
 \begin{equation}
 f \propto \left( \frac{\lambda_{RF}}{4000 \mbox{\AA}} \right)^{B}
 \end{equation}
-describes the relationship well. Since in this study we only use SDSS-PS1 combined r-band light curves,  we use M10 coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively, to shift to $4000 \mbox{\AA}$. 
+describes the relationship well. Since in this study we only use combined r-band light curves,  we use M10 coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively, to shift to $4000 \mbox{\AA}$. 
 
   
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb 
@@ -527,7 +527,7 @@ describes the relationship well. Since in this study we only use SDSS-PS1 combin
 
 \subsection{Trends with Luminosity, Black Hole Mass, and Redshift}
 
-Here we examine the main scientific results: correlations between variability parameters  ($\tau, SF{\infty}$), and the physical properties of quasars: absolute i-band magnitude $M_{i}$, and black hole mass $M_{BH}$. Any trends found would be of high interest because an existence of a  tight correlation between the variability parameters and physical properties of quasars could be used to infer the latter for millions of quasars for which only a light curve is available. In the era of large synoptic surveys (PS1, ZTF,LSST, \citealt{ivezic2019}), only a few percent of AGN with optical time-series will be followed up with spectroscopy.  Thus a relationship between quasar variability and physical conditions would provide additional information that would inform  AGN research\citep{sanchez2018}.
+Here we examine the main scientific results: correlations between variability parameters  ($\tau, \mathrm{SF}_{\infty}$), and the physical properties of quasars: absolute i-band magnitude $M_{i}$, and black hole mass $M_{BH}$. Any trends found would be of high interest because an existence of a  tight correlation between the variability parameters and physical properties of quasars could be used to infer the latter for millions of quasars for which only a light curve is available. Indeed, in the era of large synoptic surveys (PS1, ZTF,LSST), only a few percent of AGN with optical time-series will be followed up with spectroscopy\citep{ivezic2019}.  Thus a relationship between quasar variability and physical conditions would provide additional information that would inform  AGN research. %\citep{sanchez2018}.
 
 \begin{figure*}
 \plotone{figs/macleod2010_Fig12_Shen2011.png}
