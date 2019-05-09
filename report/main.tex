@@ -348,13 +348,8 @@ In the end, we follow the direction laid out in M10, Sec.4.4, which shows that w
 
 \section{Data}\label{sec:data}
 \subsection{Surveys}
-We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by the SDSS between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012}, Sec. 2.2 for overview, and \citealt{annis2014} for details). Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citet{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
+We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by the Sloan Digital Sky Survey (SDSS) between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012}, Sec. 2.2 for overview, and \citealt{annis2014} for details). Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citet{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
 
-% \begin{figure}%[ht!]
-% \plotone{figs/illustrate_epochal_coverage.png}
-% \caption{Raw photometric measurements for quasars in Stripe 82 from SDSS(r),  PS1(gri),  PTF(gR), CRTS(V).}
-% \label{fig:rawBaselines}
-% \end{figure} 
 
 \begin{figure*} % code2/Stats_simulation.ipynb 
 \plotone{figs/lightcurves_extent.png}
@@ -363,13 +358,13 @@ We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repea
 \end{figure*} 
 
 
-We extend the SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018}, CRTS \citep{drake2009}, and PTF \citep{rau2009} data. We find 9248 PS1 matches, 6455 PTF matches, and 7737 CRTS matches to SDSS S82 quasars. There are  6444 quasars with SDSS-PS1-PTF-CRTS data.  Fig~\ref{fig:lcExtent}  depicts the  baseline coverage of various surveys.  Each survey uses a unique set of bandpasses and cadences: SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{\mathrm{SDSS}}$, and the others are  non-simultaneous: $\{g,r,i,z,y\}_{\mathrm{PS1}}$,  $\{g,R\}_{\mathrm{PTF}}$, $V_{\mathrm{CRTS}}$.  
+We extend SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018}, Catalina Real-Time Transient Survey (CRTS) \citep{drake2009}, and Palomar Transient Factory (PTF) \citep{rau2009} data. Of 9258  SDSS quasars, within $0.5 ''$ there are 9248 PS1 matches, 6455 PTF matches, and 7737 CRTS matches. Of these, 6444 quasars have coverage in all surveys (SDSS-PS1-PTF-CRTS).  Fig~\ref{fig:lcExtent}  depicts the  baseline coverage of various surveys.  Each survey uses a unique set of bandpasses and cadences: SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{\mathrm{SDSS}}$, and PS1, PTF observations in different filters are  non-simultaneous.%: $\{g,r,i,z,y\}_{\mathrm{PS1}}$,  $\{g,R\}_{\mathrm{PTF}}$, $V_{\mathrm{CRTS}}$.  
 
 \subsection{Photometric offsets}
 
-We combine quasar photometry into a single 'master' bandpass. We choose  $r_{\mathrm{SDSS}}$ as the target bandpass since it has the best photometry, and we calculate color terms that afford transformation from other photometric systems to SDSS. We elect only to translate to SDSS $r$ photometry from nearby filters: ($\{g,R\}_{\mathrm{PTF}}$, $\{g,r,i\}_{\mathrm{PS1}}$, $V_{\mathrm{CRTS}}$). 
+We combine quasar photometry into a single 'master' bandpass.  We choose  $r_{\mathrm{SDSS}}$ as the target bandpass since it has the best photometry, and we calculate color terms that afford transformation from other photometric systems to SDSS. We translate to$r_{\mathrm{SDSS}}$ only photometry from nearby filters: $\{g,R\}_{\mathrm{PTF}}$, $\{g,r,i\}_{\mathrm{PS1}}$, $V_{\mathrm{CRTS}}$. 
 
-Color terms are derived using SDSS standard stars catalog~\citep{ivezic2007}.  We focused on a 10\% subset of randomly chosen stars from the catalog, and found CRTS (B.Sesar, priv.comm.), PS1 (from MAST \url{http://panstarrs.stsci.edu}) and PTF (IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}) matches. 
+Color terms are derived using the SDSS standard stars catalog~\citep{ivezic2007}.  We focus on a 10\% subset of randomly chosen stars from the catalog, and find CRTS (B.Sesar, priv.comm.), PS1 (from MAST \url{http://panstarrs.stsci.edu}) and PTF (IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}) matches. 
 
 We consider the difference  between the target (SDSS) and source (eg.PS1) photometry as a function of the mean SDSS $(g-i)$ color : 
 
@@ -378,7 +373,7 @@ We consider the difference  between the target (SDSS) and source (eg.PS1) photom
 m_{\mathrm{PS1}} - m_{\mathrm{SDSS}} = f(g-i)
 \end{equation}
 
-While \cite{tonry2012} chose to spread the stellar locus with $(g-r)$ color, we prefer to use the $(g-i)$ color since it provides a larger wavelength baseline. Some authors (eg. \citet{li2018}) allow $f(g-i)$ to be a higher-order polynomial, but since we limit the transformation to the  region of $(g-i)$ space occupied by quasars (Fig.~\ref{fig:quasarColors}), we find that the linear fit is sufficient (see Fig. ~\ref{fig:offsetsPS1}). Table~\ref{tab:offsets} shows the offsets used to transform PS1, CRTS and PTF to SDSS $r$-band. 
+While \cite{tonry2012} chose to spread the stellar locus with $(g-r)$ color, we prefer to use the $(g-i)$ color since it provides a larger wavelength baseline. Some authors (eg. \citet{li2018}) allow the transformation to be a higher-order polynomial, but since we are limited to the narrow region of $(g-i)$ space occupied by quasars, before the stellar locus bend (Fig.~\ref{fig:quasarColors}), we find that the linear fit is sufficient (see Fig.~\ref{fig:offsetsPS1}). We summarize the resulting offsets to SDSS in Table~\ref{tab:offsets}.
 
 
 % QSO COLORS 
@@ -402,9 +397,7 @@ While \cite{tonry2012} chose to spread the stellar locus with $(g-r)$ color, we 
 %\tablewidth{\textwidth}
 \tablecaption{Color terms (offsets) between CRTS, PTF, PS1 passbands used in combined light curves, and  SDSS, using the mean $(g-i)_{\mathrm{SDSS}}$ color to spread the stellar locus. Thus the $r_{\mathrm{SDSS}}$ synthetic magnitude ($r_{s}$ for short) can be found as $r_{s} = x-B_{0}-B_{1}(g-i)_{\mathrm{SDSS}}$. This linear trend is illustrated on Fig.\ref{fig:offsetsPS1}, where we plot $(x-r_{\mathrm{SDSS}})$ as a function of $(g-i)_{\mathrm{SDSS}}$ for $x=g_{\mathrm{P1}}, r_{\mathrm{P1}},i_{\mathrm{P1}}$.}  
 \label{tab:offsets}
-\tablehead{
-\colhead{Band (x)} & \colhead{$B_{0}$} & \colhead{$B_{1}$} \\
-}
+\tablehead{\colhead{Band (x)} & \colhead{$B_{0}$} & \colhead{$B_{1}$}}
 \startdata
 CRTS V & -0.0464  & -0.0128 \\
 PTF g &  -0.0294  &  0.6404 \\
