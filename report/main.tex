@@ -367,7 +367,7 @@ We extend the SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewel
 
 \subsection{Photometric offsets}
 
-We combine the photometry into a single 'master' bandpass. We choose  $r_{\mathrm{SDSS}}$ as the target bandpass since it has the best photometry, and we calculate color terms that afford transformation from other photometric systems to SDSS. We elect only to translate to SDSS $r$ photometry from nearby filters: ($\{g,R\}_{\mathrm{PTF}}$, $\{g,r,i\}_{\mathrm{PS1}}$, $V_{\mathrm{CRTS}}$). 
+We combine quasar photometry into a single 'master' bandpass. We choose  $r_{\mathrm{SDSS}}$ as the target bandpass since it has the best photometry, and we calculate color terms that afford transformation from other photometric systems to SDSS. We elect only to translate to SDSS $r$ photometry from nearby filters: ($\{g,R\}_{\mathrm{PTF}}$, $\{g,r,i\}_{\mathrm{PS1}}$, $V_{\mathrm{CRTS}}$). 
 
 Color terms are derived using SDSS standard stars catalog~\citep{ivezic2007}.  We focused on a 10\% subset of randomly chosen stars from the catalog, and found CRTS (B.Sesar, priv.comm.), PS1 (from MAST \url{http://panstarrs.stsci.edu}) and PTF (IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}) matches. 
 
@@ -399,8 +399,9 @@ While \cite{tonry2012} chose to spread the stellar locus with $(g-r)$ color, we 
 
 
 \begin{deluxetable}{c|cc}
-\tablewidth{\textwidth}
-\tablecaption{Color terms (offsets) between the following survey filters and SDSS(r)  band, using the mean SDSS(g-i) color, so that the synthetic SDSS(r) magnitude can be found as $r_{SDSS,synth} = x - B_{0} - B_{1} SDSS(g-i)$\label{tab:offsets}}
+%\tablewidth{\textwidth}
+\tablecaption{Color terms (offsets) between CRTS, PTF, PS1 passbands used in combined light curves, and  SDSS, using the mean $(g-i)_{\mathrm{SDSS}}$ color to spread the stellar locus. Thus the $r_{\mathrm{SDSS}}$ synthetic magnitude ($r_{s}$ for short) can be found as $r_{s} = x-B_{0}-B_{1}(g-i)_{\mathrm{SDSS}}$. This linear trend is illustrated on Fig.\ref{fig:offsetsPS1}, where we plot $(x-r_{\mathrm{SDSS}})$ as a function of $(g-i)_{\mathrm{SDSS}}$ for $x=g_{\mathrm{P1}}, r_{\mathrm{P1}},i_{\mathrm{P1}}$.}  
+\label{tab:offsets}
 \tablehead{
 \colhead{Band (x)} & \colhead{$B_{0}$} & \colhead{$B_{1}$} \\
 }
