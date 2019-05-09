@@ -484,9 +484,9 @@ To mirror observational conditions we add to the true underlying DRW signal a Ga
 %
 %
 
-\section{Results: fitting SDSS-PS1 with Celerite}\label{sec:results}
+\section{Results: variability parameters for S82 Quasars}\label{sec:results}
 
-We have extended the baseline of Stripe82 quasars by extending the $r_{\mathrm{SDSS}}$ light curves with  the PS1 data in $g_{\mathrm{PS1}}$, $r_{\mathrm{PS1}}$, $i_{\mathrm{PS1}}$.  As the variability is assumed to originate in the accretion disk, we shift all timescales to quasar rest frame : $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$ (in this section,  $\tau$ refers to $\tau_{RF}$). 
+We extend Stripe82 quasar light curves by combining the SDSS r-band data with  the PS1 $g_{\mathrm{PS1}}$, $r_{\mathrm{PS1}}$, $i_{\mathrm{PS1}}$ transformed into SDSS r-band. We fit the light curves with \project{celerite} DRW model for each quasar using either the SDSS or both SDSS and PS1 components. This yields two sets of DRW parameters per quasar: $(\tau_{SDSS}, \mathrm{SF}_{\infty, SDSS})$, and $(\tau_{SDSS-PS1}, \mathrm{SF}_{\infty, SDSS-PS1})$. Because the variability is inherent to the quasar, for the remaining analysis we shift all timescales to quasar rest frame, and implicitly assume that the DRW timescales are considered in rest frame: $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$.
 
 
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb 
@@ -496,11 +496,11 @@ We have extended the baseline of Stripe82 quasars by extending the $r_{\mathrm{S
 \end{figure} 
 
 
-In this section we first correct  the retrieved $\tau$,$SF_{\infty}$ for the wavelength dependence, show the consistency with M10 results,  and consider the trends between DRW parameters and physical quasar properties: black hole mass $M_{\mathrm{BH}}$, absolute i-band  magnitude $M_{i}$, or redshift $z$.  
+In this section we first correct  the retrieved $\tau$,$SF_{\infty}$ for wavelength dependence, show the consistency with M10 results,  and consider the trends between DRW parameters and physical quasar properties: black hole mass $M_{\mathrm{BH}}$, absolute i-band  magnitude $M_{i}$, or redshift $z$.  
 
 
 \subsection{Comparison with M10}
-Since this work is based on extending the SDSS light curves (studied by M10) with PS1 data, we first directly compare the results when using only SDSS data to M10. The DRW parameters recovered with \project{celerite} are  broadly consistent with M10. On Fig.~\ref{fig:tauRF_SFinf} we compare the distributions of rest-frame $\tau$, and $SF_{\infty}$ for our results when using SDSS  r-band (blue dashed line),  SDSS-PS1 r-band (green dot-dashed line), against  M10 SDSS r-band (red solid line). When using identical data (SDSS r-band), our results agree with M10 - the distributions overlap. We also compare the recovered timescales and variability amplitudes object-by-object on Fig.~\ref{fig:celeriteCompare}.  Plotting the log-ratios of $\tau$ and $SF_{\infty}$ between this work ('fit, SDSS') and M10, we see a slight offset, which can be attributed to software differences. 
+As this work is based on extending the SDSS light curves (studied by M10) with PS1 data, we first directly compare the results when using only SDSS data to M10. The DRW parameters recovered with \project{celerite} are  broadly consistent with M10. On Fig.~\ref{fig:tauRF_SFinf} we compare the distributions of rest-frame $\tau$, and $SF_{\infty}$ for our results when using SDSS  r-band (blue dashed line),  SDSS-PS1 r-band (green dot-dashed line), against  M10 SDSS r-band (red solid line). When using identical data (SDSS r-band), our results agree with M10 - the distributions overlap. We also compare the recovered timescales and variability amplitudes object-by-object on Fig.~\ref{fig:celeriteCompare}.  Plotting the log-ratios of $\tau$ and $SF_{\infty}$ between this work ('fit, SDSS') and M10, we see a slight offset, which can be attributed to software differences. 
 
 
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb  
