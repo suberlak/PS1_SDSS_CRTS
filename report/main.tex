@@ -553,7 +553,7 @@ Bolometric luminosity is most often estimated from the absolute i-band magnitude
 \label{fig:quasar_properties}
 \end{figure*} 
 
-First, we consider the properties of the quasar sample from \citet{shen2011}. The main difference between this work and M10, apart from using longer light curves, is the updated quasar catalog. Fig.~\ref{fig:quasar_properties} shows the distribution of quasars as a function of redshift $z$, absolute magnitude $M_{i}$, and black hole mass $M_{BH}$. Some trends are well-known selection effects -  for instance, the trend of increasing redshift with $M_{i}$ on the upper left and bottom left panels is partially due to the fact that quasars have to be brighter to be included in the survey at increasing distances (luminosity-redshift degeneracy: see discussion in M10 - Sec.5, Fig.12; and \citealt{dong2018}). Higher redshift quasars are also more active  and have higher black hole masses due to cosmological downsizing (see \citealt{babic2007,labita2009, mclure2004}).
+First, we consider the properties of quasar physical properties \citep{shen2011}. The main difference between this work and M10, apart from using longer light curves, is the updated quasar catalog (from \citealt{shen2008} to \citealt{shen2011}).  Fig.~\ref{fig:quasar_properties} shows the distribution of quasars as a function of redshift $z$, absolute magnitude $M_{i}$, and black hole mass $M_{BH}$. Some trends are well-known selection effects -  for instance, the trend of increasing redshift with $M_{i}$ on the upper left and bottom left panels is partially due to the fact that quasars have to be brighter to be included in the survey at increasing distances (luminosity-redshift degeneracy: see discussion in M10 - Sec.5, Fig.12; and \citealt{dong2018}). Higher redshift quasars are also more active  and have higher black hole masses due to cosmological downsizing (see \citealt{babic2007,labita2009, mclure2004}).
 
 
 
@@ -561,7 +561,7 @@ First, we consider the properties of the quasar sample from \citet{shen2011}. Th
 
 Here we examine the main scientific results: correlations between variability parameters  ($\tau, \mathrm{SF}_{\infty}$), and the physical properties of quasars: absolute i-band magnitude $M_{i}$, and black hole mass $M_{BH}$. Any trends found would be of high interest because an existence of a  tight correlation between the variability parameters and physical properties of quasars could be used to infer the latter for millions of quasars for which only a light curve is available. Indeed, in the era of large synoptic surveys (PS1, ZTF,LSST), only a few percent of AGN with optical time-series will be followed up with spectroscopy \citep{ivezic2019}.  Thus a relationship between quasar variability and physical conditions would provide additional information that would inform  AGN research. 
 
-
+We plot  $\tau$ and $SF_{\infty}$ (corrected to $4000 \mathrm{\AA}$) as a function of $M_{BH}$, $M_{i}$, $z$ on Fig.~\ref{fig:sf_tau_bh_mass_luminosity}. Some trends are visually apparent. For instance, on the upper-left panel we see that brighter quasars have lower variability amplitude (top to bottom decrease). On the bottom left panel we see that this trend is largely independent of black hole mass. 
 Some trends between $\tau$ and $SF_{\infty}$  (for combined SDSS-PS1 light curves) and  $M_{BH}$, $M_{i}$ or redshift $z$  are apparent (see Fig.~\ref{fig:sf_tau_bh_mass_luminosity}). We investigate these correlations in more detail by fitting to $\tau$ or $SF_{\infty}$ (called $f$ below) a power law , using a Bayesian linear regression method that incorporates measurement uncertainties in all latent variables \citep{kelly2007b} : 
 
 
@@ -577,12 +577,15 @@ Some trends between $\tau$ and $SF_{\infty}$  (for combined SDSS-PS1 light curve
 \tablecaption{Comparison of best-fit coefficients for Eq.~\ref{eq:powlawmodel} using M10 results, and this work (S18).\label{tab:offsets}}
 \tablehead{\colhead{$f$} & \colhead{Source} & \colhead{$A$(offset)} & \colhead{$B(\lambda_{RF})$} & \colhead{$C (M_{i})$} & \colhead{$D (M_{\mathrm{BH}})$} }
 \startdata
-$\tau$ & M10, SDSS & $-0.467\pm0.009$ & $0.17\pm0.02$ & $0.105\pm0.003$ & $0.111\pm0.009$ \\
- & S19, SDSS & $2.432\pm0.026$ & $0.17\pm0.02$ & $0.011\pm0.009$ & $0.163\pm0.026$ \\
- & S19, SDSS-PS1 & $2.603\pm0.021$ & $0.17\pm0.02$ & $0.022\pm0.007$ & $0.164\pm0.021$ \\
-SF$_{\infty}$ & M10, SDSS & $2.232\pm0.029$ & $-0.479\pm0.005$ & $0.064\pm0.01$ & $0.094\pm0.029$ \\
- & S19, SDSS & $-0.489\pm0.011$ & $-0.479\pm0.005$ & $0.117\pm0.004$ & $0.12\pm0.011$ \\
- & S19, SDSS-PS1 & $-0.517\pm0.01$ & $-0.479\pm0.005$ & $0.117\pm0.003$ & $0.12\pm0.01$ \\
+$\tau$ & M10, SDSS & $2.432\pm0.026$ & $0.17\pm0.02$ & $0.011\pm0.009$ & $0.163\pm0.026$ \\
+ & S19, SDSS & $2.603\pm0.021$ & $0.17\pm0.02$ & $0.022\pm0.007$ & $0.164\pm0.021$ \\
+ \tableline
+ & S19, SDSS-PS1 & $2.232\pm0.029$ & $0.17\pm0.02$ & $0.064\pm0.01$ & $0.094\pm0.029$ \\
+ \tableline
+SF$_{\infty}$ & M10, SDSS & $-0.489\pm0.011$ & $-0.479\pm0.005$ & $0.117\pm0.004$ & $0.12\pm0.011$ \\
+ & S19, SDSS & $-0.517\pm0.01$ & $-0.479\pm0.005$ & $0.117\pm0.003$ & $0.12\pm0.01$ \\
+  \tableline
+  & S19, SDSS-PS1 & $-0.467\pm0.009$ & $-0.479\pm0.005$ & $0.105\pm0.003$ & $0.111\pm0.009$ \\
  \enddata
 \end{deluxetable*}
 
