@@ -541,13 +541,11 @@ Depending on redshift, different rest-frame calibrated emission lines shift into
 For sources variable at $\approx0.2$ mag level, such as quasars, the ideal is to use single-epoch calibrated spectra to estimate continuum luminosity, and find virial black hole masses using relationships based on the monochromatic fluxes and broad line widths. A glance at the available quasar catalogs reveals that, given any SDSS data release, there is indeed first a catalog of basic quasar properties (redshift and photometry - eg. \citealt{schneider2007, schneider2010}), and more detailed catalogs containing black hole masses and bolometric luminosities  follow (eg. \citealt{shen2008, shen2011}). More recently, once SDSS DR12 Quasar Catalog \citep{paris2017} was released,  \citealt{kozlowski2017a} followed using SDSS photometry as a proxy for monochromatic luminosities. \citet{chen2018} added a detailed analysis of continuum luminosities in the  H$\alpha$, H$\beta$ regions for low-redshift quasars. Using the spectra from Chinese LAMOST survey \citet{dong2018} also sought to estimate virial black hole masses, and the results, while consistent with \citet{shen2011}, suffered from the necessity to peg the non-calibrated spectra to the SDSS photometry which was taken  a different epoch. Thus even though the SDSS DR12 Quasar Catalog of \cite{paris2018}  is the most recent, like \citet{paris2017} it lacks black hole masses and bolometric luminosities, and there is no recent work that re-analyzed the spectral data. \citet{shen2011} remains the best to date measurements of quasar black hole masses and monochromatic luminosities, based directly on the single-epoch spectra. 
 
 
-
 Bolometric luminosity is most often estimated from the absolute i-band magnitude, $M_{i}$ (see \citealt{shen2008}, Fig.2). $M_{i}$ is derived from the observed i-band magnitude, by correcting for Galactic extinction, and correcting for the fact that at different redshifts different portions of the spectral energy distribution are observed by the telescope filter bandpass. The latter, known as K-correction $K(z)$ \citep{oke1968},  is defined as $m_{intrinsic} = m_{observed} - K(z)$. In the early 2000`s the common approach was to K-correct to redshift 0, but as \citep{richards2006a} pointed out, since the distribution of quasars peaks at redshift 2, for most quasars correcting to the redshift of 0 required shifting the observed spectrum into the far infrared. Moreover, the procedure was to correct separately for the continuum and emission line contributions, assuming a particular spectral shape (eg. power law  $f_{\nu} \propto \nu^{\alpha}$, with $\alpha=-0.5$ - see \citealt{schneider2010, vandenberk2001, richards2006a}).  This introduces a larger error for K(z=0) than for K(z=2) if the assumed spectral shape $\alpha=-0.5$ is far from the real spectral index. In early 2010`s, after  \citealt{richards2006a, wisotzki2000, blanton2003},  the practice started shifting towards K-correcting to redshift 2,  and including custom qusasar spectral shapes, as reflected by the content of \cite{shen2011} quasar catalog. Thus in this study we use  the absolute i-band magnitude K-corrected to z=2: $M_{i}(z=2)$ from \citep{shen2011}. 
 
 
-\subsection{Trends with Luminosity, Black Hole Mass, and Redshift}
-
-Here we examine the main scientific results: correlations between variability parameters  ($\tau, \mathrm{SF}_{\infty}$), and the physical properties of quasars: absolute i-band magnitude $M_{i}$, and black hole mass $M_{BH}$. Any trends found would be of high interest because an existence of a  tight correlation between the variability parameters and physical properties of quasars could be used to infer the latter for millions of quasars for which only a light curve is available. Indeed, in the era of large synoptic surveys (PS1, ZTF,LSST), only a few percent of AGN with optical time-series will be followed up with spectroscopy \citep{ivezic2019}.  Thus a relationship between quasar variability and physical conditions would provide additional information that would inform  AGN research. %\citep{sanchez2018}.
+\subsection{Trends in Quasar Properties}
+%\citep{sanchez2018}.
 
 \begin{figure*}
 \plotone{figs/macleod2010_Fig12_Shen2011.png}
@@ -555,12 +553,23 @@ Here we examine the main scientific results: correlations between variability pa
 \label{fig:quasar_properties}
 \end{figure*} 
 
+First, we consider the properties of the quasar sample from \citet{shen2011}. The main difference between this work and M10, apart from using longer light curves, is the updated quasar catalog. Fig.~\ref{fig:quasar_properties} shows the distribution of quasars as a function of redshift $z$, absolute magnitude $M_{i}$, and black hole mass $M_{BH}$. Some trends are well-known selection effects -  for instance, the trend of increasing redshift with $M_{i}$ on the upper left and bottom left panels is partially due to the fact that quasars have to be brighter to be included in the survey at increasing distances (luminosity-redshift degeneracy: see discussion in M10 - Sec.5, Fig.12; and \citealt{dong2018}). Higher redshift quasars are also more active  and have higher black hole masses due to cosmological downsizing (see \citealt{babic2007,labita2009, mclure2004}).
 
 
-First, we consider the properties of the quasar sample. Fig.~\ref{fig:quasar_properties} shows the distribution of quasars as a function of redshift $z$, absolute magnitude $M_{i}$, and black hole mass $M_{BH}$. Some trends are selection effects -  for instance, the trend of increasing redshift with $M_{i}$ on the upper left and bottom left panels is partially due to the fact that quasars have to be brighter to be included in the survey at increasing distances (see discussion in M10, Sec.5, and Fig.12 therein. Also, \citealt{dong2018}). Also, there is a luminosity-redshift degeneracy due to flux-limited sample. Higher redshift quasars are also more active  and have higher black hole masses due to cosmological downsizing (see \citealt{babic2007,labita2009, mclure2004}).
 
-The main difference between this work and M10 apart from the light curve length (adding PS1 data), is using an updated quasar catalog from \citet{shen2011} rather than \citet{shen2008}.
+\subsection{Trends with Luminosity, Black Hole Mass, and Redshift}
 
+Here we examine the main scientific results: correlations between variability parameters  ($\tau, \mathrm{SF}_{\infty}$), and the physical properties of quasars: absolute i-band magnitude $M_{i}$, and black hole mass $M_{BH}$. Any trends found would be of high interest because an existence of a  tight correlation between the variability parameters and physical properties of quasars could be used to infer the latter for millions of quasars for which only a light curve is available. Indeed, in the era of large synoptic surveys (PS1, ZTF,LSST), only a few percent of AGN with optical time-series will be followed up with spectroscopy \citep{ivezic2019}.  Thus a relationship between quasar variability and physical conditions would provide additional information that would inform  AGN research. 
+
+
+Some trends between $\tau$ and $SF_{\infty}$  (for combined SDSS-PS1 light curves) and  $M_{BH}$, $M_{i}$ or redshift $z$  are apparent (see Fig.~\ref{fig:sf_tau_bh_mass_luminosity}). We investigate these correlations in more detail by fitting to $\tau$ or $SF_{\infty}$ (called $f$ below) a power law , using a Bayesian linear regression method that incorporates measurement uncertainties in all latent variables \citep{kelly2007b} : 
+
+
+\begin{eqnarray}
+\label{eq:powlawmodel}
+\log_{10}{f} = &A& + B \log_{10}\left( \lambda_{RF} / 4000 \mbox{\AA} \right) + C (M_{i} + 23) \nonumber \\
+&+& D \log_{10}{\left( M_{BH} / 10^{9} M_{\odot}  \right)} 
+\end{eqnarray} 
 
 % https://github.com/AASJournals/AASTeX60/issues/61 
 \begin{deluxetable*}{cc|CCCC}
@@ -592,17 +601,6 @@ SF$_{\infty}$ & M10, SDSS & $2.232\pm0.029$ & $-0.479\pm0.005$ & $0.064\pm0.01$ 
 \caption{Left : the Eddigton ratio $L/L_{Edd}$ (from \citealt{shen2011}) plotted as a function of $M_{BH}$  vs $M_{i}$. Right:  the asymptotic variability amplitude $SF_{\infty}$,  corrected for the wavelength dependence to $4000 \AA$, as a function of the Eddington ratio.  The slope of -0.9 (solid line) is much steeper than -0.23 found by M10 with the SDSS only data. }
 \label{fig:eddington_ratio}
 \end{figure*} 
-
-
-
-Some trends between $\tau$ and $SF_{\infty}$  (for combined SDSS-PS1 light curves) and  $M_{BH}$, $M_{i}$ or redshift $z$  are apparent (see Fig.~\ref{fig:sf_tau_bh_mass_luminosity}). We investigate these correlations in more detail by fitting to $\tau$ or $SF_{\infty}$ (called $f$ below) a power law , using a Bayesian linear regression method that incorporates measurement uncertainties in all latent variables \citep{kelly2007b} : 
-
-
-\begin{eqnarray}
-\label{eq:powlawmodel}
-\log_{10}{f} = &A& + B \log_{10}\left( \lambda_{RF} / 4000 \mbox{\AA} \right) + C (M_{i} + 23) \nonumber \\
-&+& D \log_{10}{\left( M_{BH} / 10^{9} M_{\odot}  \right)} 
-\end{eqnarray} 
 
 
 
