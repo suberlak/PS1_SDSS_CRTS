@@ -561,8 +561,26 @@ First, we consider the properties of quasar physical properties \citep{shen2011}
 
 Here we examine the main scientific results: correlations between variability parameters  ($\tau, \mathrm{SF}_{\infty}$), and the physical properties of quasars: absolute i-band magnitude $M_{i}$, and black hole mass $M_{BH}$. Any trends found would be of high interest because an existence of a  tight correlation between the variability parameters and physical properties of quasars could be used to infer the latter for millions of quasars for which only a light curve is available. Indeed, in the era of large synoptic surveys (PS1, ZTF,LSST), only a few percent of AGN with optical time-series will be followed up with spectroscopy \citep{ivezic2019}.  Thus a relationship between quasar variability and physical conditions would provide additional information that would inform  AGN research. 
 
-We plot  $\tau$ and $SF_{\infty}$ (corrected to $4000 \mathrm{\AA}$) as a function of $M_{BH}$, $M_{i}$, $z$ on Fig.~\ref{fig:sf_tau_bh_mass_luminosity}. Some trends are visually apparent. For instance, on the upper-left panel we see that brighter quasars have lower variability amplitude (top to bottom decrease). On the bottom left panel we see that this trend is largely independent of black hole mass. 
-Some trends between $\tau$ and $SF_{\infty}$  (for combined SDSS-PS1 light curves) and  $M_{BH}$, $M_{i}$ or redshift $z$  are apparent (see Fig.~\ref{fig:sf_tau_bh_mass_luminosity}). We investigate these correlations in more detail by fitting to $\tau$ or $SF_{\infty}$ (called $f$ below) a power law , using a Bayesian linear regression method that incorporates measurement uncertainties in all latent variables \citep{kelly2007b} : 
+
+
+\begin{figure*}
+\plotone{figs/macleod2010_Fig14_Shen2011_sdss-ps1.png}
+\caption{Long-term variability ($SF_{\infty}$), and characteristic timescale ($\tau$), as a function of absolute i-band magnitude (K-corrected to redshift 2, proxy for bolometric luminosity), virial black hole mass, and redshift. }
+\label{fig:sf_tau_bh_mass_luminosity}
+\end{figure*} 
+
+
+
+\begin{figure*}
+\plotone{figs/Eddington_ratio_Shen2011_SDSS-PS1.png}
+\caption{Left : the Eddigton ratio $L/L_{Edd}$ (from \citealt{shen2011}) plotted as a function of $M_{BH}$  vs $M_{i}$. Right:  the asymptotic variability amplitude $SF_{\infty}$,  corrected for the wavelength dependence to $4000 \AA$, as a function of the Eddington ratio.  The slope of -0.9 (solid line) is much steeper than -0.23 found by M10 with the SDSS only data. }
+\label{fig:eddington_ratio}
+\end{figure*} 
+
+
+
+We plot  $\tau$ and $SF_{\infty}$ (corrected to $4000 \mathrm{\AA}$) as a function of $M_{BH}$, $M_{i}$, $z$ on Fig.~\ref{fig:sf_tau_bh_mass_luminosity}. Some trends are dominant. For instance, on the upper-left panel we see that brighter quasars have lower variability amplitude (top to bottom decrease). On the bottom left panel we see that this trend is largely independent of black hole mass. 
+We investigate these correlations in more detail by fitting to $\tau$ or $SF_{\infty}$ (called $f$ below) a power law, using a Bayesian linear regression method that incorporates measurement uncertainties in all latent variables \citep{kelly2007b} : 
 
 
 \begin{eqnarray}
@@ -570,6 +588,20 @@ Some trends between $\tau$ and $SF_{\infty}$  (for combined SDSS-PS1 light curve
 \log_{10}{f} = &A& + B \log_{10}\left( \lambda_{RF} / 4000 \mbox{\AA} \right) + C (M_{i} + 23) \nonumber \\
 &+& D \log_{10}{\left( M_{BH} / 10^{9} M_{\odot}  \right)} 
 \end{eqnarray} 
+
+M10 fitted  this model independently to each of the five SDSS bands, reporting the band-averaged coefficients - Fig.~\ref{fig:MacLeodShen2011} shows the example of posterior samples for $f=SF_{\infty}$, illustrating that each band yields slightly different results.
+
+
+\begin{figure*}
+\plotone{figs/Chelsea_ugriz_Shen2011_SF.png}
+\caption{Table 1 in M10 reported the band-averaged values for fit coefficients A,C,D for Eq.~\ref{eq:powlawmodel}.  Shown here are samples from posterior MCMC draws using M10 results for  $f=SF_{\infty}$, against \citealt{shen2011} $M_{i}$ and $M_{BH}$. Because the mean of posterior for SDSS r-band results only  (bold, solid lines) are different from the mean of band-averaged values (dashed lines),  we compare our SDSS-PS1 combined r-band results against M10 SDSS r-band only.}
+\label{fig:MacLeodShen2011}
+\end{figure*} 
+
+
+
+On the contrary, since we use combined SDSS-PS1 r-band data, we only compare our results to M10 SDSS r-band.  
+
 
 % https://github.com/AASJournals/AASTeX60/issues/61 
 \begin{deluxetable*}{cc|CCCC}
@@ -591,33 +623,7 @@ SF$_{\infty}$ & M10, SDSS & $-0.489\pm0.011$ & $-0.479\pm0.005$ & $0.117\pm0.004
 \end{deluxetable*}
 
 
-
-\begin{figure*}
-\plotone{figs/macleod2010_Fig14_Shen2011_sdss-ps1.png}
-\caption{Long-term variability ($SF_{\infty}$), and characteristic timescale ($\tau$), as a function of absolute i-band magnitude (K-corrected to redshift 2, proxy for bolometric luminosity), virial black hole mass, and redshift. }
-\label{fig:sf_tau_bh_mass_luminosity}
-\end{figure*} 
-
-
-
-\begin{figure*}
-\plotone{figs/Eddington_ratio_Shen2011_SDSS-PS1.png}
-\caption{Left : the Eddigton ratio $L/L_{Edd}$ (from \citealt{shen2011}) plotted as a function of $M_{BH}$  vs $M_{i}$. Right:  the asymptotic variability amplitude $SF_{\infty}$,  corrected for the wavelength dependence to $4000 \AA$, as a function of the Eddington ratio.  The slope of -0.9 (solid line) is much steeper than -0.23 found by M10 with the SDSS only data. }
-\label{fig:eddington_ratio}
-\end{figure*} 
-
-
-
-M10 fitted  this model independently to each of the five SDSS bands, reporting the band-averaged coefficients - Fig.~\ref{fig:MacLeodShen2011} shows the example of posterior samples for $f=SF_{\infty}$ correlating the  M10 SDSS ugriz data against an updated quasar catalog of \citet{shen2011}. Since we use combined SDSS r-band and PS1 data, we only compare our results to M10 SDSS r-band.  
-
-
-\begin{figure*}
-\plotone{figs/Chelsea_ugriz_Shen2011_SF.png}
-\caption{Table 1 in M10 reported the band-averaged values for fit coefficients A,C,D for Eq.~\ref{eq:powlawmodel}.  Shown here are samples from posterior MCMC draws using M10 results for  $f=SF_{\infty}$, against \citealt{shen2011} $M_{i}$ and $M_{BH}$. Because the mean of posterior for SDSS r-band results only  (bold, solid lines) are different from the mean of band-averaged values (dashed lines),  we compare our SDSS-PS1 combined r-band results against M10 SDSS r-band only.}
-\label{fig:MacLeodShen2011}
-\end{figure*} 
-
-
+ 
 We show on Figs.~\ref{fig:tauRF_SFinf} and~\ref{fig:celeriteCompare} that the fitted DRW parameters  $\tau$ and $SF_{\infty}$  using only SDSS segment are consistent with those of M10. Using SDSS segment we also recover similar trends with $M_{BH}$ and $M_{i}$. Fig.~\ref{fig:tauRF_SFinf} demonstrates that adding PS1 data the $\tau - SF_{\infty}$ distribution changes.  For $f=SF_{\infty}$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011sf} shows that with the addition of PS1 data there is a stronger dependence of variability amplitude on quasar luminosity, but a smaller dependence on the black hole mass. For $f=\tau$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011tau} there is a weaker trend with both luminosity and black hole mass. 
 
 
