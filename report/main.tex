@@ -500,7 +500,7 @@ In this section we first correct fitted $\tau$, $SF_{\infty}$ for wavelength dep
 
 
 \subsection{Comparison to M10}
-As this work is based on extending the SDSS light curves (studied by M10) with PS1 data, we directly compare the results to M10. The DRW parameters recovered with \project{celerite} are  broadly consistent - Fig.~\ref{fig:tauRF_SFinf} shows the rest-frame  $\tau$, and $SF_{\infty}$ distributions for our results for the SDSS segment (blue dashed line),  SDSS-PS1 combined light curves (green dot-dashed line), and  M10 SDSS for r-band only (red solid line). When using the same data as M10 (SDSS), our results agree. A detailed object-by-object comparison on Fig.~\ref{fig:celeriteCompare} reveals a slight offset between log-ratios of DRW parameters, which can be attibuted to software differences.
+As this work is based on extending the SDSS light curves (studied by M10) with the PS1 data, we directly compare the results to M10. The DRW parameters recovered with \project{celerite} are  broadly consistent - Fig.~\ref{fig:tauRF_SFinf} shows the rest-frame  $\tau$, and $SF_{\infty}$ distributions for our results for the SDSS segment (blue dashed line),  SDSS-PS1 combined light curves (green dot-dashed line), and  M10 SDSS for r-band only (red solid line). When using the same data as M10 (SDSS), our results agree. A detailed object-by-object comparison on Fig.~\ref{fig:celeriteCompare} reveals a slight offset between log-ratios of DRW parameters, which can be attibuted to software differences.
 
 
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb  
@@ -511,11 +511,11 @@ As this work is based on extending the SDSS light curves (studied by M10) with P
 
 
 \subsection{Rest-frame Wavelength Correction}
-Since quasars are located at non-negligible redshifts, the observed wavelengths (eg. through the SDSS bandpass) probe a region of shorter wavelengths in emitted spectrum, depending on the redshift:  $\lambda_{obs} = \lambda_{RF}  (1+z)$(\citealt{shen2018}, Fig.7). Thus to compare variability of the same parts of the rest-frame spectrum, we need to estimate the rest-frame emission wavelength $\lambda_{RF}$, and correct for the dependence of $\tau, SF_{\infty}$ on $\lambda_{RF}$. Assuming for $\lambda_{obs}$ the center wavelength of each SDSS bandpass ($3520$, $4800$, $6250$, $7690$, $9110$ $\mbox{\AA}$ for $ugriz$, respectively), $\lambda_{RF} = \lambda_{obs} / (1+z)$ (using quasar redshift from \citealt{schneider2010}). Fig.~\ref{fig:wavelength_dependence} shows $\tau, SF_{\infty}$  as a function of  $\lambda_{RF}$. A power law dependency (solid red line on each panel)
+Since quasars are located at non-negligible redshifts, the observed wavelengths (eg. through the SDSS bandpass) probe a region of shorter wavelengths in emitted spectrum, depending on the redshift (see \citealt{shen2018}, Fig.7):  $\lambda_{obs} = \lambda_{RF}  (1+z)$. Thus to compare variability of the same parts of the rest-frame spectrum, we need to estimate the rest-frame emission wavelength $\lambda_{RF}$, and correct for the dependence of $\tau, SF_{\infty}$ on $\lambda_{RF}$. Assuming for $\lambda_{obs}$ the center wavelength of each SDSS bandpass ($3520$, $4800$, $6250$, $7690$, $9110$ $\mbox{\AA}$ for $ugriz$, respectively), $\lambda_{RF} = \lambda_{obs} / (1+z)$ (using quasar redshift from \citealt{schneider2010}). Fig.~\ref{fig:wavelength_dependence} shows $\tau, SF_{\infty}$  as a function of  $\lambda_{RF}$. A power law dependency:
 \begin{equation}
 f \propto \left( \frac{\lambda_{RF}}{4000 \mbox{\AA}} \right)^{B}
 \end{equation}
-describes the relationship well. Since in this study we only use combined r-band light curves,  we use M10 coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively, to shift to $4000 \mbox{\AA}$. 
+describes the relationship well (solid red line on each panel). Since in this study we only use combined r-band light curves,  we use M10 coefficients $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively, to shift to $4000 \mbox{\AA}$. 
 
   
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb 
