@@ -591,7 +591,7 @@ M10 fitted  this model independently to each of the five SDSS bands, reporting t
 \label{fig:MacLeodShen2011}
 \end{figure*} 
 
-Since we use combined SDSS-PS1 r-band data, we only compare our results to M10 SDSS r-band.  Figs.~\ref{fig:MacLeodCeleriteShen2011tau} and ~\ref{fig:MacLeodCeleriteShen2011sf} show the MCMC posterior draws from fitting Eq.~\ref{eq:powlawmodel}  to M10, as well as \project{celerite} SDSS, SDSS-PS1 results (S19, this work). Mean and standard deviation of each distribution are summarized in Table~\ref{tab:coefficients}.  For $f=\tau$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011tau} shows that the new data supports a stronger dependence of variability amplitude on quasar luminosity by $0.04$ dex ($C{\sim}0.06$ rather than ${\sim}0.02$), but a smaller dependence on the black hole mass ($D{\sim}0.09$ rather than ${\sim}0.16$). For $f=SF_{\infty}$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011sf} shows that there is a weaker trend with both luminosity ($C{\sim}0.105$ rather than ${\sim}0.117$) and black hole mass ($D{\sim}0.11$ rather than ${\sim}0.12$), although the latter is a very small change. 
+Since we use combined SDSS-PS1 r-band data, we only compare our results to M10 SDSS r-band.  Figs.~\ref{fig:MacLeodCeleriteShen2011tau} and ~\ref{fig:MacLeodCeleriteShen2011sf} show the MCMC posterior draws from fitting Eq.~\ref{eq:powlawmodel}  to M10, as well as our SDSS, SDSS-PS1 results (S19, this work). Mean and standard deviation of each distribution are summarized in Table~\ref{tab:coefficients}.  For $f{=}\tau$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011tau} shows that the new data supports a stronger dependence of variability amplitude on quasar luminosity by $0.04$ dex ($C{\sim}0.06$ rather than ${\sim}0.02$), but a smaller dependence on the black hole mass ($D{\sim}0.09$ rather than ${\sim}0.16$). For $f{=}SF_{\infty}$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011sf} shows that there is a weaker trend with both luminosity ($C{\sim}0.105$ rather than ${\sim}0.117$) and black hole mass ($D{\sim}0.11$ rather than ${\sim}0.12$), although the latter is a very small change. 
 
 % https://github.com/AASJournals/AASTeX60/issues/61 
 \begin{deluxetable*}{cc|CCCC}
@@ -633,10 +633,7 @@ SF$_{\infty}$ & M10, SDSS & $-0.489\pm0.011$ & $-0.479\pm0.005$ & $0.117\pm0.004
 
 \subsection{Comparison to other studies: Eddington ratio}
 
-Dependence of both $\tau$ and $SF_{\infty}$ on black hole mass and quasar luminosity can be understood as a function of accretion rate, encoded in the Eddington ratio: $L_{Bol}/L_{\mathrm{Edd}}$, where $L_{\mathrm{Edd}} = 1.26 \times 10^{38} (M_{\mathrm{BH}} / M_{\odot})\, \mathrm{erg}\,\, \mathrm{s}^{-1}$\citep{shen2011}. Fig.\ref{fig:EddingtonRatio} shows the dependence of $L_{Bol}/L_{\mathrm{Edd}}$ on $M_{i}$, $M_{BH}$ and $\mathrm{SF}_{\infty}$, using SDSS-PS1 data. We find a much steeper power-law slope of $-0.9$, against $-0.23$ reported in M10 from SDSS data. 
-
-
-
+Dependence of both $\tau$ and $SF_{\infty}$ on black hole mass and quasar luminosity can be understood as a function of accretion rate, encoded in the Eddington ratio: $f_{Edd} {=} L_{Bol}/L_{\mathrm{Edd}}$, where $L_{\mathrm{Edd}} {=} 1.26 {\times} 10^{38} (M_{\mathrm{BH}} / M_{\odot})$ erg/s \citep{shen2011}. Fig.\ref{fig:EddingtonRatio} shows the dependence of $f_{Edd}$ on $M_{i}$, $M_{BH}$ and $\mathrm{SF}_{\infty}$, using SDSS-PS1 data. We find a much steeper power-law slope of $-0.9$, against $-0.23$ reported in M10 from SDSS data. 
 
 
 \begin{figure*}
@@ -645,36 +642,18 @@ Dependence of both $\tau$ and $SF_{\infty}$ on black hole mass and quasar lumino
 \label{fig:EddingtonRatio}
 \end{figure*} 
 
-
- Our work suggests that with added PS1 data, $\tau$ is more strongly dependent on luminosity than with only SDSS data.  This is consistent with findings of \cite{sun2018}, who concluded with Structure Function analysis of their luminosity-matched quasar sample, that $\tau$ depends mostly on the bolometric luminosity. 
-
- Since Eddington ratio $L/L_{\mathrm{Edd}}$ is 
-
-%\cite{sun2018} using 1000 low-z S82 QSO finds that , and suggests that since $\hat{\sigma}$ is so well related to $L_{bol}$, perhaps we could use the $\hat{\sigma} - L_{bol}$ relation to derive $L_{bol}$ without assuming any cosmological models.
+Additional PS1 data extending SDSS quasar light curves suggests that characteristic variability timescale is more strongly dependent on luminosity. This is consistent with \cite{sun2018}, who concluded with Structure Function analysis of their luminosity-matched quasar sample, that $\tau$ depends mostly on the bolometric luminosity. 
 
 
-Accretion is very important in describing the properties of quasars, and together with orientation may be the key to explaining quasar main sequence (QMS) \citep{shen2014}. The QMS, defined by so-called Eigenvector-1, is the the anti-correlation between the broad line Fe{\sc ii} emission, and the strength of the narrow O{\sc iii} ($5007 \mbox{\AA}$) line \citep{wang1996}. An analysis of quasar clustering \citep{shen2014}, later confirmed by \citet{sun2015} with measurements of  black hole mass from the quasar host galaxy stellar dispersion \citep{ferrarese2000, kormendy2013}, showed that the entire diversity of quasars in  the quasar main sequence can be explained by the variation in accretion ($R_{\mathrm{Fe  II}}$ - the ratio of the  Fe{\sc ii} EQ  between $4435-4685$ $\mbox{\AA}$ and H$\beta$), or orientation effects (affecting the FWHM of the H$\beta$). \
-
-On the other hand, while  \citealt{rumbaugh2018} (with Dark Energy Survey structure function study) and  \citet{sun2018}  (with a low-z subsample of S82 SDSS quasars) confirm the anti-correlation between quasar variability and luminosity, \citealt{graham2019} does not find evidence for it using all extremely variable quasars (EVQs) in the CRTS dataset. However, when selecting for lower luminosity sources ($M_{V} < -23$), they recover the trend, in accord with an interpretation that a dwindling fuel supply may correspond to higher variability. 
-
-
-% Zhu2016 : The corona is generally assumed to work as a light bulb above the disk and modulates radiation from the disk, encoding information about sizes and distances in the form of time lags between light curves in different photometric bands. This is the famous X-ray reprocessing model (Krolik et al. 1991), and it has been tested in great detail with nearby Seyferts (Sergeev et al. 2005; McHardy et al. 2014; Edelson et al. 2015; Fausnaugh et al. 2016; Troyer et al. 2016). Correlation analysis of inter-band (X-ray/UV/optical) light curves typically results in lags of less than a few days (for a short review, see Lawrence 2012), likely corresponding to light travel time. However, it should be kept in mind that X-ray only contributes to a small fraction of AGNs' total bolometric luminosity, especially for brighter ones (Strateva et al. 2005; Grupe et al. 2010; Lusso et al. 2010), and thus could be insufficient to produce the observed UV/optical variation (Gaskell 2008).
-
-
-
-%\citep{guo2017} uses a low-redshift (z<1.2), low black hole mass ($\log_{10}{(M_{BH}<9)}$)  subsample of the SDSS S82 r-band quasar light curves. Using Javelin \cite{zu2011} code they fitted DRW model for $\tau$, $SF_{\infty}$ 
-
-
-Furthermore, \citet{sanchez2018} combined the SDSS spectra with 5 year light curves of 2345 quasars obtained with Quasar Equatorial Survey Team (QUEST)-La Silla AGN Variability Survey. Using the Bayesian parametrization of Structure Function \citep{schmidt2010},  SF$(\tau) = A(\tau/1 \mathrm{yr})^{\gamma} $, they found that the amplitude of variability $A$ is anti-correlated with rest-frame emission wavelength,  and Eddington ratio. Due to limited light curve length they did not consider any correlations with $\tau$. The decreasing of  $A$ with increasing  $\lambda_{rest}$ would naturally follow from the inner regions of the disk being more variable (higher amplitude and  shorter wavelength) - see \citep{fausnaugh2016} and \citep{edelson2015}. The anticorrelation of $A$ and Eddington ratio is consistent with other works (M10, \citealt{simm2016}, \citealt{rakshit2017})
-
-
-Anticorrelation of  variability amplitude with the Eddington ratio  has a variety of possible theoretical explanations. 
-
-In the thin disk theory \cite{shakura1973, frank2002, netzer2013}, radius of the emission region at given wavelength increases with the Eddington ratio, and is inversely proportional to temperature\cite{rakshit2017}. Thus a hotter disk means that the emission observed in a given bandpass is emitted from a larger radius. From causality, a smaller region can be more variable than a larger one. Therefore, a  hotter disk would be less variable at a given wavelength than a colder one, and  the variability amplitude as studied in a particular bandpass (here, SDSS r-band) would be anticorrelated with Eddington ratio. 
+Anticorrelation of  variability amplitude with the Eddington ratio  has a variety of possible theoretical explanations. In the thin disk theory \cite{shakura1973, frank2002, netzer2013}, radius of the emission region at given wavelength increases with the Eddington ratio, and is inversely proportional to temperature\cite{rakshit2017}. Thus a hotter disk means that the emission observed in a given bandpass is emitted from a larger radius. From causality, a smaller region can be more variable than a larger one. Therefore, a  hotter disk would be less variable at a given wavelength than a colder one, and  the variability amplitude as studied in a particular bandpass (here, SDSS r-band) would be anticorrelated with Eddington ratio \citep{fausnaugh2016,edelson2015}. 
 
 On the other hand, in the strongly inhomogeneous disk model \citet{dexter2011} independent temperature fluctuations in $N$ zones drive the variability. In that framework the inverse trend of variability amplitude against $L/L_{Edd}$  and $L_{Bol}$  can be understood qualitatively if more luminous quasars also have higher mass accretion rate, and thus greater number of disk inhomogeneities, resulting in smaller flux variability \citep{simm2016}. 
 
-% here Simm2016 also mentions the similarity of AGN variability to the X-ray BHB duty cycle. The possibility of that being at work for AGN is discussed in Trakhtenbrot2019, Ruan2019....  Mention that too! 
+Both \citealt{rumbaugh2018} (with Dark Energy Survey structure function study) and  \citet{sun2018}  (with a low-z subsample of S82 SDSS quasars) confirm the anti-correlation between quasar variability and luminosity. However, \citealt{graham2019} do not find support for this trend with the sample extremely variable quasars (EVQs) in the CRTS dataset,  but when selecting for lower luminosity sources ($M_{V} < -23$), the anti-correlation is recovered. This is in accord with an interpretation that a dwindling fuel supply may correspond to higher variability. Furthemore, \citet{sanchez2018} combined the SDSS spectra with 5 year light curves of 2345 quasars obtained with Quasar Equatorial Survey Team (QUEST)-La Silla AGN Variability Survey, and  using the Bayesian parametrization of Structure Function \citep{schmidt2010},  SF$(\tau) = A(\tau/1 \mathrm{yr})^{\gamma} $, they also found that the amplitude of variability $A$ is anti-correlated with rest-frame emission wavelength,  and Eddington ratio (also see \citealt{simm2016}, \citealt{rakshit2017}).
+
+Indeed, $f_{Edd}$ is a proxy for the strength of accretion, which together with orientation may be the key to explaining quasar main sequence (QMS) \citep{shen2014, marziani2018}. The QMS, defined by so-called Eigenvector-1, is the the anti-correlation between the broad line Fe{\sc ii} emission, and the strength of the narrow O{\sc iii} ($5007 \mbox{\AA}$) line \citep{wang1996}. An analysis of quasar clustering \citep{shen2014}, later confirmed by \citet{sun2015} with measurements of  black hole mass from the quasar host galaxy stellar dispersion \citep{ferrarese2000, kormendy2013}, showed that the entire diversity of quasars in  QMS can be explained by the variation in accretion (affecting $R_{\mathrm{Fe  II}}$ - the ratio of the  Fe{\sc ii} EQ  between $4435-4685$ $\mbox{\AA}$ and H$\beta$), or orientation effects (affecting the FWHM of the H$\beta$). Howe
+
+
 
 \subsection{Variability Timescales}
 
