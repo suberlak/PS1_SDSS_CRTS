@@ -561,9 +561,7 @@ First, we consider quasar physical properties, which were updated between \citea
 
 \subsection{Trends with Luminosity, Black Hole Mass, and Redshift}
 
-Here we examine the main scientific results: correlations between variability parameters  ($\tau, \mathrm{SF}_{\infty}$), and the physical properties of quasars: absolute i-band magnitude $M_{i}$, and black hole mass $M_{BH}$. Any trends found would be of high interest because an existence of a  tight correlation between the variability parameters and physical properties of quasars could be used to infer the latter for millions of quasars for which only a light curve is available. Indeed, in the era of large synoptic surveys (PS1, ZTF,LSST), only a few percent of AGN with optical time-series will be followed up with spectroscopy \citep{ivezic2019}.  Thus a relationship between quasar variability and physical conditions would provide additional information that would inform  AGN research. 
-
-
+Fig.~\ref{fig:sf_tau_bh_mass_luminosity} shows $\tau$ and $SF_{\infty}$ as a function of $M_{BH}$, $M_{i}$, and $z$. Correlations between variability parameters and the physical properties of quasars are of high utility. In the era of large synoptic surveys (ZTF, LSST), only a few percent of AGN with optical time-series will be followed up with spectroscopy \citep{ivezic2019}. A relationship where $(\tau$,$SF_{\infty}) = f(M_{i}, M_{BH})$ would allow to infer black hole masses  and luminosities for millions of quasars.
 
 \begin{figure*}
 \plotone{figs/macleod2010_Fig14_Shen2011_sdss-ps1.png}
@@ -573,7 +571,8 @@ Here we examine the main scientific results: correlations between variability pa
 
 
 
-We plot  $\tau$ and $SF_{\infty}$ (corrected to $4000 \mathrm{\AA}$) as a function of $M_{BH}$, $M_{i}$, $z$ on Fig.~\ref{fig:sf_tau_bh_mass_luminosity}. Some trends are dominant. For instance, on the upper-left panel we see that brighter quasars have lower variability amplitude (top to bottom decrease). On the bottom left panel we see that this trend is largely independent of black hole mass. 
+Some trends are dominant. For instance, brighter quasars have lower variability amplitude (upper-left panel), and this trend is largely independent of black hole mass (bottom-left panel). 
+
 We investigate these correlations in more detail by fitting to $\tau$ or $SF_{\infty}$ (called $f$ below) a power law, using a Bayesian linear regression method that incorporates measurement uncertainties in all latent variables \citep{kelly2007b} : 
 
 
