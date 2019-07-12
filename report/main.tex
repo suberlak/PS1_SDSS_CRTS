@@ -277,7 +277,7 @@ The likelihood for the particular value of DRW parameters given the data is eval
 
 \subsection{The impact of light curve baseline}\label{sec:baseline}
 
-K17 reports that one cannot trust any results of DRW fitting unless the light curve length is at least ten times longer than the characteristic timescale. We confirm these generic trends, although we find that the stringent requirements of K17 can be somewhat relaxed. Following K17 setup,  we  model 10 000  DRW light curves with fixed length (baseline) $\Delta T=8$ years, asymptotic variability amplitude of  $\mathrm{SF}_{\infty} = 0.2$ mag, SDSS or OGLE-like cadence, sampling over a range of input timescales. With fixed baseline, this spans the parameter space of $\rho = \tau / \Delta T$, $\rho \in   \{ 0.01 : 15\}$. We simulate 100 light curves at each $\rho$. 
+K17 reports that one cannot trust any results of DRW fitting unless the light curve length is at least ten times longer than the characteristic timescale.  We confirm that the fidelity of DRW parameter retrieval does depend on the ratio of timescale to baseline, but we find that the baseline does not have to be ten times longer to provide meaningful, rather than unconstrained, results. To revisit relations between recovered and input timescale as a function of light curve baseline, we follow K17 in setting up a simulation of 10 000  DRW light curves with fixed length (baseline) $\Delta T=8$ years, asymptotic variability amplitude of  $\mathrm{SF}_{\infty} = 0.2$ mag, SDSS or OGLE-like cadence, sampling over a range of input timescales. With fixed baseline, this spans the parameter space of $\rho = \tau / \Delta T$, $\rho \in   \{ 0.01 : 15\}$. We simulate 100 light curves at each $\rho$. 
 
 \begin{figure*}  % code/PLOT_Fig2_George_Celerite.ipynb
 \plottwo{figs/celerite_SDSS_Jeff1_expectation-190208_results_celerite_R.png}{figs/celerite_OGLE_Jeff1_expectation-190208_results_celerite_R.png}
@@ -286,7 +286,7 @@ K17 reports that one cannot trust any results of DRW fitting unless the light cu
 \end{figure*}
 
 
-The true underlying DRW signal $s(t)$ is found by iterating over the array of time steps $t$.  At each step, we draw a point from a Gaussian distribution, for which the mean and standard deviation are re-calculated at each timestep (see \citealt{kelly2009} (eqs. A4 and A5) as well as in \cite{macleod2010} (Sec. 2.2 ), and K17). Starting at $t_{0}$, the signal is equal to the mean magnitude, $s_{0} = \langle m \rangle$. After a timestep $\Delta t_{i} = t_{i+1} - t_{i}$, the signal $s_{i+1}$ is drawn from  $\mathcal{N}(loc, stdev)$, with : 
+The true underlying DRW signal $s(t)$ is found by iterating over the array of time steps $t$.  At each step, we draw a point from a Gaussian distribution, for which the mean and standard deviation are re-calculated at each timestep (see eqs. A4 and A5 in \citealt{kelly2009}, as well as Sec. 2.2 in \citealt{macleod2010}). Starting at $t_{0}$, the signal is equal to the mean magnitude, $s_{0} = \langle m \rangle$. After a timestep $\Delta t_{i} = t_{i+1} - t_{i}$, the signal $s_{i+1}$ is drawn from  $\mathcal{N}(loc, stdev)$, with : 
 
 \begin{equation}
 loc = s_{i} e ^ { - r  }  + \langle m \rangle \left( 1 - e ^{ - r }\right)
