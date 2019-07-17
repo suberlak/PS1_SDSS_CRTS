@@ -359,7 +359,7 @@ We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repea
 
 \begin{figure*} % code2/Stats_simulation.ipynb 
 \plotone{figs/lightcurves_extent.png}
-\caption{An illustration of survey baseline, sky area covered, and depth. The width of each rectangle corresponds to the extent of light curves available (or simulated) for Stripe 82 quasars for each survey. For SDSS this means DR7; for CRTS DR2, PS1 DR2, PTF DR2, ZTF year 2018, and LSST the full 10-year survey. The lower edge of each rectangle corresponds to the $5\sigma$ limiting magnitude (SDSS r, PS1 r, PTF R, ZTF r, LSST r, CRTS V). The vertical extent corresponds to the total survey area (for SDSS, up to and including DR15).  Note how PS1 and PTF extend the baseline of SDSS by approximately $50\%$, and how inclusion of LSST triples the SDSS baseline. For reference, the area covered by LSST is $25 000$ sq.deg., which corresponds to  $60\%$ of the sky. The whole sky has an area of $4\pi$ steradians (41253 sq.deg.).}
+\caption{An illustration of survey baseline, sky area covered, and depth. The width of each rectangle corresponds to the extent of light curves available (or simulated) for Stripe 82 quasars for each survey. For SDSS this means DR7; for CRTS DR2, PS1 DR2, PTF DR2, ZTF year 2018, and LSST the full 10-year survey. The lower edge of each rectangle (marked by a solid thick line) corresponds to the $5\sigma$ limiting magnitude (SDSS r, PS1 r, PTF R, ZTF r, LSST r, CRTS V). The vertical extent corresponds to the total survey area (for SDSS, up to and including DR15).  Note how PS1 and PTF extend the baseline of SDSS by approximately $50\%$, and how inclusion of LSST triples the SDSS baseline. For reference, the area covered by LSST is $25 000$ sq.deg., which corresponds to  $60\%$ of the sky. The whole sky has an area of $4\pi$ steradians (41253 sq.deg.).}
 \label{fig:lcExtent}
 \end{figure*} 
 
@@ -401,6 +401,7 @@ Some authors (eg. \citet{li2018}) allow the transformation to be a higher-order 
 
 \begin{deluxetable}{c|cc}
 %\tablewidth{\textwidth}
+% solution from https://tex.stackexchange.com/questions/370268/aastex61-single-column-deluxetable-cannot-set-width 
 \tablecaption{Color terms (offsets) between CRTS, PTF, PS1 passbands used in combined light curves, and  SDSS, using the mean $(g-i)_{\mathrm{SDSS}}$ color to spread the stellar locus. Thus the $r_{\mathrm{SDSS}}$ synthetic magnitude ($r_{s}$ for short) can be found as $r_{s} = x-B_{0}-B_{1}(g-i)_{\mathrm{SDSS}}$. This linear trend is illustrated on Fig.\ref{fig:offsetsPS1}, where we plot $(x-r_{\mathrm{SDSS}})$ as a function of $(g-i)_{\mathrm{SDSS}}$ for $x=g_{\mathrm{P1}}, r_{\mathrm{P1}},i_{\mathrm{P1}}$.\label{tab:offsets}}  
 
 \tablehead{
