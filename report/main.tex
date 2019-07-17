@@ -301,24 +301,21 @@ stdev^{2} =  0.5  \, \mathrm{SF}_{\infty}^{2} \left( 1 - e ^{  - 2 r  }  \right)
 where  $r = \Delta t_{i} / \tau$, and $\tau$ is the damping timescale.
 
 
-To simulate observational conditions  we add to the true underlying signal  $s(t)$ a noise offset, $n(t)$.  Like K17,  we assume $n(t)$ to be drawn from a Gaussian distribution $\mathcal{N}(0,\sigma(t))$ with a width $\sigma(t)$, corresponding to the  photometric uncertainty at the given epoch: 
-
+To simulate observational conditions  we add to $s(t)$ - the true underlying signal,   $n(t)$ - a noise offset :
 \begin{equation}
 y(t) = s(t) + n(t) 
 \end{equation}
 
-
-
-We adopt SDSS S82-like cadence with N=60 epochs, or OGLE-III like cadence with N=445 epochs.  The errors are set by the adopted mean magnitudes, $r=17$ and $I=18$ :
+ Like K17,  we assume $n(t)$ to be drawn from a Gaussian distribution with zero mean and width $\sigma$, that corresponds to the  photometric uncertainty.  Likewise,  we adopt SDSS S82-like cadence with N=60 epochs, or OGLE-III like cadence with N=445 epochs, and magnitude-dependent $\sigma$:  
 
 \begin{eqnarray}
-\sigma_{SDSS}^{2} &=& 0.013^{2} + \exp{(2 (r-23.36))} \\
-\sigma_{OGLE}^{2} &=& 0.004^{2} + \exp{(1.63 (I - 22.55))}
+\sigma_{\mathrm{SDSS}}^{2} &=& 0.013^{2} + \exp{(2 (\mathrm{r_{SDSS}}-23.36))} \\
+\sigma_{\mathrm{OGLE}}^{2} &=& 0.004^{2} + \exp{(1.63 (\mathrm{I_{OGLE}} - 22.55))}
 \end{eqnarray}
 
+with  $\mathrm{r_{SDSS}}=17$ mag and \mathrm{I_{OGLE}}=18$ mag.  
 
-
-Fig.~\ref{fig:rho_space} shows the recovered $\rho_{out}$ as a function of input $\rho_{in}$. This confirms the findings of K17: the recovered $\rho$ becomes meaningless ('unconstrained') if the available DRW light curve baseline is not at least several times longer than the input timescale ($\log_{10}{(\rho)} \lessapprox -0.5$, i.e. $\rho \lessapprox 3 $). Consequently, by extending the baseline we can move from the biased region (bottom left) to the unbiased regime (top right). This is the basis for this study,  in which we extend the baselines of quasar light curves from SDSS-only (10 years) to combined SDSS-PS1 (15 years). 
+Fig.~\ref{fig:rho_space} shows the recovered $\rho_{out}$ as a function of input $\rho_{in}$. We confirm the findings of K17: for short light curves, the best-fit $\tau$ becomes $\sim 1/2$ of light curve length (the `unconstrained' region, lower-left of each panel). However, as long as the light curve is several times longer than the timescale ($\rho \lessapprox 3 $), we can recover the timescale without bias (the dashed line approaches the solid diagonal line on both panels). Therefore, by extending the baseline we can move from the biased region (bottom left) to the unbiased regime (top right). This is the basis for this study,  in which we extend the baselines of quasar light curves from SDSS-only (10 years) to combined SDSS-PS1 (15 years). 
 
 \subsection{Departure from DRW?}
 
