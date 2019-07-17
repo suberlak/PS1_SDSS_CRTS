@@ -364,13 +364,19 @@ We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repea
 \end{figure*} 
 
 
-We extend SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018}, Catalina Real-Time Transient Survey (CRTS) \citep{drake2009}, and Palomar Transient Factory (PTF) \citep{rau2009} data. Of 9258  SDSS quasars, within $0.5 ''$ there are 9248 PS1 matches, 6455 PTF matches, and 7737 CRTS matches. Of these, 6444 quasars have coverage in all surveys (SDSS-PS1-PTF-CRTS).  Fig~\ref{fig:lcExtent}  depicts the  baseline coverage of various surveys.  Each survey uses a unique set of bandpasses and cadences: SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{\mathrm{SDSS}}$, and PS1, PTF observations in different filters are  non-simultaneous.%: $\{g,r,i,z,y\}_{\mathrm{PS1}}$,  $\{g,R\}_{\mathrm{PTF}}$, $V_{\mathrm{CRTS}}$.  
+We extend SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018} data. We also considered using the Catalina Real-Time Transient Survey (CRTS) \citep{drake2009}, and Palomar Transient Factory (PTF) \citep{rau2009} data, but as  shows, due to shallower depth these surveys have larger photometric uncertainties (median $\sim 0.1$ mag) for objects as faint as quasars (median 20 mag) - see Fig.~\ref{fig:combinedLCerrors}. Of 9258  SDSS quasars, within $0.5 ''$ there are 9248 PS1 matches.  Fig~\ref{fig:lcExtent}  depicts the  baseline coverage of various surveys.  Each survey uses a unique set of bandpasses and cadences: SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{\mathrm{SDSS}}$, and PS1 observations in different filters are  non-simultaneous. 
+
+
+\begin{figure}%[ht!]  %code2/Subsample_master_LC.ipynb 
+\plotone{figs/sim_subsampled2_stats_error_lin.png}
+\caption{Distribution of median photometric uncertainties ('errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1. This is the reason for using only SDSS-PS1 part of the combined light curve.}
+\label{fig:combinedLCerrors}
+\end{figure} 
+
 
 \subsection{Photometric offsets}
 
-We combine quasar photometry into a single 'master' bandpass.  We choose  $r_{\mathrm{SDSS}}$ as the target bandpass since it has the best photometry, and we calculate color terms that afford transformation from other photometric systems to SDSS. We translate to $\mathrm{r_{SDSS}}$ only photometry from nearby filters: $\{g,R\}_{\mathrm{PTF}}$, $\{g,r,i\}_{\mathrm{PS1}}$, $V_{\mathrm{CRTS}}$. 
-
-Color terms are derived using the SDSS standard stars catalog~\citep{ivezic2007}.  We focus on a 10\% subset of randomly chosen stars from the catalog, and find their CRTS (B.Sesar, priv.comm.), PS1 (from MAST \url{http://panstarrs.stsci.edu}) and PTF (IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}) positional matches. 
+We combine quasar photometry into a single 'master' bandpass.  We choose  $r_{\mathrm{SDSS}}$ as the target bandpass since it has the best photometry, and we calculate color terms that afford transformation from other photometric systems to SDSS. We initially translated to $\mathrm{r_{SDSS}}$ photometry from nearby filters: $\{g,R\}_{\mathrm{PTF}}$, $\{g,r,i\}_{\mathrm{PS1}}$, $V_{\mathrm{CRTS}}$, deriving color terms with the SDSS standard stars~\citep{ivezic2007}.  We focus on a 10\% subset of randomly chosen stars from the catalog, and find their CRTS (B.Sesar, priv.comm.), PS1 (from MAST \url{http://panstarrs.stsci.edu}) and PTF (IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}) positional matches. 
 
 We consider the difference  between the target (SDSS) and source (eg.PS1) photometry as a function of the mean SDSS $(g-i)$ color : 
 
@@ -465,11 +471,7 @@ For the ZTF 1-year segment (Spring 2019 ZTF DR1 including the data from 2018) we
 
 To mirror observational conditions we add to the true underlying DRW signal a Gaussian noise, with variance defined by photometric uncertainties for corresponding surveys. Given the noise properties of each survey (Fig.~\ref{fig:combinedLCerrors}), we found that relatively large uncertainties of CRTS and PTF segments introduced less improvement in recovery of DRW parameters, given that similar baseline is already covered by the PS1 data (Fig.~\ref{fig:lcExtent}).  We further found that inclusion of ZTF data for 2018 would not significantly change our results. Inclusion of PS1 data with its excellent  deep photometry (as compared to ZTF or PTF) is the best improvement over existing SDSS results.  In the future (after more data has been assembled and re-calibrated) ZTF will help, but not as dramatically as LSST (see Figs.~\ref{fig:simLCresults1} and ~\ref{fig:simLCresults2}).  For this reason we found that using only SDSS-PS1 portion is the best tradeoff between adding more baseline vs introducing more uncertainty with noisy data.
 
-\begin{figure}%[ht!]  %code2/Subsample_master_LC.ipynb 
-\plotone{figs/sim_subsampled2_stats_error_lin.png}
-\caption{Distribution of median photometric uncertainties ('errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1. This is the reason for using only SDSS-PS1 part of the combined light curve.}
-\label{fig:combinedLCerrors}
-\end{figure} 
+
 
 %As we found earlier, extending the light curve baseline decreases the bias in the retrieved DRW parameters (Fig.~\ref{fig:rho_space}). For light curves that simulate the extension of SDSS with PS1, ZTF, LSST segments, Figs.~\ref{fig:simLCresults1} and show that this is indeed the case: the longer the light curves, that more the retrieved $\tau$ and $SF_{\infty}$ are centered on the input values. 
 
@@ -497,7 +499,7 @@ To mirror observational conditions we add to the true underlying DRW signal a Ga
 
 \section{Results: variability parameters for S82 Quasars}\label{sec:results}
 
-We extend Stripe82 quasar light curves by combining the SDSS r-band data with  the PS1 $g_{\mathrm{PS1}}$, $r_{\mathrm{PS1}}$, $i_{\mathrm{PS1}}$ transformed into SDSS r-band. We fit the light curves with \project{celerite} DRW model for each quasar using either the SDSS or both SDSS and PS1 components. This yields two sets of DRW parameters per quasar: $(\tau_{SDSS}, \mathrm{SF}_{\infty, SDSS})$, and $(\tau_{SDSS-PS1}, \mathrm{SF}_{\infty, SDSS-PS1})$. Because the variability is inherent to the quasar, for the remaining analysis we shift all timescales to quasar rest frame, and implicitly assume that the DRW timescales are considered in rest frame: $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$.
+We extend Stripe82 quasar light curves by combining the SDSS r-band data with  the PS1 $g_{\mathrm{PS1}}$, $r_{\mathrm{PS1}}$, $i_{\mathrm{PS1}}$ transformed into SDSS r-band. We fit the light curves with \project{celerite} DRW model for each quasar using either the SDSS or both SDSS and PS1 components. This yields two sets of DRW parameters per quasar: $(\tau_{SDSS}, \mathrm{SF}_{\infty, SDSS})$, and $(\tau_{SDSS-PS1}, \mathrm{SF}_{\infty, SDSS-PS1})$. Because the variability is inherent to the quasar, for the remaining analysis we shift all fitted timescales to quasar rest frame, and implicitly assume that the DRW timescales are considered in rest frame: $\tau_{\mathrm{RF}} = \tau_{\mathrm{OBS}} / (1+z)$.
 
 
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb 
