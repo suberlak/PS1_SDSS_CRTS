@@ -376,10 +376,10 @@ We extend SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling
 
 \subsection{Photometric offsets}
 
-We combine quasar photometry into a single 'master' bandpass.  We choose  $r_{\mathrm{SDSS}}$ as the target bandpass since it has the best photometry, and we calculate color terms that afford transformation from other photometric systems to SDSS. We initially translated to $\mathrm{r_{SDSS}}$ photometry from nearby filters: $\{g,R\}_{\mathrm{PTF}}$, $\{g,r,i\}_{\mathrm{PS1}}$, $V_{\mathrm{CRTS}}$, deriving color terms with the SDSS standard stars~\citep{ivezic2007}.  We focus on a 10\% subset of randomly chosen stars from the catalog, and find their CRTS (B.Sesar, priv.comm.), PS1 (from MAST \url{http://panstarrs.stsci.edu}) and PTF (IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}) positional matches. 
+We combine quasar photometry into a single 'master' bandpass.  We choose  $r_{\mathrm{SDSS}}$ as the target bandpass since it has the best photometry. We initially calculated color terms between $\mathrm{r_{SDSS}}$ and nearby filters in other sureys: $\{g,R\}_{\mathrm{PTF}}$, $\{g,r,i\}_{\mathrm{PS1}}$, $V_{\mathrm{CRTS}}$. 
+The photometric offets were derived using the SDSS standard stars catalog~\citep{ivezic2007}. Focusing on a 10\% subset of randomly chosen stars from the catalog, we find their CRTS (B.Sesar, priv.comm.), PS1 (from MAST \url{http://panstarrs.stsci.edu}) and PTF (IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}) positional matches. 
 
 We consider the difference  between the target (SDSS) and source (eg.PS1) photometry as a function of the mean SDSS $(g-i)$ color : 
-
 
 \begin{equation}
 m_{\mathrm{PS1}} - m_{\mathrm{SDSS}} = f(g-i)
@@ -427,6 +427,22 @@ PS1 i &  0.0247   & -0.2765 \\
 \tablecomments{To derive the color terms we used SDSS S82 standard stars catalog \citep{ivezic2007}. We randomly selected 10\% of that catalog, for which 48250 have CRTS light curves. We  obtained PS1 photometry from MAST, and PTF from IRSA PTF Object Catalog. We imposed quality cuts requiring that the stars are bright: $r < 19$.}
 \end{deluxetable}
 
+
+In the end we find that color terms, although robust, introduce an additional level of uncertainty. Thus we elect to combine only PS1 r-band which is sufficiently similar to the SDSS r-band that no bandpass transformation is required.  Fig.~\ref{fig:SDSS_PS1_offset_mag} shows the PS1-SDSS r-band difference as a function of magnitude, highlighting that for the standard stars, the difference is less than 0.01 mag (1\% level) within r < 20.5 . The two filters are also sufficiently similar in the (g-i) color range span by quasars, as shown on Fig.~\ref{fig:SDSS_PS1_offset_gi}. We did not use the r-band ZTF nor PTF data since these would require photometric transformation to the SDSS r-band. 
+
+\begin{figure}%[ht!] % ../code2/SDSS_PS1_DR2_stellar_offsets.ipynb
+\plotone{figs/PS1_DR2_detections_SDSS_Stripe82Calib.png}
+\caption{Of 100 000 randomly selected stars from 1 mln SDSS standard stars catalog almost 95 000 have PS1 DR2 photometry. For these we plot the difference in PS1 r-band and SDSS r-band as a function of SDSS magnitude. We overplot the median offset as filled magenta circles. There is a very slight slope, but all the way up to r < 20.5 the median difference is less than 0.01 mag (1 \% level).   }
+\label{fig:SDSS_PS1_offset_mag}
+\end{figure} 
+
+
+
+\begin{figure}%[ht!] % ../code2/SDSS_PS1_DR2_stellar_offsets.ipynb
+\plotone{figs/PS1_DR2_detections_SDSS_Stripe82Calib_g-i.png}
+\caption{The offset $\Delta m_{r}$  between PS1 r-band and SDSS r-band plotted as a function of (g-i) SDSS color. $\Delta m_{r}$ is stable across a range of (g-i) color occupied by quasars, and illustrates that the we can justify using no photometric transformation between SDSS r-band and PS1 r-band. }
+\label{fig:SDSS_PS1_offset_gi}
+\end{figure} 
 
 
 
