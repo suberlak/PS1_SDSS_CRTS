@@ -317,6 +317,10 @@ with  $\mathrm{r_{SDSS}}=17$ mag and $\mathrm{I_{OGLE}}=18$ mag.
 
 Fig.~\ref{fig:rho_space} shows the recovered $\rho_{out}$ as a function of input $\rho_{in}$. We confirm the findings of K17: for short light curves, the best-fit $\tau$ becomes $\sim 1/2$ of light curve length (the `unconstrained' region, lower-left of each panel). However, as long as the light curve is several times longer than the timescale ($\rho \lessapprox 3 $), we can recover the timescale without bias (the dashed line approaches the solid diagonal line on both panels). Therefore, by extending the baseline we can move from the biased region (bottom left) to the unbiased regime (top right). This is the basis for this study,  in which we extend the baselines of quasar light curves from SDSS-only (10 years) to combined SDSS-PS1 (15 years). 
 
+
+
+
+
 \subsection{Departure from DRW?}
 
 The power spectral density (PSD) of the DRW process is:
@@ -399,7 +403,11 @@ While \cite{tonry2012} chose to spread the stellar locus with $(g-r)$ color, we 
 %\tablewidth{\textwidth}
 \tablecaption{Color terms (offsets) between CRTS, PTF, PS1 passbands used in combined light curves, and  SDSS, using the mean $(g-i)_{\mathrm{SDSS}}$ color to spread the stellar locus. Thus the $r_{\mathrm{SDSS}}$ synthetic magnitude ($r_{s}$ for short) can be found as $r_{s} = x-B_{0}-B_{1}(g-i)_{\mathrm{SDSS}}$. This linear trend is illustrated on Fig.\ref{fig:offsetsPS1}, where we plot $(x-r_{\mathrm{SDSS}})$ as a function of $(g-i)_{\mathrm{SDSS}}$ for $x=g_{\mathrm{P1}}, r_{\mathrm{P1}},i_{\mathrm{P1}}$.\label{tab:offsets}}  
 
-\tablehead{\colhead{Band (x)} & \colhead{$B_{0}$} & \colhead{$B_{1}$}}
+\tablehead{
+\colhead{Band (x)} & 
+\colhead{\hspace{1.15cm}$B_{0}$}\hspace{1.05cm} & 
+\colhead{\hspace{1.15cm}$B_{1}$}\hspace{1.05cm}
+}
 \startdata
 CRTS V & -0.0464  & -0.0128 \\
 PTF g &  -0.0294  &  0.6404 \\
