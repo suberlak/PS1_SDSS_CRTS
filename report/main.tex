@@ -337,16 +337,6 @@ Fig.~\ref{fig:rho_space} shows the recovered $\rho_{out}$ as a function of input
 
 
 
-
-
-\subsection{Departure from DRW?}
-
-%
-%
-%
-%
-%
-
 \section{Data}\label{sec:data}
 \subsection{Surveys}
 We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by the Sloan Digital Sky Survey (SDSS) between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe 82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012}, Sec. 2.2 for overview, and \citealt{annis2014} for details). Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citet{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
@@ -467,11 +457,11 @@ x &=& 10^{0.4(m-m_{5})} \nonumber
 with  $\sigma_{sys} = 0.005$, $\gamma=0.039$, $m_{5} = 24.7$ (see \citealt{ivezic2019}, Sec.3.2).
 For the ZTF 1-year segment (Spring 2019 ZTF DR1 including the data from 2018) we assumed 120 observations (every three nights) in $g_{\mathrm{ZTF}}$ and $r_{\mathrm{ZTF}}$, deriving the magnitude-dependent error model by plotting for ZTF standard stars in Fig.~\ref{fig:ztf_errors} best mag rms as a function of best median magnitude. We find that the LSST error model (Eq.~\ref{eq:errorModel}) with $\gamma = 0.05$, $\sigma_{sys} = 0.005 $, and $m_{5} = 20.8$ adequately describes the ZTF photometric uncertainty. 
 
-\begin{figure}%[ht!] % code2/Subsample_master_LC.ipynb
+\begin{figure*}%[ht!] % code2/Subsample_master_LC.ipynb
 \plotone{figs/Simulated_DRW-0008_sampled-3537034_fit.png}
 \caption{Simulated underlying DRW process shown here in black ($\tau=575$d, SF$_{\infty} = 0.2$ mag, 4 points per day) subsampled at the real cadence of SDSS (red), PS1 (green) segments, and simulated LSST (blue) epochs, using time stamps from the combined SDSS-PS1 light curve for quasar dbID=3537034. The orange 'error snake' is an envelope marking the standard deviation of the fit to the data using a Gaussian process  with DRW kernel (Sec.~\ref{sec:simulation}).}
 \label{fig:simLC}
-\end{figure} 
+\end{figure*} 
 
 \begin{figure}%[ht!]  % code2/Simulate_ZTF_cadence_error.ipynb
 \plotone{figs/ZTF_error_curve.png}
@@ -526,7 +516,7 @@ In this section we first correct fitted $\tau$, $SF_{\infty}$ for wavelength dep
 
 
 \subsection{Comparison to M10}
-As this work is based on extending the SDSS light curves (studied by M10) with the PS1 data, we directly compare the results to M10. The DRW parameters recovered with \project{celerite} are  broadly consistent - Fig.~\ref{fig:tauRF_SFinf} shows the rest-frame  $\tau$, and $SF_{\infty}$ distributions for our results for the SDSS segment (blue dashed line),  SDSS-PS1 combined light curves (green dot-dashed line), and  M10 SDSS for r-band only (red solid line). When using the same data as M10 (SDSS), our results agree. A detailed object-by-object comparison on Fig.~\ref{fig:celeriteCompare} reveals a slight offset between log-ratios of DRW parameters, which can be attibuted to software differences.
+The DRW parameters recovered with \project{celerite} are  broadly consistent with M10 - Fig.~\ref{fig:tauRF_SFinf} shows the rest-frame  $\tau$, and $SF_{\infty}$ distributions for our results for the SDSS segment (blue dashed line),  SDSS-PS1 combined light curves (green dot-dashed line), and  M10 SDSS for r-band only (red solid line). When using the same data as M10 (SDSS), our results agree. A detailed object-by-object comparison on Fig.~\ref{fig:celeriteCompare} reveals a slight offset between log-ratios of DRW parameters, which can be attibuted to software differences.
 
 
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb  
@@ -546,7 +536,7 @@ As this work is based on extending the SDSS light curves (studied by M10) with t
 
 
 \subsection{Rest-frame Wavelength Correction}
-Since quasars are located at non-negligible redshifts, the observed wavelengths (eg. through the SDSS bandpass) probe a region of shorter wavelengths in emitted spectrum, depending on the redshift (see \citealt{shen2018}, Fig.7):  $\lambda_{obs} = \lambda_{RF}  (1+z)$. Thus to compare variability of the same parts of the rest-frame spectrum, we need to estimate the rest-frame emission wavelength $\lambda_{RF}$, and correct for the dependence of $\tau, SF_{\infty}$ on $\lambda_{RF}$. Since in this study we only used r-band light curves,  we plot our SDSS and SDSS-PS1 results against M10 for SDSS ugriz, assuming for $\lambda_{obs}$ the center wavelength of each SDSS bandpass ($3520$, $4800$, $6250$, $7690$, $9110$ $\mbox{\AA}$ for $ugriz$, respectively), $\lambda_{RF} = \lambda_{obs} / (1+z)$ (using quasar redshift from \citealt{schneider2010}). Fig.~\ref{fig:wavelength_dependence} shows $\tau, SF_{\infty}$  as a function of  $\lambda_{RF}$. A power law dependency:
+Since quasars are located at non-negligible redshifts, the observed wavelengths (eg. through the SDSS bandpass) probe a region of shorter wavelengths in emitted spectrum, depending on the redshift (see \citealt{shen2018}, Fig.7):  $\lambda_{obs} = \lambda_{RF}  (1+z)$. Thus to compare variability of the same parts of the rest-frame spectrum, we need to estimate the rest-frame emission wavelength $\lambda_{RF}$, and correct for the dependence of $\tau, SF_{\infty}$ on $\lambda_{RF}$. Since in this study we only used r-band light curves,  we plot our SDSS and SDSS-PS1 results against M10 for SDSS ugriz, assuming for $\lambda_{obs}$ the center wavelength of each SDSS bandpass  ($3520$, $4800$, $6250$, $7690$, $9110$ $\mbox{\AA}$ for $ugriz$, respectively), $\lambda_{RF} = \lambda_{obs} / (1+z)$ (using quasar redshift from \citealt{schneider2010}). Fig.~\ref{fig:wavelength_dependence} shows $\tau, SF_{\infty}$  as a function of  $\lambda_{RF}$. A power law dependency:
 \begin{equation}
 f \propto \left( \frac{\lambda_{RF}}{4000 \mbox{\AA}} \right)^{B}
 \end{equation}
@@ -555,7 +545,7 @@ describes the relationship well (solid red line on each panel). Therefore we use
   
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb 
 \plotone{figs/macleod2010_Fig13_kdeplot_Chelsea_cut_NEW_.png}
-\caption{Rest-frame timescale $\tau$ (top panel), and asymptotic structure function $SF_{\infty}$ (bottom panel), as a function of rest-frame wavelength $\lambda_{RF}$. The background contours show M10 SDSS $ugriz$ data, and the foreground contours  denote our results using  SDSS (red) and SDSS-PS1 (orange) segments. The red line indicates the best-fit power law to M10 data, with $B=0.17$ an $-0.479$ for $\tau_{RF}$, and $SF_{\infty}$, respectively.}
+\caption{Rest-frame timescale $\tau$ (top panel), and asymptotic structure function $SF_{\infty}$ (bottom panel), as a function of rest-frame wavelength $\lambda_{RF}$. The background contours show M10 SDSS $ urz $  data, and the foreground contours  denote our results using  SDSS (red) and SDSS-PS1 (orange) segments. The red line indicates the best-fit power law to M10 data, with $B=0.17$ an $-0.479$ for $\tau_{RF}$, and $SF_{\infty}$, respectively.}
 \label{fig:wavelength_dependence}
 \end{figure} 
 
