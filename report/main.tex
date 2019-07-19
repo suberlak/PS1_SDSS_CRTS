@@ -570,40 +570,31 @@ with  $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively. We use t
 \label{fig:wavelength_dependence}
 \end{figure} 
 
-\subsection{Quasar Properties: Black Hole Mass, Absolute Luminosity}
+\subsection{Trends with Black Hole Mass, Absolute Luminosity}
 
+Correlations between variability parameters and the physical properties of quasars are of high utility. In the era of large synoptic surveys (ZTF, LSST), only a few percent of AGN with optical time-series will be followed up with spectroscopy \citep{ivezic2019}. A relationship where $(\tau$,$SF_{\infty}) = f(M_{i}, M_{BH})$ would allow to infer black hole masses  and luminosities for millions of quasars.
 
+Since S82 quasars are spectroscopically-confirmed, we use estimates of quasar physical properties, such as black hole mass, or absolute luminosity $M_{i}$, from \cite{shen2011}, based on single-epoch spectra.  $M_{i}$ in that catalog is K-corrected to the redshift of 2, $M_{i}(z=2)$, which corresponds the peak of quasar activity and requires the least extrapolation from the measured i-band \citep{richards2006}. For details, see Appendix ~\ref{app:measureBHmass}.
 
-
-
-\subsection{Trends in Quasar Properties}
-%\citep{sanchez2018}.
-
-\begin{figure*}
+\begin{figure*} % ../code2/Trends_quasar_properties.ipynb 
 \plotone{figs/macleod2010_Fig12_Shen2011.png}
-\caption{Distribution of quasars as a function of  redshift, observed i-band magnitude, absolute i-band magnitude (K-corrected to z=2), and virial black hole mass. All quantities from \citep{shen2011}. }
+\caption{Distribution of quasars as a function of  redshift, observed i-band magnitude, absolute i-band magnitude (K-corrected to z=2), and virial black hole mass. All taken from \citep{shen2011}. }
 \label{fig:quasar_properties}
 \end{figure*} 
 
-First, we consider quasar physical properties, which were updated between \citealt{shen2008} (M10) and  \citealt{shen2011} (used here).  Fig.~\ref{fig:quasar_properties} shows the distribution of quasars as a function of redshift $z$, absolute magnitude $M_{i}$, and black hole mass $M_{BH}$, and illustrates the fact that some trends are due to selection effects. For instance, the trend of increasing redshift with $M_{i}$ on the upper left and bottom left panels, is partially due to the fact that quasars have to be brighter to be included in the survey at increasing distances (luminosity-redshift degeneracy: see Sec.5, Fig.12 in M10, and \citealt{dong2018}). Higher redshift quasars are also more active  and have higher black hole masses due to cosmological downsizing (see \citealt{babic2007,labita2009, mclure2004}).
+To study the correlations between fitted DRW model parameters ($\tau, \mathrm{SF}_{\infty}$) and quasar properties ($M_{i}$, $M_{BH}$), we first examine the intrinsic distribution of $M_{i}$, $M_{BH}$, as a function of redshift and observed i-band magnitude.  Fig.~\ref{fig:quasar_properties} shows some trends, for instance the upward gradient in the top two panels reflects the selection effect that higher redshift quasars have to be brighter to be included in the magnitude-limited sample (luminosity-redshift degeneracy: see Sec.5, Fig.12 in M10, and \citealt{dong2018}). Higher redshift quasars are also more active  and have higher black hole masses due to cosmological downsizing (see \citealt{babic2007,labita2009, mclure2004}). The distribution in the lower-left panel of Fig.~\ref{fig:quasar_properties} is peaked at $z=2$  ($\log_{10}(1+2)=0.47$) which corresponds to the peak of quasar activity. 
+
+Now consider the DRW parameters, $\tau$ and $SF_{\infty}$ (corrected for wavelength dependence). Fig.~\ref{fig:sf_tau_bh_mass_luminosity} shows $\tau$ and $SF_{\infty}$  plotted as a function of $M_{BH}$, $M_{i}$, and $z$. The two left-hand side panels catch attention, with strong gradients of variability amplitude with $M_{i}$,$z$ : brighter quasars have lower variability amplitude, largely independent of black hole mass. 
 
 
-
-\subsection{Trends with Luminosity, Black Hole Mass, and Redshift}
-
-Fig.~\ref{fig:sf_tau_bh_mass_luminosity} shows $\tau$ and $SF_{\infty}$ as a function of $M_{BH}$, $M_{i}$, and $z$. Correlations between variability parameters and the physical properties of quasars are of high utility. In the era of large synoptic surveys (ZTF, LSST), only a few percent of AGN with optical time-series will be followed up with spectroscopy \citep{ivezic2019}. A relationship where $(\tau$,$SF_{\infty}) = f(M_{i}, M_{BH})$ would allow to infer black hole masses  and luminosities for millions of quasars.
-
-\begin{figure*}
+\begin{figure*} % ../code2/Trends_quasar_properties.ipynb  
 \plotone{figs/macleod2010_Fig14_Shen2011_sdss-ps1.png}
 \caption{Long-term variability ($SF_{\infty}$), and characteristic timescale ($\tau$), as a function of absolute i-band magnitude (K-corrected to redshift 2, proxy for bolometric luminosity), virial black hole mass, and redshift. }
 \label{fig:sf_tau_bh_mass_luminosity}
 \end{figure*} 
 
 
-
-Some trends are dominant. For instance, brighter quasars have lower variability amplitude (upper-left panel), and this trend is largely independent of black hole mass (bottom-left panel). 
-
-We investigate these correlations in more detail by fitting to $\tau$ or $SF_{\infty}$ (called $f$ below) a power law, using a Bayesian linear regression method \citep{kelly2007b} that incorporates measurement uncertainties in all latent variables  : 
+To investigate these relations in more detail,  we fit $f$ ( $\tau$ or $SF_{\infty}$) as a power-law function of $M_{BH}$, $M_{i}$, $z$ :  
 
 
 \begin{eqnarray}
@@ -612,16 +603,17 @@ We investigate these correlations in more detail by fitting to $\tau$ or $SF_{\i
 &+& D \log_{10}{\left( M_{BH} / 10^{9} M_{\odot}  \right)} 
 \end{eqnarray} 
 
-M10 fitted  this model independently to each of the five SDSS bands, reporting the band-averaged coefficients - Fig.~\ref{fig:MacLeodShen2011} shows the example of posterior samples for $f=SF_{\infty}$, illustrating that each band yields slightly different results.
+using a Bayesian linear regression method \citep{kelly2007b} that incorporates measurement uncertainties in all latent variables. 
 
+We compare the change in retrieved fit coefficients caused by adding PS1 data to SDSS against M10 SDSS-only study. Note that M10 fitted  DRW model treating each of the 5 SDSS bands as a separate light curve, resulting in over thirty thousand values of $\tau, SF_{\infty}$ for nine thousand S82 quasars. Grouping fitted quasar parameters by band, they were correlated to quasar physical parameters with Eq.~\ref{eq:powlawmodel}. Fig.~\ref{fig:MacLeodShen2011} shows the posterior samples for fitting  Eq.~\ref{eq:powlawmodel} to $f=SF_{\infty}$ for SDSS ugriz bands separately. It illustrates that each band yields a slightly different result, and since in this study we only use the combined r-band data, we compare our results directly to the mean of  M10 SDSS r-band.
 
-\begin{figure*}
+\begin{figure*}  
 \plotone{figs/Chelsea_ugriz_Shen2011_SF.png}
 \caption{Table 1 in M10 reported the band-averaged values for fit coefficients A,C,D for Eq.~\ref{eq:powlawmodel}.  Shown here are samples from posterior MCMC draws using M10 results for  $f=SF_{\infty}$, against \citealt{shen2011} $M_{i}$ and $M_{BH}$. Because the mean of posterior for SDSS r-band results only  (bold, solid lines) are different from the mean of band-averaged values (dashed lines),  we compare our SDSS-PS1 combined r-band results against M10 SDSS r-band only.}
 \label{fig:MacLeodShen2011}
 \end{figure*} 
 
-Since we use combined SDSS-PS1 r-band data, we only compare our results to M10 SDSS r-band.  Figs.~\ref{fig:MacLeodCeleriteShen2011tau} and ~\ref{fig:MacLeodCeleriteShen2011sf} show the MCMC posterior draws from fitting Eq.~\ref{eq:powlawmodel}  to M10, as well as our SDSS, SDSS-PS1 results (S19, this work). Mean and standard deviation of each distribution are summarized in Table~\ref{tab:coefficients}.  For $f{=}\tau$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011tau} shows that the new data supports a stronger dependence of variability amplitude on quasar luminosity by $0.04$ dex ($C{\sim}0.06$ rather than ${\sim}0.02$), but a smaller dependence on the black hole mass ($D{\sim}0.09$ rather than ${\sim}0.16$). For $f{=}SF_{\infty}$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011sf} shows that there is a weaker trend with both luminosity ($C{\sim}0.105$ rather than ${\sim}0.117$) and black hole mass ($D{\sim}0.11$ rather than ${\sim}0.12$), although the latter is a very small change. 
+Figs.~\ref{fig:MacLeodCeleriteShen2011tau} and ~\ref{fig:MacLeodCeleriteShen2011sf} show the MCMC posterior draws from fitting Eq.~\ref{eq:powlawmodel}  to M10, as well as our SDSS, SDSS-PS1 results (S19, this work). Mean and standard deviation of each distribution are summarized in Table~\ref{tab:coefficients}.  For $f{=}\tau$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011tau} shows that the new data supports a stronger dependence of variability amplitude on quasar luminosity by $0.04$ dex ($C{\sim}0.06$ rather than ${\sim}0.02$), but a smaller dependence on the black hole mass ($D{\sim}0.09$ rather than ${\sim}0.16$). For $f{=}SF_{\infty}$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011sf} shows that there is a weaker trend with both luminosity ($C{\sim}0.105$ rather than ${\sim}0.117$) and black hole mass ($D{\sim}0.11$ rather than ${\sim}0.12$), although the latter is a very small change. 
 
 % https://github.com/AASJournals/AASTeX60/issues/61 
 \begin{deluxetable*}{cc|CCCC}
@@ -859,8 +851,8 @@ Based on observations obtained with the Samuel Oschin 48-inch Telescope at the P
 
 
 \appendix
-\section{Appendix: Measuring Black Hole properties} 
-
+\section{Measuring Black Hole properties} 
+\label{app:measureBHmass}
 It is difficult to measure the mass of black holes living in the centers of active galaxies, even provided a detailed spectrum.  The most common  approach to estimate black hole masses in AGN is to assume that the broad-line region (BLR) is virialized:
 
 
