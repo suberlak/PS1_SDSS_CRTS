@@ -545,6 +545,7 @@ The DRW parameters recovered with \project{celerite} are  broadly consistent wit
 
 
 \begin{figure} % ../code2/Explore_SDSS_PS1_lightcurves.ipynb
+\epsscale{1.2}
 \plotone{figs/SDSS_PS1_DR2_cleaned_offsets_cdf.png}
 \caption{The differences between SDSS and PS1 segments of combined quasar r-band light curves. First, the difference between median SDSS and median PS1 portion, plotted as a histogram (upper-left panel), and cumulative distribution function (lower-left panel). Then, the difference between $\sigma_{G}$ calculated for each portion of the light curve (defined as the difference between 75th and 25th percentile : $\sigma_{G} = 0.7413(Q_{75} - Q_{25})$ it is a robust estimate of the standard deviation of the underlying distribution). The outliers in the median offset space are also outliers in the DRW parameter space (eg. $\log{(\tau_{\mathrm{SDSS-PS1}} /  \tau_{\mathrm{SDSS}})} > 1$   and   $\log{(\sigma_{\mathrm{SDSS-PS1}} / \sigma_{\mathrm{SDSS}})}   > 0.4  )$  and $r > 20.5$ all  38 candidates have  median(SDSS)-median(PS1)  > 0.1  }
 \label{fig:median_offset_SDSS_PS1}
@@ -559,6 +560,7 @@ describes the relationship well (solid red line on each panel). Therefore we use
 
   
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb 
+\epsscale{1.2}
 \plotone{figs/macleod2010_Fig13_kdeplot_Chelsea_cut_NEW_.png}
 \caption{Rest-frame timescale $\tau$ (top panel), and asymptotic structure function $SF_{\infty}$ (bottom panel), as a function of rest-frame wavelength $\lambda_{RF}$. The background contours show M10 SDSS $ urz $  data, and the foreground contours  denote our results using  SDSS (red) and SDSS-PS1 (orange) segments. The red line indicates the best-fit power law to M10 data, with $B=0.17$ an $-0.479$ for $\tau_{RF}$, and $SF_{\infty}$, respectively.}
 \label{fig:wavelength_dependence}
@@ -676,9 +678,11 @@ SF$_{\infty}$ & M10, SDSS & $-0.489\pm0.011$ & $-0.479\pm0.005$ & $0.117\pm0.004
 Dependence of both $\tau$ and $SF_{\infty}$ on black hole mass and quasar luminosity can be understood as a function of accretion rate, encoded in the Eddington ratio: $f_{Edd} {=} L_{Bol}/L_{\mathrm{Edd}}$, where $L_{\mathrm{Edd}} {=} 1.26 {\times} 10^{38} (M_{\mathrm{BH}} / M_{\odot})$ erg/s \citep{shen2011}. Fig.\ref{fig:EddingtonRatio} shows the dependence of $f_{Edd}$ on $M_{i}$, $M_{BH}$ and $\mathrm{SF}_{\infty}$, using SDSS-PS1 data. We find a much steeper power-law slope of $-0.9$, against $-0.23$ reported in M10 from SDSS data. 
 
 
-\begin{figure*}
-\plotone{figs/Eddington_ratio_Shen2011_SDSS-PS1.png}
-\caption{Left : the Eddigton ratio $L/L_{Edd}$ (from \citealt{shen2011}) plotted as a function of $M_{BH}$  vs $M_{i}$. Right:  the asymptotic variability amplitude $SF_{\infty}$,  corrected for the wavelength dependence to $4000 \AA$, as a function of the Eddington ratio.  The slope of -0.9 (solid line) is much steeper than -0.23 found by M10 with the SDSS only data. }
+\begin{figure*} % ../code2/Trends_SFinf_Eddington_ratio.ipynb
+\epsscale{1.2}
+\plotone{figs/fEdd_SFinf_celerite_Shen2011_sdss-ps1_gridsize_15_sqr_limN.png}
+
+\caption{Left: the Eddigton ratio $L/L_{Edd}$ (from \citealt{shen2011}) plotted as a function of $M_{BH}$  vs $M_{i}$. Right:  the asymptotic variability amplitude $SF_{\infty}$,  corrected for the wavelength dependence to $4000 \AA$, as a function of the Eddington ratio.  The slope of -0.9 (solid line) is much steeper than -0.23 found by M10 with the SDSS only data. }
 \label{fig:EddingtonRatio}
 \end{figure*} 
 
