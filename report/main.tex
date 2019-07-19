@@ -519,12 +519,12 @@ In this section we first correct fitted $\tau$, $SF_{\infty}$ for wavelength dep
 The DRW parameters recovered with \project{celerite} are  broadly consistent with M10 - Fig.~\ref{fig:tauRF_SFinf} shows the rest-frame  $\tau$, and $SF_{\infty}$ distributions for our results for the SDSS segment (blue dashed line),  SDSS-PS1 combined light curves (green dot-dashed line), and  M10 SDSS for r-band only (red solid line). When using the same data as M10 (SDSS), our results agree. A detailed object-by-object comparison on Fig.~\ref{fig:celeriteCompare} reveals a slight offset between log-ratios of DRW parameters, which can be attibuted to software differences.
 
 
-\begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb  
-\epsscale{1.2}
-\plotone{figs/Compare_Chelsea_tau_sigma_ratios_r.png}
-\caption{Comparison of \project{celerite} fits using only the  SDSS r-band segments of S82 quasars ($\sigma_{fit}, \tau_{fit}$), against M10 results for SDSS r-band ($\sigma_{M10}, \tau_{M10}$), object-by-object. The small offset ($<0.05 $ dex) can be attributed to software differences. See Fig.~\ref{fig:tauRF_SFinf} for a comparison of rest-frame $\tau$ and $SF_{\infty}$ distributions. This is similar to Fig.3 in M10, except we plot only the r-band SDSS results.}
+\begin{figure*} % code2/Compare_Celerite_Chelsea_real_fits.ipynb  
+%\epsscale{1.2}
+\plottwo{figs/Compare_Chelsea_tau_sigma_ratios_r.png}{figs/Compare_Chelsea_K-sigma-hat_ratios.png}
+\caption{Comparison of \project{celerite} fits using only the  SDSS r-band segments of S82 quasars ($\sigma_{\mathrm{SDSS}}, \tau_{\mathrm{SDSS}}$), against M10 results for SDSS r-band ($\sigma_{M10}, \tau_{M10}$), object-by-object. The small offset ($<0.05 $ dex) can be attributed to software differences. See Fig.~\ref{fig:tauRF_SFinf} for a comparison of rest-frame $\tau$ and $SF_{\infty}$ distributions. This is similar to Fig.3 in M10, except we plot only the r-band SDSS results. The right-hand panel shows the comparison in an orthogonal $K-\hat{\sigma}$  space. } 
 \label{fig:celeriteCompare}
-\end{figure} 
+\end{figure*} 
 
 
 
