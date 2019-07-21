@@ -413,7 +413,7 @@ Due to shallower depth PTF and CRTS data has larger photometric uncertainties (m
 \end{figure} 
 
 
-In the end we find that color terms, although robust, introduce an additional level of uncertainty. Thus we elect to combine only PS1 r-band which is sufficiently similar to the SDSS r-band that no bandpass transformation is required.  Fig.~\ref{fig:SDSS_PS1_offset_mag} shows the PS1-SDSS r-band difference as a function of magnitude, highlighting that for the standard stars, the difference is less than $0.01$ mag (1\% level) within $r < 20.5$ . The two filters are also sufficiently similar in the (g-i) color range span by quasars, as shown on Fig.~\ref{fig:SDSS_PS1_offset_gi}. We did not use the r-band ZTF nor PTF data since these would require photometric transformation to the SDSS r-band. 
+Color terms, although robust, introduce additional level of uncertainty. Thus we choose to combine SDSS r-band only with PS1 r-band, which is sufficiently similar to the SDSS that no bandpass transformation is required.  Indeed, as Fig.~\ref{fig:SDSS_PS1_offset_mag} shows,  the PS1-SDSS r-band difference less than $0.01$ mag (1\% level) up to $r < 20.5$. The offset between these two filters is also very small (<1\% level) as a function of the  SDSS (g-i) color (Fig.~\ref{fig:SDSS_PS1_offset_gi}). %Thus we do not use the r-band ZTF nor PTF data since these would require photometric transformation to the SDSS r-band. 
 
 \begin{figure}%[ht!] % ../code2/SDSS_PS1_DR2_stellar_offsets.ipynb
 \plotone{figs/PS1_DR2_detections_SDSS_Stripe82Calib.png}
@@ -482,8 +482,6 @@ each line corresponds to a different segment of simulated  combined SDSS-PS1-ZTF
 \end{figure*} 
 
 
-%
-%
 %
 %
 %
