@@ -338,8 +338,9 @@ Fig.~\ref{fig:rho_space} shows the recovered $\rho_{out}$ as a function of input
 
 
 \section{Data}\label{sec:data}
-\subsection{Surveys}
-We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by the Sloan Digital Sky Survey (SDSS) between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe 82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012}, Sec. 2.2 for overview, and \citealt{annis2014} for details). Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citet{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars.  
+
+We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by the Sloan Digital Sky Survey (SDSS) between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe 82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012}, Sec. 2.2 for overview, and \citealt{annis2014} for details). Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citet{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars. Within  $0.5 ''$  we find matching data for 9248 quasars from  PanSTARRS (PS1) DR2 \citep{chambers2011,flewelling2018}, xxx from Catalina Real-Time Transient Survey (CRTS) \citep{drake2009}, and  xxx from Palomar Transient Factory (PTF) \citep{rau2009}. Fig.~\ref{fig:lcExtent} illustrates the improvement in baseline coverage when combining various surveys. The width of each rectangle corresponds to the duration of each survey (survey baseline), and the height to the area covered by each survey. The lower edge of each rectangle marks the $5\sigma$ depth in the r-band (or equivalent). LSST stands out as providing the best extension of SDSS baseline,  and depth.  
+
 
 
 \begin{figure*} % code2/Stats_simulation.ipynb 
@@ -349,20 +350,7 @@ We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repea
 \end{figure*} 
 
 
-We extend SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018} data. We also considered using the Catalina Real-Time Transient Survey (CRTS) \citep{drake2009}, and Palomar Transient Factory (PTF) \citep{rau2009} data, but as Fig.~\ref{fig:combinedLCerrors} shows, due to shallower depth these surveys have larger photometric uncertainties (median $\sim 0.1$ mag) for objects as faint as quasars (median 20 mag) - see Fig.~\ref{fig:combinedLCerrors}. Of 9258  SDSS quasars, within $0.5 ''$ there are 9248 PS1 matches.  Fig.~\ref{fig:lcExtent}  depicts the  baseline coverage of various surveys.  Each survey uses a unique set of bandpasses and cadences: SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{\mathrm{SDSS}}$, and PS1 observations in different filters are  non-simultaneous. 
-
-
-\begin{figure}%[ht!]  %code2/Subsample_master_LC.ipynb 
-\plotone{figs/sim_subsampled2_stats_error_lin.png}
-\caption{Distribution of median photometric uncertainties ('errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1 due to shallower depth data. This is the reason for using only SDSS-PS1 part of the combined light curve.}
-\label{fig:combinedLCerrors}
-\end{figure} 
-
-
-\subsection{Photometric offsets}
-
-We combine quasar photometry into a single 'master' bandpass.  We choose  $r_{\mathrm{SDSS}}$ as the target bandpass since it has the best photometry. We initially calculated color terms between $\mathrm{r_{SDSS}}$ and nearby filters in other sureys: $\{g,R\}_{\mathrm{PTF}}$, $\{g,r,i\}_{\mathrm{PS1}}$, $V_{\mathrm{CRTS}}$. 
-The photometric offets were derived using the SDSS standard stars catalog~\citep{ivezic2007}. Focusing on a 10\% subset of randomly chosen stars from the catalog, we find their CRTS (B.Sesar, priv.comm.), PS1 (from MAST \url{http://panstarrs.stsci.edu}) and PTF (IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/}) positional matches. 
+Combining data from different photometric standards would require applying color transformation, or photometric offsets. We first seek to combine PS1 gri,  PTF gR, and CRTS V, into a common SDSS r-band (best photometry), and to this end we calculate  color terms using the SDSS standard stars catalog~\citep{ivezic2007}. Focusing on a 10\% subset of randomly chosen standard stars, we find their CRTS, PS1, and PTF matches~\footnote{CRTS from B.Sesar, priv.comm., PS1 from MAST \url{http://panstarrs.stsci.edu}, and PTF from IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/})}. 
 
 We consider the difference  between the target (SDSS) and source (eg.PS1) photometry as a function of the mean SDSS $(g-i)$ color : 
 
@@ -370,7 +358,7 @@ We consider the difference  between the target (SDSS) and source (eg.PS1) photom
 m_{\mathrm{PS1}} - m_{\mathrm{SDSS}} = f(g-i)
 \end{equation}
 
-Some authors (eg. \citet{li2018}) allow the transformation to be a higher-order polynomial, but since we are limited to the narrow region of $(g-i)$ space occupied by quasars, before the stellar locus bend (Fig.~\ref{fig:quasarColors}), we find that the linear fit is sufficient (see Fig.~\ref{fig:offsetsPS1}). We summarize the resulting offsets to SDSS in Table~\ref{tab:offsets}.
+Some authors (eg. \citet{li2018}) allow the transformation to be a higher-order polynomial, but as Fig.~\ref{fig:quasarColors} shows, quasars occupy a relatively narrow region of $(g-i)$ color space, and we find that the linear fit is sufficient. Fig.~\ref{fig:offsetsPS1} shows the r-band offsets between PS1 and SDSS as a function of SDSS(g-i) color.  The same procedure of linear fit and limiting the color range is applied to PS1 gri, PTF gR, and CRTS V. The results are summarized in Table~\ref{tab:offsets}.
 
 
 % QSO COLORS 
@@ -379,6 +367,7 @@ Some authors (eg. \citet{li2018}) allow the transformation to be a higher-order 
 \caption{Regions of color-color (upper left, upper right, bottom left), and color-magnitude (bottom right)  space occupied by SDSS S82 quasars (color) and stars (contours). We use quasar median photometry from \citet{schneider2010}, and standard stars catalog of \citet{ivezic2007}, showing a random subset of 10 000 stars. We find the SDSS-PS1 color terms using the region of SDSS color space that best represents quasars, that are generally bluer than the stellar locus:  $-0.5<(g-i)<1$. Quasars also overlap other variable sources (eg. RR Lyrae), not shown here \citep{sesar2007}. }
 \label{fig:quasarColors}
 \end{figure*} 
+
 
 
 % PS1 
@@ -411,6 +400,30 @@ PS1 i &  0.0247   & -0.2765 \\
 
 \tablecomments{To derive the color terms we used SDSS S82 standard stars catalog \citep{ivezic2007}. We randomly selected 10\% of that catalog, for which 48250 have CRTS light curves. We  obtained PS1 photometry from MAST, and PTF from IRSA PTF Object Catalog. We imposed quality cuts requiring that the stars are bright: $r < 19$.}
 \end{deluxetable}
+
+
+
+
+
+
+Fig.~\ref{fig:combinedLCerrors} shows, due to shallower depth these surveys have larger photometric uncertainties (median $\sim 0.1$ mag) for objects as faint as quasars (median 20 mag) - see Fig.~\ref{fig:combinedLCerrors}
+
+
+
+
+
+\begin{figure}%[ht!]  %code2/Subsample_master_LC.ipynb 
+\plotone{figs/sim_subsampled2_stats_error_lin.png}
+\caption{Distribution of median photometric uncertainties ('errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1 due to shallower depth data. This is the reason for using only SDSS-PS1 part of the combined light curve.}
+\label{fig:combinedLCerrors}
+\end{figure} 
+
+
+
+
+
+
+
 
 
 In the end we find that color terms, although robust, introduce an additional level of uncertainty. Thus we elect to combine only PS1 r-band which is sufficiently similar to the SDSS r-band that no bandpass transformation is required.  Fig.~\ref{fig:SDSS_PS1_offset_mag} shows the PS1-SDSS r-band difference as a function of magnitude, highlighting that for the standard stars, the difference is less than 0.01 mag (1\% level) within r < 20.5 . The two filters are also sufficiently similar in the (g-i) color range span by quasars, as shown on Fig.~\ref{fig:SDSS_PS1_offset_gi}. We did not use the r-band ZTF nor PTF data since these would require photometric transformation to the SDSS r-band. 
