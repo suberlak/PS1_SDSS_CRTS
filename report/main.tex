@@ -349,7 +349,7 @@ We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repea
 \end{figure*} 
 
 
-We extend SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018} data. We also considered using the Catalina Real-Time Transient Survey (CRTS) \citep{drake2009}, and Palomar Transient Factory (PTF) \citep{rau2009} data, but as  shows, due to shallower depth these surveys have larger photometric uncertainties (median $\sim 0.1$ mag) for objects as faint as quasars (median 20 mag) - see Fig.~\ref{fig:combinedLCerrors}. Of 9258  SDSS quasars, within $0.5 ''$ there are 9248 PS1 matches.  Fig~\ref{fig:lcExtent}  depicts the  baseline coverage of various surveys.  Each survey uses a unique set of bandpasses and cadences: SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{\mathrm{SDSS}}$, and PS1 observations in different filters are  non-simultaneous. 
+We extend SDSS  light curves with PanSTARRS (PS1) \citep{chambers2011,flewelling2018} data. We also considered using the Catalina Real-Time Transient Survey (CRTS) \citep{drake2009}, and Palomar Transient Factory (PTF) \citep{rau2009} data, but as Fig.~\ref{fig:combinedLCerrors} shows, due to shallower depth these surveys have larger photometric uncertainties (median $\sim 0.1$ mag) for objects as faint as quasars (median 20 mag) - see Fig.~\ref{fig:combinedLCerrors}. Of 9258  SDSS quasars, within $0.5 ''$ there are 9248 PS1 matches.  Fig.~\ref{fig:lcExtent}  depicts the  baseline coverage of various surveys.  Each survey uses a unique set of bandpasses and cadences: SDSS light curves contain near-simultaneous $\{u,g,r,i,z\}_{\mathrm{SDSS}}$, and PS1 observations in different filters are  non-simultaneous. 
 
 
 \begin{figure}%[ht!]  %code2/Subsample_master_LC.ipynb 
@@ -431,12 +431,6 @@ In the end we find that color terms, although robust, introduce an additional le
 
 
 
-%NOTE ABOUT EXTINCTION:  due to dust present between us and the standard stars (or background quasars), the observed light will appear slightly redder because dust preferentially scatters blue light away. This depends on the location of the source on the  sky and is related to the dust inhomogeneities in the Milky Way. 
-
-%However, in deriving bandpass to bandpass transformation all that matters is the flux received at the Top of the Atmosphere (TOA), for which all photometry is corrected at the pipeline processing level (both for SDSS,  PTF, PS1, and CRTS). In other words, all that matters is that any SED at TOA will have slightly different magnitude (hence colors) depending on whether we observe it with SDSS(r),  PS1(r), or PTF(R).  Therefore, to derive photometric offsets (which are time-independent), we use Sloan colors not corrected for extincton (and likewise, PS1, PTF, etc.) .  
-
-%Correction for insterstellar extinction is only needed for color selection, since otherwise objects would appear to be of the later stellar type (redder) than they really are. To correct for extinction we use the most up-to-date maps of stellar extinction Bayestar17 (Green+2018). These extinction maps are 3D probabilistic, and we assume a uniform distance of 4 kpc for the dust column for all stars.  
-
 %
 %
 %
@@ -445,7 +439,7 @@ In the end we find that color terms, although robust, introduce an additional le
 
 \section{Simulations : lessons learned}\label{sec:simulation}
 
-We simulate the theoretical improvement of the DRW parameter retrieval in extended light curves. We generate long and well-sampled  `master' light curves, all with input $\tau = 575 $ days, $SF_{\infty} = 0.2$ mag (the median of S82 distribution in M10), with mean of 0 mag.  We then subsample at real observed epochs for SDSS and PS1, and at predicted cadences for ZTF and LSST  (see Fig.~\ref{fig:simLC}). To each such simulated light curve we add a magnitude offset corresponding to the mean of each SDSS-PS1 segment. That way the magnitude distribution of simulated light curves is similar to that of the observed SDSS-PS1 data. For the LSST 10-year segment (finishing in 2031) we assumed 50 epochs per year, randomly distributed throughout the year, with the following error model:
+We simulate the theoretical improvement of the DRW parameter retrieval in extended light curves. We generate long and well-sampled  `master' light curves, all with input $\tau = 575 $ days, $SF_{\infty} = 0.2$ mag (the median of S82 quasar distribution in M10), with a mean of 0.  We then subsample at real observed epochs for SDSS and PS1, and at predicted cadences for ZTF and LSST  (see Fig.~\ref{fig:simLC}). To each such simulated light curve we add a magnitude offset corresponding to the mean of each SDSS-PS1 segment. That way the magnitude distribution of simulated light curves is similar to that of the observed SDSS-PS1 data. For the LSST 10-year segment (finishing in 2031) we assumed 50 epochs per year, randomly distributed throughout the year, with the following error model:
 
 \begin{eqnarray}
 \label{eq:errorModel}
@@ -465,7 +459,7 @@ For the ZTF 1-year segment (Spring 2019 ZTF DR1 including the data from 2018) we
 
 \begin{figure}%[ht!]  % code2/Simulate_ZTF_cadence_error.ipynb
 \plotone{figs/ZTF_error_curve.png}
-\caption{The best mag rms plotted as a function of magnitude for ZTF non-variable stars with over 100 observations. We overplot the adopted error model, with $\gamma = 0.05$, $\sigma_{sys} = 0.005 $, and $m_{5} = 20.8$ (see eq.~\ref{eq:errorModel}). Properties of ZTF photometric uncertainties are largely similar to the PTF uncertainties.}
+\caption{The best mag rms plotted as a function of magnitude for ZTF non-variable stars with over 100 observations. We overplot the adopted error model, with $\gamma = 0.05$, $\sigma_{sys} = 0.005 $, and $m_{5} = 20.8$ (see Eq.~\ref{eq:errorModel}). Properties of ZTF photometric uncertainties are largely similar to the PTF uncertainties.}
 \label{fig:ztf_errors}
 \end{figure} 
 
