@@ -339,7 +339,7 @@ Fig.~\ref{fig:rho_space} shows the recovered $\rho_{out}$ as a function of input
 
 \section{Data}\label{sec:data}
 
-We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repeatedly observed by the Sloan Digital Sky Survey (SDSS) between 1998 and 2008. Originally aimed at supernova discovery, objects in this area, known as Stripe 82 (S82), were  re-observed on average 60 times (see \citealt{macleod2012}, Sec. 2.2 for overview, and \citealt{annis2014} for details). Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citet{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars. Within  $0.5 ''$  we find matching data for 9248 quasars from  PanSTARRS (PS1) DR2 \citep{chambers2011,flewelling2018}, xxx from Catalina Real-Time Transient Survey (CRTS) \citep{drake2009}, and  xxx from Palomar Transient Factory (PTF) \citep{rau2009}. Fig.~\ref{fig:lcExtent} illustrates the improvement in baseline coverage when combining various surveys. The width of each rectangle corresponds to the duration of each survey (survey baseline), and the height to the area covered by each survey. The lower edge of each rectangle marks the $5\sigma$ depth in the r-band (or equivalent). LSST stands out as providing the best extension of SDSS baseline,  and depth.  
+We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky known as Stripe 82 (S82), repeatedly observed by the Sloan Digital Sky Survey (SDSS) between 1998 and 2008. Originally aimed at supernova discovery, objects in this area were re-observed on average 60 times (see \citealt{macleod2012}, Sec. 2.2 for overview, and \citealt{annis2014} for details). Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citet{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars. Within  $0.5 ''$  we find matching data for 9248 quasars from  PanSTARRS (PS1) DR2 \citep{chambers2011,flewelling2018}, xxx from Catalina Real-Time Transient Survey (CRTS, \citealt{drake2009}), and  xxx from Palomar Transient Factory (PTF, \citealt{rau2009}). Fig.~\ref{fig:lcExtent} illustrates the improvement in baseline coverage when combining various surveys. The width of each rectangle corresponds to the duration of each survey (survey baseline), and the height to the area covered by each survey. The lower edge of each rectangle marks the $5\sigma$ depth in the r-band (or equivalent). LSST stands out as providing the best extension of SDSS baseline,  and depth.  
 
 
 
@@ -350,15 +350,15 @@ We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky, repea
 \end{figure*} 
 
 
-Combining data from different photometric standards would require applying color transformation, or photometric offsets. We first seek to combine PS1 gri,  PTF gR, and CRTS V, into a common SDSS r-band (best photometry), and to this end we calculate  color terms using the SDSS standard stars catalog~\citep{ivezic2007}. Focusing on a 10\% subset of randomly chosen standard stars, we find their CRTS, PS1, and PTF matches~\footnote{CRTS from B.Sesar, priv.comm., PS1 from MAST \url{http://panstarrs.stsci.edu}, and PTF from IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/})}. 
+Combining data from different photometric standards would require applying color transformation, or photometric offsets. We first seek to combine PS1 gri,  PTF gR, and CRTS V, into a common SDSS r-band (best photometry). To this end we calculate  color terms using the SDSS standard stars catalog~\citep{ivezic2007}. Focusing on a 10\% subset of randomly chosen standard stars, we find their CRTS, PS1, and PTF matches~\footnote{CRTS from B.Sesar, priv.comm., PS1 from MAST \url{http://panstarrs.stsci.edu}, and PTF from IRSA PTF Object Catalog \url{https://irsa.ipac.caltech.edu/})}. 
 
-We consider the difference  between the target (SDSS) and source (eg.PS1) photometry as a function of the mean SDSS $(g-i)$ color : 
+The difference  between the target (SDSS) and source (eg.PS1) photometry can be written as a function of the mean SDSS $(g-i)$ color: 
 
 \begin{equation}
 m_{\mathrm{PS1}} - m_{\mathrm{SDSS}} = f(g-i)
 \end{equation}
 
-Some authors (eg. \citet{li2018}) allow the transformation to be a higher-order polynomial, but as Fig.~\ref{fig:quasarColors} shows, quasars occupy a relatively narrow region of $(g-i)$ color space, and we find that the linear fit is sufficient. Fig.~\ref{fig:offsetsPS1} shows the r-band offsets between PS1 and SDSS as a function of SDSS(g-i) color.  The same procedure of linear fit and limiting the color range is applied to PS1 gri, PTF gR, and CRTS V. The results are summarized in Table~\ref{tab:offsets}.
+Some authors (eg. \citealt{li2018}) allow the transformation to be a higher-order polynomial, but as Fig.~\ref{fig:quasarColors} shows, quasars occupy a relatively narrow region of $(g-i)$ color space, and we find that the linear fit is sufficient. Fig.~\ref{fig:offsetsPS1} shows the r-band offsets between PS1 and SDSS as a function of SDSS(g-i) color.  The same procedure of linear fit and limiting the color range is applied to PS1 gri, PTF gR, and CRTS V. The results are summarized in Table~\ref{tab:offsets}.
 
 
 % QSO COLORS 
@@ -403,13 +403,7 @@ PS1 i &  0.0247   & -0.2765 \\
 
 
 
-
-
-
-Fig.~\ref{fig:combinedLCerrors} shows, due to shallower depth these surveys have larger photometric uncertainties (median $\sim 0.1$ mag) for objects as faint as quasars (median 20 mag) - see Fig.~\ref{fig:combinedLCerrors}
-
-
-
+Due to shallower depth PTF and CRTS data has larger photometric uncertainties (median $\sim 0.1$ mag) for faint objects like quasars (population median 20 mag). Plotted on Fig.~\ref{fig:combinedLCerrors}, we see that SDSS and PS1 light curve segments have much smaller errors. 
 
 
 \begin{figure}%[ht!]  %code2/Subsample_master_LC.ipynb 
@@ -419,14 +413,7 @@ Fig.~\ref{fig:combinedLCerrors} shows, due to shallower depth these surveys have
 \end{figure} 
 
 
-
-
-
-
-
-
-
-In the end we find that color terms, although robust, introduce an additional level of uncertainty. Thus we elect to combine only PS1 r-band which is sufficiently similar to the SDSS r-band that no bandpass transformation is required.  Fig.~\ref{fig:SDSS_PS1_offset_mag} shows the PS1-SDSS r-band difference as a function of magnitude, highlighting that for the standard stars, the difference is less than 0.01 mag (1\% level) within r < 20.5 . The two filters are also sufficiently similar in the (g-i) color range span by quasars, as shown on Fig.~\ref{fig:SDSS_PS1_offset_gi}. We did not use the r-band ZTF nor PTF data since these would require photometric transformation to the SDSS r-band. 
+In the end we find that color terms, although robust, introduce an additional level of uncertainty. Thus we elect to combine only PS1 r-band which is sufficiently similar to the SDSS r-band that no bandpass transformation is required.  Fig.~\ref{fig:SDSS_PS1_offset_mag} shows the PS1-SDSS r-band difference as a function of magnitude, highlighting that for the standard stars, the difference is less than $0.01$ mag (1\% level) within $r < 20.5$ . The two filters are also sufficiently similar in the (g-i) color range span by quasars, as shown on Fig.~\ref{fig:SDSS_PS1_offset_gi}. We did not use the r-band ZTF nor PTF data since these would require photometric transformation to the SDSS r-band. 
 
 \begin{figure}%[ht!] % ../code2/SDSS_PS1_DR2_stellar_offsets.ipynb
 \plotone{figs/PS1_DR2_detections_SDSS_Stripe82Calib.png}
@@ -477,11 +464,8 @@ For the ZTF 1-year segment (Spring 2019 ZTF DR1 including the data from 2018) we
 \end{figure} 
 
 
-To mirror observational conditions we add to the true underlying DRW signal a Gaussian noise, with variance defined by photometric uncertainties for corresponding surveys. Given the noise properties of each survey (Fig.~\ref{fig:combinedLCerrors}), we found that relatively large uncertainties of CRTS and PTF segments introduced less improvement in recovery of DRW parameters, given that similar baseline is already covered by the PS1 data (Fig.~\ref{fig:lcExtent}).  We further found that inclusion of ZTF data for 2018 would not significantly change our results. Inclusion of PS1 data with its excellent  deep photometry (as compared to ZTF or PTF) is the best improvement over existing SDSS results.  In the future (after more data has been assembled and re-calibrated) ZTF will help, but not as dramatically as LSST (see Figs.~\ref{fig:simLCresults1} and ~\ref{fig:simLCresults2}).  For this reason we found that using only SDSS-PS1 portion is the best tradeoff between adding more baseline vs introducing more uncertainty with noisy data.
+To mirror observational conditions we add to the true underlying DRW signal a Gaussian noise, with variance defined by photometric uncertainties for corresponding surveys. Given the noise properties of each survey (Fig.~\ref{fig:combinedLCerrors}), we find that relatively large uncertainties of CRTS and PTF segments introduce less improvement in recovery of DRW parameters, with a  similar baseline already afforded by the PS1 data (Fig.~\ref{fig:lcExtent}).  We further find that inclusion of ZTF data for 2018 would not significantly change our results. Inclusion of PS1 data with its excellent  deep photometry (as compared to ZTF or PTF) is the best improvement over existing SDSS results.  In the future (after more data has been assembled and re-calibrated) ZTF will help, but not as dramatically as LSST (see Figs.~\ref{fig:simLCresults1} and ~\ref{fig:simLCresults2}).  For this reason we use only SDSS-PS1 portion of quasar light curves, as the best tradeoff between adding more baseline vs introducing more uncertainty with noisy data.
 
-
-
-%As we found earlier, extending the light curve baseline decreases the bias in the retrieved DRW parameters (Fig.~\ref{fig:rho_space}). For light curves that simulate the extension of SDSS with PS1, ZTF, LSST segments, Figs.~\ref{fig:simLCresults1} and show that this is indeed the case: the longer the light curves, that more the retrieved $\tau$ and $SF_{\infty}$ are centered on the input values. 
 
 \begin{figure*}  % code2/Explore_simulation_results.ipynb 
 \plotone{figs/Simulated_Jeff1-EXP-190401.png}
