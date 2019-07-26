@@ -358,14 +358,18 @@ The difference  between the target (SDSS) and source (eg.PS1) photometry can be 
 m_{\mathrm{PS1}} - m_{\mathrm{SDSS}} = f(g-i)
 \end{equation}
 
-Some authors (eg. \citealt{li2018}) allow the transformation to be a higher-order polynomial, but as Fig.~\ref{fig:quasarColors} shows, quasars occupy a relatively narrow region of $(g-i)$ color space, and we find that the linear fit is sufficient. Fig.~\ref{fig:offsetsPS1} shows the r-band offsets between PS1 and SDSS as a function of SDSS(g-i) color.  We perform a linear fit to the photometric offset between SDSS and  PS1 gri, PTF gR, and CRTS V,  as a function of SDSS g-i color. The results are summarized in Table~\ref{tab:offsets}.
+Some authors (eg. \citealt{li2018}) allow the transformation to be a higher-order polynomial, but as Fig.~\ref{fig:quasarColors} shows, quasars occupy a relatively narrow region of $(g-i)$ color space, and we find that the linear fit is sufficient. We thus find the photometric offset between SDSS and  PS1 gri, PTF gR, and CRTS V,  as a function of SDSS g-i color (see Table~\ref{tab:offsets} for details). An example of SDSS-PS1 offsets is shown on Fig.~\ref{fig:offsetsPS1}. Note that the PS1 r-band is very close to the SDSS r-band (middle panel), within  $0.01$ mag (1\% level) across the SDSS (g-i) color range. Fig.~\ref{fig:SDSS_PS1_offset_mag}  illustrates that this is also true as a function of SDSS r magnitude, all the way to $r < 20.5$. Because of that, we also combine PS1 r-band and SDSS r-band without applying any offsets. 
+
+In selecting the most beneficial datasets to complement SDSS we also considered the error distribution. As shown on Fig.~\ref{fig:lcExtent},  PTF and CRTS are much shallower than SDSS or PS1. Therefore they would have larger photometric uncertainties for faint objects, like quasars (median 20 mag) - see Fig.~\ref{fig:combinedLCerrors}. Simulations show that due to larger errors PTF and CRTS while extending the SDSS baseline also decrease the overall quality of the light curves by making them more noisy. 
+
+It turns out that, as we test with simulations in Sec.~\ref{sec:simulation}, the best improvement in recovery of quasar DRW parameters is obtained by utilizing only SDSS and PS1 data. This is partly due to both surveys having similar photometric depth (Fig.~\ref{fig:lcExtent}), and therefore comparable distributions of photometric uncertainties (Fig.~\ref{fig:combinedLCerrors}). Furthermore, to mitigate the problems that could arise when applying photometric transformations of PS1 g,i to SDSS r, we end up using only SDSS r and PS1 r, with no offsets applied. 
 
 
-Due to shallower depth PTF and CRTS data has larger photometric uncertainties (median $\sim 0.1$ mag) for faint objects like quasars (population median 20 mag). Plotted on Fig.~\ref{fig:combinedLCerrors}, we see that SDSS and PS1 light curve segments have much smaller errors. 
+Similarly to \cite{charisi2016, suberlak2017}, we perform  light curve cleaning. Of 8516 light curves with 662 092 epochs, we remove 14 156  $5\sigma$ outliers in photometric uncertainty and magnitude space. We also perform day averaging (error weighted) when more than 1 epoch was available per night, which further reduces the number of epochs by 67 615. If combined nightly error was $<0.02#, we add in quadrature $0.01$ mag.  In the final sample there are 580 321 epochs.  % same as Sec. 2.3 Suberlak2017....
 
 
-Color terms, although robust, introduce additional level of uncertainty. Thus we choose to combine SDSS r-band only with PS1 r-band, which is sufficiently similar to the SDSS that no bandpass transformation is required.  Indeed, as Fig.~\ref{fig:SDSS_PS1_offset_mag} shows,  the PS1-SDSS r-band difference less than $0.01$ mag (1\% level) up to $r < 20.5$. The offset between these two filters is also very small (<1\% level) as a function of the  SDSS (g-i) color (Fig.~\ref{fig:SDSS_PS1_offset_gi}). %Thus we do not use the r-band ZTF nor PTF data since these would require photometric transformation to the SDSS r-band. 
 
+ 
 
 % QSO COLORS 
 \begin{figure*} % code/AA_quasar_colors.ipynb 
@@ -411,12 +415,12 @@ PS1 i &  0.0247   & -0.2765 \\
 
 
 
-\begin{figure}%[ht!]  %code2/Subsample_master_LC.ipynb 
-\plotone{figs/sim_subsampled2_stats_error_lin.png}
-\caption{Distribution of median photometric uncertainties ('errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1 due to shallower depth data. This is the reason for using only SDSS-PS1 part of the combined light curve.}
-\label{fig:combinedLCerrors}
-\end{figure} 
-
+% removed as duplicating the SDSS-PS1 offsets middle panel ... 
+% \begin{figure}%[ht!] % ../code2/SDSS_PS1_DR2_stellar_offsets.ipynb
+% \plotone{figs/PS1_DR2_detections_SDSS_Stripe82Calib_g-i.png}
+% \caption{The offset $\Delta m_{r}$  between PS1 r-band and SDSS r-band plotted as a function of (g-i) SDSS color. $\Delta m_{r}$ is stable across a range of (g-i) color occupied by quasars, and illustrates that the we can justify using no photometric transformation between SDSS r-band and PS1 r-band. }
+% \label{fig:SDSS_PS1_offset_gi}
+% \end{figure} 
 
 
 \begin{figure}%[ht!] % ../code2/SDSS_PS1_DR2_stellar_offsets.ipynb
@@ -427,14 +431,12 @@ PS1 i &  0.0247   & -0.2765 \\
 
 
 
-\begin{figure}%[ht!] % ../code2/SDSS_PS1_DR2_stellar_offsets.ipynb
-\plotone{figs/PS1_DR2_detections_SDSS_Stripe82Calib_g-i.png}
-\caption{The offset $\Delta m_{r}$  between PS1 r-band and SDSS r-band plotted as a function of (g-i) SDSS color. $\Delta m_{r}$ is stable across a range of (g-i) color occupied by quasars, and illustrates that the we can justify using no photometric transformation between SDSS r-band and PS1 r-band. }
-\label{fig:SDSS_PS1_offset_gi}
+
+\begin{figure}%[ht!]  %code2/Subsample_master_LC.ipynb 
+\plotone{figs/sim_subsampled2_stats_error_lin.png}
+\caption{Distribution of median photometric uncertainties ('errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1 due to shallower depth data. This is the reason for using only SDSS-PS1 part of the combined light curve.}
+\label{fig:combinedLCerrors}
 \end{figure} 
-
-
-
 %
 %
 %
