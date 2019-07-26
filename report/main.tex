@@ -358,7 +358,13 @@ The difference  between the target (SDSS) and source (eg.PS1) photometry can be 
 m_{\mathrm{PS1}} - m_{\mathrm{SDSS}} = f(g-i)
 \end{equation}
 
-Some authors (eg. \citealt{li2018}) allow the transformation to be a higher-order polynomial, but as Fig.~\ref{fig:quasarColors} shows, quasars occupy a relatively narrow region of $(g-i)$ color space, and we find that the linear fit is sufficient. Fig.~\ref{fig:offsetsPS1} shows the r-band offsets between PS1 and SDSS as a function of SDSS(g-i) color.  The same procedure of linear fit and limiting the color range is applied to PS1 gri, PTF gR, and CRTS V. The results are summarized in Table~\ref{tab:offsets}.
+Some authors (eg. \citealt{li2018}) allow the transformation to be a higher-order polynomial, but as Fig.~\ref{fig:quasarColors} shows, quasars occupy a relatively narrow region of $(g-i)$ color space, and we find that the linear fit is sufficient. Fig.~\ref{fig:offsetsPS1} shows the r-band offsets between PS1 and SDSS as a function of SDSS(g-i) color.  We perform a linear fit to the photometric offset between SDSS and  PS1 gri, PTF gR, and CRTS V,  as a function of SDSS g-i color. The results are summarized in Table~\ref{tab:offsets}.
+
+
+Due to shallower depth PTF and CRTS data has larger photometric uncertainties (median $\sim 0.1$ mag) for faint objects like quasars (population median 20 mag). Plotted on Fig.~\ref{fig:combinedLCerrors}, we see that SDSS and PS1 light curve segments have much smaller errors. 
+
+
+Color terms, although robust, introduce additional level of uncertainty. Thus we choose to combine SDSS r-band only with PS1 r-band, which is sufficiently similar to the SDSS that no bandpass transformation is required.  Indeed, as Fig.~\ref{fig:SDSS_PS1_offset_mag} shows,  the PS1-SDSS r-band difference less than $0.01$ mag (1\% level) up to $r < 20.5$. The offset between these two filters is also very small (<1\% level) as a function of the  SDSS (g-i) color (Fig.~\ref{fig:SDSS_PS1_offset_gi}). %Thus we do not use the r-band ZTF nor PTF data since these would require photometric transformation to the SDSS r-band. 
 
 
 % QSO COLORS 
@@ -403,7 +409,6 @@ PS1 i &  0.0247   & -0.2765 \\
 
 
 
-Due to shallower depth PTF and CRTS data has larger photometric uncertainties (median $\sim 0.1$ mag) for faint objects like quasars (population median 20 mag). Plotted on Fig.~\ref{fig:combinedLCerrors}, we see that SDSS and PS1 light curve segments have much smaller errors. 
 
 
 \begin{figure}%[ht!]  %code2/Subsample_master_LC.ipynb 
@@ -413,7 +418,6 @@ Due to shallower depth PTF and CRTS data has larger photometric uncertainties (m
 \end{figure} 
 
 
-Color terms, although robust, introduce additional level of uncertainty. Thus we choose to combine SDSS r-band only with PS1 r-band, which is sufficiently similar to the SDSS that no bandpass transformation is required.  Indeed, as Fig.~\ref{fig:SDSS_PS1_offset_mag} shows,  the PS1-SDSS r-band difference less than $0.01$ mag (1\% level) up to $r < 20.5$. The offset between these two filters is also very small (<1\% level) as a function of the  SDSS (g-i) color (Fig.~\ref{fig:SDSS_PS1_offset_gi}). %Thus we do not use the r-band ZTF nor PTF data since these would require photometric transformation to the SDSS r-band. 
 
 \begin{figure}%[ht!] % ../code2/SDSS_PS1_DR2_stellar_offsets.ipynb
 \plotone{figs/PS1_DR2_detections_SDSS_Stripe82Calib.png}
@@ -540,7 +544,7 @@ The DRW parameters recovered with \project{celerite} are  broadly consistent wit
 \end{figure}
 
 \subsection{Rest-frame Wavelength Correction}
-Since quasars are located at non-negligible redshifts, the observed wavelengths (eg. through the SDSS bandpass), depending on the redshift, probe a region of shorter wavelengths in emitted spectrum : $\lambda_{obs} {=}\lambda_{RF}  (1+z)$ (see \citealt{shen2018}, Fig.7). Thus to compare variability of the same parts of the rest-frame spectrum, we need to estimate the rest-frame emission wavelength $\lambda_{RF}$, and correct for the dependence of variability parameters ($\tau, SF_{\infty}$) on $\lambda_{RF}$. Since this study only used r-band light curves, on Fig.~\ref{fig:wavelength_dependence} we illustrate the wavelength dependence of $\tau, SF_{\infty}$ with M10 SDSS $urz$ data. We overplot with red contours the new fit results using only the SDSS portion of each light curve, and with orange contours the fit results using combined SDSS-PS1 light curves. We take the center of each bandpass to approximate the  observed wavelength. That is for SDSS $urz$ bandpasses,  $\lambda_{obs} = 3520$, $6250$, $9110$ $\mbox{\AA}$, respectively. Then for each quasar the rest-frame wavelength (corresponding to the bandpass center) is estimated given its redshift:  $\lambda_{RF} = \lambda_{obs} / (1+z)$.  On top of $\tau, SF_{\infty}$ as a function of $\lambda_{RF}$ scaled to  $4000 \mbox{\AA}$, we plot a power lae dependence employed by M10:
+Since quasars are located at non-negligible redshifts, the observed wavelengths (eg. through the SDSS bandpass), depending on the redshift, probe a region of shorter wavelengths in emitted spectrum: $\lambda_{obs} {=}\lambda_{RF}  (1+z)$ (see \citealt{shen2018}, Fig.7). Thus to compare variability of the same parts of the rest-frame spectrum, we need to estimate the rest-frame emission wavelength $\lambda_{RF}$, and correct for the dependence of variability parameters ($\tau, SF_{\infty}$) on $\lambda_{RF}$. Since this study only used r-band light curves, on Fig.~\ref{fig:wavelength_dependence} we illustrate the wavelength dependence of $\tau, SF_{\infty}$ with M10 SDSS $urz$ data. We overplot with red contours the new fit results using only the SDSS portion of each light curve, and with orange contours the fit results using combined SDSS-PS1 light curves. We take the center of each bandpass to approximate the  observed wavelength. That is for SDSS $urz$ bandpasses,  $\lambda_{obs} = 3520$, $6250$, $9110$ $\mbox{\AA}$, respectively. Then for each quasar the rest-frame wavelength (corresponding to the bandpass center) is estimated given its redshift:  $\lambda_{RF} = \lambda_{obs} / (1+z)$.  On top of $\tau, SF_{\infty}$ as a function of $\lambda_{RF}$ scaled to  $4000 \mbox{\AA}$, we plot a power lae dependence employed by M10:
 \begin{equation}
 f \propto \left( \frac{\lambda_{RF}}{4000 \mbox{\AA}} \right)^{B}
 \end{equation}
