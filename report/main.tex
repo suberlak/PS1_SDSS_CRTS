@@ -596,7 +596,12 @@ To investigate these relations in more detail,  we fit $f$ ( $\tau$ or $SF_{\inf
 
 using a Bayesian linear regression method \citep{kelly2007b} that incorporates measurement uncertainties in all latent variables. 
 
-We compare the change in retrieved fit coefficients caused by adding PS1 data to SDSS against M10 SDSS-only study. Note that M10 fitted  DRW model treating each of the 5 SDSS bands as a separate light curve, resulting in over thirty thousand values of $\tau, SF_{\infty}$ for nine thousand S82 quasars. Grouping fitted quasar parameters by band, they were correlated to quasar physical parameters with Eq.~\ref{eq:powlawmodel}. Fig.~\ref{fig:MacLeodShen2011} shows the posterior samples for fitting  Eq.~\ref{eq:powlawmodel} to $f=SF_{\infty}$ for SDSS ugriz bands separately. It illustrates that each band yields a slightly different fit coefficient. M10 reported as the fit result the band-mean (red vertical dashed line), but since in this study we only use the combined r-band data, we compare our results directly to the mean of  M10 SDSS r-band (green solid vertical line).
+We compare the change in retrieved fit coefficients caused by adding PS1 data to SDSS against M10 SDSS-only study. Note that M10 fitted  DRW model treating each of the 5 SDSS bands as a separate light curve, resulting in over thirty thousand values of $\tau, SF_{\infty}$ for nine thousand S82 quasars. Grouping fitted quasar parameters by band, they were correlated to quasar physical parameters with Eq.~\ref{eq:powlawmodel}. Fig.~\ref{fig:MacLeodShen2011} shows the posterior samples for fitting  Eq.~\ref{eq:powlawmodel} to $f=SF_{\infty}$ for SDSS ugriz bands separately. It illustrates that each band yields a slightly different fit coefficient. M10 reported as the fit result the band-mean (red vertical dashed line), but since in this study we only use the combined r-band data, we compare our results directly to the mean of  M10 SDSS r-band (green solid vertical line). Also, Figs.~\ref{fig:MacLeodCeleriteShen2011tau} and ~\ref{fig:MacLeodCeleriteShen2011sf} show the posterior from MCMC draws of fitting M10 SDSS r-band (blue solid line) DRW parameters to Eq.~\ref{eq:powlawmodel}, compared to the results reported here, which use \project{celerite} DRW fits for SDSS r-band combined with PS1 r-band.  
+
+
+
+
+
 
 \begin{figure*}  % ../code2/Read_IDL.ipynb  
 \plotone{figs/Chelsea_ugriz_Shen2011_SF.png}
@@ -604,28 +609,26 @@ We compare the change in retrieved fit coefficients caused by adding PS1 data to
 \label{fig:MacLeodShen2011}
 \end{figure*} 
 
-Subsequently we compare the results of fitting SDSS and SDSS-PS1 r-band data with \project{celerite}. Figs.~\ref{fig:MacLeodCeleriteShen2011tau} and ~\ref{fig:MacLeodCeleriteShen2011sf} show the MCMC posterior draws from fitting Eq.~\ref{eq:powlawmodel}  to M10, as well as our SDSS, SDSS-PS1 results (S19, this work). Mean and standard deviation of each distribution are summarized in Table~\ref{tab:coefficients}.  For $f{=}\tau$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011tau} shows that the new data supports a stronger dependence of variability amplitude on quasar luminosity by $0.04$ dex ($C{\sim}0.06$ rather than ${\sim}0.02$), but a weaker dependence on the black hole mass ($D{\sim}0.09$ rather than ${\sim}0.16$). For $f{=}SF_{\infty}$ above, Fig.~\ref{fig:MacLeodCeleriteShen2011sf} shows that there is a weaker trend with both luminosity ($C{\sim}0.105$ rather than ${\sim}0.117$) and black hole mass ($D{\sim}0.11$ rather than ${\sim}0.12$), although the latter is a very small change. 
+ Mean and standard deviation of each distribution are summarized in Table~\ref{tab:coefficients}.  For both $f{=}\tau$  and $f{=}SF_{\infty}$, the new SDSS-PS1 data is consistent with M10 results.
 
 % https://github.com/AASJournals/AASTeX60/issues/61 
 \begin{deluxetable*}{cc|CCCC}
 %\tablewidth{\pagewidth}
-\tablecaption{Comparison of best-fit coefficients for Eq.~\ref{eq:powlawmodel} using M10 results, and this work (S18). B is set to $0.17$ or $0.479$ from fitting a power law between $\lambda_{RF}$ and $\tau$, $SF_{\infty}$ (see Fig.~\ref{fig:wavelength_dependence}). For $f=\tau$, both C and D are almost the same between M10 and this work using SDSS only (rows 1 and 2). When using SDSS-PS1,  C increases, and D is smaller than before (row 3). For $f = SF_{\infty}$, C and D are also the same between M10 and S19, SDSS (rows 4, 5), but when adding PS1 data, C and D become smaller (row 6). \label{tab:coefficients} } 
+\tablecaption{Comparison of best-fit coefficients for Eq.~\ref{eq:powlawmodel} using M10 results, and this work (S18). B is set to $0.17$ or $0.479$ from fitting a power law between $\lambda_{RF}$ and $\tau$, $SF_{\infty}$ (see Fig.~\ref{fig:wavelength_dependence}). For $f=\tau$, both C and D are almost the same between M10 and this work using SDSS-PS1 only (rows 1 and 3). For $f = SF_{\infty}$, C and D are also the same between M10 and S19, SDSS-PS1 (rows 4, 6).\label{tab:coefficients} } 
 
 \tablehead{\colhead{$f$} & \colhead{Source} & \colhead{$A$(offset)} & \colhead{$B(\lambda_{RF})$} & \colhead{$C (M_{i})$} & \colhead{$D (M_{\mathrm{BH}})$} }
 \startdata
-$\tau$ & M10, SDSS & $2.432\pm0.026$ & $0.17\pm0.02$ & $0.011\pm0.009$ & $0.163\pm0.026$ \\
- & S19, SDSS & $2.603\pm0.021$ & $0.17\pm0.02$ & $0.022\pm0.007$ & $0.164\pm0.021$ \\
+$\tau$ & M10, SDSS & $2.5\pm0.027$ & $0.17\pm0.02$ & $0.03\pm0.009$ & $0.178\pm0.027$ \\
+ & S19, SDSS & $2.508\pm0.019$ & $0.17\pm0.02$ & $0.04\pm0.007$ & $0.119\pm0.019$ \\
  \tableline
- & S19, SDSS-PS1 & $2.232\pm0.029$ & $0.17\pm0.02$ & $0.064\pm0.01$ & $0.094\pm0.029$ \\
- \tableline
-SF$_{\infty}$ & M10, SDSS & $-0.489\pm0.011$ & $-0.479\pm0.005$ & $0.117\pm0.004$ & $0.12\pm0.011$ \\
- & S19, SDSS & $-0.517\pm0.01$ & $-0.479\pm0.005$ & $0.117\pm0.003$ & $0.12\pm0.01$ \\
+ & S19, SDSS-PS1 & $2.585\pm0.019$ & $0.17\pm0.02$ & $0.032\pm0.006$ & $0.128\pm0.019$ \\
   \tableline
-  & S19, SDSS-PS1 & $-0.467\pm0.009$ & $-0.479\pm0.005$ & $0.105\pm0.003$ & $0.111\pm0.009$ \\
+SF$_{\infty}$ & M10, SDSS & $-0.486\pm0.012$ & $-0.479\pm0.005$ & $0.119\pm0.004$ & $0.121\pm0.012$ \\
+ & S19, SDSS & $-0.548\pm0.009$ & $-0.479\pm0.005$ & $0.125\pm0.003$ & $0.101\pm0.008$ \\
+  \tableline
+ & S19, SDSS-PS1 & $-0.491\pm0.008$ & $-0.479\pm0.005$ & $0.117\pm0.003$ & $0.11\pm0.008$ \\
  \enddata
 \end{deluxetable*}
-
-
 
 
 \begin{figure*}
