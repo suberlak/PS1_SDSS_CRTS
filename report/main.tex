@@ -88,6 +88,9 @@
 %% using \newcommand. Your macros should appear before
 %% the \begin{document} command.
 %%
+\usepackage{hyperref}
+\usepackage[capitalise]{cleveref}
+
 \newcommand{\vdag}{(v)^\dagger}
 \newcommand\aastex{AAS\TeX}
 \newcommand\latex{La\TeX}
@@ -902,10 +905,7 @@ These methods were used to create catalogs of quasar properties derived from spe
 
 Based on the DRW model  parameters $\tau$, $\sigma$ fitted with \project{celerite} using the SDSS and PS1 data, we find that there are quasars for which there is a pronounced difference between $\tau$, $\sigma$  inferred from combined SDSS-PS1 data vs just SDSS. Specifically, Fig.~\ref{fig:tau_sigma_ratios} shows that there are objects where 
 $f_{\sigma} = \log_{10}{\left( \sigma_{\mathrm{SDSS-PS1}} / \sigma_{\mathrm{SDSS}} \right)} > 0.4 $ and 
- $f_{\tau} = \log_{10}{\left( \tau_{\mathrm{SDSS-PS1}} / \tau_{\mathrm{SDSS}} \right)} > 1  $.  This corresponds to tenfold increase in $\tau$ and over twofold increase in $\sigma$ ($10^{0.4} = 2.51$). By visual inspection of objects simultaneously satisfying the threshold $f_{\sigma}> 0.4$ and $f_{\tau}> 1 $ we find that these undergo a significant ($>0.5$ mag) change in brightness between the SDSS (baseline 1998 - 2008) and PS1 DR2 observations (2009-2014 - see Fig.~\ref{fig:lcExtent}). Thus DRW fitting could also be a way of finding changing-look quasar (and AGN) candidates.  Figs.~\ref{fig:clqso0,fig:clqso1,fig:clqso2,fig:clqso3} show the SDSS-PS1 r-band light curves of 38 CLQSO candidates, with median SDSS part brighter than 20.5 mag. The open circles indicate day-averaged epochs (see Sec.~\ref{sec:data}). Table~\ref{tab:clqso} contains the basic physical parameters for these quasars. 
-
-
- 
+ $f_{\tau} = \log_{10}{\left( \tau_{\mathrm{SDSS-PS1}} / \tau_{\mathrm{SDSS}} \right)} > 1  $.  This corresponds to tenfold increase in $\tau$ and over twofold increase in $\sigma$ ($10^{0.4} = 2.51$). By visual inspection of objects simultaneously satisfying the threshold $f_{\sigma}> 0.4$ and $f_{\tau}> 1 $ we find that these undergo a significant ($>0.5$ mag) change in brightness between the SDSS (baseline 1998 - 2008) and PS1 DR2 observations (2009-2014 - see Fig.~\ref{fig:lcExtent}). Thus DRW fitting could also be a way of finding changing-look quasar (and AGN) candidates. Figs.~\ref{fig:clqso0}--~\ref{fig:clqso3} show the SDSS-PS1 r-band light curves of 38 CLQSO candidates, with median SDSS part brighter than 20.5 mag. The open circles indicate day-averaged epochs (see Sec.~\ref{sec:data}). Table~\ref{tab:clqso} contains the basic physical parameters for these quasars. 
 
 \begin{figure*} % made with ../code2/Explore_SDSS_PS1_lightcurves.ipynb 
 \plotone{figs/SDSS_PS1_outliers_page_0.png}
@@ -937,52 +937,58 @@ $f_{\sigma} = \log_{10}{\left( \sigma_{\mathrm{SDSS-PS1}} / \sigma_{\mathrm{SDSS
 %SDSS_PS1_outliers_page_3.png
 
 
-\begin{deluxetable*}{c|CCCCCC}
+\begin{deluxetable*}{c|CCCCCCC}
 %\tablewidth{\pagewidth}
-\tablecaption{CLQSO candidates : catalog information from \cite{shen2011}, concerning  location ($\alpha$, $\delta$, J2000), distance (spectrum-based redshift), and physical parameters (bolometric luminosity  $L_{Bol}$, black hole mass $M_{\mathrm{BH}}$, Eddington ratio $f_{Edd} = L_{Bol} / L_{Edd}$).  \label{tab:clqso} } 
+\tablecaption{CLQSO candidates : catalog information from \cite{shen2011}, concerning DR7 name (dbID) and SDSSJID location ($\alpha$, $\delta$, J2000), distance (spectrum-based redshift), and physical parameters (bolometric luminosity  $L_{Bol}$, black hole mass $M_{\mathrm{BH}}$, Eddington ratio $f_{Edd} = L_{Bol} / L_{Edd}$).  \label{tab:clqso} } 
 
-\tablehead{\colhead{dbID} & \colhead{$\alpha$} & \colhead{$\delta$} & \colhead{redshift} & \colhead{$\log_{10}{(L_{Bol})}$} & \colhead{$\log_{10}{(M_{\mathrm{BH}})}$} & \colhead{$f_{Edd}$}}
+\tablehead{\colhead{dbID} & \colhead{SDSSJID}  & \colhead{$\alpha$} & \colhead{$\delta$} & \colhead{redshift} & \colhead{$\log_{10}{(L_{Bol})}$} & \colhead{$\log_{10}{(M_{\mathrm{BH}})}$} & \colhead{$f_{Edd}$} }
 \startdata
-8442 & 4.382 & 0.819 & 2.43 & 46.61 & 9.09 & -0.58 \\
-123909 & 4.111 & 0.609 & 3.24 & 46.57 & 9.47 & -1.0 \\
-221006 & 12.926 & 0.358 & 1.55 & 45.95 & 8.24 & -0.39 \\
-257776 & 13.805 & -0.939 & 3.61 & 47.13 & 9.58 & -0.54 \\
-292959 & 350.129 & -0.678 & 1.72 & 46.69 & 9.39 & -0.8 \\
-307136 & 350.591 & 1.126 & 0.76 & 45.17 & 8.06 & -0.99 \\
-467617 & 347.634 & -1.247 & 1.82 & 46.03 & 7.86 & 0.06 \\
-568312 & 349.971 & -1.028 & 1.15 & 45.6 & 8.29 & -0.79 \\
-612585 & 17.05 & -0.088 & 1.0 & 45.52 & 9.06 & -1.64 \\
-751557 & 343.168 & 1.166 & 0.53 & 45.32 & 8.88 & -1.66 \\
-1003694 & 20.309 & -1.053 & 1.89 & 46.59 & 8.83 & -0.34 \\
-1124333 & 337.326 & -0.668 & 1.16 & 45.81 & 8.35 & -0.64 \\
-1299803 & 25.763 & -0.732 & 0.53 & 45.78 & 8.68 & -1.0 \\
-1378415 & 333.447 & 0.325 & 2.31 & 46.41 & 8.59 & -0.29 \\
-1412379 & 334.632 & -0.764 & 1.23 & 46.15 & 9.48 & -1.43 \\
-1446022 & 331.397 & 0.132 & 1.69 & 46.45 & 9.25 & -0.9 \\
-1644710 & 33.246 & -0.097 & 0.81 & 45.67 & 8.38 & -0.81 \\
-1730482 & 33.871 & -0.887 & 1.37 & 45.98 & 8.8 & -0.92 \\
-1901056 & 327.731 & -0.294 & 1.54 & 46.26 & 8.6 & -0.44 \\
-1976348 & 329.673 & -0.252 & 1.46 & 46.92 & 9.39 & -0.57 \\
-2006852 & 39.824 & -0.321 & 1.41 & 46.07 & 8.73 & -0.76 \\
-2061101 & 36.271 & 0.293 & 2.42 & 46.38 & 8.09 & 0.2 \\
-2069362 & 36.683 & 0.552 & 2.38 & 46.54 & 9.32 & -0.88 \\
-2104791 & 35.666 & 0.006 & 0.99 & 46.28 & 9.33 & -1.16 \\
-2484608 & 44.227 & -1.249 & 0.54 & 45.57 & 8.48 & -1.01 \\
-3052176 & 46.267 & 1.223 & 0.61 & 45.29 & 9.2 & -2.01 \\
-3076365 & 49.497 & -0.768 & 0.65 & 45.36 & 8.68 & -1.43 \\
-3219103 & 314.351 & -0.505 & 4.66 & 47.64 & 9.83 & -0.29 \\
-3633437 & 312.771 & -0.98 & 0.54 & 45.34 & 8.47 & -1.23 \\
-3781306 & 51.941 & 0.871 & 1.16 & 45.77 & 0.0 & -999.0 \\
-3858587 & 52.105 & -0.548 & 0.77 & 45.61 & 8.68 & -1.17 \\
-3916393 & 358.571 & -0.04 & 0.88 & 45.76 & 8.51 & -0.85 \\
-3928645 & 358.433 & 0.871 & 0.65 & 45.37 & 8.71 & -1.44 \\
-3946479 & 358.203 & -0.255 & 1.34 & 45.8 & 9.01 & -1.3 \\
-3976336 & 358.055 & -0.724 & 0.9 & 45.64 & 8.85 & -1.3 \\
-4069419 & 8.497 & 0.042 & 1.64 & 45.95 & 9.05 & -1.21 \\
-4205621 & 309.885 & -0.305 & 1.58 & 46.21 & 8.66 & -0.55 \\
-4913626 & 56.303 & 0.379 & 0.42 & 45.5 & 8.81 & -1.41 \\
+8442 & \object[SDSS J001731.70+004910.1]{001731.70+004910.1} & 4.382 & 0.819 & 2.43 & 46.61 & 9.09 & -0.58   \\
+123909 & \object[SDSS J001626.54+003632.4]{001626.54+003632.4} & 4.111 & 0.609 & 3.24 & 46.57 & 9.47 & -1.0   \\
+221006 & \object[SDSS J005142.20+002129.0]{005142.20+002129.0} & 12.926 & 0.358 & 1.55 & 45.95 & 8.24 & -0.39   \\
+257776 & \object[SDSS J005513.15-005621.2]{005513.15-005621.2} & 13.805 & -0.939 & 3.61 & 47.13 & 9.58 & -0.54   \\
+292959 & \object[SDSS J232030.97-004039.2]{232030.97-004039.2} & 350.129 & -0.678 & 1.72 & 46.69 & 9.39 & -0.8   \\
+307136 & \object[SDSS J232221.81+010733.4]{232221.81+010733.4} & 350.591 & 1.126 & 0.76 & 45.17 & 8.06 & -0.99   \\
+467617 & \object[SDSS J231032.17-011449.5]{231032.17-011449.5} & 347.634 & -1.247 & 1.82 & 46.03 & 7.86 & 0.06   \\
+568312 & \object[SDSS J231953.07-010139.0]{231953.07-010139.0} & 349.971 & -1.028 & 1.15 & 45.6 & 8.29 & -0.79   \\
+612585\tablenotemark{a} & \object[SDSS J010812.00-000516.5]{010812.00-000516.5} & 17.05 & -0.088 & 1.0 & 45.52 & 9.06 & -1.64  
+ \\
+751557\tablenotemark{b} & \object[SDSS J225240.37+010958.7]{225240.37+010958.7} & 343.168 & 1.166 & 0.53 & 45.32 & 8.88 & -1.66  \\
+1003694\tablenotemark{c}  & \object[SDSS J012114.19-010310.8]{012114.19-010310.8} & 20.309 & -1.053 & 1.89 & 46.59 & 8.83 & -0.34   \\
+1124333 & \object[SDSS J222918.25-004003.6]{222918.25-004003.6} & 337.326 & -0.668 & 1.16 & 45.81 & 8.35 & -0.64  \\
+1299803\tablenotemark{c} & \object[SDSS J014303.23-004354.0]{014303.23-004354.0} & 25.763 & -0.732 & 0.53 & 45.78 & 8.68 & -1.0  \\
+1378415 & \object[SDSS J221347.32+001928.4]{221347.32+001928.4} & 333.447 & 0.325 & 2.31 & 46.41 & 8.59 & -0.29   \\
+1412379 & \object[SDSS J221831.58-004548.9]{221831.58-004548.9} & 334.632 & -0.764 & 1.23 & 46.15 & 9.48 & -1.43   \\
+1446022 & \object[SDSS J220535.23+000756.3]{220535.23+000756.3} & 331.397 & 0.132 & 1.69 & 46.45 & 9.25 & -0.9   \\
+1644710 & \object[SDSS J021259.00-000550.1]{021259.00-000550.1} & 33.246 & -0.097 & 0.81 & 45.67 & 8.38 & -0.81   \\
+1730482 & \object[SDSS J021529.02-005314.9]{021529.02-005314.9} & 33.871 & -0.887 & 1.37 & 45.98 & 8.8 & -0.92   \\
+1901056 & \object[SDSS J215055.51-001739.4]{215055.51-001739.4} & 327.731 & -0.294 & 1.54 & 46.26 & 8.6 & -0.44   \\
+1976348 & \object[SDSS J215841.40-001507.7]{215841.40-001507.7} & 329.673 & -0.252 & 1.46 & 46.92 & 9.39 & -0.57   \\
+2006852 & \object[SDSS J023917.86-001916.8]{023917.86-001916.8} & 39.824 & -0.321 & 1.41 & 46.07 & 8.73 & -0.76   \\
+2061101 & \object[SDSS J022505.06+001733.2]{022505.06+001733.2} & 36.271 & 0.293 & 2.42 & 46.38 & 8.09 & 0.2   \\
+2069362 & \object[SDSS J022644.03+003305.8]{022644.03+003305.8} & 36.683 & 0.552 & 2.38 & 46.54 & 9.32 & -0.88   \\
+2104791 & \object[SDSS J022239.83+000022.5]{022239.83+000022.5} & 35.666 & 0.006 & 0.99 & 46.28 & 9.33 & -1.16   \\
+2484608 & \object[SDSS J025654.42-011455.4]{025654.42-011455.4} & 44.227 & -1.249 & 0.54 & 45.57 & 8.48 & -1.01   \\
+3052176 & \object[SDSS J030504.07+011324.5]{030504.07+011324.5} & 46.267 & 1.223 & 0.61 & 45.29 & 9.2 & -2.01   \\
+3076365 & \object[SDSS J031759.16-004606.4]{031759.16-004606.4} & 49.497 & -0.768 & 0.65 & 45.36 & 8.68 & -1.43   \\
+3219103 & \object[SDSS J205724.14-003018.7]{205724.14-003018.7} & 314.351 & -0.505 & 4.66 & 47.64 & 9.83 & -0.29   \\
+3633437 & \object[SDSS J205105.02-005847.5]{205105.02-005847.5} & 312.771 & -0.98 & 0.54 & 45.34 & 8.47 & -1.23   \\
+3781306 & \object[SDSS J032745.74+005217.2]{032745.74+005217.2} & 51.941 & 0.871 & 1.16 & 45.77 & 0.0 & -999.0   \\
+3858587 & \object[SDSS J032825.19-003252.3]{032825.19-003252.3} & 52.105 & -0.548 & 0.77 & 45.61 & 8.68 & -1.17   \\
+3916393 & \object[SDSS J235416.94-000222.5]{235416.94-000222.5} & 358.571 & -0.04 & 0.88 & 45.76 & 8.51 & -0.85   \\
+3928645 & \object[SDSS J235344.01+005216.9]{235344.01+005216.9} & 358.433 & 0.871 & 0.65 & 45.37 & 8.71 & -1.44   \\
+3946479 & \object[SDSS J235248.71-001518.4]{235248.71-001518.4} & 358.203 & -0.255 & 1.34 & 45.8 & 9.01 & -1.3   \\
+3976336 & \object[SDSS J235213.27-004326.3]{235213.27-004326.3} & 358.055 & -0.724 & 0.9 & 45.64 & 8.85 & -1.3   \\
+4069419 & \object[SDSS J003359.39+000230.0]{003359.39+000230.0} & 8.497 & 0.042 & 1.64 & 45.95 & 9.05 & -1.21   \\
+4205621 & \object[SDSS J203932.41-001818.3]{203932.41-001818.3} & 309.885 & -0.305 & 1.58 & 46.21 & 8.66 & -0.55   \\
+4913626 & \object[SDSS J034512.62+002245.7]{034512.62+002245.7} & 56.303 & 0.379 & 0.42 & 45.5 & 8.81 & -1.41   \\
  \enddata
+ \tablenotetext{\tiny a}{S82X LaMassa2016, XMM Newton, Galex UV, UKIDSS, VHS, WISE}
+ \tablenotetext{\tiny b}{M19, CLQSO candidate, Magellan follow-up}
+ \tablenotetext{\tiny c}{S82X LaMassa2019, WISE}
 \end{deluxetable*}
+
+
 
 
 
