@@ -498,16 +498,16 @@ We extend Stripe82 quasar light curves by combining the SDSS r-band data with  t
 
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb 
 \plotone{figs/MacLeod2010_Fig3_restframe_NEW_.png}
-\caption{Comparison of distributions of the rest-frame variability timescale $\tau_{RF}$ against the  asymptotic variability amplitude $SF_{\infty}$, for M10 SDSS r-band,  and \project{celerite} fits using  SDSS or SDSS-PS1 segments of combined S82 quasar light curves. The M10 (red,solid lines) and this work, using only SDSS (dashed, blue), overlap, as we recover the same underlying distributions. }
+\caption{Comparison of distributions of the rest-frame variability timescale $\tau_{RF}$ against the  asymptotic variability amplitude $SF_{\infty}$, for M10 SDSS r-band,  and \project{celerite} fits using  SDSS or SDSS-PS1 segments of combined S82 quasar light curves. The M10 (red, solid lines) and this work, using only SDSS (dashed, blue), overlap, as we recover the same underlying distributions. }
 \label{fig:tauRF_SFinf}
 \end{figure} 
 
 
-In this section we first correct fitted $\tau$, $SF_{\infty}$ for wavelength dependence. Then we show the consistency with M10 results,  and consider the trends between DRW parameters and physical quasar properties: black hole mass $M_{\mathrm{BH}}$, absolute i-band  magnitude $M_{i}$, or redshift $z$.  
+In this section we first correct fitted $\tau$, $SF_{\infty}$ for wavelength dependence. Then we show consistency with M10 results,  and consider the trends between DRW parameters and physical quasar properties: black hole mass $M_{\mathrm{BH}}$, absolute i-band  magnitude $M_{i}$, or redshift $z$.  
 
 
 \subsection{Comparison to M10}
-The DRW parameters recovered with \project{celerite} are  broadly consistent with M10 - Fig.~\ref{fig:tauRF_SFinf} shows the rest-frame  $\tau$, and $SF_{\infty}$ distributions for our results for the SDSS segment (blue dashed line),  SDSS-PS1 combined light curves (green dot-dashed line), and  M10 SDSS for r-band only (red solid line). When using the same data as M10 (SDSS), our results agree. A detailed object-by-object comparison on Fig.~\ref{fig:celeriteCompare} reveals a slight offset between log-ratios of DRW parameters, which can be attributed to software differences.
+The DRW parameters recovered with \project{celerite} are  broadly consistent with M10 - Fig.~\ref{fig:tauRF_SFinf} shows the rest-frame  $\tau$, and $SF_{\infty}$ distributions for our results for the SDSS segment (blue dashed line),  SDSS-PS1 combined light curves (green dot-dashed line), and  M10 SDSS for r-band only (red solid line). When using the same data as M10 (SDSS), our results agree. A detailed object-by-object comparison on Fig.~\ref{fig:celeriteCompare} reveals a slight offset between log-ratios of DRW parameters, which can be attributed to software differences, and cleaning process applied to SDSS-PS1 light curves.
 
 
 \begin{figure*} % code2/Compare_Celerite_Chelsea_real_fits.ipynb  
@@ -538,12 +538,28 @@ The DRW parameters recovered with \project{celerite} are  broadly consistent wit
 
 
 
+
+\subsection{Outliers: possible CLQSO candidates}
+
+
+For the majority of quasars,  adding PS1 data strengthens the information from the SDSS segment, and decreases the bias if the reported timescale from SDSS part was not at least several times shorter than the baseline. However, studies show that about 0.1\% quasars will exhibit large variability (in excess of 0.5 mag rms - see \citealt{macleod2012}). By investigating the outliers in $\sigma_{\mathrm{SDSS-PS1}} / \sigma_{\mathrm{SDSS}} $ and $\tau_{\mathrm{SDSS-PS1}} / \tau_{\mathrm{SDSS}} $ space, we find that their light curves show signs of large changes in brightness, alike that found in Changing-Look Quasars \cite{macleod2019,ruan2019, ,frederick2019,trakhtenbrot2019,shen2019,stern2018,ross2018,lawrence2018,stern2017,lamassa2015,elitzur2014}. 
+% to add :  yang2018,blanchard2017,gezari2017,sheng2017, macLeod2016,runnoe2016,guo2016,schawinski2015,
+
+Large differences in timescales and variability amplitudes between SDSS and SDSS-PS1 portions imply that just based on the SDSS portion we pick up a short-term variability, and with more data it turns out that there is a much more long-term trend. Another way to study objects that could change brightness on longer timescales is to consider the difference between median SDSS and median PS1 portions of each light curve. Fig.~\ref{fig:median_offset_SDSS_PS1} shows the histograms and the cumulative distribution of differences between the medians of  SDSS and PS1 portions of each quasar light curve.  
+
+
 \begin{figure} % ../code2/Explore_SDSS_PS1_lightcurves.ipynb
 \epsscale{1.2}
 \plotone{figs/SDSS_PS1_DR2_cleaned_offsets_cdf.png}
 \caption{The differences between SDSS and PS1 segments of combined quasar r-band light curves. First, the difference between median SDSS and median PS1 portion, plotted as a histogram (upper-left panel), and cumulative distribution function (lower-left panel). Then, the difference between $\sigma_{G}$ calculated for each portion of the light curve (defined as the difference between 75th and 25th percentile : $\sigma_{G} = 0.7413(Q_{75} - Q_{25})$ it is a robust estimate of the standard deviation of the underlying distribution). The outliers in the median offset space are also outliers in the DRW parameter space (eg. $\log{(\tau_{\mathrm{SDSS-PS1}} /  \tau_{\mathrm{SDSS}})} > 1$   and   $\log{(\sigma_{\mathrm{SDSS-PS1}} / \sigma_{\mathrm{SDSS}})}   > 0.4  )$  and $r > 20.5$ all  38 candidates have  median(SDSS)-median(PS1)  > 0.1  }
 \label{fig:median_offset_SDSS_PS1}
 \end{figure}
+
+
+
+
+
+
 
 \subsection{Rest-frame Wavelength Correction}
 Since quasars are located at non-negligible redshifts, the observed wavelengths (eg. through the SDSS bandpass), depending on the redshift, probe a region of shorter wavelengths in emitted spectrum: $\lambda_{obs} {=}\lambda_{RF}  (1+z)$ (see \citealt{shen2018}, Fig.7). Thus to compare variability of the same parts of the rest-frame spectrum, we need to estimate the rest-frame emission wavelength $\lambda_{RF}$, and correct for the dependence of variability parameters ($\tau, SF_{\infty}$) on $\lambda_{RF}$. Since this study only used r-band light curves, on Fig.~\ref{fig:wavelength_dependence} we illustrate the wavelength dependence of $\tau, SF_{\infty}$ with M10 SDSS $urz$ data. We overplot with red contours the new fit results using only the SDSS portion of each light curve, and with orange contours the fit results using combined SDSS-PS1 light curves. We take the center of each bandpass to approximate the  observed wavelength. That is for SDSS $urz$ bandpasses,  $\lambda_{obs} = 3520$, $6250$, $9110$ $\mbox{\AA}$, respectively. Then for each quasar the rest-frame wavelength (corresponding to the bandpass center) is estimated given its redshift:  $\lambda_{RF} = \lambda_{obs} / (1+z)$.  On top of $\tau, SF_{\infty}$ as a function of $\lambda_{RF}$ scaled to  $4000 \mbox{\AA}$, we plot a power lae dependence employed by M10:
