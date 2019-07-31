@@ -798,7 +798,13 @@ Thus while CLAGN may be related to the state-change to ADAF flow \citep{sniegows
 
 
 \section{Summary and Conclusions}\label{sec:conclusions}
-We model ${\sim} 9000$ Stripe82 quasars as the Damped Random Walk (DRW) model with Gaussian Processes implemented in \project{celerite}.  We show that by extending the SDSS light curves with PS1 data we can improve on the recovery of the  DRW parameters: characteristic timescale $\tau$ and asymptotic variability amplitude $SF_{\infty}$. We find that these correlate with black hole mass $M_{BH}$ and absolute i-band magnitude $M_{i}$, with $\tau$ more dependent on $M_{i}$ and less on $M_{BH}$ than in M10. $SF_{\infty}$ is less strongly driven by $M_{i}$ and $M_{BH}$ than M10 found, and has a stronger, almost inverse, dependence on the Eddington ratio $f_{Edd}$. This is consistent with lower mass accretion rate corresponding to higher variability, so that when the supply of fuel decreases, the flow becomes less stable, more clumpy, more inhomogeneous.  This is also consistent with the X-ray reprocessing model, whereby the hard X-ray variability of the inner disk is reflected/reprocessed by the extended warm Comptonization region (inflated disk), and perhaps a complex reprocessor, including the clouds of the broad line region. Changes on recovered timescales are too fast to be driven by changes in disk viscosity, or thermal front propagation alone - thermal or dynamical timescale of response to the changes in X-ray emission seems most consistent with our results.
+We model the optical variability of ${\sim} 9000$ Stripe82 quasars as the Damped Random Walk (DRW, \citealt{kelly2009}). We treat the DRW as a Gaussian Process (GP), described by two parameters - characteristic timescale $\tau$ (representing decorrelation timescale, or light curve smoothness), and the asymptotic amplitude $SF_{\infty}$ (which relates to the amplitude of variability). We fit observed and simulated light curves with \project{celerite} - a fast GP solver \citep{foreman2017}. By simulating $10 000$  DRW light curves spanning length of 8 years, with 60 or 445 epochs, we explore the impact of the ratio of input timescale to the light curve baseline. We find that the light curve needs to be several times the length of input timescale to allow unbiased timescale retrieval, confirming K17. Motivated by this result we consider extending SDSS with PS1, PTF, CRTS, and ZTF data.  We calculate appropriate photometric offsets (color terms) to relate PS1 gri, PTF gR,  CRTS V, and ZTF r to SDSS r-band. However, due to larger photometric uncertainties of PTF, ZTF ,CRTS at faint magnitudes of SDSS quasars, we decide to use only PS1 r-band data. Furthermore, SDSS r-band and PS1 r-band are sufficiently similar that no photometric transformation is required.  Thus by extending the SDSS r-band light curves with PS1 DR2 r-band data we improve on the fidelity of recovered DRW parameters. 
+
+We identify 38 objects which exhibit tenfold increase in variability timescale when using the SDSS-PS1 dataset as compared to timescale inferred from SDSS alone. Visual inspection of their light curves show characteristics of changing-look quasars (magnitude difference larger than 0.5 mag). Of these, 5 are confirmed in the literature\citep{macleod2019}. 
+
+We confirm the correlations of quasar physical properties, such as black hole mass $M_{BH}$ and absolute i-band magnitude $M_{i}$,  with DRW model parameters, as investigated by M10. We find that to within the error, the slopes are consistent with M10. The damping timescale $\tau$  
+
+ This is consistent with lower mass accretion rate corresponding to higher variability, so that when the supply of fuel decreases, the flow becomes less stable, more clumpy, more inhomogeneous\citep{rakshit2017}.  This is also consistent with the X-ray reprocessing model, whereby the hard X-ray variability of the inner disk is reflected/reprocessed by the extended warm Comptonization region (inflated disk), and perhaps a complex reprocessor, including the clouds of the broad line region~\citep{kubota2018, panda2018}. Changes on recovered timescales are too fast to be driven by changes in disk viscosity, or thermal front propagation alone - thermal or dynamical timescale of response to the changes in X-ray emission seems most consistent with our results.
 
 
 
@@ -806,22 +812,12 @@ We model ${\sim} 9000$ Stripe82 quasars as the Damped Random Walk (DRW) model wi
 %The exact shape of quasar PSD would affect other areas of study. One example is reverberation mapping (RM), which was used to provide  accurate black hole mass estimates. RM is based on measuring the lags between light curves observed at different wavelengths. The two most widely used approaches to measuring interband lags are interpolated cross-correlation function (ICCF, \citealt{gaskell1987, peterson2004})  and  light curve modeling via Markov chain Monte Carlo approach (JAVELIN, \citealt{zu2011}). The PSD of the DRW comes explicitly in the latter,  which assumes that the higher energies drive lower energies (whether due to x-ray reprocessing or other mechanism), and that the driving light curve is well-modeled by a DRW (with PSD equal to  $-2$ or flatter).  In this scenario other light curves (at longer wavelength) are related to it via transfer function \cite{edelson2019}. Using a wrong PSD means at best that errors are underestimated. Therefore a convincing detection of a departure of quasar PSD from that of the DRW  would have  a direct impact on RM studies that use  JAVELIN or other light curve modeling tools. 
 
 
+More data extending the light curves would help improve the fit coefficients, decreasing the scatter in observed correlations. Given that the uncertainty in black hole mass is one of the biggest sources of error, better measurements of quasar properties would be of high utility\citep{shen2011}.  This will be possible by the upcoming AGN reverberation mapping campaigns (eg. SDSS-V Black Hole Mapper), providing better calibration for line width-based methods of estimating black hole masses\citep{kollmeier2017}. All quasars in this study were spectroscopically confirmed, but some spectra had low signal-to-noise, resulting in higher likelihood of incorrect redshift measurement. Better spectroscopy and follow up of S82 quasars, afforded by SDSS-V panoptic spectroscopy, would not only help improve on the spectrum-based  properties (redshift, absolute magnitude, black hole masses), but also allow to study spectral changes, and further new CLAGN discoveries. 
 
-More data extending the light curves would help improve the fit coefficients, decreasing the scatter in observed correlations. Given that the uncertainty in black hole mass is one of the biggest sources of error, better measurements of quasar properties would be of high utility.  This will be possible by the upcoming AGN reverberation mapping campaigns (SDSS-V Black Hole Mapper, \citealt{kollmeier2017}), providing better calibration for line width-based methods of estimating black hole masses. All quasars in this study were spectroscopically confirmed, but some spectra had low signal-to-noise, resulting in higher likelihood of incorrect redshift measurement. Better spectroscopy and follow up of S82 quasars, afforded by SDSS-V panoptic spectroscopy, would not only help improve on the spectrum-based  properties (redshift, absolute magnitude, black hole masses), but also allow to study spectral changes, and further new CL
-AGN discoveries. 
-
-If this study were to be expanded onto a sample of quasars with good photometry over sufficiently long baselines, but lacking spectral information, the required physical information on quasars could be obtained by indirect methods of estimating the coarse spectral information from broad-band photometry. This would benefit from better catalogs of existing spectroscopically-confirmed quasars to improve the calibration, as well as better methods of estimating the redshift based on photometry alone (photo-z). 
-
- This will be possible in short term with the ZTF, and in the long term with LSST. Occasional coverage adding few epochs to some quasars may be possible with other surveys (eg. TESS), but to improve the statistics an entire sample of S82 quasars would require longer baselines. 
+If this study were to be expanded onto a sample of quasars with good photometry over sufficiently long baselines, but lacking spectral information, the required physical information on quasars could be obtained by indirect methods of estimating the coarse spectral information from broad-band photometry\citep{kozlowski2015}. This would benefit from better catalogs of existing spectroscopically-confirmed quasars (SDSS DR14) to improve the calibration, as well as better methods of estimating the redshift based on photometry alone (eg. photo-z, \citealt{graham2018}).  This will be possible in short term with the ZTF \citep{bellm2018}, and in the long term with LSST\citep{ivezic2019}. Occasional coverage adding few epochs to some quasars may be possible with other surveys (eg. TESS, \citealt{ricker2014}), but to improve the statistics of an entire sample of S82 quasars would require longer baselines. Combining SDSS and PS1 with LSST would provide unprecedented 35-year baseline, which assuming timescales between 10-1000 days is over 10 times longer, allowing unbiased DRW parameter retrieval, which coupled with correlations with quasar properties, would provide an estimate of black hole masses and bolometric luminosities for millions of quasars\citep{ivezic2019}. 
 
 
 \section{Acknowledgements}
-%
-%
-%
-%
-%
-%
 
 % FROM https://panstarrs.stsci.edu 
 The Pan-STARRS1 Surveys (PS1) and the PS1 public science archive have been made possible through contributions by the Institute for Astronomy, the University of Hawaii, the Pan-STARRS Project Office, the Max-Planck Society and its participating institutes, the Max Planck Institute for Astronomy, Heidelberg and the Max Planck Institute for Extraterrestrial Physics, Garching, The Johns Hopkins University, Durham University, the University of Edinburgh, the Queen's University Belfast, the Harvard-Smithsonian Center for Astrophysics, the Las Cumbres Observatory Global Telescope Network Incorporated, the National Central University of Taiwan, the Space Telescope Science Institute, the National Aeronautics and Space Administration under Grant No. NNX08AR22G issued through the Planetary Science Division of the NASA Science Mission Directorate, the National Science Foundation Grant No. AST-1238877, the University of Maryland, Eotvos Lorand University (ELTE), the Los Alamos National Laboratory, and the Gordon and Betty Moore Foundation.
@@ -830,7 +826,6 @@ The Pan-STARRS1 Surveys (PS1) and the PS1 public science archive have been made 
 Funding for the Sloan Digital Sky Survey IV has been provided by the Alfred P. Sloan Foundation, the U.S. Department of Energy Office of Science, and the Participating Institutions. SDSS-IV acknowledges
 support and resources from the Center for High-Performance Computing at
 the University of Utah. The SDSS web site is www.sdss.org.
-
 SDSS-IV is managed by the Astrophysical Research Consortium for the 
 Participating Institutions of the SDSS Collaboration including the 
 Brazilian Participation Group, the Carnegie Institution for Science, 
@@ -852,17 +847,16 @@ University of Utah, University of Virginia, University of Washington, University
 Vanderbilt University, and Yale University.
 
 % I didn't use CRTS data in the end  ...
-%
 % from http://nesssi.cacr.caltech.edu/DataRelease/policy.html  
-% 
 The CSS survey is funded by the National Aeronautics and Space Administration under Grant No. NNG05GF22G issued through the Science Mission Directorate Near-Earth Objects Observations Program.  The CRTS survey is supported by the U.S.~National Science Foundation under grants AST-0909182.
 
 
 % I don't use ZTF DR1 directly, but I do show the error curve ...
-% 
 % from  https://www.ztf.caltech.edu/page/dr1#1a
-
 Based on observations obtained with the Samuel Oschin 48-inch Telescope at the Palomar Observatory as part of the Zwicky Transient Facility project. ZTF is supported by the National Science Foundation under Grant No. AST-1440341 and a collaboration including Caltech, IPAC, the Weizmann Institute for Science, the Oskar Klein Center at Stockholm University, the University of Maryland, the University of Washington, Deutsches Elektronen-Synchrotron and Humboldt University, Los Alamos National Laboratories, the TANGO Consortium of Taiwan, the University of Wisconsin at Milwaukee, and Lawrence Berkeley National Laboratories. Operations are conducted by COO, IPAC, and UW.
+
+
+
 
 
 \appendix
