@@ -900,6 +900,13 @@ These methods were used to create catalogs of quasar properties derived from spe
 \section{CLQSO candidates}
 \label{app:clqso_cands}
 
+Based on the DRW model  parameters $\tau$, $\sigma$ fitted with \project{celerite} using the SDSS and PS1 data, we find that there are quasars for which there is a pronounced difference between $\tau$, $\sigma$  inferred from combined SDSS-PS1 data vs just SDSS. Specifically, Fig.~\ref{fig:tau_sigma_ratios} shows that there are objects where 
+$f_{\sigma} = \log_{10}{\left( \sigma_{\mathrm{SDSS-PS1}} / \sigma_{\mathrm{SDSS}} \right)} > 0.4 $ and 
+ $f_{\tau} = \log_{10}{\left( \tau_{\mathrm{SDSS-PS1}} / \tau_{\mathrm{SDSS}} \right)} > 1  $.  This corresponds to tenfold increase in $\tau$ and over twofold increase in $\sigma$ ($10^{0.4} = 2.51$). By visual inspection of objects simultaneously satisfying the threshold $f_{\sigma}> 0.4$ and $f_{\tau}> 1 $ we find that these undergo a significant ($>0.5$ mag) change in brightness between the SDSS (baseline 1998 - 2008) and PS1 DR2 observations (2009-2014 - see Fig.~\ref{fig:lcExtent}). Thus DRW fitting could also be a way of finding changing-look quasar (and AGN) candidates.  Figs.~\ref{fig:clqso0,fig:clqso1,fig:clqso2,fig:clqso3} show the SDSS-PS1 r-band light curves of 38 CLQSO candidates, with median SDSS part brighter than 20.5 mag. The open circles indicate day-averaged epochs (see Sec.~\ref{sec:data}). Table~\ref{tab:clqso} contains the basic physical parameters for these quasars. 
+
+
+ 
+
 \begin{figure*} % made with ../code2/Explore_SDSS_PS1_lightcurves.ipynb 
 \plotone{figs/SDSS_PS1_outliers_page_0.png}
 \caption{Outliers in the space of recovered DRW parameters between SDSS and SDSS-PS1, as well as median offsets. Page 1.}
