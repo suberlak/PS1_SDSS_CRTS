@@ -248,33 +248,24 @@ P(f) = \frac{4\sigma^{2}\tau}{1+(2 \pi \tau f)^{2}}
 \end{equation}
 (with $\sigma = \mathrm{SF}_{\infty} / \sqrt{2}$, $\tau$ the characteristic timescale, $f$ the frequency), where $P(f) \propto f^{-2}$  at high frequencies $f > (2\pi \tau)^{-1}$, and levels to a constant value at lower frequencies\citep{kelly2014}. 
 
-There is a debate in the literature about the exact shape of the quasar PSD, and of any possible  departures from the pure DRW model. Studies using quasar data from wide-field photometric surveys (OGLE, SDSS, PS1) benefit from relatively long baselines (several years), which lends focus to the low frequency part of the PSD. Overall, there is no evidence of a significant departure from DRW at these long timescales, i.e. $\alpha_{l} \approx 0$ \citep{zu2013, simm2016, kozlowski2016b, caplar2017, guo2017, sun2018}. However, these ground-based surveys suffer from a sparse sampling, which can be remedied by using a space-based telescope that can carry out near-continuous observations, like the Kepler mission\citep{borucki2010}. Studies using Kepler data, that focused on a smaller number of well-sampled AGN, with short baselines (hundred days), also did not find convincing evidence of a departure of the AGN PSD from the DRW at high frequencies, so that indeed $\alpha_{h} \approx -2$ \citep{mushotzky2011,edelson2014,smith2018,aranzana2018}.  Since this work is based on extending the SDSS light curves (studied by M10) with the PS1 data, we directly compare the results to M10. Therefore we elect to describe the quasar PSD by the DRW, to also allow better comparison of our results with M10. 
+There is a debate in the literature about the exact shape of the quasar PSD, and of any possible  departures from the pure DRW model. Studies using quasar data from wide-field photometric surveys (OGLE, SDSS, PS1) benefit from relatively long baselines (several years), which lends focus to the low frequency part of the PSD. Overall, there is no evidence of a significant departure from DRW at these long timescales, i.e. $\alpha_{l} \approx 0$ \citep{zu2013, simm2016, kozlowski2016b, caplar2017, guo2017, sun2018}. However, these ground-based surveys suffer from a sparse sampling, which can be remedied by using a space-based telescope that can carry out near-continuous observations, like the Kepler mission\citep{borucki2010}. Studies using Kepler data, that focused on a smaller number of well-sampled AGN, with short baselines (hundred days), also did not find convincing evidence of a departure of the AGN PSD from the DRW at high frequencies, so that indeed $\alpha_{h} \approx -2$ \citep{mushotzky2011,edelson2014,smith2018,aranzana2018}. In this work we extend the SDSS light curves with the PS1 data, and directly compare our results to M10, who used the pure DRW description. Therefore, we  use the DRW description of quasar PSD, to allow a better comparison of our results with M10. 
 
-
-
-
-
-
-Due to its stochastic nature, the DRW process requires the light curve to be several times longer than the characteristic timescale for an unbiased parameter retrieval (\citealt{kozlowski2010, kozlowski2017a}, hereafter K17). This means that DRW parameters recovered for short (compared to the recovered timescale) light curves may be biased, which in turn affects the correlations with physical parameters (black hole mass, Eddington ratio, absolute luminosity). 
+Due to its stochastic nature, for an unbiased parameter retrieval of DRW process the light curve is requird to be several times longer than the characteristic timescale (\citealt{kozlowski2010, kozlowski2017a}, hereafter K17). This means that DRW parameters recovered for short light curves (compared to the recovered timescale) may be biased, which in turn affects the correlations with physical parameters (black hole mass, Eddington ratio, absolute luminosity). 
 
 For this reason, while some studies have restricted the probed redshift range, limiting the quasar sample to where one would expect only shorter timescales based on previous studies \citep{sun2018, guo2017, kelly2013,simm2016}, some have elected not to study timescales at all \citep{sun2018,sanchez2018}, or use the timescales recovered from short light curves primarily for classification \citep{hernitschek2016}.
 
-By extending available quasar light curves, we are able here to better recover a wider range of DRW timescales, and probe a wider range of redshifts and black hole masses. Since almost a decade ago, when M10 published their study based on SDSS Stripe 82 data, new datasets (PS1,PTF,CRTS) have become available. They can extend the quasar light curves by almost 50\%.  Indeed, \citet{li2018} combined SDSS and Dark Energy Camera Legacy Survey (DECaLS) data, to provide a 15 year baseline, but by using an entire SDSS footprint suffered from poor sampling and had to use ensemble structure function approach. %. However, by focusing on a large area to encompass as many quasars as possible (119,305 up to z=4.89) suffered from poor sampling which lends itself better to an ensemble structure function approach rather than direct light curve modeling. 
+By extending available quasar light curves, we are able to better recover DRW timescales. Since almost a decade ago, when M10 published their study based on SDSS Stripe 82 data, new datasets (PS1,PTF,CRTS) have become available. They can extend the quasar light curves by almost 50\%.  Indeed, \citet{li2018} combined SDSS and Dark Energy Camera Legacy Survey (DECaLS) data, to provide a 15 year baseline, but by using an entire SDSS footprint suffered from poor sampling and had to use the ensemble structure function approach. %. However, by focusing on a large area to encompass as many quasars as possible (119,305 up to z=4.89) suffered from poor sampling which lends itself better to an ensemble structure function approach rather than direct light curve modeling. 
 
 % Kepler :  not relevant in this context 
 %On the short timescales there are Kepler-based studies, with extremely well-sampled light curves (30 min cadence) of a small number of quasars, with baselines of up to 4 years \citep{mushotzky2011, edelson2014, kasliwal2015a, kasliwal2017, smith2018, aranzana2018}. 
 
-
-
-
-
-
- Unlike previous studies, in this work, by combining SDSS and PS1 data we afford both an extended baseline (15 years), a large number (9000) of quasars, and  a good cadence (N > 60 epochs) to which we fit the DRW model. The layout of this paper is as follows: first we confirm in Section~\ref{sec:methods} that extending the quasar baseline is the most important improvement in providing unbiased estimates of the DRW model parameters (K17);  in Section~\ref{sec:data} we describe the datasets employed, and their combination onto a common photometric system;  in Section~\ref{sec:simulation} we test the improvement in DRW parameters with simulation; finally in Section~\ref{sec:results} we describe the main results analyzing correlations between physical parameters and variability, and in Section~\ref{sec:conclusions} we summarize the main results. In this work we adopt a $\Lambda $CDM cosmology with $h_{0} = 0.7$ and $\Omega_{m} = 0.3 $. 
-
-
+ Unlike previous studies, in this work, by combining SDSS and PS1 data for the well-observed Stripe82, we afford both an extended baseline (15 years), a large number (9000) of quasars, and  a good cadence (N > 60 epochs) to which we fit the DRW model. The layout of this paper is as follows: first we confirm in Section~\ref{sec:methods} that extending the quasar baseline is the most important improvement in providing unbiased estimates of the DRW model parameters (K17);  in Section~\ref{sec:data} we describe the datasets employed, and their combination onto a common photometric system;  in Section~\ref{sec:simulation} we simulate the improvement in the recovery of DRW parameters with baseline extension and realistic cadence; finally in Section~\ref{sec:results} we describe the main results analyzing correlations between physical parameters and variability, in Section~\ref{sec:discussion} we discuss the physical meaning of relevant timescales, and in Section~\ref{sec:conclusions} we summarize the main conclusions. In this work we adopt a $\Lambda $CDM cosmology with $h_{0} = 0.7$ and $\Omega_{m} = 0.3 $. 
 %
 %
-\section{Methods}\label{sec:methods}
+%
+%
+\section{Methods}
+\label{sec:methods}
 \subsection{DRW as a Gaussian Process}
 Damped Random Walk (Ornstein-Uhlenbeck process, \citealt{rasmussen2006}) can be modeled as a member of a class of Gaussian Processes (GP). Each GP is described by a mean and a kernel - a covariance function that contains a measure of correlation between two points: $x_{n}$ and $x_{m}$, separated by $\Delta t_{nm}$ (autocorrelation). For the  DRW process, the covariance  between two observations spaced by  $\Delta t_{nm}$ is: 
 
@@ -340,8 +331,12 @@ with  $\mathrm{r_{SDSS}}=17$ mag and $\mathrm{I_{OGLE}}=18$ mag.
 Fig.~\ref{fig:rho_space} shows the recovered $\rho_{out}$ as a function of input $\rho_{in}$. We confirm the findings of K17: for short light curves, the best-fit $\tau$ becomes $\sim 1/2$ of light curve length (the `unconstrained' region, lower-left of each panel). However, as long as the light curve is several times longer than the timescale ($\rho \lessapprox 3 $), we can recover the timescale without bias (the dashed line approaches the solid diagonal line on both panels). Therefore, by extending the baseline we can move from the biased region (bottom left) to the unbiased regime (top right). This is the basis for this study,  in which we extend the baselines of quasar light curves from SDSS-only (10 years) to combined SDSS-PS1 (15 years). 
 
 
-
-\section{Data}\label{sec:data}
+%
+%
+%
+%
+\section{Data}
+\label{sec:data}
 
 We focus on the data pertaining to a 290 deg$^{2}$ region of southern sky known as Stripe 82 (S82), repeatedly observed by the Sloan Digital Sky Survey (SDSS) between 1998 and 2008. Originally aimed at supernova discovery, objects in this area were re-observed on average 60 times (see \citealt{macleod2012}, Sec. 2.2 for overview, and \citealt{annis2014} for details). Availability of well-calibrated \citep{ivezic2007}, long-baseline light curves spurred variability research (see \citealt{sesar2007}). The catalog prepared by \citet{schneider2008} as part of DR9  contains 9258 spectroscopically confirmed quasars. Within  $0.5 ''$  we find matching data for 9248 quasars from  PanSTARRS (PS1) DR2 \citep{chambers2011,flewelling2018}, xxx from Catalina Real-Time Transient Survey (CRTS, \citealt{drake2009}), and  xxx from Palomar Transient Factory (PTF, \citealt{rau2009}). Fig.~\ref{fig:lc_extent} illustrates the improvement in baseline coverage when combining various surveys. The width of each rectangle corresponds to the duration of each survey (survey baseline), and the height to the area covered by each survey. The lower edge of each rectangle marks the $5\sigma$ depth in the r-band (or equivalent). LSST stands out as providing the best extension of SDSS baseline,  and depth.  
 
@@ -441,6 +436,7 @@ PS1 i &  0.0247   & -0.2765 \\
 \caption{Distribution of median photometric uncertainties ('errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1 due to shallower depth data. This is the reason for using only SDSS-PS1 part of the combined light curve.}
 \label{fig:lc_errors}
 \end{figure} 
+
 %
 %
 %
@@ -484,8 +480,6 @@ From each light curve we start with SDSS segment only, and as we add more segmen
 each line corresponds to a different segment of simulated  combined SDSS-PS1-ZTF-LSST light curves. As we extend the baseline the histograms shift to towards the vertical dashed line that marks the input values of $\tau, \sigma$. The improvement with the simulated first year of ZTF data is not as large as with LSST, due to significant baseline increase compared to SDSS-PS1 (see Fig.~\ref{fig:lc_extent}).}
 \label{fig:lc_simulated_results}
 \end{figure*} 
-
-
 
 
 %
@@ -538,9 +532,6 @@ The DRW parameters recovered with \project{celerite} are  broadly consistent wit
 }
 \label{fig:K_sigma_ratios}
 \end{figure*}
-
-
-
 
 
 \subsection{Outliers: possible CLQSO candidates}
@@ -685,8 +676,13 @@ Dependence of both $\tau$ and $SF_{\infty}$ on black hole mass and quasar lumino
 %Additional PS1 data extending SDSS quasar light curves suggests that characteristic variability timescale is more strongly dependent on luminosity. This is consistent with \citet{sun2018}, who concluded with Structure Function analysis of their luminosity-matched quasar sample, that $\tau$ depends mostly on the bolometric luminosity. 
 
 
+%
+%
+%
+%
 
 \section{Discussion}
+\label{sec:discussion}
 \subsection{Trends with Eddington ratio}
 Anticorrelation of  variability amplitude with the Eddington ratio  has a variety of possible theoretical explanations. In the thin disk theory \cite{shakura1973, frank2002, netzer2013}, radius of the emission region at given wavelength increases with the Eddington ratio, and is inversely proportional to temperature \citep{rakshit2017}. Thus a hotter disk means that the emission observed in a given bandpass is emitted from a larger radius. From causality, a smaller region can be more variable than a larger one. Therefore, a  hotter disk would be less variable at a given wavelength than a colder one, and  the variability amplitude as studied in a particular bandpass (here, SDSS r-band) would be anticorrelated with Eddington ratio \citep{fausnaugh2016,edelson2015}. 
 
@@ -796,9 +792,13 @@ The variability on several years timescale could also be explained by the X-ray 
 Thus while CLAGN may be related to the state-change to ADAF flow \citep{sniegowska2019} similar to that of XRBs \citep{noda2018,ruan2019}, with cooling and heating fronts \citep{ross2018}, the more short-timescale variability requires approximately three distinct emission regions \citep{kubota2018}, with extended reprocessor (diffuse, hot, puffed-up inner disk, and BLR - \citealt{mchardy2018}), that reverberates the rapid hard X-ray variability in soft X-rays to optical via UV \citep{fausnaugh2018}. Some emission (especially soft X-rays) seems to require the warm Comptonizing corona \citet{kubota2018}. The warm corona, coupled with metallicity changes, and variation in turbulence level and cloud density, also helps explain the Quasar Main Sequence in the optical \citep{panda2019a,panda2019b}. Finally, the \citet{kubota2018} model, apart from being consistent with other mechanisms \citep{mchardy2018, panda2019a, sniegowska2019, lawrence2018, ross2018, ruan2019}, explains the observed correlation of variability amplitude with black hole mass as corresponding to variations in mass accretion rate. 
 
 
+%
+%
+%
+%
 
-
-\section{Summary and Conclusions}\label{sec:conclusions}
+\section{Summary and Conclusions}
+\label{sec:conclusions}
 We model the optical variability of ${\sim} 9000$ Stripe82 quasars as the Damped Random Walk (DRW, \citealt{kelly2009}). We treat the DRW as a Gaussian Process (GP), described by two parameters - characteristic timescale $\tau$ (representing decorrelation timescale, or light curve smoothness), and the asymptotic amplitude $SF_{\infty}$ (which relates to the amplitude of variability). We fit observed and simulated light curves with \project{celerite} - a fast GP solver \citep{foreman2017}. By simulating $10 000$  DRW light curves spanning length of 8 years, with 60 or 445 epochs, we explore the impact of the ratio of input timescale to the light curve baseline. We find that the light curve needs to be several times the length of input timescale to allow unbiased timescale retrieval, confirming K17. Motivated by this result we consider extending SDSS with PS1, PTF, CRTS, and ZTF data.  We calculate appropriate photometric offsets (color terms) to relate PS1 gri, PTF gR,  CRTS V, and ZTF r to SDSS r-band. However, due to larger photometric uncertainties of PTF, ZTF ,CRTS at faint magnitudes of SDSS quasars, we decide to use only PS1 r-band data. Furthermore, SDSS r-band and PS1 r-band are sufficiently similar that no photometric transformation is required.  Thus by extending the SDSS r-band light curves with PS1 DR2 r-band data we improve on the fidelity of recovered DRW parameters. 
 
 We identify 38 objects which exhibit tenfold increase in variability timescale when using the SDSS-PS1 dataset as compared to timescale inferred from SDSS alone. Visual inspection of their light curves show characteristics of changing-look quasars (magnitude difference larger than 0.5 mag). Of these, 5 are confirmed in the literature\citep{macleod2019, lamassa2015}. 
