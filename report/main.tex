@@ -271,18 +271,18 @@ Damped Random Walk (Ornstein-Uhlenbeck process, \citealt{rasmussen2006}) can be 
 
 \begin{eqnarray}
 k(\Delta t_{nm}) &=& \sigma^{2}\exp{(-\Delta t_{nm} / \tau)}  \nonumber \\
-                 &=& \sigma^{2} ACF(\Delta t_{nm})\nonumber
+                 &=& \sigma^{2} \mathrm{ACF}(\Delta t_{nm})\nonumber
 \end{eqnarray} 
 
-Here $\sigma^{2}$ is an amplitude of correlation decay as a function of $\Delta t_{nm}$,  while $\tau$ is the characteristic timescale over which correlation drops by $1/e$. For a DRW,  the correlation function $k(\Delta t_{nm})$ is also related to the autocorrelation function $ACF$. 
+Here $\sigma^{2}$ is an amplitude of correlation decay as a function of $\Delta t_{nm}$,  while $\tau$ is the characteristic timescale over which correlation drops by $1/e$. For a DRW,  the correlation function $k(\Delta t_{nm})$ is also related to the autocorrelation function ACF. 
 
 Not explicitly used in this paper, but of direct relevance to the DRW modeling, is the structure function (SF). SF can be found from the data as the root-mean-squared of  magnitude differences $\Delta m$  calculated as a function of temporal separation $\Delta t$ (we drop subscripts $n$,$m$ for brevity). SF is directly related to a DRW kernel $k(\Delta t)$:
 
 \begin{equation}
-SF(\Delta t) = SF_{\infty} (1-\exp{(-|\Delta t|/\tau)})^{1/2}
+\mathrm{SF}(\Delta t) = \mathrm{SF}_{\infty} (1-\exp{(-|\Delta t|/\tau)})^{1/2}
 \end{equation}
 
-For quasars SF follows approximately a power law: $SF \propto \Delta t^{\beta}$,  and it levels out for large time lags $\Delta t$ to a constant value of $SF_{\infty}$, as points in the lightcurve with large time separation cease to be correlated.   Note that $SF_\infty = \sqrt{2} \sigma$  in the above (also see \citet{macleod2012, bauer2009, graham2015a} for an overview).
+For quasars SF follows approximately a power law: $\mathrm{SF} \propto \Delta t^{\beta}$,  and for large time separation $\Delta t$, as epochs in the lightcurve cease to be correlated, it levels out to a constant value $\mathrm{SF}_{\infty}$ - the asymptotic SF.  Note that above $\mathrm{SF}_\infty = \sqrt{2} \sigma$ (also see \citet{macleod2012, bauer2009, graham2015a} for an overview).
 
 
 \subsection{Fitting}
