@@ -372,7 +372,7 @@ Finally, we clean the combined SDSS $r$ - PS1 $r$ quasar light curves using stan
 % QSO COLORS 
 \begin{figure*} % code/AA_quasar_colors.ipynb 
 \plotone{figs/SDSS_S82_CMD_qso_stars_2.png}
-\caption{Regions of color-color (upper left, upper right, bottom left), and color-magnitude (bottom right)  space occupied by SDSS S82 quasars (color) and stars (contours). We use quasar median photometry from \citet{schneider2010}, and standard stars catalog of \citet{ivezic2007}, showing a random subset of 10 000 stars. We find the SDSS-PS1 color terms using the region of SDSS color space that best represents quasars, that are generally bluer than the stellar locus:  $-0.5<(g-i)<1$. Quasars also overlap other variable sources (eg. RR Lyrae), not shown here \citep{sesar2007}. }
+\caption{Regions of color-color (upper left, upper right, bottom left), and color-magnitude (bottom right)  space occupied by SDSS S82 quasars (color) and stars (contours). We use quasar median photometry from \citet{schneider2010}, and standard stars catalog of \citet{ivezic2007}, showing a random subset of 10 000 stars. As seen in the bottom-left panel, quasars occupy a particular range of SDSS $g-i$ color. Therefore in fitting the linear color transformations we limit the color range to  $-0.35<(g-i)<0.75$ (vertical dashed lines in Fig.\ref{fig:offsetsPS1}). Quasars also overlap other variable sources (eg. RR Lyrae), not shown here \citep{sesar2007}. }
 \label{fig:quasarColors}
 \end{figure*} 
 
@@ -406,7 +406,7 @@ PS1 r &  0.0057   & -0.0014 \\
 PS1 i &  0.0247   & -0.2765 \\
 \enddata
 
-\tablecomments{To derive the color terms we used 10\%  random subset of the 1 mln+ SDSS S82 standard stars catalog \citep{ivezic2007}. To minimize scatter we selected stars brighter than $r$ 19 mag.}
+\tablecomments{To derive the color terms we used 10\%  random subset of the 1 mln+ SDSS S82 standard stars catalog \citep{ivezic2007}. To minimize scatter we selected bright stars with $r<19$ mag.}
 \end{deluxetable}
 
 
@@ -420,6 +420,7 @@ PS1 i &  0.0247   & -0.2765 \\
 
 
 \begin{figure}%[ht!] % ../code2/SDSS_PS1_DR2_stellar_offsets.ipynb
+\epsscale{1.2}
 \plotone{figs/PS1_DR2_detections_SDSS_Stripe82Calib.png}
 \caption{Of 100 000 randomly selected stars from 1 mln SDSS standard stars catalog almost 95 000 have PS1 DR2 photometry. For these we plot the difference in PS1 r-band and SDSS r-band as a function of SDSS magnitude. We overplot the median offset as filled magenta circles. There is a very slight slope, but all the way up to r < 20.5 the median difference is less than 0.01 mag (1 \% level).   }
 \label{fig:offsetPS1mag}
@@ -429,6 +430,7 @@ PS1 i &  0.0247   & -0.2765 \\
 
 
 \begin{figure}%[ht!]  %code2/Subsample_master_LC.ipynb 
+\epsscale{1.2}
 \plotone{figs/sim_subsampled2_stats_error_lin.png}
 \caption{Distribution of median photometric uncertainties ('errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1 due to shallower depth data. This is the reason for using only SDSS-PS1 part of the combined light curve.}
 \label{fig:lc_errors}
