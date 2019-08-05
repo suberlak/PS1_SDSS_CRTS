@@ -445,7 +445,7 @@ PS1 i &  0.0260   & -0.2830 \\
 
 \section{Simulations : lessons learned}\label{sec:simulation}
 
-We simulate the theoretical improvement of the DRW parameter retrieval in extended light curves. We generate long and well-sampled  `master' light curves, all with input $\tau = 575 $ days, $SF_{\infty} = 0.2$ mag (the median of S82 quasar distribution in M10), with a mean of 0.  We then subsample at real observed epochs for SDSS and PS1, and at predicted cadences for ZTF and LSST  (see Fig.~\ref{fig:lc_simulated}). To each such simulated light curve we add a magnitude offset corresponding to the mean of each SDSS-PS1 segment. That way the magnitude distribution of simulated light curves is similar to that of the observed SDSS-PS1 data. For the LSST 10-year segment (finishing in 2031) we assumed 50 epochs per year, randomly distributed throughout the year, with the following error model:
+We simulate the theoretical improvement of the DRW parameter retrieval in extended light curves. We generate long and well-sampled  `master' light curves, all with input $\tau = 575 $ days, $SF_{\infty} = 0.2$ mag (the median of S82 quasar distribution in M10), with 0 mean.  We subsample at real observed epochs for SDSS and PS1, and at predicted cadences for ZTF and LSST  (see Fig.~\ref{fig:lc_simulated}). To each simulated light curve we add a magnitude offset corresponding to the mean of the combined SDSS-PS1 light curve. That way the magnitude distribution of simulated light curves is similar to that of the observed SDSS-PS1 data. For the LSST 10-year segment (finishing in 2031) we assumed 50 randomly distributed  epochs per year, with the following error model:
 
 \begin{eqnarray}
 \label{eq:errorModel}
