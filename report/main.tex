@@ -345,7 +345,7 @@ We focus on the data pertaining to a 290 deg$^{2}$ region of the southern sky kn
 
 \begin{figure*} % code2/Stats_simulation.ipynb 
 \plotone{figs/lightcurves_extent.png}
-\caption{An illustration of survey baseline, sky area covered, and depth. The width of each rectangle corresponds to the extent of light curves available (or simulated) for Stripe 82 quasars for each survey. For SDSS this means DR7; for CRTS DR2, PS1 DR2, PTF DR2, ZTF year 2018, and LSST the full 10-year survey. The lower edge of each rectangle (marked by a solid thick line) corresponds to the $5\sigma$ limiting magnitude (SDSS $r$, PS1 $r$, PTF $R$, ZTF $r$, LSST $r$, CRTS $V$). The vertical extent corresponds to the total survey area (for SDSS, up to and including DR15).  Note how PS1 and PTF extend the baseline of SDSS by approximately $50\%$, and how inclusion of LSST triples the SDSS baseline. For reference, the area covered by LSST is $25 000$ sq.deg., which corresponds to  $60\%$ of the sky. The whole sky has an area of $4\pi$ steradians (41253 sq.deg.).}
+\caption{An illustration of survey baseline, sky area covered, and depth. The width of each rectangle corresponds to the extent of real or simulated light curves for Stripe 82 quasars for each survey. This includes SDSS DR7, CRTS DR2, PS1 DR2, PTF DR2, ZTF DR1, and for LSST the full 10-year survey. The lower edge of each rectangle (marked by a solid thick line) corresponds to the $5\sigma$ limiting magnitude (SDSS $r$, PS1 $r$, PTF $R$, ZTF $r$, LSST $r$, CRTS $V$). The vertical extent of each rectangle corresponds to the total survey area (for SDSS, up to DR15).  Note how PS1 and PTF extend the baseline of SDSS by approximately $50\%$, and how inclusion of LSST roughly triples the SDSS baseline. For reference, the area covered by LSST is $25 000$ sq.deg., corresponding to  $60\%$ of the whole sky (which has the area of $4\pi$ steradians, i.e. 41253 sq.deg.).}
 \label{fig:lc_extent}
 \end{figure*} 
 
@@ -360,17 +360,11 @@ m_{\mathrm{PS1}} - m_{\mathrm{SDSS}} = f(g-i)
 
 Some authors (eg. \citealt{li2018}) allow the transformation to be a higher-order polynomial, but as Fig.~\ref{fig:quasarColors} shows, quasars occupy a relatively narrow region of $g-i$ color space, and we find that the linear fit is sufficient. The derived linear coefficients for photometric transformations between SDSS $r$ and PS1 $gri$, PTF $gR$, CRTS $V$,  as a function of SDSS $g-i$ color, are listed in Table~\ref{tab:offsets}. We illustrate the process showing in Fig.~\ref{fig:offsetsPS1} the SDSS-PS1 standard stars data used to calculate the offsets. Note that the PS1 $r$ (middle panel) is very close to the SDSS $r$ - within  $0.01$ mag (1\% level) across the $g-i$ color range. We focus on SDSS $r$ - PS1 $r$ offset as a function of magnitude in Fig.~\ref{fig:offsetPS1mag} - the near-equivalence of bandpass coverage is valid at 1\% level up to $r < 20.5$. %Because of that, we also combine PS1 r-band and SDSS r-band without applying any offsets. 
 
-In selecting the most beneficial datasets to complement SDSS $r$ we also consider the associated photometric uncertainties (aka `errors'). As shown on Fig.~\ref{fig:lc_extent},  PTF and CRTS are shallower than SDSS or PS1. Therefore for faint objects, like quasars (for S82 sample the population median is $r \sim 20$ mag) PTF and CRTS have larger photometric uncertainties than SDSS or PS1. Indeed, as Fig.~\ref{fig:lc_errors} shows, the median errors for PTF, CRTS, and ZTF quasar data is wider than the corresponding SDSS and PS1 data. As 
+In selecting the most beneficial datasets to complement SDSS $r$ we also consider the associated photometric uncertainties (aka `errors'). As shown on Fig.~\ref{fig:lc_extent},  PTF and CRTS are shallower than SDSS or PS1. Therefore for faint objects, like quasars (for S82 sample the population median is SDSS $r \sim 20$ mag) PTF and CRTS have larger photometric uncertainties than SDSS or PS1. Indeed, as Fig.~\ref{fig:lc_errors} shows, the distribution of median errors for PTF, CRTS, and ZTF quasar data is wider than the corresponding SDSS and PS1 data. As simulations show (ec.~\ref{sec:simulation}), although PTF and CRTS data do extend the SDSS baseline, their error properties decreases their utility in complementing the SDSS dataset. After all, the SDSS baseline extension afforded with PTF and CRTS is comparable to that achieved with PS1 data alone (Fig.~\ref{fig:lc_extent}). 
 
+Furthermore, to mitigate problems that could arise when applying photometric transformations (such as spurious variability due to incorrect offsets, or color-dependent variability), we choose to combine SDSS $r$ with only PS1 $r$, since as Figs.~\ref{fig:offsetsPS1},~\ref{fig:offsetPS1mag} show, SDSS $r$ and PS1 $r$ are sufficiently similar (at 1\% level up to 20.5 mag) that no photometric transformation is required. 
 
-
-Simulations show that due to larger errors PTF and CRTS while extending the SDSS baseline also decrease the overall quality of the light curves by making them more noisy. 
-
-It turns out that, as we test with simulations in Sec.~\ref{sec:simulation}, the best improvement in recovery of quasar DRW parameters is obtained by utilizing only SDSS and PS1 data. This is partly due to both surveys having similar photometric depth (Fig.~\ref{fig:lc_extent}), and therefore comparable distributions of photometric uncertainties (Fig.~\ref{fig:lc_errors}). Furthermore, to mitigate the problems that could arise when applying photometric transformations of PS1 g,i to SDSS r, we end up using only SDSS r and PS1 r, with no offsets applied. 
-
-
-Similarly to \cite{charisi2016, suberlak2017}, we perform  light curve cleaning. Of 8516 light curves with 662 092 epochs, we remove 14 156  $5\sigma$ outliers in photometric uncertainty and magnitude space. We also perform day averaging (error weighted) when more than 1 epoch was available per night, which further reduces the number of epochs by 67 615. If combined nightly error was $<0.02$, we add in quadrature $0.01$ mag.  In the final sample there are 580 321 epochs.  % same as Sec. 2.3 Suberlak2017....
-
+Finally, we clean the combined SDSS $r$ - PS1 $r$ quasar light curves using standard procedures of  $\sigma$-clipping in magnitude and error space, and error-weighted day-averaging, to mitigate the impact of bad photometry, and average out the intra-night variability (as in \citealt{charis2016,suberlak2017}). Of 9248 SDSS-PS1 quasars, 8516 have the PS1 $r$ data with 662 092 epochs. Of these,  $5\sigma$ clipping removes  14 156 epochs, and day-averaging brings that number down by 67 615 epochs (of multiple observations per night that were averaged). To avoid unphysically small errors,  we add in quadrature $0.01$ mag if combined nightly error is $<0.02$ mag. In the final sample there are 580 321 epochs.
 
 
  
@@ -396,7 +390,7 @@ Similarly to \cite{charisi2016, suberlak2017}, we perform  light curve cleaning.
 \begin{deluxetable}{c|cc}
 %\tablewidth{\textwidth}
 % solution from https://tex.stackexchange.com/questions/370268/aastex61-single-column-deluxetable-cannot-set-width 
-\tablecaption{Color terms (offsets) between CRTS, PTF, PS1 passbands used in combined light curves, and  SDSS, using the mean $(g-i)_{\mathrm{SDSS}}$ color to spread the stellar locus. Thus the $r_{\mathrm{SDSS}}$ synthetic magnitude ($r_{s}$ for short) can be found as $r_{s} = x-B_{0}-B_{1}(g-i)_{\mathrm{SDSS}}$. This linear trend is illustrated on Fig.\ref{fig:offsetsPS1}, where we plot $(x-r_{\mathrm{SDSS}})$ as a function of $(g-i)_{\mathrm{SDSS}}$ for $x=g_{\mathrm{P1}}, r_{\mathrm{P1}},i_{\mathrm{P1}}$.\label{tab:offsets}}  
+\tablecaption{Color terms (photometric offsets) between CRTS, PTF, PS1 passbands and  SDSS, using the SDSS mean $g-i$ color to spread the stellar locus. Thus the SDSS $r$ synthetic magnitude, $r_{s}$, can be found as $r_{s} = x-B_{0}-B_{1}(g-i)$. This linear trend is illustrated on Fig.\ref{fig:offsetsPS1}, where we plot $(x-r_{\mathrm{SDSS}})$ as a function of $(g-i)_{\mathrm{SDSS}}$ for $x=g_{\mathrm{P1}}, r_{\mathrm{P1}},i_{\mathrm{P1}}$.\label{tab:offsets}}  
 
 \tablehead{
 \colhead{Band (x)} & 
@@ -412,10 +406,8 @@ PS1 r &  0.0057   & -0.0014 \\
 PS1 i &  0.0247   & -0.2765 \\
 \enddata
 
-\tablecomments{To derive the color terms we used SDSS S82 standard stars catalog \citep{ivezic2007}. We randomly selected 10\% of that catalog, for which 48250 have CRTS light curves. We  obtained PS1 photometry from MAST, and PTF from IRSA PTF Object Catalog. We imposed quality cuts requiring that the stars are bright: $r < 19$.}
+\tablecomments{To derive the color terms we used 10\%  random subset of the 1 mln+ SDSS S82 standard stars catalog \citep{ivezic2007}. To minimize scatter we selected stars brighter than $r$ 19 mag.}
 \end{deluxetable}
-
-
 
 
 
