@@ -455,13 +455,8 @@ x &=& 10^{0.4(m-m_{5})} \nonumber
 \end{eqnarray}
 
 with  $\sigma_{sys} = 0.005$, $\gamma=0.039$, $m_{5} = 24.7$ (see \citealt{ivezic2019}, Sec.3.2).
-For the ZTF 1-year segment (Spring 2019 ZTF DR1 including the data from 2018) we assumed 120 observations (every three nights) in $g_{\mathrm{ZTF}}$ and $r_{\mathrm{ZTF}}$, deriving the magnitude-dependent error model by plotting for ZTF standard stars in Fig.~\ref{fig:ztf_errors} best mag rms as a function of best median magnitude. We find that the LSST error model (Eq.~\ref{eq:errorModel}) with $\gamma = 0.05$, $\sigma_{sys} = 0.005 $, and $m_{5} = 20.8$ adequately describes the ZTF photometric uncertainty. 
+For the ZTF 1-year segment (Spring 2019 ZTF DR1 including the data from 2018) we assumed 120 observations (every three nights) in $g_{\mathrm{ZTF}}$ and $r_{\mathrm{ZTF}}$, deriving the magnitude-dependent error model by plotting best mag rms as a function of best median magnitude for ZTF matches to S82 standard stars in Fig.~\ref{fig:ztf_errors}. We find that the LSST error model (Eq.~\ref{eq:errorModel}) with $\gamma = 0.05$, $\sigma_{sys} = 0.005 $, and $m_{5} = 20.8$ adequately describes the ZTF photometric uncertainty. 
 
-\begin{figure*}%[ht!] % code2/Subsample_master_LC.ipynb
-\plotone{figs/Simulated_DRW-0008_sampled-3537034_fit.png}
-\caption{Simulated well-sampled underlying DRW process - one of `master' light curves ($\tau=575$d, SF$_{\infty} = 0.2$ mag, 4 points per day) shown with  small black dots. To simulate observations, the cadence is degraded (subsampled) to match the ground-based cadence corresponding to real quasar data from SDSS (red), PS1 (green) segments, and simulated LSST (blue) epochs (here we use SDSS-PS1 epochs for quasar dbID=3537034). The orange `error snake' is an envelope marking the standard deviation of the fit to the data using a Gaussian process  with DRW kernel (Sec.~\ref{sec:simulation}).}
-\label{fig:lc_simulated}
-\end{figure*} 
 
 \begin{figure}%[ht!]  % code2/Simulate_ZTF_cadence_error.ipynb
 \plotone{figs/ZTF_error_curve.png}
@@ -470,7 +465,16 @@ For the ZTF 1-year segment (Spring 2019 ZTF DR1 including the data from 2018) we
 \end{figure} 
 
 
-To mirror observational conditions we add to the true underlying DRW signal a Gaussian noise, with variance defined by photometric uncertainties for corresponding surveys. Given the noise properties of each survey (Fig.~\ref{fig:lc_errors}), we find that relatively large uncertainties of CRTS and PTF segments introduce less improvement in recovery of DRW parameters, with a  similar baseline already afforded by the PS1 data (Fig.~\ref{fig:lc_extent}).  We also checked that inclusion of ZTF data for 2018 would not significantly change our results. Using PS1 data with its excellent  deep photometry (as compared to ZTF or PTF) is the best improvement over existing SDSS results.  In the future (after more data has been assembled and re-calibrated) ZTF will help, but not as dramatically as LSST (see Fig.~\ref{fig:lc_simulated_results}).  For this reason we use only SDSS-PS1 portion of quasar light curves, as the best tradeoff between adding more baseline vs introducing more uncertainty with noisy data.
+
+\begin{figure*}%[ht!] % code2/Subsample_master_LC.ipynb
+\plotone{figs/Simulated_DRW-0008_sampled-3537034_fit.png}
+\caption{Simulated well-sampled underlying DRW process - one of `master' light curves ($\tau=575$d, SF$_{\infty} = 0.2$ mag, 4 points per day) shown with  small black dots. To simulate observations, the cadence is degraded (subsampled) to match the ground-based cadence corresponding to real quasar data from SDSS (red), PS1 (green) segments, and simulated LSST (blue) epochs (here we use SDSS-PS1 epochs for quasar dbID=3537034). The orange `error snake' is an envelope marking the standard deviation of the fit to the data using a Gaussian process  with DRW kernel (Sec.~\ref{sec:simulation}).}
+\label{fig:lc_simulated}
+\end{figure*} 
+
+
+
+To mirror observational conditions we add to the true underlying DRW signal a Gaussian noise, with variance defined by photometric uncertainties for corresponding surveys. Fig.~\ref{fig:lc_simulated} illustrates the simulated `master' light curve (black dots, 4 per day), subsampled at SDSS (red), PS1 (green), and LSST (blue) cadence. While PS1 provides a 50\% improvement of the SDSS baseline, LSST will nearly triple it. Fig.~\ref{fig:lc_simulated_results} shows how the simulated distribution of DRW parameters $\sigma$, $\tau$, changes as the SDSS quasar light curves are extended with PS1, ZTF, and LSST data. In the future (after more data has been assembled and re-calibrated), ZTF will help, but not as dramatically as LSST. Note that ZTF, due to larger errors (\ref{fig:lc_errors}), causes a widening of the recovered $\tau$ distribution. Using PS1 data with its excellent  deep photometry (as compared to ZTF or PTF) is the best improvement over existing SDSS results.  For this reason we use only SDSS-PS1 portion of quasar light curves, as the best tradeoff between adding more baseline vs introducing more uncertainty with noisy data.
 
 
 \begin{figure*}  % code2/Explore_simulation_results.ipynb 
