@@ -480,8 +480,8 @@ To mirror observational conditions we add to the true underlying DRW signal a Ga
 \begin{figure*}  % code2/Explore_simulation_results.ipynb 
 \plotone{figs/Simulated_Jeff1-EXP-190401.png}
 \caption{The ratio of DRW parameters fitted with \project{celerite}: $\tau$ and $\sigma$, to the input $\tau_{in} = 575 $d, $\sigma_{in} = 0.2 / \sqrt{2} {\sim} 0.14$  ($SF_{\infty}=0.2$ mag). We simulated 9258 `master' light curves, and  subsampled at real SDSS r-band or PS1 r-band cadence and photometric uncertainties, and simulated ZTF and LSST cadence. To simulate observing conditions, the underlying DRW signal was convolved with a Gaussian noise corresponding to epochal errors. 
-From each light curve we start with SDSS segment only, and as we add more segments (PS1, ZTF, LSST), we refit for DRW model parameters with \project{celerite}. Thus
-each line corresponds to a different segment of simulated  combined SDSS-PS1-ZTF-LSST light curves. As we extend the baseline the histograms shift to towards the vertical dashed line that marks the input values of $\tau, \sigma$. The improvement with the simulated first year of ZTF data is not as large as with LSST, due to significant baseline increase compared to SDSS-PS1 (see Fig.~\ref{fig:lc_extent}).}
+For each light curve we start with SDSS segment only, and as we add more segments (PS1, ZTF, LSST), we refit for DRW model parameters with \project{celerite}. Thus
+each distribution corresponds to a different segment of simulated  combined SDSS-PS1-ZTF-LSST light curves. Extending the baseline shifts the distribution of recovered DRW parameters towards unbiased regime - vertical dashed line marks input matching the output. This corresponds to the upper-right (well-constrained) portion of Fig.~\ref{fig:rho_space}.}
 \label{fig:lc_simulated_results}
 \end{figure*} 
 
@@ -510,7 +510,7 @@ In this section we first correct fitted $\tau$, $\sigma$ for wavelength dependen
 
 
 \subsection{Comparison to M10}
-The DRW parameters recovered with \project{celerite} are  broadly consistent with M10 - Fig.~\ref{fig:tau_sf_dist} shows the rest-frame  $\tau$, and $SF_{\infty}$ distributions for our results for the SDSS segment (blue dashed line),  SDSS-PS1 combined light curves (green dot-dashed line), and  M10 SDSS for r-band only (red solid line). When using the same data as M10 (SDSS), our results agree. A detailed object-by-object comparison on Fig.~\ref{fig:sigma_tau_ratios_M10} reveals a slight offset between log-ratios of DRW parameters, which can be attributed to software differences, and cleaning process applied to SDSS-PS1 light curves.
+The DRW parameters recovered with \project{celerite} are  broadly consistent with M10 - Fig.~\ref{fig:tau_sf_dist} shows the rest-frame  $\tau$, and $SF_{\infty}$ distributions for our results for the SDSS segment (blue dashed contours),  SDSS-PS1 combined light curves (green dot-dashed contours), and  M10 SDSS for r-band only (red solid contours). When using exactly the same data as M10 (SDSS), our results agree. The offset of 0.05 dex  between our and M10 results for SDSS, seen on the left panel of Fig.~\ref{fig:sigma_tau_ratios_M10}, can be attributed to data cleaning and software differences. The right panel of Fig.~\ref{fig:sigma_tau_ratios_M10} shows the same distribution in terms of $K-\hat{\sigma}$ space, orthogonal to $\tau-\sigma$, where $\hat{\sigma} = \sigma\sqrt{2 / \tau}$, and $K = \tau \sqrt{\sigma} 2^{1/4} $. 
 
 
 \begin{figure*} % code2/Compare_Celerite_Chelsea_real_fits.ipynb  
