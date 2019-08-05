@@ -380,8 +380,9 @@ Finally, we clean the combined SDSS $r$ - PS1 $r$ quasar light curves using stan
 
 % PS1 
 \begin{figure*}% code/AC_SDSS_PS1_offsets.ipynb 
+\epsscale{1.2}
 \plotone{figs/Offsets_PS1-SDSSr_SDSSgi_ext-NO.png}
-\caption{The SDSS-PS1 offsets, derived from the SDSS standard stars catalog \citep{ivezic2007}. From randomly chosen subset of 50 000 stars, we selected only 23 000 that are sufficiently bright ($r_{\mathrm{SDSS}} < 19$) to minimize scatter due to photometric uncertainty. On each panel we plot 20 000 SDSS stars that have PS1 match within 0.1 arcsec. Vertical dashed lines mark the region in the SDSS color space occupied by quasars (see Fig.~\ref{fig:quasarColors}), used to fit the stellar locus with a first order polynomial, marked by the solid red line.}
+\caption{The SDSS-PS1 offsets, derived with the SDSS standard stars~\citep{ivezic2007}. From randomly chosen subset of 100 000 SDSS stars, 95 000 have PS1 DR2 data. To minimize scatter due to larger errors  we select a subset of 40 000 stars with  $r < 19$ mag. Vertical dashed lines mark the region in the SDSS color space occupied by quasars (see Fig.~\ref{fig:quasarColors}), used to fit the stellar locus with a first order polynomial, marked by the solid red line. The best-fit slopes: 0.619, -0.04, -0.283 for PS1 $g$, $r$, $i$, respectively, are listed as $B_{1}$ in Table~\ref{tab:offsets}.}
 \label{fig:offsetsPS1}
 \end{figure*} 
 
@@ -401,9 +402,9 @@ Finally, we clean the combined SDSS $r$ - PS1 $r$ quasar light curves using stan
 CRTS V & -0.0464  & -0.0128 \\
 PTF g &  -0.0294  &  0.6404 \\
 PTF R &  0.0058   & -0.1019 \\
-PS1 g &  0.0194   &  0.6207 \\
-PS1 r &  0.0057   & -0.0014 \\
-PS1 i &  0.0247   & -0.2765 \\
+PS1 g &  0.0174   &  0.6194 \\
+PS1 r &  0.0065   & -0.0044 \\
+PS1 i &  0.0260   & -0.2830 \\
 \enddata
 
 \tablecomments{To derive the color terms we used 10\%  random subset of the 1 mln+ SDSS S82 standard stars catalog \citep{ivezic2007}. To minimize scatter we selected bright stars with $r<19$ mag.}
@@ -431,8 +432,8 @@ PS1 i &  0.0247   & -0.2765 \\
 
 \begin{figure}%[ht!]  %code2/Subsample_master_LC.ipynb 
 \epsscale{1.2}
-\plotone{figs/sim_subsampled2_stats_error_lin.png}
-\caption{Distribution of median photometric uncertainties ('errors') in combined r-band real light curves. This shows that the PTF and ZTF segments have much larger errors than SDSS, PS1 due to shallower depth data. This is the reason for using only SDSS-PS1 part of the combined light curve.}
+\plotone{figs/sim_subsampled2_stats_error_linear.png}
+\caption{Distribution of median photometric uncertainties (`errors') in r-band real light curves. The PTF and ZTF segments have much larger errors than SDSS and PS1 due to shallower depth data. CRTS errors (not shown) are on average 50\% larger than PTF.}
 \label{fig:lc_errors}
 \end{figure} 
 
