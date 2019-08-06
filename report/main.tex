@@ -612,15 +612,8 @@ We investigate these relations in more detail by fitting $f$ ( $\tau$ or $SF_{\i
 
 using a Bayesian linear regression method that incorporates measurement uncertainties in all latent variables~\citep{kelly2007b}. 
 
-We compare the change in retrieved fit coefficients caused by adding PS1 data to SDSS against M10 SDSS-only study. Note that M10 fitted  DRW model treating each of the 5 SDSS bands as a separate light curve, resulting in over thirty thousand values of $\tau, SF_{\infty}$ for nine thousand S82 quasars. Grouping fitted quasar parameters by band, they were correlated to quasar physical parameters with Eq.~\ref{eq:powlawmodel}. Fig.~\ref{fig:ugriz_drw_M10} shows the posterior samples for fitting  Eq.~\ref{eq:powlawmodel} to $f=SF_{\infty}$ for quasar data separately for each SDSS bandpass. 
-
-Each band yields a slightly different fit coefficient. M10 reported as the fit result the band-mean (red vertical dashed line).
-
-Since this only SDSS-PS1 $r$ band data, we compare the fit coefficients to M10 SDSS $r$ data (green solid vertical line on Fig.~\ref{fig:ugriz_drw_M10}). We show the results of fitting Eq.~\ref{eq:powlawmodel} to new SDSS and SDSS-PS1 parameters on Figs.~\ref{fig:drw_tau_posterior},~\ref{fig:drw_sf_posterior}. First, with $f=\tau$ in Eq.~\ref{eq:powlawmodel} (Fig.~\ref{fig:drw_tau_posterior}), the SDSS-PS1 data confirms M10 for luminosity dependence (the posterior MCMC samples overlap), but the $M_{BH}$ dependence on $\tau$ is weaker by 0.1 dex. Second, on Fig.~\ref{fig:drw_sf_posterior} with  $f=SF_{\infty}$, $SF_{\infty}$ has a slightly weaker dependence on $M_{BH}$ (by 0.05 dex compared to M10). The difference between \project{celerite} results and M10 for SDSS only can be attributed to data cleaning ($5\sigma$ clipping, day-averaging), that was not performed by M10, and software differences. Each distribution from 
+We compare the change in retrieved fit coefficients caused by adding PS1 data to SDSS against M10 SDSS-only study. Note that M10 fitted  DRW model treating each of the 5 SDSS bands as a separate light curve, resulting in over thirty thousand values of $\tau, SF_{\infty}$ for nine thousand S82 quasars. Grouping fitted quasar parameters by band, they were correlated to quasar physical parameters with Eq.~\ref{eq:powlawmodel}. Fig.~\ref{fig:ugriz_drw_M10} shows the posterior samples for fitting  Eq.~\ref{eq:powlawmodel} to $f=SF_{\infty}$ for quasar data separately for each SDSS bandpass.  Each band yields a slightly different fit coefficient. M10 reported as the fit result the band-mean (red vertical dashed line). Since this study uses only $r$ band data, we compare the fit coefficients to M10 SDSS $r$ data (green solid vertical line on Fig.~\ref{fig:ugriz_drw_M10}). We show the results of fitting Eq.~\ref{eq:powlawmodel} to new SDSS and SDSS-PS1 parameters on Figs.~\ref{fig:drw_tau_posterior},~\ref{fig:drw_sf_posterior}. First, with $f=\tau$ in Eq.~\ref{eq:powlawmodel} (Fig.~\ref{fig:drw_tau_posterior}), the SDSS-PS1 data confirms M10 for luminosity dependence (the posterior MCMC samples overlap), but the $M_{BH}$ dependence on $\tau$ is weaker by 0.1 dex. Second, on Fig.~\ref{fig:drw_sf_posterior} with  $f=SF_{\infty}$, $SF_{\infty}$ has a slightly weaker dependence on $M_{BH}$ (by 0.05 dex compared to M10). The difference between \project{celerite} results and M10 for SDSS can be attributed to data cleaning ($5\sigma$ clipping, day-averaging), that was not performed by M10 on SDSS, and software differences. Each distribution from 
 Figs.~\ref{fig:drw_tau_posterior} and ~\ref{fig:drw_sf_posterior} is summarized in Table~\ref{tab:coefficients}, with the uncertainty in A,C,D fit coefficients estimated from  the standard deviation of the posterior samples. 
-
-
-
 
 
 \begin{figure*}  % ../code2/Read_IDL.ipynb  
@@ -629,12 +622,10 @@ Figs.~\ref{fig:drw_tau_posterior} and ~\ref{fig:drw_sf_posterior} is summarized 
 \label{fig:ugriz_drw_M10}
 \end{figure*} 
 
- Mean and standard deviation of each distribution are summarized in Table~\ref{tab:coefficients}.  For both $f{=}\tau$  and $f{=}SF_{\infty}$, the new SDSS-PS1 data is consistent with M10 results.
-
 % https://github.com/AASJournals/AASTeX60/issues/61 
 \begin{deluxetable*}{cc|CCCC}
 %\tablewidth{\pagewidth}
-\tablecaption{Comparison of best-fit coefficients for Eq.~\ref{eq:powlawmodel} using M10 results, and this work (S18). B is set to $0.17$ or $0.479$ from fitting a power law between $\lambda_{RF}$ and $\tau$, $SF_{\infty}$ (see Fig.~\ref{fig:lambda_dependence}). For $f=\tau$, both C and D are almost the same between M10 and this work using SDSS-PS1 only (rows 1 and 3). For $f = SF_{\infty}$, C and D are also the same between M10 and S19, SDSS-PS1 (rows 4, 6).\label{tab:coefficients} } 
+\tablecaption{Comparison of best-fit coefficients for Eq.~\ref{eq:powlawmodel} using M10 results, and this work (S18). B is fixed to $0.17$ or $0.479$ from fitting a power law between $\lambda_{RF}$ and $\tau$, $SF_{\infty}$ (see Fig.~\ref{fig:lambda_dependence}). For $f=\tau$, C is almost the same between M10 and this work for SDSS-PS1 (rows 1 and 3). However, D based on SDSS-PS1 data is smaller than M<10 by 0.05 dex (row 3). For $f = SF_{\infty}$, SDSS-PS1 based C is within 0.002 dex from M10 (rows 4,6), but D based on SDSS-PS1 data is smaller than M10 by 0.02 dex. \label{tab:coefficients} } 
 
 \tablehead{\colhead{$f$} & \colhead{Source} & \colhead{$A$(offset)} & \colhead{$B(\lambda_{RF})$} & \colhead{$C (M_{i})$} & \colhead{$D (M_{\mathrm{BH}})$} }
 \startdata
