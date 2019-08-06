@@ -559,18 +559,19 @@ $\sigma_{G}$ is a robust estimate of the standard deviation, and is related to t
 
 
 \subsection{Rest-frame Wavelength Correction}
-Since quasars are located at non-negligible redshifts, the observed wavelengths (eg. through the SDSS bandpass), depending on the redshift, probe a region of shorter wavelengths in emitted spectrum: $\lambda_{obs} {=}\lambda_{RF}  (1+z)$ (see Fig.7 in \citealt{shen2018}). Thus to compare variability of the same parts of the rest-frame spectrum, we need to estimate the rest-frame emission wavelength $\lambda_{RF}$, and correct for the dependence of variability parameters ($\tau, SF_{\infty}$) on $\lambda_{RF}$. Since this study only used r-band light curves, on Fig.~\ref{fig:lambda_dependence} we illustrate the wavelength dependence of $\tau, SF_{\infty}$ with M10 SDSS $urz$ data. We overplot with red contours the new fit results using only the SDSS portion of each light curve, and with orange contours the fit results using combined SDSS-PS1 light curves. We take the center of each bandpass to approximate the  observed wavelength. That is for SDSS $urz$ bandpasses,  $\lambda_{obs} = 3520$, $6250$, $9110$ $\mbox{\AA}$, respectively. Then for each quasar the rest-frame wavelength (corresponding to the bandpass center) is estimated given its redshift:  $\lambda_{RF} = \lambda_{obs} / (1+z)$.  On top of $\tau, SF_{\infty}$ as a function of $\lambda_{RF}$ scaled to  $4000 \mbox{\AA}$, we plot a power lae dependence employed by M10:
+
+Objects at cosmological distances are embedded in Hubble flow due to the expansion of the Universe~\cite{riess2019}. Therefore light observed frin a distant quasar would have been emitted at shorter wavelength in quasar's rest-frame: $\lambda_{RF} = \lambda_{obs} / (1+z)$, where $z$ is the cosmological redshift. Quasars at different redshifts probe different regions of rest-frame spectra (see Fig.7 in \citealt{shen2018}). Thus before correlating the DRW parameters with quasar properties we correct $\sigma, \tau$ for the $\lambda_{RF}$ dependence, studied by M10 with SDSS $ugriz$ light curves. We plot on Fig.~\ref{fig:lambda_dependence} the DRW parameters: $\mathrm{SF}_{\infty}$ and $\tau$, as a function of $\lambda_{RF}$. A solid line marks the M10 best-fit power law trend:
 \begin{equation}
 f \propto \left( \frac{\lambda_{RF}}{4000 \mbox{\AA}} \right)^{B}
 \end{equation}
-with  $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively. We use this relationship to shift the rest-frame $SF_{\infty}$ and $\tau$ to   $4000 \mbox{\AA}$. 
 
+with  $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively.
 
   
 \begin{figure} % code2/Compare_Celerite_Chelsea_real_fits.ipynb 
 \epsscale{1.2}
 \plotone{figs/macleod2010_Fig13_kdeplot_Chelsea_cut_NEW_.png}
-\caption{Rest-frame timescale $\tau$ (top panel), and asymptotic structure function $SF_{\infty}$ (bottom panel), as a function of rest-frame wavelength $\lambda_{RF}$. The background contours show M10 SDSS $ urz $  data, and the foreground contours  denote our results using  SDSS (red) and SDSS-PS1 (orange) segments. The red line indicates the best-fit power law to M10 data, with $B=0.17$ an $-0.479$ for $\tau_{RF}$, and $SF_{\infty}$, respectively.}
+\caption{Rest-frame timescale $\tau$ (top panel), and asymptotic structure function $SF_{\infty}$ (bottom panel), as a function of rest-frame wavelength $\lambda_{RF}$. The background contours show M10 SDSS $ urz $  data, and the foreground contours  denote our results using  SDSS (red) and SDSS-PS1 (orange) segments. The red line indicates the best-fit power law to M10 data, with $B=0.17$ an $-0.479$ for $\tau_{RF}$, and $SF_{\infty}$, respectively. We take the center of each bandpass to approximate the  observed wavelength: that is, for SDSS $urz$ bandpasses,  $\lambda_{obs} = 3520$, $6250$, $9110$ $\mbox{\AA}$, respectively, and given the redshift of each quasar, find $\lambda_{RF}=\lambda_{obs} / (1+z)$.}
 \label{fig:lambda_dependence}
 \end{figure} 
 
