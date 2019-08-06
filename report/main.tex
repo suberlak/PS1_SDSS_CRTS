@@ -560,7 +560,7 @@ $\sigma_{G}$ is a robust estimate of the standard deviation, and is related to t
 
 \subsection{Rest-frame Wavelength Correction}
 
-Objects at cosmological distances are embedded in Hubble flow due to the expansion of the Universe~\cite{riess2019}. Therefore light observed frin a distant quasar would have been emitted at shorter wavelength in quasar's rest-frame: $\lambda_{RF} = \lambda_{obs} / (1+z)$, where $z$ is the cosmological redshift. Quasars at different redshifts probe different regions of rest-frame spectra (see Fig.7 in \citealt{shen2018}). Thus before correlating the DRW parameters with quasar properties we correct $\sigma, \tau$ for the $\lambda_{RF}$ dependence, studied by M10 with SDSS $ugriz$ light curves. We plot on Fig.~\ref{fig:lambda_dependence} the DRW parameters: $\mathrm{SF}_{\infty}$ and $\tau$, as a function of $\lambda_{RF}$. A solid line marks the M10 best-fit power law trend:
+Objects at cosmological distances are embedded in Hubble flow due to the expansion of the Universe~\citep{riess2019}. Therefore light observed frin a distant quasar would have been emitted at shorter wavelength in quasar's rest-frame: $\lambda_{RF} = \lambda_{obs} / (1+z)$, where $z$ is the cosmological redshift. Quasars at different redshifts probe different regions of rest-frame spectra (see Fig.7 in \citealt{shen2018}). Thus before correlating the DRW parameters with quasar properties we correct $\sigma, \tau$ for the $\lambda_{RF}$ dependence, studied by M10 with SDSS $ugriz$ light curves. We plot on Fig.~\ref{fig:lambda_dependence} the DRW parameters: $\mathrm{SF}_{\infty}$ and $\tau$, as a function of $\lambda_{RF}$. A solid line marks the M10 best-fit power law trend:
 \begin{equation}
 f \propto \left( \frac{\lambda_{RF}}{4000 \mbox{\AA}} \right)^{B}
 \end{equation}
@@ -580,9 +580,8 @@ with  $B=-0.479$ and $0.17$ for $SF_{\infty}$ and $\tau$, respectively.
 
 \subsection{Trends with Black Hole Mass, Absolute Luminosity}
 
-Correlations between variability parameters and the physical properties of quasars are of high utility. In the era of large synoptic surveys (ZTF, LSST), only a few percent of AGN with optical time-series will be followed up with spectroscopy \citep{ivezic2019}. A relationship where $(\tau$,$SF_{\infty}) = f(M_{i}, M_{BH})$ would allow to infer black hole masses  and luminosities for millions of quasars.
+In the era of large synoptic surveys such as ZTF or LSST, the large increase in the number of discovered quasars means that due to limited observational resources we will afford a spectroscopic follow-up for only a few percent of AGN with optical time-series~\citep{ivezic2019}. Therefore, a relationship between quasar variability parameters ($\tau, \sigma$), and physical properties $M_{BH}$, $M_{i}$ could provide an estimate of the latter for millions of quasars. We inspect correlations between $\tau, \sigma$  and $M_{BH}$, $M_{i}$, using \cite{shen2011} catalog, based on single-epoch SDSS spectra. $M_{i}$ is K-corrected to  $z= 2$, corresponding to the peak of quasar activity~\citep{richards2006a}. For details, see Appendix~\ref{app:measureBHmass}.
 
-Since S82 quasars are spectroscopically-confirmed, we use estimates of quasar physical properties, such as black hole mass, or absolute luminosity $M_{i}$, from \cite{shen2011}, based on single-epoch spectra.  $M_{i}$ in that catalog is K-corrected to the redshift of 2, $M_{i}(z=2)$, which corresponds the peak of quasar activity and requires the least extrapolation from the measured i-band \citep{richards2006a}. For details, see Appendix~\ref{app:measureBHmass}.
 
 \begin{figure*} % ../code2/Trends_quasar_properties.ipynb 
 \plotone{figs/macleod2010_Fig12_Shen2011.png}
