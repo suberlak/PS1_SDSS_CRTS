@@ -287,7 +287,7 @@ For quasars SF follows approximately a power law: $\mathrm{SF} \propto \Delta t^
 
 
 \subsection{Fitting}
-We evaluate the likelihood of the DRW model with a particular set of $\tau,\sigma$ given the data with \project{celerite}  - a fast GP solver \citep{foreman2017}. The underlying matrix algebra is similar to that used by \cite{rybicki1992}, \cite{kozlowski2010}, and M10. Also, as in previous work, we use a prior on DRW parameters that is  uniform  in log space :  $1 / (\sigma \tau)$. The main difference in our approach is that rather than adopting the Maximum A-Posteriori (MAP) as the `best-fit' value for the DRW parameters (as in \citealt{kozlowski2010}, K17, \citealt{kozlowski2016b}, M10, \citealt{macleod2011}),  we find the expectation value of the marginalized log posterior. This is advantageous because of a non-Gaussian shape of the log posterior - otherwise, if the log posterior was a 2D normal distribution, the expectation value would coincide with the maximum of the log posterior (MAP solution). 
+We evaluate the likelihood of the DRW model with a particular set of $\tau,\sigma$ given the data with \project{celerite}  - a fast GP solver \citep{foreman2017}. The underlying matrix algebra is similar to that used by \cite{rybicki1992}, \cite{kozlowski2010}, and M10. Also, as in previous work, we use a prior on DRW parameters that is  uniform  in log space :  $1 / (\sigma \tau)$. The main difference in our approach is that rather than adopting the Maximum A-Posteriori (MAP) as the `best-fit' value for the DRW parameters (as in \citealt{kozlowski2010}, K17, \citealt{kozlowski2016b}, M10, \citealt{macleod2011}),  we find the expectation value of the marginalized posterior. This is advantageous because of a non-Gaussian shape of the posterior - otherwise, if the posterior was a 2D normal distribution, the expectation value would coincide with the maximum of the posterior (MAP solution). 
 
 \subsection{The impact of light curve baseline}\label{sec:baseline}
 
@@ -317,11 +317,11 @@ stdev^{2} =  0.5  \, \mathrm{SF}_{\infty}^{2} \left( 1 - e ^{  - 2 r  }  \right)
 where  $r = \Delta t_{i} / \tau$, and $\tau$ is the damping timescale.
 
 
-Like K17, we add to the true underlying signal with zero mena $s(t)$, a mean magnitude  ($\mathrm{r_{SDSS}}=17$ mag and $\mathrm{I_{OGLE}}=18$ mag), and calculate magnitude-dependent estimate of photometric uncertainty:
+Like K17, we add to the true underlying signal with zero mean $s(t)$, a mean magnitude  ($\mathrm{r_{SDSS}}=17$ mag and $\mathrm{I_{OGLE}}=18$ mag), and calculate magnitude-dependent estimate of photometric uncertainty:
 
 \begin{eqnarray}
-\sigma_{\mathrm{SDSS}}^{2} &=& 0.013^{2} + \exp{(2 (\mathrm{r_{SDSS}}-23.36))} \\
-\sigma_{\mathrm{OGLE}}^{2} &=& 0.004^{2} + \exp{(1.63 (\mathrm{I_{OGLE}} - 22.55))}
+\sigma_{\mathrm{SDSS}}^{2} &=& 0.013^{2} + \exp{[2 (\mathrm{r_{SDSS}}-23.36)]} \\
+\sigma_{\mathrm{OGLE}}^{2} &=& 0.004^{2} + \exp{[1.63 (\mathrm{I_{OGLE}} - 22.55)]}
 \end{eqnarray}
 
 To simulate observational conditions  we add a Gaussian noise offset $n(t) = \mathcal{N}(0,\sigma(t))$:
