@@ -683,23 +683,52 @@ Eddington ratio $(f_{Edd} {=} L_{Bol}/L_{\mathrm{Edd}})$ encodes accretion stren
 %
 
 
+\begin{deluxetable*}{c|c}
+\tablecaption{Theoretical predictions of various models concerning amplitude $A$ and/or timescale $\tau$ of variability, Eddington ratio $f_{Edd}$, bolometric luminosity $L_{Bol}$, and accretion rate $\dot{m}$.\label{tab:theory}}  
+
+\tablehead{ \colhead{Theory} & \colhead{Prediction}}
+\startdata
+Standard thin disk \citep{shakura1973,netzer2013} &  $ A \nearrow$ as $f_{Edd} \searrow$ , $\tau \propto L_{Bol}^{1/2}$ (in \citealt{caplar2017}) \\
+Strongly inhomogeneous disk \citep{dexter2011} / local fluctuations \citep{cai2018} &  $ A \nearrow$ as $f_{Edd} \searrow$ \\
+Variations in global accretion rate \citep{hawkins2007,li2008,zuo2012} &  $ A \nearrow$ as $M_{BH} \nearrow$,  $ A \searrow$ as  $L_{Bol} \nearrow$ \\
+Eddington ratio reflecting AGN age \citep{martini2003,hopkins2005} & as $f_{Edd} \searrow$, $A \nearrow$ \\X-ray reprocessing \citep{kubota2018} & $A \nearrow$ as $f_{Edd} \searrow $, and  $A \nearrow$ as $\dot{m} \searrow$ \\  
+\enddata
+
+\end{deluxetable*}
+
+
+
+
 \begin{deluxetable*}{c|cccccccc}
-\tablecaption{Comparison of published results on correlating observed quasar light curve properties: a measure of variability amplitude A, and timescale of variability $\tau$, against the physical quasar properties: Black Hole mass $M_{\mathrm{BH}}$, Eddington ratio $f_{\mathrm{Edd}}$, bolometric luminosity $L_{Bol}$. We list the correlations as positive (+), negative (-, i.e. anti-correlation), not studied (x). We further note if the correlation is strong (!), or weak ($\sim$). \label{tab:comparison}}  
+\tablecaption{Comparison of published results on correlating observed quasar light curve properties: a measure of variability amplitude A, and timescale of variability $\tau$, against the physical quasar properties: Black Hole mass $M_{\mathrm{BH}}$, Eddington ratio $f_{\mathrm{Edd}}$, bolometric luminosity $L_{Bol}$. We list the correlations as positive (+), negative (--, i.e. anti-correlation), not found (0), or not studied (x). We further note if the correlation is strong (!), or weak ($\sim$). \label{tab:comparison}}  
 
 \tablehead{
 \colhead{Publication} & 
-\colhead{Measure of amplitude and timescale} & 
-\colhead{A vs $M_{\mathrm{BH}}$} & 
-\colhead{A vs $f_{\mathrm{Edd}}$} &
-\colhead{A vs $L_{\mathrm{Bol}}$} &
-\colhead{$\tau$ vs $M_{\mathrm{BH}}$} & 
-\colhead{$\tau$ vs $f_{\mathrm{Edd}}$} &
-\colhead{$\tau$ vs $L_{\mathrm{Bol}}$} &
+\colhead{Measure of amplitude / timescale} & 
+\colhead{} &  \colhead{A vs} & \colhead{} &  \colhead{} &  \colhead{$\tau$ vs} &  \colhead{} & \\
+\colhead{} & \colhead{} & 
+\colhead{$M_{\mathrm{BH}}$} & \colhead{$f_{\mathrm{Edd}}$} &  \colhead{$L_{\mathrm{Bol}}$} & 
+\colhead{$M_{\mathrm{BH}}$} & \colhead{$f_{\mathrm{Edd}}$} &  \colhead{$L_{\mathrm{Bol}}$} 
 }
 \startdata
-\cite{kelly2009} & DRW: $\tau$-decorrelation timescale, $\sigma$   & -- & x & !-- & + &  &  $\sim$+ \\
+\cite{wilhite2008} & SF (ensemble study) & + & - & - & x &x & x \\
+\cite{kelly2009} & DRW: $\tau$-decorrelation timescale, $\sigma$   & -- & 0 & !-- & + & x &  $\sim$+ \\
+\cite{macleod2010} & DRW: $\tau$,$\sigma$ & + & !-- & !-- & + & x & $\sim$+ \\ 
+\cite{morganson2014}\tablenotemark{a} & SF: A, $\gamma$ &  x & x & - & x & x & + \\
+\cite{kozlowski2016a} & DRW: $\tau$,$\sigma$  & x & x & !-- & + & x & $\sim$+ \\
+\cite{simm2016}\tablenotemark{b}& EV , and PSD (break timescale) & 0 & -- & -- &  0 & 0 & 0 \\ 
+\cite{caplar2017} & SF: $\tau$,$\sigma$ & $\sim$ & x & !-- & x & x & + \\
+\cite{rakshit2017}\tablenotemark{c} & DRW: $\tau$,$\sigma$ & + & !-  & $\sim$+ & x & x& x \\ 
+\cite{sun2018}\tablenotemark{d} & SF: $\tau$,$\sigma$ & x & x& !-- & x & + & !+ \\ 
+\cite{li2018}\tablenotemark{e} & SF: A, $\gamma$& $\sim$+  & --  & -- & + & x & + \\
+\cite{sanchez2018}\tablenotemark{f} & SF: A & 0 & -- & x & x & x & x \\
 \enddata
-
+\tablenotetext{a}{105 783 quasars with SDSS-PS1 sparse data,  SF parametrized as $V(\Delta t | A,\gamma) = A (\Delta t/  1 \mathrm{year})^{\gamma}$ : $\gamma$ is the increase of SF with time lag $\Delta t$}
+\tablenotetext{b}{90 X-ray selected AGN, PS1 optical data. Variability characterized by normalized excess variance (EV). PSD characterized by break timescale. }
+\tablenotetext{c}{Narrow- and Broad-Line Seyfert1 AGN, $z<0.8$, CRTS data ($>50$ epochs, $5-9$ years baseline), DRW fitted with JAVELIN~\citep{zu2011}, no timescale correlations considered due to short baseline.  }
+\tablenotetext{d}{1004 SDSS quasars with  $0.5 \le z \le 0.89$}
+\tablenotetext{e}{119 305 sparse quasar light curves from DECaLS and SDSS. SF as in \cite{morganson2014} above.}
+\tablenotetext{f}{1348 QUEST-La Silla quasars, only amplitude of variability and excess variance.   }
 \end{deluxetable*}
 
 
