@@ -619,7 +619,7 @@ We compare the change in retrieved fit coefficients caused by adding PS1 data to
 Figs.~\ref{fig:drw_tau_posterior} and ~\ref{fig:drw_sf_posterior} is summarized in Table~\ref{tab:coefficients}, with the uncertainty in A,C,D fit coefficients estimated from  the standard deviation of the posterior samples. 
 
 
-We also searched for signal of Mg\,{\sc ii} variability. Mg\,{\sc ii}, like  H$\alpha$  and  H$\beta$  is a permitted low-ionization line \citep{yang2019}, but on average is being emitted by gas further away from the ionizing source than the  H$\beta$, possibly at the edge of the BLR \citep{guo2019}. Apart from  H$\beta$ and C\,{\sc iv} \citep{shen2013}, Mg\,{\sc ii}  was first used as a virial Black Hole mass estimator in quasars by \cite{mclure2002}, who found that FWHM of the Mg\,{\sc ii} doublet trails that of the  H$\beta$ line. Already an early study of NGC 3783 by \cite{reichert1994} noted that the Mg\,{\sc ii} emission line lags the continuum and is less variable. \cite{ivezic2004} and \cite{macleod2012} studied the SDSS-POSS sample of quasars, and report a detection of a decrement in the data-model residuals around 2800 $\mbox{\AA}$ when plotting the residuals as a function of $\Delta t$ and $\lambda_{RF}$. We investigated the data-model residuals for $f=\mathrm{SF}_{\infty}$ in Eq.~\ref{eq:powlawmodel}, using the fit coefficients for SDSS-PS1 from Table~\ref{tab:coefficients}. Plotting the residuals as a function of $\tau_{\mathrm{RF}}$ and $\lambda_{\mathrm{RF}}$, we find that the decrement in the median($\tau_{\mathrm{RF}}$) is at most 10\% relative to the smooth model around the 2800 $\mbox{\AA}$ Mg\,{\sc ii} region. 
+We also searched for signal of Mg\,{\sc ii} variability. Mg\,{\sc ii}, like  H$\alpha$  and  H$\beta$  is a permitted low-ionization line \citep{yang2019}, but on average is being emitted by gas further away from the ionizing source than the  H$\beta$, possibly at the edge of the BLR \citep{guo2019}. \cite{ivezic2004} and \cite{macleod2012} studied the SDSS-POSS sample of quasars, and report the detection of a decrement in the data-model residuals around 2800 $\mbox{\AA}$ when plotting the residuals as a function of $\Delta t$ and $\lambda_{RF}$. We investigated the data-model residuals for $f=\mathrm{SF}_{\infty}$ in Eq.~\ref{eq:powlawmodel}. We find that using the SDSS data the decrement in the median($\tau_{\mathrm{RF}}$) around 2800 $\mbox{\AA}$ is visible at $\sim 3 \sigma$  relative to the smooth model, but adding the PS1 data the significance rises to $\sim 5 \sigma$. We do not see much difference with regards to whether using the subset of 6371 quasars for which M10 had reliable results (listed in Table~\ref{tab:coefficients}), versus  the full set of 8516 quasars fitted with Celerite for DRW parameters. See Appendix~\ref{app:mgii_variability} for more details. 
 
 \begin{figure*}  % ../code2/Read_IDL.ipynb     %../code2/compare
 \plotone{figs/Chelsea_ugriz_Shen2011_SF.png}
@@ -630,8 +630,8 @@ We also searched for signal of Mg\,{\sc ii} variability. Mg\,{\sc ii}, like  H$\
 % https://github.com/AASJournals/AASTeX60/issues/61 
 \begin{deluxetable*}{cc|CCCC}
 %\tablewidth{\pagewidth}
-\tablecaption{Comparison of best-fit coefficients for Eq.~\ref{eq:powlawmodel} using M10 results, and this work (S18). B is fixed to $0.17$ or $0.479$ from fitting a power law between $\lambda_{RF}$ and $\tau$, SF$_{\infty}$ (see Fig.~\ref{fig:lambda_dependence}). For $f=\tau$, C is almost the same between M10 and this work for SDSS-PS1 (rows 1 and 3). However, D based on SDSS-PS1 data is larger than M10 by 0.01 dex (row 3). For $f = \mathrm{SF}_{\infty}$, SDSS-PS1 based C is within 0.01 dex from M10 (rows 4,6), and D based on SDSS-PS1 data is almost identical to M10. \label{tab:coefficients} } 
-
+\tablecaption{Comparison of best-fit coefficients for Eq.~\ref{eq:powlawmodel} using M10 results, and this work (S18). B is fixed to $0.17$ or $0.479$ from fitting a power law between $\lambda_{RF}$ and $\tau$, SF$_{\infty}$ (see Fig.~\ref{fig:lambda_dependence}). Of 8516 quasars with SDSS-PS1 data, for consistency we use here an unbiased subset of 6371 quasars for which M10 had reliable results. For $f=\tau$, C is almost the same between M10 and this work for SDSS-PS1 (rows 1 and 3). However, D based on SDSS-PS1 data is larger than M10 by 0.01 dex (row 3). For $f = \mathrm{SF}_{\infty}$, SDSS-PS1 based C is within 0.01 dex from M10 (rows 4,6), and D based on SDSS-PS1 data is almost identical to M10. When using \project{celerite} $\tau$ ($\sigma$) results for all 8516 quasars, the luminosity dependence is unchanged to within 0.01 dex, and the dependence on the black hole mass is stronger by 0.05 dex (0.02 dex), respectively. \label{tab:coefficients} } 
+% the data taken from ../code2/Table2_IDL_fit_results_latex_190807_v1.txt 
 \tablehead{\colhead{$f$} & \colhead{Source} & \colhead{$A$(offset)} & \colhead{$B(\lambda_{RF})$} & \colhead{$C (M_{i})$} & \colhead{$D (M_{\mathrm{BH}})$} }
 \startdata
 $\tau$ & M10, SDSS & $2.5\pm0.027$ & $0.17\pm0.02$ & $0.03\pm0.009$ & $0.178\pm0.027$ \\
@@ -1031,6 +1031,19 @@ $f_{\sigma} = \log_{10}{\left( \sigma_{\mathrm{SDSS-PS1}} / \sigma_{\mathrm{SDSS
 \end{deluxetable*}
 
 
+
+
+\section{Mg variability}
+\label{app:mgii_variability}
+We searched for dependency of variability parameters on other physical properties, beyond the black hole mass and quasar luminosity employed in Eq.~\ref{eq:powlawmodel}. An important contribution comes from  Mg\,{\sc ii} line variability - an important virial black hole mass estimator for quasars~\citep{shen2013}. Apart from  H$\beta$ and C\,{\sc iv}, Mg\,{\sc ii}  was first used by \cite{mclure2002}, who noticed that the FWHM of the Mg\,{\sc ii} doublet trails that of the  H$\beta$ line. Parallel studies, starting with the analysis of NGC 3783 by \cite{reichert1994}, noticed that the Mg\,{\sc ii} emission line lags the continuum and is less variable. Following  \cite{ivezic2004} and \cite{macleod2012},  we investigated the residuals in data-model(SF$_{\infty}$) as a function of wavelength. Left hand side panel of Fig.~\ref{fig:mgii} shows the SF$_{\infty}$ residuals in the $\lambda_{\mathrm{RF}}$ vs $\tau_{\mathrm{RF}}$ space. The right hand side panel shows the residuals marginalized along $\tau_{\mathrm{RF}}$. The decrement around 2800 $\mbox{\AA}$ on the right hand side panel is more pronounced when using combined SDSS-PS1 light curves. 
+
+% made in ../code2/Trends_quasar_properties.ipynb 
+
+\begin{figure*}
+\plotone{figs/Ivezic_2004_Fig_1_sdss-ps1_v2.png}
+\caption{The data-model residuals after fitting Eq.~\ref{eq:powlawmodel} to the quasar SF$_{\infty}$ from  using SDSS-PS1 quasar light curves. The left panel shows the residuals as a function of  $\lambda_{\mathrm{RF}}$ vs $\tau_{\mathrm{RF}}$. The right panel shows the median of residuals marginalized along $\tau_{\mathrm{RF}}$, with error on the median based on the scatter in $\lambda_{\mathrm{RF}}$ bins : $\sigma_{median} = 1.25 \mathrm{RMS}_{\mathrm{bin}} / \sqrt{N_{\mathrm{bin}}}$, where $\mathrm{RMS}_{\mathrm{bin}}$ is estimated from the robust Gaussian interquartile-based $\sigma_{G}$ \citep{ivezic2014}. Black circles are medians based on the averages plotted on the left ($N_{\mathrm{bin}}$ is between 7 and 20, depending on the number of bins on the left hand side panel that are not empty), and blue dots are medians based on the raw data ($N_{\mathrm{bin}}$ varies as a function of  $\lambda_{\mathrm{RF}}$, from a few to 800, peaking at about 2500 $\mbox{\AA}$, reflecting the fact that the quasar distribution peaks at redshift $z=2$).  We overplot the composite quasar spectrum from \cite{vandenberk2001}.}
+\label{fig:mgii}
+\end{figure*}
 
 
 
