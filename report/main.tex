@@ -643,17 +643,17 @@ SF$_{\infty}$ & M10, SDSS & $-0.486\pm0.012$ & $-0.479\pm0.005$ & $0.119\pm0.004
 \end{deluxetable*}
 
 
-\begin{figure*}
-\plotone{figs/posterior_IDL_Chelsea_Celerite_CD_MI_Z2_tau1_.png}
-\caption{Distribution of MCMC posterior draws fitting Eq.~\ref{eq:powlawmodel} for characteristic timescale ($f=\tau$), based on M10 SDSS $r$-band results (solid blue line), and new SDSS-PS1 combined $r$-band results (dashed green line). Of 9258 spectroscopically confirmed quasars in S82, M10 selection criteria keep 6871 (see M10, Sec 2.2). There are PS1 matches to 8516/9258,  and of these 6371 overlap with the M10 subset. Thus we keep the same subset of 6371 quasars for all fits illustrated here.  The results from SDSS-PS1 light curves are consistent with M10 for the SDSS $r$ band. }
+\begin{figure*}  % made in ../code2/Read_IDL.ipynb 
+\plotone{figs/Fig_19-20_MI_Z2_tau.png}
+\caption{Distribution of MCMC posterior draws fitting Eq.~\ref{eq:powlawmodel} for characteristic timescale ($f=\tau$), based SDSS $r$-band results (dashed blue line), and new SDSS-PS1 combined $r$-band results (solid blue line). These are considered simultaneously as a function of quasar absolute magnitude $M_{i}$ (left hand side panel), and black hole mass $M_{BH}$ (right hand side panel). Of 9258 spectroscopically confirmed quasars in S82, we employed 8516 that had PS1 matches, of which 6371  fulfil M10 selection criteria (see M10, Sec 2.2). The results from SDSS-PS1 light curves are consistent with M10 for the SDSS $r$ band. }
 \label{fig:drw_tau_posterior}
 \end{figure*} 
 
 
 
 \begin{figure*}
-\plotone{figs/posterior_IDL_Chelsea_Celerite_CD_MI_Z2_SF1_.png}
-\caption{Same as Fig.~\ref{fig:drw_tau_posterior},  but fitting quasar absolute magnitude $M_{i}$, and black hole mass $M_{BH}$ in Eq.~\ref{eq:powlawmodel} as a function of the asymptotic amplitude ($f = \mathrm{SF}_{\infty}$). New data from PS1 is consistent with earlier results of M10 on luminosity dependence, but supports slightly weaker dependence of $\mathrm{SF}_{\infty}$ on $M_{BH}$ (by 0.06 dex).}
+\plotone{figs/Fig_19-20_MI_Z2_SF.png}
+\caption{Same as Fig.~\ref{fig:drw_tau_posterior}, but fitting the DRW asymptotic amplitude ($f = \mathrm{SF}_{\infty}$ in Eq.~\ref{eq:powlawmodel})  as a function of absolute magnitude $M_{i}$, and black hole mass $M_{BH}$. New data from PS1 is consistent with earlier results of M10 on luminosity dependence, but supports slightly weaker dependence of $\mathrm{SF}_{\infty}$ on $M_{BH}$ (by 0.06 dex).}
 \label{fig:drw_sf_posterior}
 \end{figure*} 
 
