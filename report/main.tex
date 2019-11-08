@@ -1,28 +1,3 @@
-%%
-%% Beginning of file 'sample62.tex'
-%%
-%% Modified 2018 January
-%%
-%% This is a sample manuscript marked up using the
-%% AASTeX v6.2 LaTeX 2e macros.
-%%
-%% AASTeX is now based on Alexey Vikhlinin's emulateapj.cls 
-%% (Copyright 2000-2015).  See the classfile for details.
-
-%% AASTeX requires revtex4-1.cls (http://publish.aps.org/revtex4/) and
-%% other external packages (latexsym, graphicx, amssymb, longtable, and epsf).
-%% All of these external packages should already be present in the modern TeX 
-%% distributions.  If not they can also be obtained at www.ctan.org.
-
-%% The first piece of markup in an AASTeX v6.x document is the \documentclass
-%% command. LaTeX will ignore any data that comes before this command. The 
-%% documentclass can take an optional argument to modify the output style.
-%% The command below calls the preprint style  which will produce a tightly 
-%% typeset, one-column, single-spaced document.  It is the default and thus
-%% does not need to be explicitly stated.
-%%
-%%
-%% using aastex version 6.2
 \documentclass[twocolumn]{aastex62}
 \usepackage{natbib}
 \usepackage[T1]{fontenc}
@@ -30,64 +5,6 @@
 \let\oldAA\AA
 \renewcommand{\AA}{\text{\normalfont\oldAA}}
 
-
-
-%% The default is a single spaced, 10 point font, single spaced article.
-%% There are 5 other style options available via an optional argument. They
-%% can be envoked like this:
-%%
-%% \documentclass[argument]{aastex62}
-%% 
-%% where the layout options are:
-%%
-%%  twocolumn   : two text columns, 10 point font, single spaced article.
-%%                This is the most compact and represent the final published
-%%                derived PDF copy of the accepted manuscript from the publisher
-%%  manuscript  : one text column, 12 point font, double spaced article.
-%%  preprint    : one text column, 12 point font, single spaced article.  
-%%  preprint2   : two text columns, 12 point font, single spaced article.
-%%  modern      : a stylish, single text column, 12 point font, article with
-%% 		  wider left and right margins. This uses the Daniel
-%% 		  Foreman-Mackey and David Hogg design.
-%%  RNAAS       : Preferred style for Research Notes which are by design 
-%%                lacking an abstract and brief. DO NOT use \begin{abstract}
-%%                and \end{abstract} with this style.
-%%
-%% Note that you can submit to the AAS Journals in any of these 6 styles.
-%%
-%% There are other optional arguments one can envoke to allow other stylistic
-%% actions. The available options are:
-%%
-%%  astrosymb    : Loads Astrosymb font and define \astrocommands. 
-%%  tighten      : Makes baselineskip slightly smaller, only works with 
-%%                 the twocolumn substyle.
-%%  times        : uses times font instead of the default
-%%  linenumbers  : turn on lineno package.
-%%  trackchanges : required to see the revision mark up and print its output
-%%  longauthor   : Do not use the more compressed footnote style (default) for 
-%%                 the author/collaboration/affiliations. Instead print all
-%%                 affiliation information after each name. Creates a much
-%%                 long author list but may be desirable for short author papers
-%%
-%% these can be used in any combination, e.g.
-%%
-%% \documentclass[twocolumn,linenumbers,trackchanges]{aastex62}
-%%
-%% AASTeX v6.* now includes \hyperref support. While we have built in specific
-%% defaults into the classfile you can manually override them with the
-%% \hypersetup command. For example,
-%%
-%%\hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
-%%
-%% will change the color of the internal links to red, the links to the
-%% bibliography to green, the file links to cyan, and the external links to
-%% magenta. Additional information on \hyperref options can be found here:
-%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
-%%
-%% If you want to create your own macros, you can do so
-%% using \newcommand. Your macros should appear before
-%% the \begin{document} command.
-%%
 \usepackage{hyperref}
 \usepackage[capitalise]{cleveref}
 
@@ -95,140 +12,35 @@
 \newcommand\aastex{AAS\TeX}
 \newcommand\latex{La\TeX}
 
-%% Reintroduced the \received and \accepted commands from AASTeX v5.2
-\received{Januaryx 1, 2019}
-\revised{January 17, 2019}
-\accepted{February 1, 2019}%\today}
-%% Command to document which AAS Journal the manuscript was submitted to.
-%% Adds "Submitted to " the arguement.
+\received{November 8, 2019}
+%\revised{November 17, 2019}
+%\accepted{November 1, 2019}%\today}
+
 \submitjournal{ApJ}
-
-%% Mark up commands to limit the number of authors on the front page.
-%% Note that in AASTeX v6.2 a \collaboration call (see below) counts as
-%% an author in this case.
-%
-%\AuthorCollaborationLimit=3
-%
-%% Will only show Schwarz, Muench and "the AAS Journals Data Scientist 
-%% collaboration" on the front page of this example manuscript.
-%%
-%% Note that all of the author will be shown in the published article.
-%% This feature is meant to be used prior to acceptance to make the
-%% front end of a long author article more manageable. Please do not use
-%% this functionality for manuscripts with less than 20 authors. Conversely,
-%% please do use this when the number of authors exceeds 40.
-%%
-%% Use \allauthors at the manuscript end to show the full author list.
-%% This command should only be used with \AuthorCollaborationLimit is used.
-
-%% The following command can be used to set the latex table counters.  It
-%% is needed in this document because it uses a mix of latex tabular and
-%% AASTeX deluxetables.  In general it should not be needed.
-%\setcounter{table}{1}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%% The following section outlines numerous optional output that
-%% can be displayed in the front matter or as running meta-data.
-%%
-%% If you wish, you may supply running head information, although
-%% this information may be modified by the editorial offices.
 \shorttitle{Improved DRW parameters for S82 QSO}
 \shortauthors{Suberlak et al.}
-%%
-%% You can add a light gray and diagonal water-mark to the first page 
-%% with this command:
-% \watermark{text}
-%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
-%% long you can control the water-mark size with:
-%  \setwatermarkfontsize{dimension}
-%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
-%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% This is the end of the preamble.  Indicate the beginning of the
-%% manuscript itself with \begin{document}.
-
-% from Foreman2017  preamble : 
 \newcommand{\project}[1]{\textsf{#1}}
-
 
 \begin{document}
 
 \title{Improving Damped Random Walk parameters for SDSS Stripe 82 Quasars with Pan-STARRS1}
-
-
-%% LaTeX will automatically break titles if they run longer than
-%% one line. However, you may use \\ to force a line break if
-%% you desire. In v6.2 you can include a footnote in the title.
-
-%% A significant change from earlier AASTEX versions is in the structure for 
-%% calling author and affilations. The change was necessary to implement 
-%% autoindexing of affilations which prior was a manual process that could 
-%% easily be tedious in large author manuscripts.
-%%
-%% The \author command is the same as before except it now takes an optional
-%% arguement which is the 16 digit ORCID. The syntax is:
-%% \author[xxxx-xxxx-xxxx-xxxx]{Author Name}
-%%
-%% This will hyperlink the author name to the author's ORCID page. Note that
-%% during compilation, LaTeX will do some limited checking of the format of
-%% the ID to make sure it is valid.
-%%
-%% Use \affiliation for affiliation information. The old \affil is now aliased
-%% to \affiliation. AASTeX v6.2 will automatically index these in the header.
-%% When a duplicate is found its index will be the same as its previous entry.
-%%
-%% Note that \altaffilmark and \altaffiltext have been removed and thus 
-%% can not be used to document secondary affiliations. If they are used latex
-%% will issue a specific error message and quit. Please use multiple 
-%% \affiliation calls for to document more than one affiliation.
-%%
-%% The new \altaffiliation can be used to indicate some secondary information
-%% such as fellowships. This command produces a non-numeric footnote that is
-%% set away from the numeric \affiliation footnotes.  NOTE that if an
-%% \altaffiliation command is used it must come BEFORE the \affiliation call,
-%% right after the \author command, in order to place the footnotes in
-%% the proper location.
-%%
-%% Use \email to set provide email addresses. Each \email will appear on its
-%% own line so you can put multiple email address in one \email call. A new
-%% \correspondingauthor command is available in V6.2 to identify the
-%% corresponding author of the manuscript. It is the author's responsibility
-%% to make sure this name is also in the author list.
-%%
-%% While authors can be grouped inside the same \author and \affiliation
-%% commands it is better to have a single author for each. This allows for
-%% one to exploit all the new benefits and should make book-keeping easier.
-%%
-%% If done correctly the peer review system will be able to
-%% automatically put the author and affiliation information from the manuscript
-%% and save the corresponding author the trouble of entering it by hand.
-
-
 
 \correspondingauthor{Krzysztof Suberlak}
 \email{suberlak@uw.edu}
 
 \author[0000-0002-9589-1306]{Krzysztof L. Suberlak}
 \affiliation{Department of Astronomy, University of Washington, Box 351580, Seattle, WA 98195, USA}
-% \affiliation{Department of Astronomy \\ University of Washington \\ Seattle, WA 98195, USA}
 
 
 \author[0000-0001-5250-2633]{\v{Z}eljko Ivezi\'c}
 \affiliation{Department of Astronomy, University of Washington, Box 351580, Seattle, WA 98195, USA}
-% \affiliation{Department of Astronomy \\ University of Washington \\ Seattle, WA 98195, USA}
-
 
 
 \author[0000-0003-3422-2202]{Chelsea MacLeod}
 \affiliation{Harvard Smithsonian Center for Astrophysics, 60 Garden Street, Cambridge, MA 02138, USA}
-% \affiliation{Harvard Smithsonian Center for Astrophysics \\ 60 Garden St, Cambridge, MA 02138, USA}
 
 
-
-
-% Abstract of the paper
 \begin{abstract}
 
 We use the Panoramic Survey Telescope and Rapid Response System 1 Survey (Pan-STARRS1, PS1) data to extend  the Sloan Digital Sky Survey (SDSS) Stripe 82 quasar light curves. Combining PS1 and SDSS light curves provides 15 years baseline for 9248 quasars - 5 years longer than prior studies that used only SDSS. We fit the light curves with Damped Random Walk (DRW) model, and correlate the DRW model parameters -  asymptotic variability amplitude SF$_{\infty}$, and characteristic timescale $\tau$, with quasar physical properties - black hole mass, bolometric luminosity, and redshift. Using simulated light curves, we find that longer baseline allows us to better constrain DRW parameters. After adding PS1 data, the variability amplitude is a stronger function of the black hole mass, and has a weaker dependence on quasar luminosity. In addition, the characteristic timescale $\tau$ dependence on quasar luminosity is marginally weaker. We also make predictions for the fidelity of DRW model parameter retrieval when light curves will be further extended with Zwicky Transient Facility (ZTF) and Large Synoptic Survey Telescope (LSST) data. Finally, we show how updated DRW parameters lend an independent method of discovering Changing-Look Quasar Candidates (CLQSO). The candidates are outliers in terms of differences in magnitude and scatter between SDSS and PS1 segments. We identify 40 objects (35 newly reported) with tenfold increase in variability timescale between SDSS and SDSS-PS1 data, which is due to a large change in brightness (over 0.5 mag) - a characteristic for CLQSO. 
@@ -236,8 +48,6 @@ We use the Panoramic Survey Telescope and Rapid Response System 1 Survey (Pan-ST
 
 \end{abstract}
 
-
-%%%%%%%%%%%%%%%%% BODY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Introduction}
 
@@ -259,10 +69,8 @@ Due to its stochastic nature, for an unbiased parameter retrieval of DRW process
 
 For this reason, while some studies have restricted the probed redshift range, limiting the quasar sample to where one would expect only shorter timescales based on previous studies \citep{sun2018, guo2017, kelly2013,simm2016}, some have elected not to study timescales at all \citep{sun2018,sanchez2018}, or use the timescales recovered from short light curves primarily for classification \citep{hernitschek2016}.
 
-By extending available quasar light curves, we are able to better recover DRW timescales. Since almost a decade ago, when M10 published their study based on SDSS Stripe 82 data, new datasets (PS1,PTF,CRTS) have become available. They can extend the quasar light curves by almost 50\%.  Indeed, \citet{li2018} combined SDSS and Dark Energy Camera Legacy Survey (DECaLS) data, to provide a 15 year baseline, but by using the entire SDSS footprint suffered from poor sampling and had to use the ensemble structure function approach. %. However, by focusing on a large area to encompass as many quasars as possible (119,305 up to z=4.89) suffered from poor sampling which lends itself better to an ensemble structure function approach rather than direct light curve modeling. 
+By extending available quasar light curves, we are able to better recover DRW timescales. Since almost a decade ago, when M10 published their study based on SDSS Stripe 82 data, new datasets (PS1,PTF,CRTS) have become available. They can extend the quasar light curves by almost 50\%.  Indeed, \citet{li2018} combined SDSS and Dark Energy Camera Legacy Survey (DECaLS) data, to provide a 15 year baseline, but by using the entire SDSS footprint suffered from poor sampling and had to use the ensemble structure function approach. 
 
-% Kepler :  not relevant in this context 
-%On the short timescales there are Kepler-based studies, with extremely well-sampled light curves (30 min cadence) of a small number of quasars, with baselines of up to 4 years \citep{mushotzky2011, edelson2014, kasliwal2015a, kasliwal2017, smith2018, aranzana2018}. 
 
  Unlike previous studies, in this work, by combining SDSS and PS1 data for the well-observed Stripe 82, we afford both an extended baseline (15 years), a large number (9000) of quasars, and  a good cadence (N > 60 epochs) to which we fit the DRW model. The layout of this paper is as follows: first we confirm in Section~\ref{sec:methods} that extending the quasar baseline is an important improvement in providing unbiased estimates of the DRW model parameters (K17);  in Section~\ref{sec:data} we describe the datasets employed, and their combination onto a common photometric system;  in Section~\ref{sec:simulation} we simulate the improvement in the recovery of DRW parameters with baseline extension and realistic cadence; finally in Section~\ref{sec:results} we describe the main results analyzing correlations between physical parameters and variability, in Section~\ref{sec:discussion} we discuss the physical meaning of relevant timescales, and in Section~\ref{sec:conclusions} we summarize the main conclusions. In this work we adopt a $\Lambda $CDM cosmology with $h_{0} = 0.7$ and $\Omega_{m} = 0.3 $. 
 %
@@ -338,10 +146,6 @@ y(t) = s(t) + n(t)
 The resulting distribution of fitted timescales  as a function of input timescales, scaled by the  8 year baseline: $\rho_{out}$ vs $\rho_{in}$, is shown in Fig.~\ref{fig:rho_space}. We confirm the findings of K17: for short light curves, the best-fit $\tau$ becomes $\sim 1/5$ of light curve length (where $\log_{10}{(\rho_{out})} \approx -0.7$, the `unconstrained' region, lower-left of each panel). However, as long as the light curve is several times longer than the timescale ($1/\rho \gtrapprox 3, i.e. \log_{10}{(\rho)} \lessapprox 0.5$), we can recover the timescale without substantial bias (the dashed line approaches the solid diagonal line on both panels). Therefore, by extending the baseline we can move from the biased region (bottom left) to the unbiased regime (top right). This is the basis for this study,  in which we extend the baselines of quasar light curves from SDSS-only (10 years) to combined SDSS-PS1 (15 years). 
 
 
-%
-%
-%
-%
 \section{Data}
 \label{sec:data}
 
@@ -364,7 +168,7 @@ The difference  between the target (SDSS) and source (eg.PS1) photometry can be 
 m_{\mathrm{PS1}} - m_{\mathrm{SDSS}} = f(g-i)
 \end{equation}
 
-Some authors (eg. \citealt{li2018}) allow the transformation to be a higher-order polynomial, but as Fig.~\ref{fig:quasarColors} shows, quasars occupy a relatively narrow region of $g-i$ color space, and we find that the linear fit is sufficient. The derived linear coefficients for photometric transformations between SDSS $r$ and PS1 $gri$, PTF $gR$, CRTS $V$,  as a function of SDSS $g-i$ color, are listed in Table~\ref{tab:offsets}. We illustrate the process showing in Fig.~\ref{fig:offsetsPS1} the SDSS-PS1 standard stars data used to calculate the offsets. Note that the PS1 $r$ (middle panel) is very close to the SDSS $r$ - within  $0.01$ mag (1\% level) across the $g-i$ color range. We focus on SDSS $r$ - PS1 $r$ offset as a function of magnitude in Fig.~\ref{fig:offsetPS1mag} - the near-equivalence of bandpass coverage is valid at 1\% level up to $r < 20.5$. %Because of that, we also combine PS1 r-band and SDSS r-band without applying any offsets. 
+Some authors (eg. \citealt{li2018}) allow the transformation to be a higher-order polynomial, but as Fig.~\ref{fig:quasarColors} shows, quasars occupy a relatively narrow region of $g-i$ color space, and we find that the linear fit is sufficient. The derived linear coefficients for photometric transformations between SDSS $r$ and PS1 $gri$, PTF $gR$, CRTS $V$,  as a function of SDSS $g-i$ color, are listed in Table~\ref{tab:offsets}. We illustrate the process showing in Fig.~\ref{fig:offsetsPS1} the SDSS-PS1 standard stars data used to calculate the offsets. Note that the PS1 $r$ (middle panel) is very close to the SDSS $r$ - within  $0.01$ mag (1\% level) across the $g-i$ color range. We focus on SDSS $r$ - PS1 $r$ offset as a function of magnitude in Fig.~\ref{fig:offsetPS1mag} - the near-equivalence of bandpass coverage is valid at 1\% level up to $r < 20.5$.  
 
 In selecting the most beneficial datasets to complement SDSS $r$ we also consider the associated photometric uncertainties (aka `errors'). As shown in Fig.~\ref{fig:lc_extent},  PTF and CRTS are shallower than SDSS or PS1. Therefore for faint objects, like quasars (for S82 sample the population median is SDSS $r \sim 20$ mag) PTF and CRTS have larger photometric uncertainties than SDSS or PS1. Indeed, as Fig.~\ref{fig:lc_errors} shows, the distribution of median errors for PTF, CRTS, and ZTF quasar data is wider than the corresponding SDSS and PS1 data. As simulations show (Sec.~\ref{sec:simulation}), although PTF and CRTS data do extend the SDSS baseline, their error properties decreases their utility in complementing the SDSS dataset. After all, the SDSS baseline extension afforded with PTF and CRTS is comparable to that achieved with PS1 data alone (Fig.~\ref{fig:lc_extent}). 
 
@@ -395,8 +199,6 @@ Finally, we clean the combined SDSS $r$ - PS1 $r$ quasar light curves using stan
 
 %[Derived photometric offets between SDSS and CRTS, PTF, PS1]
 \begin{deluxetable}{c|cc}
-	%\tablewidth{\textwidth}
-	% solution from https://tex.stackexchange.com/questions/370268/aastex61-single-column-deluxetable-cannot-set-width 
 	\tablecaption{Color terms (photometric offsets) between CRTS, PTF, PS1 pass-bands and  SDSS, using the SDSS mean $g-i$ color to spread the stellar locus. Thus the SDSS $r$ synthetic magnitude, $r_{s}$, can be found as $r_{s} = x-B_{0}-B_{1}(g-i)$. This linear trend is illustrated in Fig.\ref{fig:offsetsPS1}, where we plot $(x-r_{\mathrm{SDSS}})$ as a function of $(g-i)_{\mathrm{SDSS}}$ for $x=g_{\mathrm{P1}}, r_{\mathrm{P1}},i_{\mathrm{P1}}$.\label{tab:offsets}}  
 
 	\tablehead{
@@ -415,16 +217,6 @@ Finally, we clean the combined SDSS $r$ - PS1 $r$ quasar light curves using stan
 
 	\tablecomments{To derive the color terms we used a subset of 100 000 stars randomly chosen from the SDSS standard stars catalog \citep{ivezic2007}. To minimize scatter we selected bright stars with $r<19$ mag.}
 \end{deluxetable}
-
-
-
-% removed as duplicating the SDSS-PS1 offsets middle panel ... 
-% \begin{figure}%[ht!] % ../code2/SDSS_PS1_DR2_stellar_offsets.ipynb
-% \plotone{figs/PS1_DR2_detections_SDSS_Stripe82Calib_g-i.png}
-% \caption{The offset $\Delta m_{r}$  between PS1 r-band and SDSS r-band plotted as a function of (g-i) SDSS color. $\Delta m_{r}$ is stable across a range of (g-i) color occupied by quasars, and illustrates that the we can justify using no photometric transformation between SDSS r-band and PS1 r-band. }
-% \label{fig:SDSS_PS1_offset_gi}
-% \end{figure} 
-
 
 %[Photometric offset between SDSS and PS1]
 \begin{figure}%[ht!] % ../code2/SDSS_PS1_DR2_stellar_offsets.ipynb
