@@ -184,7 +184,7 @@ Finally, we clean the combined SDSS $r$ - PS1 $r$ quasar light curves using stan
 \begin{figure*}
 	\epsscale{1.2}
 	\plotone{fig04}
-	\caption{The SDSS-PS1 offsets, derived with the SDSS standard stars~\citep{ivezic2007}. From randomly chosen subset of 100 000 SDSS stars, 95 000 have PS1 DR2 data. To minimize scatter due to larger errors  we select a subset of 40 000 stars with  $r < 19$ mag. Vertical dashed lines mark the region in the SDSS color space occupied by quasars (see Fig.~\ref{fig:quasarColors}), used to fit the stellar locus with a first order polynomial, marked by the solid red line. The best-fit slopes: 0.619, -0.04, -0.283 for PS1 $g$, $r$, $i$, respectively, are listed as $B_{1}$ in Table~\ref{tab:offsets}.}
+	\caption{The SDSS-PS1 offsets, derived with the SDSS standard stars~\citep{ivezic2007}. From randomly chosen subset of 100 000 SDSS stars, 95 000 have PS1 DR2 data. To minimize scatter due to larger errors  \textbf{we select 40 000 stars} with  $r < 19$ mag. Vertical dashed lines mark the region in the SDSS color space occupied by quasars, \textbf{also showed with the red contours enclosing  90\%, 70\%, and 30\% quasar data} (also see Fig.~\ref{fig:quasarColors}). \textbf{Stars with $-0.2<g-i<0.8$ were } used to fit the stellar locus with a first order polynomial, marked by the solid red line. The best-fit slopes: 0.619, -0.04, -0.283 for PS1 $g$, $r$, $i$, respectively, are listed as $B_{1}$ in Table~\ref{tab:offsets}.}
 	\label{fig:offsetsPS1}
 \end{figure*} 
 
@@ -286,7 +286,7 @@ We extend Stripe 82 quasar light curves by combining the SDSS r-band data with  
 \begin{figure} 
 \epsscale{1.2}
 	\plotone{fig10}
-	\caption{Comparison of distributions of the rest-frame variability timescale $\tau_{RF}$ against the  asymptotic variability amplitude SF$_{\infty}$, for M10 SDSS r-band (solid red)  and \project{celerite} fits using  SDSS (dashed blue) or SDSS-PS1 (dot-dashed green) segments of combined S82 quasar light curves. The timescales and SF$_{\infty}$ from M10 and this work overlap, as we recover the same underlying distributions. }
+	\caption{Comparison of distributions of the rest-frame variability timescale $\tau_{RF}$ against the  asymptotic variability amplitude SF$_{\infty}$, for M10 SDSS r-band (solid red)  and \project{celerite} fits using  SDSS (dashed blue) or SDSS-PS1 (dot-dashed green) segments of combined S82 quasar light curves. \textbf{Contours show the 1,2,3-$\sigma$ levels (enclosing $68.3\%$, $95\%$, $99.7\%$ of the data).} The timescales and SF$_{\infty}$ from M10 and this work overlap, as we recover the same underlying distributions. }
 	\label{fig:tau_sf_dist}
 \end{figure} 
 
@@ -355,7 +355,7 @@ with  $B=-0.479$ and $0.17$ for SF$_{\infty}$ and $\tau$, respectively.
 \begin{figure}
 	\epsscale{1.2}
 	\plotone{fig15}
-	\caption{Rest-frame timescale $\tau$ (top panel), and asymptotic structure function SF$_{\infty}$ (bottom panel), as a function of rest-frame wavelength $\lambda_{RF}$. The background contours show M10 SDSS $ urz $  data, and the foreground contours  denote our results using  SDSS (red) and SDSS-PS1 (orange) segments. The red line indicates the best-fit power law to M10 data, with $B=0.17$ an $-0.479$ for $\tau_{RF}$, and SF$_{\infty}$, respectively. We take the center of each bandpass to approximate the  observed wavelength: that is, for SDSS $urz$ bandpasses,  $\lambda_{obs} = 3520$, $6250$, $9110$ $\mbox{\AA}$, respectively, and given the redshift of each quasar, find $\lambda_{RF}=\lambda_{obs} / (1+z)$.}
+	\caption{Rest-frame timescale $\tau$ (top panel), and asymptotic structure function SF$_{\infty}$ (bottom panel), as a function of rest-frame wavelength $\lambda_{RF}$. The background contours show \textbf{the 30\% and 70\% levels for}  M10 SDSS $ urz $  data, and the foreground contours  denote our results using  SDSS (red) and SDSS-PS1 (orange) segments. The red line indicates the best-fit power law to M10 data, with $B=0.17$ an $-0.479$ for $\tau_{RF}$, and SF$_{\infty}$, respectively. We take the center of each bandpass to approximate the  observed wavelength: that is, for SDSS $urz$ bandpasses,  $\lambda_{obs} = 3520$, $6250$, $9110$ $\mbox{\AA}$, respectively, and given the redshift of each quasar, find $\lambda_{RF}=\lambda_{obs} / (1+z)$.}
 	\label{fig:lambda_dependence}
 \end{figure} 
 
@@ -381,7 +381,7 @@ $M_{i}$,$z$ - brighter quasars have lower variability amplitude, largely indepen
 
 \begin{figure*}   
 	\plotone{fig17}
-	\caption{Long-term variability SF$_{\infty}$, and characteristic timescale $\tau$ for SDSS-PS1 $r$ band data, as a function of the absolute i-band magnitude ($M_{i}(z=2)$,  a proxy for bolometric luminosity), virial black hole mass $M_{BH}$, and redshift $z$, from \cite{shen2011}. }
+	\caption{\textbf{The absolute i-band magnitude $M_{i}$  (k-corrected to $z=2$) as a function of the virial black hole mass $M_{BH}$ (bottom panels) and redshift $z$ (top panels), colored by the  long-term variability amplitude SF$_{\infty}$ (left panels), or characteristic timescale $\tau$ (right panels). $M_{i}$  is a proxy for quasar bolometric luminosity, and the DRW variability parameters are for combined SDSS-PS1 $r$-band data}.}
 	\label{fig:quasar_trends}
 \end{figure*} 
 
