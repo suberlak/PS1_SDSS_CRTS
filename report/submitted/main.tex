@@ -141,7 +141,7 @@ To simulate observational conditions  we add a Gaussian noise $n(t) = \mathcal{N
 y(t) = s(t) + n(t) 
 \end{equation}
 
-The resulting distribution of fitted timescales  as a function of input timescales, scaled by the  8 year baseline: $\rho_{out}$ vs $\rho_{in}$, is shown in Fig.~\ref{fig:rho_space}. We confirm the findings of K17: for short light curves, the best-fit $\tau$ becomes $\sim 1/5$ of light curve length (where $\log_{10}{(\rho_{out})} \approx -0.7$, the `unconstrained' region, lower-left of each panel). However, as long as the light curve is several times longer than the timescale ($1/\rho \gtrapprox 3, i.e. \log_{10}{(\rho)} \lessapprox 0.5$), we can recover the timescale without substantial bias (the dashed line approaches the solid diagonal line on both panels). Therefore, by extending the baseline we can move from the biased region (bottom left) to the unbiased regime (top right). This is the basis for this study,  in which we extend the baselines of quasar light curves from SDSS-only (10 years) to combined SDSS-PS1 (15 years). 
+The resulting distribution of fitted timescales  as a function of input timescales, scaled by the  8 year baseline: $\rho_{out}$ vs $\rho_{in}$, is shown in Fig.~\ref{fig:rho_space}. We confirm the findings of K17: for short light curves, the best-fit $\tau$ becomes $\sim 1/5$ of light curve length (where $\log_{10}{(\rho_{out})} \approx -0.7$, the `unconstrained' region, lower-left of each panel). However, as long as the light curve is several times longer than the timescale ($1/\rho \gtrapprox 3, i.e. \log_{10}{(\rho)} \lessapprox 0.5$), we can recover the timescale without substantial bias (the dashed line approaches the solid diagonal line on both panels). \textbf{In summary, in this section we showed that when using a Damped Random Walk description for quasar light curves, extension of light curve baseline moves the fit results from the biased region (Fig.~\ref{fig:rho_space}, bottom left) to the unbiased regime (Fig.~\ref{fig:rho_space}, top right).} This is the basis for this study,  in which we extend the baselines of quasar light curves from SDSS-only (10 years) to combined SDSS-PS1 (15 years). 
 
 
 \section{Data}
@@ -226,6 +226,8 @@ Finally, we clean the combined SDSS $r$ - PS1 $r$ quasar light curves using stan
 	\label{fig:lc_errors}
 \end{figure} 
 
+
+\textbf{In conclusion, we use SDSS S82 data, spanning 10 years in the observed frame, extended by the PS1 DR2 data, that add on average 5 years of data. Although we considered utilizing ZTF, PTF, and CRTS data, their larger photometric uncertainties offset any gain due to the extented baseline. Furthermore, only SDSS r and PS1 r bands are sufficiently similar (at $< 0.01$ mag level, Fig.~\ref{fig:offsetPS1mag}), that no photometric offsets are required, which would unneccessarily complicate merging light curves from different surveys. }
 %
 %
 %
