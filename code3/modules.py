@@ -143,6 +143,15 @@ def _statsmodels_bivariate_kde(x, y, bw, gridsize, cut, clip):
     Note: if one doesn't have statsmodels, could use 
     """
     
+    if isinstance(x, list):
+        x = np.asarray(x)
+    x = x.astype(np.float64)
+    
+    if isinstance(y, list):
+        y = np.asarray(y)
+    y = y.astype(np.float64)
+
+
     if clip is None:
         clip = [(-np.inf, np.inf), (-np.inf, np.inf)]
     elif np.ndim(clip) == 1:
