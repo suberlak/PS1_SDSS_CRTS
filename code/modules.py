@@ -11,8 +11,8 @@ import matplotlib.lines as mlines
 from matplotlib.ticker import FuncFormatter
 from matplotlib.ticker import LinearLocator
 
-import george
-from george import kernels
+#import george
+#from george import kernels
 
 def sim_DRW_lightcurve(t,SFinf,tau,mean_mag):
     '''Simulate a DRW lightcurve for a given time series t, with parameters
@@ -53,17 +53,17 @@ def neg_log_posterior(params,y,gp,prior, engine='celerite'):
 
     gp.set_parameter_vector(params)
 
-    if engine is 'celerite':
+    if engine == 'celerite':
         if prior is 'None' : 
             return -gp.log_likelihood(y, quiet=True)
             
         log_a  , log_c =  params
 
-        if prior is 'Jeff1' : # (1/sigma) * (1/tau) 
+        if prior == 'Jeff1' : # (1/sigma) * (1/tau) 
             log_prior = - (log_a / 2.0) + log_c
             return -gp.log_likelihood(y, quiet=True) - log_prior
 
-        if prior is 'Jeff2' : # (1/sigma_hat) * (1/tau) - 
+        if prior == 'Jeff2' : # (1/sigma_hat) * (1/tau) - 
             # the one used by Kozlowski , 
             # as well as Chelsea... 
             log_prior  = 0.5* (-np.log(2.0) - log_a + log_c  )
@@ -71,12 +71,12 @@ def neg_log_posterior(params,y,gp,prior, engine='celerite'):
 
 
 
-    if engine is 'george'   : 
-        if prior is 'None' : 
+    if engine == 'george'   : 
+        if prior == 'None' : 
             return -gp.log_likelihood(y, quiet=True)
 
         k1,k2 = params 
-        if prior is 'Jeff1' : # (1/sigma) * (1/tau) 
+        if prior == 'Jeff1' : # (1/sigma) * (1/tau) 
             
             # k1 = log(sigma^2)  ; k2 = log(tau^2), 
             # so  sigma = exp(k1/2),   tau = exp(k2/2)
@@ -88,7 +88,7 @@ def neg_log_posterior(params,y,gp,prior, engine='celerite'):
             log_prior = -0.5 * (k1+k2)
             return -gp.log_likelihood(y, quiet=True) - log_prior
 
-        if prior is 'Jeff2' : 
+        if prior == 'Jeff2' : 
             # (1/sigma_hat) * (1/tau) 
             #- the one used by Kozlowski , 
             # as well as Chelsea, but note 
@@ -320,12 +320,12 @@ def evaluate_logP(sigma_grid, tau_grid, y,gp, prior='None',
     logPosterior = np.zeros([len(sigma_grid),len(tau_grid)], 
                             dtype=float)
 
-    if engine is 'celerite': 
+    if engine == 'celerite': 
         # span the grid of log(a), log(c)
         k1_grid = 2 * np.log(sigma_grid)
         k2_grid = np.log(1/tau_grid)
    
-    if engine is 'george':
+    if engine == 'george':
         # span the grid of k1, k2 : log(a), log(tau^2)
         k1_grid = 2.0* np.log(sigma_grid)
         k2_grid = 2.0 * np.log(tau_grid)
@@ -340,11 +340,11 @@ def evaluate_logP(sigma_grid, tau_grid, y,gp, prior='None',
 
 def make_grid(scale, sig_lims, tau_lims,Ngrid):
     
-    if scale is 'linear':
+    if scale == 'linear':
         #print(scale)
         sigma_grid = np.linspace(sig_lims[0], sig_lims[1],Ngrid )
         tau_grid  = np.linspace(tau_lims[0], tau_lims[1], Ngrid)
-    if scale is 'log':
+    if scale == 'log':
         #print(scale)
         sigma_grid = np.logspace(np.log10(sig_lims[0]), np.log10(sig_lims[1]),Ngrid )
         tau_grid  = np.logspace(np.log10(tau_lims[0]), np.log10(tau_lims[1]), Ngrid)
@@ -455,7 +455,7 @@ def plot_logP(logPosterior, sigma_grid, tau_grid, sigmaMAP, tauMAP,
         Label ticks with the product of the exponentiation"""
         return '%.1f' % (x)
 
-    if scale is 'log':
+    if scale == 'log':
         formatter = FuncFormatter(log_10_product)
 
     sigma_max = sigma[idx[0]][0]
@@ -467,7 +467,7 @@ def plot_logP(logPosterior, sigma_grid, tau_grid, sigmaMAP, tauMAP,
     # Axis scale must be set prior to declaring the Formatter
     # If it is not the Formatter will use the default log labels for ticks.
     ax2.set_yscale(scale)
-    if scale is 'log':  # makes the sigma values look better for logspace 
+    if scale == 'log':  # makes the sigma values look better for logspace 
         ax2.yaxis.set_major_locator(LinearLocator(5))
         ax2.yaxis.set_major_formatter(formatter)
 
